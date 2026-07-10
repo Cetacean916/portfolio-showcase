@@ -19,6 +19,80 @@
   flex-wrap: wrap;
 }
 
+.custom-composer {
+  display: grid;
+  grid-template-columns: minmax(190px, 0.62fr) minmax(0, 1.8fr);
+  gap: 12px 20px;
+  margin: 10px 0 12px;
+  padding: 15px;
+  border: 1px solid #b9cbbf;
+  background: #f7faf8;
+}
+
+.custom-composer-copy .eyebrow {
+  margin-bottom: 4px;
+}
+
+.custom-composer-copy h2 {
+  margin: 0;
+  font-size: 18px;
+}
+
+.custom-composer-copy p:last-child {
+  margin: 5px 0 0;
+  color: var(--muted);
+  font-size: 11px;
+  line-height: 1.55;
+}
+
+.custom-inquiry-form {
+  display: grid;
+  grid-template-columns: 118px minmax(0, 1fr) 142px;
+  align-items: end;
+  gap: 10px;
+}
+
+.custom-message-field .textarea {
+  min-height: 70px;
+  max-height: 140px;
+}
+
+.custom-message-meta {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  margin-top: 4px;
+  color: var(--muted);
+  font-size: 9px;
+}
+
+.custom-message-meta span:last-child {
+  flex: 0 0 auto;
+  font-variant-numeric: tabular-nums;
+}
+
+.custom-submit {
+  width: 100%;
+  min-height: 44px;
+}
+
+.custom-inquiry-status {
+  grid-column: 1 / -1;
+  margin: 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.custom-inquiry-status.is-error {
+  color: var(--danger);
+  font-weight: 800;
+}
+
+.custom-inquiry-status.is-success {
+  color: var(--accent-ink);
+  font-weight: 800;
+}
+
 .ticket-list {
   display: grid;
   max-height: 520px;
@@ -173,6 +247,21 @@
 }
 
 @media (max-width: 780px) {
+  .custom-composer {
+    grid-template-columns: 1fr;
+    padding: 13px;
+  }
+
+  .custom-inquiry-form {
+    grid-template-columns: 1fr;
+  }
+
+  .custom-message-meta {
+    align-items: flex-start;
+    flex-direction: column;
+    gap: 3px;
+  }
+
   .toolbar-actions .button {
     min-width: min(100%, 180px);
   }

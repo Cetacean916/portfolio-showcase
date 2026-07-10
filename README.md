@@ -7,7 +7,11 @@ PF01 through PF04 include network-free interactive trials under `demos/`.
 PF03 and PF04 also include current walkthrough videos recorded from those
 public trials. The trials use fictional, sanitized data in browser memory and
 do not call the source backends, external AI, Sheets, Slack, Email, or company
-systems. PF01 can generate fresh synthetic inquiry batches in the browser.
+systems. PF01 can generate fresh synthetic inquiry batches and classify a
+visitor-written inquiry with transparent keyword scoring. This public trial
+does not call AI; commissioned delivery can connect a client-provided or
+client-approved AI API, internal company API, or on-premises model, with
+accounts, usage costs, and security policy agreed separately.
 PF02 can display a sanitized result through the local browser notification API
 only after a successful trial request and an explicit user action; Slack and
 Email delivery remain clearly labeled simulations.

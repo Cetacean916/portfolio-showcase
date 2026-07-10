@@ -67,46 +67,53 @@ const CHANNEL_SETS = [
   ["웹 폼", "이메일", "채팅", "웹 폼", "이메일"],
 ];
 
+const MAX_CUSTOM_TICKETS = 10;
+const MAX_CUSTOM_LENGTH = 500;
+
 const RULES = [
   {
     category: "결제 오류",
     priority: "긴급",
     team: "결제 운영팀",
-    keywords: ["결제", "승인", "두 번"],
+    keywords: ["결제", "승인", "중복 결제", "중복 청구", "청구", "카드", "입금"],
     draft: "안녕하세요. 결제 내역을 우선 확인하겠습니다. 주문 식별 정보와 승인 시각을 확인한 뒤 중복 승인 여부 및 처리 일정을 안내드리겠습니다.",
   },
   {
     category: "취소·환불",
     priority: "일반",
     team: "고객 지원팀",
-    keywords: ["취소", "환불"],
+    keywords: ["취소", "환불", "반품", "철회"],
     draft: "안녕하세요. 현재 주문 처리 단계를 확인한 뒤 취소 가능 여부와 환불 예상 일정을 안내드리겠습니다. 확인되는 대로 답변드리겠습니다.",
   },
   {
     category: "기업 견적",
     priority: "일반",
     team: "기업 영업팀",
-    keywords: ["기업", "견적", "납기"],
+    keywords: ["기업", "견적", "납기", "대량", "단체", "법인", "도매"],
     draft: "안녕하세요. 요청하신 수량과 일정을 기준으로 견적 범위를 확인하겠습니다. 필요한 옵션과 희망 납기일을 검토한 뒤 담당자가 안내드리겠습니다.",
   },
   {
     category: "배송 조회",
     priority: "긴급",
     team: "물류 운영팀",
-    keywords: ["배송", "출고", "운송장"],
+    keywords: ["배송", "출고", "운송장", "택배", "도착", "배송 지연"],
     draft: "안녕하세요. 출고 및 운송장 등록 상태를 우선 확인하겠습니다. 물류 기록을 점검한 뒤 예상 일정을 안내드리겠습니다.",
   },
   {
     category: "교환 요청",
     priority: "일반",
     team: "고객 지원팀",
-    keywords: ["교환", "옵션", "상품"],
+    keywords: ["교환", "오배송", "불량", "파손", "다른 옵션", "옵션이 다", "사이즈가 다", "색상이 다"],
     draft: "안녕하세요. 주문 옵션과 수령 상품 상태를 확인한 뒤 교환 절차를 안내드리겠습니다. 상품 상태가 보이는 자료를 준비해 주시면 확인에 도움이 됩니다.",
   },
 ];
 
+function createBaseTickets() {
+  return BASE_TICKETS.map((ticket) => ({ ...ticket, origin: "base" }));
+}
+
 const state = {
-  tickets: BASE_TICKETS.map((ticket) => ({ ...ticket })),
+  tickets: createBaseTickets(),
   processed: [],
   selectedId: BASE_TICKETS[0].id,
   filter: "all",
@@ -114,18 +121,31 @@ const state = {
   batchId: "BASE-001",
   batchType: "base",
   generationCount: 0,
+  customSerial: 0,
 };
 
 const element = (id) => document.getElementById(id);
 
 function classify(ticket) {
-  const rule = RULES.find((candidate) => candidate.keywords.some((keyword) => ticket.message.includes(keyword)));
-  const matched = rule || {
+  const normalized = ticket.message.toLocaleLowerCase("ko-KR").replace(/\s+/g, " ");
+  const ranked = RULES
+    .map((candidate, index) => ({
+      candidate,
+      index,
+      matches: candidate.keywords.filter((keyword) => normalized.includes(keyword.toLocaleLowerCase("ko-KR"))),
+    }))
+    .filter((entry) => entry.matches.length)
+    .sort((left, right) => right.matches.length - left.matches.length || left.index - right.index);
+  const best = ranked[0];
+  const matched = best?.candidate || {
     category: "일반 문의",
     priority: "일반",
     team: "고객 지원팀",
     draft: "안녕하세요. 남겨주신 내용을 확인했습니다. 담당자가 필요한 정보를 검토한 뒤 답변드리겠습니다.",
   };
+  const reason = best
+    ? `키워드 점수 ${best.matches.length} · ${best.matches.slice(0, 3).join(" · ")}`
+    : "명확한 분류 단서 없음 · 일반 문의로 배정";
 
   return {
     ...ticket,
@@ -133,7 +153,8 @@ function classify(ticket) {
     priority: matched.priority,
     team: matched.team,
     summary: `${matched.category} 관련 요청으로 ${matched.team} 확인이 필요합니다.`,
-    draft: matched.draft,
+    reason,
+    draft: ticket.draft || matched.draft,
     status: matched.priority === "긴급" ? "우선 확인" : "답변 준비",
   };
 }
@@ -183,6 +204,7 @@ function createSyntheticBatch() {
       customer: `가상 고객 ${index + 1}`,
       channel: channels[index],
       message: messages[Math.floor(random() * messages.length)],
+      origin: "synthetic",
     };
   });
 
@@ -191,6 +213,16 @@ function createSyntheticBatch() {
 
 function currentTickets() {
   return state.processed.length ? state.processed : state.tickets;
+}
+
+function customTicketCount() {
+  return state.tickets.filter((ticket) => ticket.origin === "custom").length;
+}
+
+function originLabel(origin) {
+  if (origin === "custom") return "직접 입력";
+  if (origin === "synthetic") return "합성";
+  return "기준";
 }
 
 function visibleTickets() {
@@ -254,11 +286,12 @@ function renderTickets() {
 
 function renderDetail() {
   const ticket = selectedTicket();
-  element("selectedMeta").textContent = `${ticket.id} · ${ticket.channel} · ${ticket.customer}`;
+  element("selectedMeta").textContent = `${ticket.id} · ${originLabel(ticket.origin)} · ${ticket.channel} · ${ticket.customer}`;
   element("selectedMessage").textContent = ticket.message;
   element("selectedCategory").textContent = ticket.category || "대기";
   element("selectedPriority").textContent = ticket.priority || "대기";
   element("selectedTeam").textContent = ticket.team || "대기";
+  element("selectedReason").textContent = ticket.reason || "분류 실행 후 표시됩니다.";
   element("selectedSummary").textContent = ticket.summary || "분류 실행 후 표시됩니다.";
   element("selectedStatus").textContent = ticket.status || "분류 전";
   element("selectedStatus").className = badgeClass(ticket);
@@ -268,8 +301,10 @@ function renderDetail() {
 
 function renderMetrics() {
   const processed = state.processed;
+  const customCount = customTicketCount();
+  const sourceLabel = state.batchType === "base" ? "비식별 기준 배치" : "새로 생성한 합성 배치";
   element("metricTotal").textContent = String(state.tickets.length);
-  element("metricSource").textContent = state.batchType === "base" ? "비식별 기준 배치" : "새로 생성한 합성 배치";
+  element("metricSource").textContent = customCount ? `${sourceLabel} + 직접 ${customCount}건` : sourceLabel;
   element("metricUrgent").textContent = processed.length ? String(processed.filter((item) => item.priority === "긴급").length) : "-";
   element("metricCategories").textContent = processed.length ? String(new Set(processed.map((item) => item.category)).size) : "-";
   element("metricDrafts").textContent = processed.length ? String(processed.filter((item) => item.draft).length) : "-";
@@ -328,6 +363,8 @@ function renderTable() {
 }
 
 function render() {
+  const customCount = customTicketCount();
+  const generatedCount = state.tickets.length - customCount;
   renderTickets();
   renderDetail();
   renderMetrics();
@@ -335,8 +372,10 @@ function render() {
   renderTable();
   element("exportButton").disabled = !state.processed.length;
   element("classifyButton").textContent = `${state.tickets.length}건 분류 실행`;
-  element("batchId").textContent = `${state.batchType === "base" ? "기준 배치" : "합성 배치"} · ${state.batchId}`;
-  element("batchDescription").textContent = `${state.batchType === "base" ? "비식별 기준" : "새로 생성한 비식별 합성"} 문의 ${state.tickets.length}건을 유형, 우선순위, 담당 팀, 요약, 답변 초안으로 정리합니다.`;
+  element("batchId").textContent = `${state.batchType === "base" ? "기준 배치" : "합성 배치"} · ${state.batchId}${customCount ? ` · 직접 ${customCount}건` : ""}`;
+  element("batchDescription").textContent = `${state.batchType === "base" ? "비식별 기준" : "새로 생성한 비식별 합성"} 문의 ${generatedCount}건${customCount ? `과 직접 입력 ${customCount}건` : ""}을 유형, 우선순위, 담당 팀, 요약, 답변 초안으로 정리합니다.`;
+  element("customInquirySubmit").disabled = customCount >= MAX_CUSTOM_TICKETS;
+  element("customInquirySubmit").textContent = customCount >= MAX_CUSTOM_TICKETS ? "직접 입력 10건 완료" : "입력하고 분류";
 }
 
 function logTime() {
@@ -359,7 +398,68 @@ function addLog(message, reset = false) {
 function saveDraft() {
   if (!state.processed.length) return;
   const ticket = state.processed.find((item) => item.id === state.selectedId);
-  if (ticket) ticket.draft = element("draftEditor").value;
+  if (ticket) {
+    ticket.draft = element("draftEditor").value;
+    const source = state.tickets.find((item) => item.id === ticket.id);
+    if (source) source.draft = ticket.draft;
+  }
+}
+
+function setCustomStatus(message, tone = "") {
+  const status = element("customInquiryStatus");
+  status.className = `custom-inquiry-status${tone ? ` is-${tone}` : ""}`;
+  status.textContent = message;
+}
+
+function updateCustomMessageCount() {
+  element("customMessageCount").textContent = `${element("customMessage").value.length} / ${MAX_CUSTOM_LENGTH}`;
+}
+
+function addCustomInquiry(event) {
+  event.preventDefault();
+  const messageInput = element("customMessage");
+  const message = messageInput.value.trim();
+  const customCount = customTicketCount();
+
+  if (!message) {
+    setCustomStatus("분류할 문의 내용을 입력해 주세요.", "error");
+    messageInput.focus();
+    return;
+  }
+  if (message.length > MAX_CUSTOM_LENGTH) {
+    setCustomStatus(`문의 내용은 ${MAX_CUSTOM_LENGTH}자 이하로 입력해 주세요.`, "error");
+    messageInput.focus();
+    return;
+  }
+  if (customCount >= MAX_CUSTOM_TICKETS) {
+    setCustomStatus(`직접 입력은 최대 ${MAX_CUSTOM_TICKETS}건까지 체험할 수 있습니다. 기준 배치로 초기화하면 다시 시작할 수 있습니다.`, "error");
+    return;
+  }
+
+  saveDraft();
+  state.customSerial += 1;
+  const ticket = {
+    id: `CUSTOM-${String(state.customSerial).padStart(3, "0")}`,
+    customer: "익명 직접 입력",
+    channel: element("customChannel").value,
+    message,
+    origin: "custom",
+  };
+  state.tickets.push(ticket);
+  state.processed = state.tickets.map(classify);
+  state.selectedId = ticket.id;
+  state.filter = "all";
+  element("filterSelect").value = "all";
+  messageInput.value = "";
+  updateCustomMessageCount();
+  render();
+
+  const result = state.processed.find((item) => item.id === ticket.id);
+  const completion = `${ticket.id}을 ${result.category} · ${result.priority} · ${result.team}으로 분류했습니다.`;
+  element("statusLine").textContent = completion;
+  const limitNotice = customCount + 1 >= MAX_CUSTOM_TICKETS ? " 직접 입력 최대 10건을 완료했습니다." : "";
+  setCustomStatus(`${completion} 입력값은 현재 브라우저 메모리에만 남습니다.${limitNotice}`, "success");
+  addLog(`${ticket.id} 직접 입력 문의를 분류했습니다.`);
 }
 
 function runClassification() {
@@ -375,7 +475,8 @@ function runClassification() {
 function generateBatch() {
   saveDraft();
   const generated = createSyntheticBatch();
-  state.tickets = generated.tickets;
+  const customTickets = state.tickets.filter((ticket) => ticket.origin === "custom");
+  state.tickets = [...generated.tickets, ...customTickets];
   state.processed = [];
   state.selectedId = generated.tickets[0].id;
   state.filter = "all";
@@ -383,21 +484,27 @@ function generateBatch() {
   state.batchType = "synthetic";
   element("filterSelect").value = "all";
   render();
-  element("statusLine").textContent = `${state.batchId} 합성 문의 5건을 만들었습니다. 분류를 실행해 결과를 확인하세요.`;
-  addLog(`${state.batchId} 비식별 합성 문의 5건을 생성했습니다.`);
+  const customNote = customTickets.length ? ` 직접 입력 ${customTickets.length}건은 유지했습니다.` : "";
+  element("statusLine").textContent = `${state.batchId} 합성 문의 5건을 만들었습니다.${customNote} 분류를 실행해 결과를 확인하세요.`;
+  addLog(`${state.batchId} 비식별 합성 문의 5건을 생성했습니다.${customNote}`);
 }
 
 function resetDemo() {
-  state.tickets = BASE_TICKETS.map((ticket) => ({ ...ticket }));
+  state.tickets = createBaseTickets();
   state.processed = [];
   state.selectedId = BASE_TICKETS[0].id;
   state.filter = "all";
   state.logIndex = 0;
   state.batchId = "BASE-001";
   state.batchType = "base";
+  state.customSerial = 0;
   element("filterSelect").value = "all";
+  element("customChannel").value = "채팅";
+  element("customMessage").value = "";
+  updateCustomMessageCount();
   render();
   element("statusLine").textContent = "샘플 문의 5건을 불러왔습니다. 분류를 실행해 주세요.";
+  setCustomStatus("입력값은 저장하거나 외부로 보내지 않으며 현재 브라우저 메모리에서만 처리됩니다.");
   addLog("체험 데이터를 기준 배치로 되돌렸습니다.", true);
 }
 
@@ -410,14 +517,17 @@ function csvCell(value) {
 function exportCsv() {
   saveDraft();
   if (!state.processed.length) return;
-  const headers = ["문의 ID", "채널", "유형", "우선순위", "담당 팀", "상태", "요약", "답변 초안"];
+  const headers = ["문의 ID", "입력 유형", "채널", "문의 내용", "유형", "우선순위", "담당 팀", "상태", "분류 근거", "요약", "답변 초안"];
   const rows = state.processed.map((ticket) => [
     ticket.id,
+    originLabel(ticket.origin),
     ticket.channel,
+    ticket.message,
     ticket.category,
     ticket.priority,
     ticket.team,
     ticket.status,
+    ticket.reason,
     ticket.summary,
     ticket.draft,
   ]);
@@ -434,6 +544,8 @@ function exportCsv() {
 
 element("classifyButton").addEventListener("click", runClassification);
 element("generateButton").addEventListener("click", generateBatch);
+element("customInquiryForm").addEventListener("submit", addCustomInquiry);
+element("customMessage").addEventListener("input", updateCustomMessageCount);
 element("resetButton").addEventListener("click", resetDemo);
 element("exportButton").addEventListener("click", exportCsv);
 element("filterSelect").addEventListener("change", (event) => {
