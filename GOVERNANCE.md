@@ -15,7 +15,7 @@ Only public-facing static assets belong in this repository:
 - reviewed, network-free browser trials under `demos/`
 - bundled open-license fonts and their license notice
 - registration-safe portfolio images
-- approved PF03, PF04, and PF06 demonstration videos and reviewed posters
+- approved PF01, PF02, PF03, PF04, and PF06 demonstration videos and reviewed posters
 - public metadata, license, and repository documentation
 
 Do not commit internal registration copy, validation reports, browser profiles,

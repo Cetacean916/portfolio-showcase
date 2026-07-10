@@ -18,8 +18,8 @@ window.PORTFOLIO_PROJECTS = [
     id: "pf01", code: "PF01", filters: ["automation"], accent: "teal",
     title: "AI 고객문의 요약·분류 자동화", short: "문의 요약, 우선순위, 담당팀, 답변 초안을 한 흐름으로",
     summary: "샘플 문의를 분류해 CSV·시트형 결과와 고우선순위 알림 계약까지 확인하는 자동화입니다.",
-    image: "assets/media/pf01/main-image.png", gallery: ["assets/media/pf01/detail-01-overview.png", "assets/media/pf01/detail-02-flow.png", "assets/media/pf01/detail-03-result.png"],
-    facts: [["15", "처리 문의"], ["4", "긴급 알림"], ["0", "AI 오류"]],
+    image: "assets/media/pf01/main-image.png", gallery: ["assets/media/pf01/detail-01-overview.png", "assets/media/pf01/detail-02-flow.png", "assets/media/pf01/detail-03-result.png"], video: "assets/media/pf01/demo-video.mp4", videoPoster: "assets/media/pf01/video-poster.png",
+    facts: [["15", "별도 실연동 처리"], ["4", "별도 실연동 알림"], ["0", "AI 오류"]],
     proof: ["비식별 현행 실행 근거 요약 화면", "정상·오류·경계 테스트", "CSV·시트·알림 출력 계약"],
     problem: "반복 문의를 사람이 처음부터 읽고 분류하면 긴급 문의의 첫 대응이 늦어집니다.",
     solution: "요약, 카테고리, 우선순위, 담당팀, 답변 초안을 생성하고 결과 파일과 알림 대상으로 분리합니다.",
@@ -31,13 +31,14 @@ window.PORTFOLIO_PROJECTS = [
       url: "demos/pf01/",
       summary: "비식별 기준·합성 문의뿐 아니라 직접 작성한 문의도 즉시 분류해 요약, 우선순위, 담당팀과 답변 초안을 확인할 수 있습니다.",
       boundary: "공개 데모는 외부 AI 연결 없는 키워드 점수 방식입니다. 실제 제작 시에는 의뢰인이 제공하거나 사용을 승인한 AI API, 사내 API 또는 온프레미스 모델에 연동할 수 있으며 계정·사용료·보안 정책은 별도 협의합니다."
-    }
+    },
+    videoSummary: "현행 공개 체험판에서 합성 문의 생성, 직접 문의 입력, 키워드 점수 분류, 분류 근거와 답변 초안, CSV 결과를 순서대로 안내합니다. 실제 AI·Google Sheets·Slack 실행 근거는 별도 패키지 증거로 구분합니다."
   },
   {
     id: "pf02", code: "PF02", filters: ["automation"], accent: "blue",
     title: "폼·웹훅 시트 저장 및 알림", short: "신청 입력을 검증해 시트와 팀 알림으로 전달",
     summary: "필수값, 중복, 알림 실패를 분리하고 공유 비밀 요청 인증과 외부 식별자 마스킹을 적용한 자동화입니다.",
-    image: "assets/media/pf02/main-image.png", gallery: ["assets/media/pf02/detail-01-overview.png", "assets/media/pf02/detail-02-flow.png", "assets/media/pf02/detail-03-result.png"],
+    image: "assets/media/pf02/main-image.png", gallery: ["assets/media/pf02/detail-01-overview.png", "assets/media/pf02/detail-02-flow.png", "assets/media/pf02/detail-03-result.png"], video: "assets/media/pf02/demo-video.mp4", videoPoster: "assets/media/pf02/video-poster.png",
     facts: [["4", "핵심 예외"], ["2", "출력 채널"], ["PASS", "보안 게이트"]],
     proof: ["웹훅 입력·검증 결과", "중복·알림 실패 기록", "공유 비밀 요청 인증·식별자 마스킹"],
     problem: "상담 신청을 수동으로 옮기거나 알림을 놓치면 응답이 늦고 리드가 유실됩니다.",
@@ -50,7 +51,8 @@ window.PORTFOLIO_PROJECTS = [
       url: "demos/pf02/",
       summary: "정상, 인증 실패, 누락, 중복, 외부 알림 실패를 재현하고 성공 결과는 사용자가 허용한 로컬 기기 알림으로 직접 확인합니다.",
       boundary: "Google Sheets, Slack, Email로 실제 데이터를 전송하지 않습니다. 로컬 기기 알림은 버튼을 누른 뒤 허용한 경우에만 비식별 결과를 표시합니다."
-    }
+    },
+    videoSummary: "현행 공개 체험판에서 정상 접수와 인증·검증·행 저장·알림 재현, 주요 예외 시나리오, 사용자 동의형 로컬 기기 알림을 순서대로 안내합니다. 실제 Google Sheets·Slack·Email 실행 근거는 별도 패키지 증거로 구분합니다."
   },
   {
     id: "pf03", code: "PF03", filters: ["automation", "data"], accent: "green",
