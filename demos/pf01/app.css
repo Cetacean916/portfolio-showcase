@@ -2,6 +2,47 @@
   --accent: #287153;
   --accent-soft: #e2efe8;
   --accent-ink: #15523a;
+  --pf01-topbar-height: 64px;
+}
+
+.demo-topbar {
+  min-height: var(--pf01-topbar-height);
+  background: rgba(255, 255, 255, 0.99);
+}
+
+.boundary-note.pf01-ai-boundary {
+  position: sticky;
+  top: var(--pf01-topbar-height);
+  z-index: 29;
+  min-height: 44px;
+  justify-content: flex-start;
+  gap: 12px;
+  padding: 9px 24px;
+  border-bottom: 1px solid #0d3023;
+  background: #173f30;
+  box-shadow: 0 6px 16px rgba(13, 48, 35, 0.18);
+  color: #f4fbf7;
+  font-size: 13.5px;
+  font-weight: 600;
+  line-height: 1.5;
+  text-align: left;
+}
+
+.pf01-ai-boundary strong {
+  flex: 0 0 auto;
+  padding-right: 12px;
+  border-right: 1px solid rgba(244, 251, 247, 0.34);
+  color: #c8ecd8;
+  font-size: 13.5px;
+  white-space: nowrap;
+}
+
+.pf01-ai-boundary .boundary-copy {
+  max-width: 1180px;
+}
+
+.boundary-copy-compact {
+  display: none;
 }
 
 .evidence-chip {
@@ -247,6 +288,11 @@
 }
 
 @media (max-width: 780px) {
+  .boundary-note.pf01-ai-boundary {
+    padding-inline: 14px;
+    font-size: 13px;
+  }
+
   .custom-composer {
     grid-template-columns: 1fr;
     padding: 13px;
@@ -268,5 +314,30 @@
 
   .generator-help {
     margin-top: -4px;
+  }
+}
+
+@media (max-width: 480px) {
+  .boundary-note.pf01-ai-boundary {
+    top: var(--pf01-topbar-height);
+    gap: 4px;
+    min-height: 0;
+    padding: 9px 12px 10px;
+    font-size: 13px;
+    line-height: 1.45;
+  }
+
+  .pf01-ai-boundary strong {
+    padding-right: 0;
+    border-right: 0;
+    font-size: 13px;
+  }
+
+  .boundary-copy-wide {
+    display: none;
+  }
+
+  .boundary-copy-compact {
+    display: inline;
   }
 }
