@@ -1,0 +1,223 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'none'"
+    />
+    <meta name="description" content="웹훅 입력, 요청 인증, 행 저장, Slack 또는 Email 알림 흐름을 재현한 PF02 체험 데모" />
+    <title>PF02 웹훅·시트·알림 자동화 체험</title>
+    <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" />
+    <link rel="stylesheet" href="../shared/demo.css" />
+    <link rel="stylesheet" href="app.css" />
+  </head>
+  <body>
+    <a class="skip-link" href="#workspace">작업 영역으로 이동</a>
+    <header class="demo-topbar">
+      <a class="demo-brand" href="../../case.html?id=pf02" aria-label="PF02 사례 페이지로 돌아가기">
+        <span class="brand-mark" aria-hidden="true">PF02</span>
+        <span class="brand-copy">
+          <strong>Lead Relay Console</strong>
+          <span>웹훅·시트·알림 자동화</span>
+        </span>
+      </a>
+      <a class="return-link" href="../../case.html?id=pf02">사례로 돌아가기</a>
+    </header>
+
+    <aside class="boundary-note" aria-label="체험 범위 안내">
+      <strong>공개 샘플 체험</strong>
+      <span>외부 Google Sheets, Slack, Email, 서버에 요청하지 않습니다. 비식별 샘플과 결과는 현재 브라우저 메모리에서만 처리됩니다.</span>
+    </aside>
+
+    <main class="app-shell" id="workspace">
+      <div class="workspace-heading">
+        <div>
+          <p class="eyebrow">In-memory integration simulation</p>
+          <h1>리드 접수 자동화 콘솔</h1>
+          <p>요청 인증부터 검증, 알림 시도, Sheet 형태 행 저장까지 예외 흐름을 직접 확인합니다.</p>
+        </div>
+        <div class="evidence-chip"><b>체험 전용 시뮬레이션</b> · 실제 외부 연동 검증 자료와 별도</div>
+      </div>
+
+      <section class="toolbar" aria-label="체험 시나리오 도구">
+        <div class="toolbar-group preset-group">
+          <div class="field-inline">
+            <label for="presetSelect">시나리오</label>
+            <select class="select" id="presetSelect" data-test="preset">
+              <option value="normal">정상 접수</option>
+              <option value="auth-failure">요청 인증 실패</option>
+              <option value="missing-email">이메일 누락</option>
+              <option value="duplicate">중복 후보</option>
+              <option value="notification-failure">알림 실패</option>
+            </select>
+          </div>
+          <button class="button button-primary" id="runButton" data-test="run" type="submit" form="requestForm">요청 실행</button>
+          <button class="button button-secondary" id="resetButton" data-test="reset" type="button">초기화</button>
+        </div>
+        <div class="toolbar-group">
+          <div class="mode-field">
+            <span id="modeLabel">알림 채널</span>
+            <div class="segmented" role="group" aria-labelledby="modeLabel">
+              <button id="slackModeButton" data-test="mode-slack" type="button" aria-pressed="true">Slack</button>
+              <button id="emailModeButton" data-test="mode-email" type="button" aria-pressed="false">Email</button>
+            </div>
+          </div>
+          <button class="button button-secondary" id="exportButton" data-test="download" type="button">CSV 다운로드</button>
+        </div>
+      </section>
+
+      <p class="status-line" id="statusLine" data-test="status" role="status" aria-live="polite">정상 접수 시나리오가 준비되었습니다.</p>
+
+      <section class="metric-grid" aria-label="처리 요약">
+        <article class="metric-card">
+          <span>저장 행</span>
+          <strong id="metricStored" data-test="count-stored">1</strong>
+          <small>중복 판별용 초기 행 포함</small>
+        </article>
+        <article class="metric-card">
+          <span>요청 인증 통과</span>
+          <strong id="metricAuthorized" data-test="count-authorized">0</strong>
+          <small>공유 비밀 요청 인증</small>
+        </article>
+        <article class="metric-card">
+          <span>검토 필요</span>
+          <strong id="metricReview" data-test="count-review">0</strong>
+          <small>누락 또는 중복 후보</small>
+        </article>
+        <article class="metric-card">
+          <span>알림 실패</span>
+          <strong id="metricFailed" data-test="count-failed">0</strong>
+          <small>실패해도 행 저장</small>
+        </article>
+      </section>
+
+      <div class="workspace-grid two-column">
+        <div class="stack">
+          <section class="panel" aria-labelledby="requestTitle">
+            <div class="panel-header">
+              <div>
+                <h2 id="requestTitle">샘플 요청</h2>
+                <p>선택한 시나리오의 비식별 payload</p>
+              </div>
+              <span class="badge badge-info" id="presetBadge">정상 접수</span>
+            </div>
+            <form class="panel-body" id="requestForm">
+              <div class="field-grid">
+                <div class="field">
+                  <label for="leadName">이름</label>
+                  <input class="input" id="leadName" name="name" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="leadEmail">이메일</label>
+                  <input class="input" id="leadEmail" name="email" inputmode="email" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="leadPhone">연락처</label>
+                  <input class="input" id="leadPhone" name="phone" inputmode="tel" autocomplete="off" />
+                </div>
+                <div class="field">
+                  <label for="leadSource">유입 경로</label>
+                  <select class="select" id="leadSource" name="source">
+                    <option value="website">website</option>
+                    <option value="homepage">homepage</option>
+                    <option value="google_form">google_form</option>
+                    <option value="landing_page">landing_page</option>
+                    <option value="webhook">webhook</option>
+                  </select>
+                </div>
+                <div class="field full">
+                  <label for="leadMessage">문의 내용</label>
+                  <textarea class="textarea request-message" id="leadMessage" name="message"></textarea>
+                </div>
+                <div class="field full auth-field">
+                  <div class="auth-label-row">
+                    <label for="authToken">공유 비밀 요청 인증</label>
+                    <span>체험용 값 · 저장 안 함</span>
+                  </div>
+                  <input class="input" id="authToken" name="auth_token" type="password" autocomplete="new-password" spellcheck="false" />
+                  <p class="field-help">요청 값이 체험 환경의 공유 비밀과 다르면 저장과 알림 전에 거부됩니다.</p>
+                </div>
+              </div>
+            </form>
+          </section>
+
+          <aside class="panel" aria-labelledby="logTitle">
+            <div class="panel-header">
+              <div>
+                <h2 id="logTitle">처리 로그</h2>
+                <p>현재 브라우저에서 실행한 단계</p>
+              </div>
+              <span class="badge">LOCAL</span>
+            </div>
+            <div class="panel-body">
+              <ol class="log-list" id="activityLog" aria-live="polite"></ol>
+            </div>
+          </aside>
+        </div>
+
+        <div class="stack">
+          <section class="panel" aria-labelledby="pipelineTitle">
+            <div class="panel-header">
+              <div>
+                <h2 id="pipelineTitle">요청 처리 상태</h2>
+                <p>인증 실패는 후속 단계로 진행하지 않음</p>
+              </div>
+              <span class="badge" id="responseBadge" data-test="result-state">대기</span>
+            </div>
+            <div class="panel-body">
+              <ol class="pipeline" id="pipelineList">
+                <li data-stage="auth"><span>01</span><div><strong>요청 인증</strong><small>공유 비밀 값 비교</small></div><b>대기</b></li>
+                <li data-stage="validation"><span>02</span><div><strong>필드 검증</strong><small>이메일·중복 후보 확인</small></div><b>대기</b></li>
+                <li data-stage="storage"><span>03</span><div><strong>행 저장</strong><small>Sheet 형태 로컬 테이블</small></div><b>대기</b></li>
+                <li data-stage="notification"><span>04</span><div><strong>알림 시도</strong><small>Slack 또는 Email</small></div><b>대기</b></li>
+              </ol>
+
+              <div class="response-card" aria-labelledby="responseTitle">
+                <div class="response-card-head">
+                  <h3 id="responseTitle">응답</h3>
+                  <span id="responseCode">실행 전</span>
+                </div>
+                <dl class="kv-list">
+                  <div><dt>ok</dt><dd id="responseOk">-</dd></div>
+                  <div><dt>status</dt><dd id="responseStatus">waiting</dd></div>
+                  <div><dt>run_id</dt><dd id="responseRunId">-</dd></div>
+                  <div><dt>알림 채널</dt><dd id="responseChannel">Slack</dd></div>
+                </dl>
+              </div>
+            </div>
+          </section>
+
+          <section class="panel" aria-labelledby="sheetTitle">
+            <div class="panel-header">
+              <div>
+                <h2 id="sheetTitle">저장된 행</h2>
+                <p>연락처를 가린 공개 체험용 Sheet 보기</p>
+              </div>
+              <span class="badge badge-success" id="rowCount" data-test="count-rows">1행</span>
+            </div>
+            <div class="table-scroll sheet-table">
+              <table>
+                <caption class="sr-only">체험 중 저장된 리드 행</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">run_id</th>
+                    <th scope="col">이름</th>
+                    <th scope="col">이메일</th>
+                    <th scope="col">status</th>
+                    <th scope="col">validation</th>
+                    <th scope="col">notification</th>
+                  </tr>
+                </thead>
+                <tbody id="sheetRows"></tbody>
+              </table>
+            </div>
+          </section>
+        </div>
+      </div>
+    </main>
+
+    <script src="app.js"></script>
+  </body>
+</html>

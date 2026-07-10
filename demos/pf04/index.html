@@ -1,0 +1,245 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'none'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="description" content="근태 휴가 업무관리 공개 샘플 체험판" />
+    <title>근태·휴가 업무관리 체험판 | PF04</title>
+    <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" />
+    <link rel="stylesheet" href="../shared/demo.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+
+    <div class="trial-notice" id="trialBoundary" role="note">
+      <strong>공개 샘플 체험판</strong>
+      <span>신청과 결재 상태는 이 브라우저 메모리에서만 바뀌며, 실제 사내 시스템이나 서버에 저장되지 않습니다.</span>
+    </div>
+
+    <div class="app-shell">
+      <aside class="app-rail" aria-label="PF04 체험판 메뉴">
+        <a class="back-link" href="../../case.html?id=pf04">PF04 사례로 돌아가기</a>
+        <div class="brand-block">
+          <span class="brand-mark" aria-hidden="true">L</span>
+          <div>
+            <strong>LeaveOps Console</strong>
+            <small>people workflow desk</small>
+          </div>
+        </div>
+        <nav class="rail-nav" aria-label="화면 바로가기">
+          <a class="active" href="#request-console">신청 대기열</a>
+          <a href="#decision-console">결재 처리</a>
+          <a href="#package-proof">패키지 검증</a>
+        </nav>
+        <div class="build-card">
+          <p>DEMO_BUILD</p>
+          <code>PF04_PUBLIC_TRIAL_20260711_01</code>
+          <p>SOURCE_RUN</p>
+          <code>PF04_FINAL_20260710_891998</code>
+        </div>
+      </aside>
+
+      <main class="app-main" id="main-content">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">04 Workflow Tool</p>
+            <h1>근태·휴가 업무관리</h1>
+            <p class="lead">신청 등록부터 승인·반려, 조건 검색과 CSV 내보내기까지 한 화면에서 처리합니다.</p>
+          </div>
+          <div class="sync-state" aria-label="현재 저장 상태">
+            <span class="state-dot" aria-hidden="true"></span>
+            <div>
+              <strong id="syncState">샘플 준비됨</strong>
+              <small>브라우저 메모리 · 새로고침 시 초기화</small>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="secondary-button" id="exportButton" data-test="pf04-export" type="button">현재 목록 CSV</button>
+            <button class="ghost-button" id="resetButton" data-test="pf04-reset" type="button">초기 상태 복원</button>
+          </div>
+        </header>
+
+        <section class="metric-grid" aria-label="신청 처리 요약">
+          <article class="metric-card total">
+            <span>전체 신청</span><strong id="metricTotal" data-test="pf04-count-total">3</strong><small>requests</small>
+          </article>
+          <article class="metric-card pending">
+            <span>결재 대기</span><strong id="metricPending" data-test="pf04-count-pending">1</strong><small>needs decision</small>
+          </article>
+          <article class="metric-card complete">
+            <span>처리 완료</span><strong id="metricComplete" data-test="pf04-count-complete">2</strong><small>approved + rejected</small>
+          </article>
+          <article class="metric-card approved">
+            <span>승인</span><strong id="metricApproved" data-test="pf04-count-approved">1</strong><small>approved requests</small>
+          </article>
+        </section>
+
+        <section class="operations-grid" id="request-console" aria-labelledby="queue-title">
+          <article class="panel queue-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Request queue</p>
+                <h2 id="queue-title">신청 대기열</h2>
+              </div>
+              <span class="visible-count" id="visibleCount" data-test="pf04-filtered-count">3건 표시</span>
+            </div>
+
+            <div class="filter-grid" aria-label="신청 필터">
+              <label for="teamFilter">
+                <span>팀</span>
+                <select id="teamFilter" data-test="pf04-filter-team">
+                  <option value="">전체 팀</option>
+                  <option value="개발">개발</option>
+                  <option value="디자인">디자인</option>
+                  <option value="운영">운영</option>
+                  <option value="영업">영업</option>
+                </select>
+              </label>
+              <label for="statusFilter">
+                <span>상태</span>
+                <select id="statusFilter" data-test="pf04-filter-status">
+                  <option value="">전체 상태</option>
+                  <option value="대기">대기</option>
+                  <option value="승인">승인</option>
+                  <option value="반려">반려</option>
+                </select>
+              </label>
+              <label for="fromFilter">
+                <span>시작일 이후</span>
+                <input id="fromFilter" data-test="pf04-filter-from" type="date" />
+              </label>
+              <label for="toFilter">
+                <span>종료일 이전</span>
+                <input id="toFilter" data-test="pf04-filter-to" type="date" />
+              </label>
+              <button class="filter-reset" id="filterResetButton" data-test="pf04-filter-reset" type="button">필터 해제</button>
+            </div>
+
+            <div class="table-wrap">
+              <table>
+                <caption class="visually-hidden">필터 조건에 맞는 근태 및 휴가 신청 목록</caption>
+                <thead>
+                  <tr>
+                    <th scope="col">신청 번호</th>
+                    <th scope="col">신청자</th>
+                    <th scope="col">팀</th>
+                    <th scope="col">구분</th>
+                    <th scope="col">기간</th>
+                    <th scope="col">일수</th>
+                    <th scope="col">상태</th>
+                  </tr>
+                </thead>
+                <tbody id="requestRows" data-test="pf04-request-rows"></tbody>
+              </table>
+            </div>
+          </article>
+
+          <article class="panel apply-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">New request</p>
+                <h2>새 신청 등록</h2>
+              </div>
+              <span class="local-pill">로컬 샘플</span>
+            </div>
+            <form id="requestForm" data-test="pf04-add-form" aria-describedby="formBoundary">
+              <div class="form-grid">
+                <label for="employeeInput">
+                  <span>신청자</span>
+                  <input id="employeeInput" name="employee" data-test="pf04-add-employee" value="구성원 A04" maxlength="24" required />
+                </label>
+                <label for="teamInput">
+                  <span>팀</span>
+                  <select id="teamInput" name="team" data-test="pf04-add-team" required>
+                    <option value="개발">개발</option>
+                    <option value="디자인">디자인</option>
+                    <option value="운영">운영</option>
+                    <option value="영업">영업</option>
+                  </select>
+                </label>
+                <label for="typeInput">
+                  <span>신청 구분</span>
+                  <select id="typeInput" name="type" data-test="pf04-add-type" required>
+                    <option value="연차">연차</option>
+                    <option value="반차">반차</option>
+                    <option value="출장">출장</option>
+                    <option value="재택">재택</option>
+                  </select>
+                </label>
+                <label for="startInput">
+                  <span>시작일</span>
+                  <input id="startInput" name="start" data-test="pf04-add-start" type="date" value="2026-07-21" required />
+                </label>
+                <label for="endInput">
+                  <span>종료일</span>
+                  <input id="endInput" name="end" data-test="pf04-add-end" type="date" value="2026-07-22" required />
+                </label>
+                <label class="reason-field" for="reasonInput">
+                  <span>신청 사유</span>
+                  <input id="reasonInput" name="reason" data-test="pf04-add-reason" value="개인 일정" maxlength="80" required />
+                </label>
+              </div>
+              <p class="field-help" id="formBoundary">등록 내용은 현재 탭 메모리에만 추가되며 외부로 전송되지 않습니다.</p>
+              <button class="primary-button form-submit" data-test="pf04-add-submit" type="submit">신청 등록</button>
+            </form>
+          </article>
+        </section>
+
+        <section class="workflow-grid" id="decision-console" aria-label="결재 처리 작업대">
+          <article class="panel board-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Status board</p>
+                <h2>처리 상태 보드</h2>
+              </div>
+              <span class="board-note">필터 결과 기준</span>
+            </div>
+            <div class="status-board" id="statusBoard" data-test="pf04-status-board"></div>
+          </article>
+
+          <article class="panel detail-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Decision</p>
+                <h2 id="selectedTitle">선택 신청 상세</h2>
+                <p class="selected-meta" id="selectedMeta"></p>
+              </div>
+              <span class="status-badge pending" id="selectedStatus" data-test="pf04-selected-status">대기</span>
+            </div>
+            <dl class="detail-grid">
+              <div><dt>기간</dt><dd id="selectedPeriod"></dd></div>
+              <div><dt>사용 일수</dt><dd id="selectedDays"></dd></div>
+              <div><dt>신청 사유</dt><dd id="selectedReason"></dd></div>
+              <div><dt>최근 이력</dt><dd id="selectedHistory"></dd></div>
+            </dl>
+            <label class="memo-field" for="decisionMemo">
+              <span>결재 메모</span>
+              <input id="decisionMemo" data-test="pf04-decision-memo" value="일정 확인 완료" maxlength="80" />
+            </label>
+            <div class="decision-actions">
+              <button class="approve-button" id="approveButton" data-test="pf04-approve" type="button">선택 건 승인</button>
+              <button class="reject-button" id="rejectButton" data-test="pf04-reject" type="button">선택 건 반려</button>
+            </div>
+          </article>
+        </section>
+
+        <section class="proof-strip" id="package-proof" aria-labelledby="proof-title">
+          <div>
+            <p class="eyebrow">Separate package evidence</p>
+            <h2 id="proof-title">현행 패키지 검증 1/1 PASS</h2>
+          </div>
+          <p>이 수치는 별도 패키지에서 확인한 증거입니다. 이 정적 체험 페이지에서 테스트를 실행했다는 뜻이 아닙니다.</p>
+          <code>PF04_FINAL_20260710_891998</code>
+        </section>
+
+        <p class="status-message" id="statusMessage" data-test="pf04-status-message" role="status" aria-live="polite"></p>
+      </main>
+    </div>
+  </body>
+</html>

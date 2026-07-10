@@ -12,9 +12,10 @@
 Only public-facing static assets belong in this repository:
 
 - HTML, CSS, and browser JavaScript
+- reviewed, network-free browser trials under `demos/`
 - bundled open-license fonts and their license notice
 - registration-safe portfolio images
-- approved PF03, PF04, and PF06 demonstration videos
+- approved PF03, PF04, and PF06 demonstration videos and reviewed posters
 - public metadata, license, and repository documentation
 
 Do not commit internal registration copy, validation reports, browser profiles,

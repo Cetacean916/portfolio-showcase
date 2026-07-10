@@ -1,0 +1,198 @@
+<!doctype html>
+<html lang="ko">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta
+      http-equiv="Content-Security-Policy"
+      content="default-src 'self'; connect-src 'none'; img-src 'self' data:; media-src 'self'; style-src 'self'; script-src 'self'; object-src 'none'; base-uri 'none'; form-action 'none'"
+    />
+    <meta name="description" content="CSV 정리 자동화 공개 샘플 체험판" />
+    <title>CSV 정리 자동화 체험판 | PF03</title>
+    <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" />
+    <link rel="stylesheet" href="../shared/demo.css" />
+    <link rel="stylesheet" href="styles.css" />
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main-content">본문으로 건너뛰기</a>
+
+    <div class="trial-notice" id="trialBoundary" role="note">
+      <strong>공개 샘플 체험판</strong>
+      <span>입력과 처리는 이 브라우저 안에서만 이루어지며, 외부 서버나 실제 업무 시스템에 연결되지 않습니다.</span>
+    </div>
+
+    <div class="app-shell">
+      <aside class="app-rail" aria-label="PF03 체험판 메뉴">
+        <a class="back-link" href="../../case.html?id=pf03">PF03 사례로 돌아가기</a>
+        <div class="brand-block">
+          <span class="brand-mark" aria-hidden="true">D</span>
+          <div>
+            <strong>DataOps Cleaner</strong>
+            <small>CSV quality desk</small>
+          </div>
+        </div>
+        <nav class="rail-nav" aria-label="화면 바로가기">
+          <a class="active" href="#workbench">데이터 작업대</a>
+          <a href="#results">분리 결과</a>
+          <a href="#package-proof">패키지 검증</a>
+        </nav>
+        <div class="build-card">
+          <p>DEMO_BUILD</p>
+          <code>PF03_PUBLIC_TRIAL_20260711_01</code>
+          <p>SOURCE_RUN</p>
+          <code>PF03_FINAL_20260710_891998</code>
+        </div>
+      </aside>
+
+      <main class="app-main" id="main-content">
+        <header class="app-header">
+          <div>
+            <p class="eyebrow">03 Automation Tool</p>
+            <h1>CSV 정리 자동화</h1>
+            <p class="lead">원본 21개 행을 규칙에 따라 정상, 오류, 중복 CSV로 분리합니다.</p>
+          </div>
+          <div class="run-state" aria-label="현재 처리 상태">
+            <span class="state-dot" aria-hidden="true"></span>
+            <div>
+              <strong id="runStateLabel">샘플 준비됨</strong>
+              <small id="runStateMeta">브라우저 로컬 처리</small>
+            </div>
+          </div>
+          <div class="header-actions">
+            <button class="secondary-button" id="sampleButton" data-test="pf03-load-sample" type="button">21행 샘플 불러오기</button>
+            <label class="file-button" for="fileInput">내 CSV 열기
+              <input id="fileInput" data-test="pf03-file-input" type="file" accept=".csv,text/csv" />
+            </label>
+          </div>
+        </header>
+
+        <section class="metric-grid" aria-label="처리 요약">
+          <article class="metric-card total">
+            <span>전체 행</span><strong id="metricTotal" data-test="pf03-count-total">21</strong><small>input rows</small>
+          </article>
+          <article class="metric-card clean">
+            <span>정상</span><strong id="metricClean" data-test="pf03-count-clean">8</strong><small>export ready</small>
+          </article>
+          <article class="metric-card invalid">
+            <span>오류</span><strong id="metricInvalid" data-test="pf03-count-invalid">11</strong><small>review needed</small>
+          </article>
+          <article class="metric-card duplicate">
+            <span>중복</span><strong id="metricDuplicate" data-test="pf03-count-duplicate">2</strong><small>blocked rows</small>
+          </article>
+        </section>
+
+        <section class="workspace-grid" id="workbench" aria-labelledby="workbench-title">
+          <article class="panel source-panel">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Input</p>
+                <h2 id="workbench-title">원본 데이터 작업대</h2>
+              </div>
+              <span class="source-badge" id="sourceName">sample-orders-21.csv</span>
+            </div>
+            <label class="input-label" for="csvInput">CSV 붙여넣기 또는 직접 수정</label>
+            <textarea
+              id="csvInput"
+              data-test="pf03-source-input"
+              spellcheck="false"
+              aria-describedby="csvHelp"
+              aria-label="CSV 원본 데이터"
+            ></textarea>
+            <p class="field-help" id="csvHelp">첫 행은 헤더입니다. ID, 날짜, 이름, 연락처, 금액, 상태 컬럼을 자동으로 찾습니다.</p>
+            <div class="command-row">
+              <button class="primary-button" id="processButton" data-test="pf03-run" type="button">분리 실행</button>
+              <button class="ghost-button" id="resetButton" data-test="pf03-reset" type="button">초기 상태 복원</button>
+            </div>
+          </article>
+
+          <aside class="inspector-stack" aria-label="처리 규칙과 실행 정보">
+            <article class="panel rule-panel">
+              <div class="panel-head compact">
+                <div>
+                  <p class="eyebrow">Rules</p>
+                  <h2>분리 규칙</h2>
+                </div>
+                <span class="rule-count">6 rules</span>
+              </div>
+              <ul class="rule-list">
+                <li><span>01</span>ID 중복 행 별도 분리</li>
+                <li><span>02</span>날짜 형식 정규화</li>
+                <li><span>03</span>필수값 누락 확인</li>
+                <li><span>04</span>금액 숫자 변환</li>
+                <li><span>05</span>헤더 자동 매핑</li>
+                <li><span>06</span>오류 사유 기록</li>
+              </ul>
+            </article>
+
+            <article class="panel mapping-panel">
+              <div class="panel-head compact">
+                <div>
+                  <p class="eyebrow">Mapping</p>
+                  <h2>감지한 컬럼</h2>
+                </div>
+              </div>
+              <dl class="mapping-list" id="mappingList"></dl>
+            </article>
+          </aside>
+        </section>
+
+        <section class="panel results-panel" id="results" aria-labelledby="results-title">
+          <div class="results-heading">
+            <div>
+              <p class="eyebrow">Output</p>
+              <h2 id="results-title">분리 결과 미리보기</h2>
+              <p>각 탭의 결과와 오류 사유를 확인하고 CSV로 내려받을 수 있습니다.</p>
+            </div>
+            <div class="download-actions" aria-label="결과 CSV 내려받기">
+              <button class="download-button" data-download="clean" data-test="pf03-download-clean" type="button">정상 CSV</button>
+              <button class="download-button" data-download="invalid" data-test="pf03-download-invalid" type="button">오류 CSV</button>
+              <button class="download-button" data-download="duplicate" data-test="pf03-download-duplicate" type="button">중복 CSV</button>
+            </div>
+          </div>
+
+          <div class="tab-list" role="tablist" aria-label="분리 결과 종류">
+            <button id="tab-clean" role="tab" aria-selected="true" aria-controls="resultPanel" tabindex="0" data-tab="clean" data-test="pf03-tab-clean" type="button">
+              정상 <span id="tabCleanCount">8</span>
+            </button>
+            <button id="tab-invalid" role="tab" aria-selected="false" aria-controls="resultPanel" tabindex="-1" data-tab="invalid" data-test="pf03-tab-invalid" type="button">
+              오류 <span id="tabInvalidCount">11</span>
+            </button>
+            <button id="tab-duplicate" role="tab" aria-selected="false" aria-controls="resultPanel" tabindex="-1" data-tab="duplicate" data-test="pf03-tab-duplicate" type="button">
+              중복 <span id="tabDuplicateCount">2</span>
+            </button>
+          </div>
+
+          <div class="table-wrap" id="resultPanel" role="tabpanel" aria-labelledby="tab-clean" tabindex="0">
+            <table>
+              <caption class="visually-hidden" id="resultCaption">정상 행 미리보기</caption>
+              <thead>
+                <tr>
+                  <th scope="col">ID</th>
+                  <th scope="col">날짜</th>
+                  <th scope="col">이름</th>
+                  <th scope="col">연락처</th>
+                  <th scope="col">금액</th>
+                  <th scope="col">상태</th>
+                  <th scope="col">분리 사유</th>
+                </tr>
+              </thead>
+              <tbody id="resultRows" data-test="pf03-result-rows"></tbody>
+            </table>
+          </div>
+        </section>
+
+        <section class="proof-strip" id="package-proof" aria-labelledby="proof-title">
+          <div>
+            <p class="eyebrow">Separate package evidence</p>
+            <h2 id="proof-title">현행 패키지 검증 7/7 PASS</h2>
+          </div>
+          <p>이 수치는 별도 패키지에서 확인한 증거입니다. 이 정적 체험 페이지에서 테스트를 실행했다는 뜻이 아닙니다.</p>
+          <code>PF03_FINAL_20260710_891998</code>
+        </section>
+
+        <p class="status-message" id="statusMessage" data-test="pf03-status-message" role="status" aria-live="polite"></p>
+      </main>
+    </div>
+  </body>
+</html>

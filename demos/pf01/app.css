@@ -1,0 +1,158 @@
+:root {
+  --accent: #287153;
+  --accent-soft: #e2efe8;
+  --accent-ink: #15523a;
+}
+
+.ticket-list {
+  display: grid;
+  max-height: 520px;
+  overflow-y: auto;
+}
+
+.ticket-item {
+  display: grid;
+  width: 100%;
+  min-height: 78px;
+  gap: 5px;
+  padding: 13px 15px;
+  border: 0;
+  border-bottom: 1px solid var(--line);
+  border-radius: 0;
+  background: #fff;
+  text-align: left;
+}
+
+.ticket-item:last-child {
+  border-bottom: 0;
+}
+
+.ticket-item:hover {
+  background: var(--surface-soft);
+}
+
+.ticket-item[aria-current="true"] {
+  box-shadow: inset 4px 0 0 var(--accent);
+  background: var(--accent-soft);
+}
+
+.ticket-item-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.ticket-item strong {
+  font-size: 12px;
+}
+
+.ticket-item p {
+  display: -webkit-box;
+  overflow: hidden;
+  margin: 0;
+  color: var(--muted);
+  font-size: 11px;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+}
+
+.customer-message {
+  margin-bottom: 14px;
+  padding: 14px;
+  border: 1px solid var(--line);
+  background: var(--surface-soft);
+}
+
+.customer-message span {
+  color: var(--muted);
+  font-size: 10px;
+  font-weight: 800;
+  text-transform: uppercase;
+}
+
+.customer-message p {
+  margin: 6px 0 0;
+  font-size: 14px;
+  line-height: 1.65;
+}
+
+.classification-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  margin: 0 0 4px;
+  border: 1px solid var(--line);
+}
+
+.classification-grid div {
+  min-width: 0;
+  padding: 11px;
+  border-right: 1px solid var(--line);
+}
+
+.classification-grid div:last-child {
+  border-right: 0;
+}
+
+.classification-grid dt {
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.classification-grid dd {
+  overflow: hidden;
+  margin: 4px 0 0;
+  font-size: 12px;
+  font-weight: 800;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+}
+
+.draft-field {
+  margin-top: 14px;
+}
+
+.queue-list {
+  display: grid;
+  gap: 8px;
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.queue-list li {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+  padding: 9px 0;
+  border-bottom: 1px solid var(--line);
+  font-size: 11px;
+}
+
+.queue-list li:last-child {
+  border-bottom: 0;
+}
+
+.queue-list b {
+  font-size: 12px;
+}
+
+.export-panel {
+  margin-top: 14px;
+}
+
+@media (max-width: 480px) {
+  .classification-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .classification-grid div {
+    border-right: 0;
+    border-bottom: 1px solid var(--line);
+  }
+
+  .classification-grid div:last-child {
+    border-bottom: 0;
+  }
+}

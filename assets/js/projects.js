@@ -26,27 +26,37 @@ window.PORTFOLIO_PROJECTS = [
     included: ["문의 요약·분류·우선순위", "담당팀과 답변 초안", "CSV 또는 Google Sheets 출력", "정상·오류 테스트 리포트"],
     excluded: ["운영 서버 배포", "외부 API·SaaS 사용료", "대량 개인정보 처리", "AI 정확도 100% 보장"],
     tech: ["Python", "AI 연동 구조", "Google Sheets", "Slack·Email 계약", "CSV"],
-    disclosure: "비식별 샘플 데이터로 제작·검증한 자체 포트폴리오입니다. 실제 계정 연동은 의뢰인 권한으로 별도 검증합니다."
+    disclosure: "비식별 샘플 데이터로 제작·검증한 자체 포트폴리오입니다. 실제 계정 연동은 의뢰인 권한으로 별도 검증합니다.",
+    demo: {
+      url: "demos/pf01/",
+      summary: "샘플 문의 5건을 직접 선택해 요약, 분류, 우선순위, 담당팀과 답변 초안이 생성되는 흐름을 확인합니다.",
+      boundary: "브라우저 안에서 동작하는 공개 샘플 체험판이며 실제 AI API, 시트, 알림 서비스에는 연결되지 않습니다."
+    }
   },
   {
     id: "pf02", code: "PF02", filters: ["automation"], accent: "blue",
     title: "폼·웹훅 시트 저장 및 알림", short: "신청 입력을 검증해 시트와 팀 알림으로 전달",
-    summary: "필수값, 중복, 알림 실패를 분리하고 공유 비밀 검증과 외부 식별자 마스킹을 적용한 자동화입니다.",
+    summary: "필수값, 중복, 알림 실패를 분리하고 공유 비밀 요청 인증과 외부 식별자 마스킹을 적용한 자동화입니다.",
     image: "assets/media/pf02/main-image.png", gallery: ["assets/media/pf02/detail-01-overview.png", "assets/media/pf02/detail-02-flow.png", "assets/media/pf02/detail-03-result.png"],
     facts: [["4", "핵심 예외"], ["2", "출력 채널"], ["PASS", "보안 게이트"]],
-    proof: ["웹훅 입력·검증 결과", "중복·알림 실패 기록", "공유 비밀·식별자 마스킹"],
+    proof: ["웹훅 입력·검증 결과", "중복·알림 실패 기록", "공유 비밀 요청 인증·식별자 마스킹"],
     problem: "상담 신청을 수동으로 옮기거나 알림을 놓치면 응답이 늦고 리드가 유실됩니다.",
     solution: "폼·웹훅을 인증·검증한 뒤 시트형 결과로 저장하고 Slack 또는 Email 알림 상태를 함께 기록합니다.",
     included: ["입력 1종과 필수값 검증", "Google Sheets 또는 시트형 저장", "Slack 또는 Email 알림", "누락·중복·실패 테스트"],
     excluded: ["결제 웹훅", "대량 트래픽 운영", "CRM 전체 구축", "외부 계정·SaaS 비용"],
     tech: ["Python", "Google Apps Script 계약", "Google Sheets", "Slack·Email", "Webhook"],
-    disclosure: "비식별 샘플과 로컬 대체 출력으로 검증한 자체 포트폴리오입니다. 외부 계정 연결은 고객 권한으로 마무리합니다."
+    disclosure: "비식별 샘플과 로컬 대체 출력으로 검증한 자체 포트폴리오입니다. 외부 계정 연결은 고객 권한으로 마무리합니다.",
+    demo: {
+      url: "demos/pf02/",
+      summary: "정상, 인증 실패, 필수값 누락, 중복 후보, 알림 실패를 선택해 요청 인증부터 저장·알림 상태까지 확인합니다.",
+      boundary: "브라우저 안에서 동작하는 공개 샘플 체험판이며 Google Sheets, Slack, Email로 실제 데이터를 전송하지 않습니다."
+    }
   },
   {
     id: "pf03", code: "PF03", filters: ["automation", "data"], accent: "green",
     title: "엑셀·CSV 정리 및 리포트", short: "정상·오류·중복 파일과 요약 리포트를 자동 생성",
     summary: "샘플 21행을 정상 8행, 오류 11행, 중복 2행으로 분리하고 자동 테스트 7건으로 결과와 경로 이식성을 대조했습니다.",
-    image: "assets/media/pf03/main-image.png", gallery: ["assets/media/pf03/detail-01-overview.png", "assets/media/pf03/detail-02-flow.png", "assets/media/pf03/detail-03-result.png"], video: "assets/media/pf03/demo-video.mp4",
+    image: "assets/media/pf03/main-image.png", gallery: ["assets/media/pf03/detail-01-overview.png", "assets/media/pf03/detail-02-flow.png", "assets/media/pf03/detail-03-result.png"], video: "assets/media/pf03/demo-video.mp4", videoPoster: "assets/media/pf03/video-poster.png",
     facts: [["8", "정상 행"], ["11", "오류 행"], ["2", "중복 행"]],
     proof: ["결과 CSV 3종", "요약 Excel 리포트", "자동 테스트 7건 PASS"],
     problem: "날짜와 연락처 형식, 중복, 필수값 오류를 매번 손으로 찾으면 누락과 판단 차이가 생깁니다.",
@@ -55,13 +65,18 @@ window.PORTFOLIO_PROJECTS = [
     excluded: ["회계·세무 최종 판단", "운영 DB 직접 연동", "대용량 최적화", "장기 운영 대행"],
     tech: ["Python", "pandas", "openpyxl", "CSV·XLSX", "pytest"],
     disclosure: "비식별 샘플 21행으로 결과와 테스트를 일치시킨 자체 제작 사례입니다.",
-    videoSummary: "샘플 입력부터 정상·오류·중복 결과, 출력 파일, 자동 테스트 7건 PASS까지 같은 RUN_ID의 실제 브라우저 실행 화면으로 확인합니다."
+    demo: {
+      url: "demos/pf03/",
+      summary: "샘플 21행을 직접 처리해 정상 8행, 오류 11행, 중복 2행으로 분리하고 결과 CSV를 내려받을 수 있습니다.",
+      boundary: "브라우저 안에서 공개 샘플을 재현하는 체험판입니다. 별도 패키지의 Python 실행과 자동 테스트 7건은 검증 근거로 분리해 표시합니다."
+    },
+    videoSummary: "현행 공개 체험판에서 샘플 21행 처리, 정상·오류·중복 결과 확인과 CSV 저장 흐름을 순서대로 보여줍니다. Python 패키지 실행 근거와 자동 테스트 7건은 별도 검증 자료입니다."
   },
   {
     id: "pf04", code: "PF04", filters: ["automation", "web"], accent: "navy",
     title: "휴가·출장 신청 승인 보드", short: "신청, 팀 캘린더, 승인·반려, CSV 이력을 로컬 웹 화면으로",
     summary: "Node.js 로컬 HTTP API와 정적 HTML UI에서 신청 검증, 팀·기간 필터, 승인 충돌, CSV 내보내기를 확인했습니다.",
-    image: "assets/media/pf04/main-image.png", gallery: ["assets/media/pf04/detail-01-overview.png", "assets/media/pf04/detail-02-flow.png", "assets/media/pf04/detail-03-result.png"], video: "assets/media/pf04/demo-video.mp4",
+    image: "assets/media/pf04/main-image.png", gallery: ["assets/media/pf04/detail-01-overview.png", "assets/media/pf04/detail-02-flow.png", "assets/media/pf04/detail-03-result.png"], video: "assets/media/pf04/demo-video.mp4", videoPoster: "assets/media/pf04/video-poster.png",
     facts: [["3", "초기 신청"], ["1", "승인 대기"], ["2", "처리 완료"]],
     proof: ["작동 데스크톱 웹 화면", "신청·승인·반려·CSV", "360px~데스크톱 반응형"],
     problem: "신청과 승인 이력이 메일, 메신저, 엑셀에 흩어지면 대기 상태와 팀 일정을 함께 보기 어렵습니다.",
@@ -70,7 +85,12 @@ window.PORTFOLIO_PROJECTS = [
     excluded: ["더존 ERP 직접 연동", "전자결재 전체 구축", "복잡한 로그인·권한", "운영 DB·장기 유지보수"],
     tech: ["Node.js 22", "Local HTTP API", "HTML", "CSS·JavaScript", "CSV export"],
     disclosure: "가상 직원·신청 데이터로 제작한 자체 포트폴리오입니다. 실제 인사 규정과 권한은 별도 설계 대상입니다.",
-    videoSummary: "신청 생성부터 승인·반려, 필터, CSV 출력과 자동 테스트까지 실제 브라우저 실행 화면으로 확인합니다."
+    demo: {
+      url: "demos/pf04/",
+      summary: "가상 신청을 추가하고 승인·반려한 뒤 팀·상태 필터와 CSV 내보내기까지 직접 조작할 수 있습니다.",
+      boundary: "브라우저 메모리에서 동작하는 공개 샘플 체험판입니다. 실제 인사 시스템, 계정, 서버 데이터에는 연결되지 않습니다."
+    },
+    videoSummary: "현행 공개 체험판에서 신청 생성, 승인·반려, 팀·상태 필터와 CSV 저장 흐름을 순서대로 보여줍니다. Node.js 패키지 검증은 별도 실행 근거입니다."
   },
   {
     id: "pf06", code: "PF06", filters: ["backend"], accent: "red",
