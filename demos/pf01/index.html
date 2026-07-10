@@ -7,7 +7,7 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'none'"
     />
-    <meta name="description" content="5건의 공개 샘플 문의를 브라우저에서 분류하는 PF01 체험 데모" />
+    <meta name="description" content="비식별 기준 배치와 새로 생성한 합성 문의를 브라우저에서 분류하는 PF01 체험 데모" />
     <title>PF01 고객 문의 자동분류 체험</title>
     <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" />
     <link rel="stylesheet" href="../shared/demo.css" />
@@ -36,15 +36,19 @@
         <div>
           <p class="eyebrow">Local rule simulation</p>
           <h1>고객 문의 분류 작업대</h1>
-          <p>비식별 샘플 5건을 유형, 우선순위, 담당 팀, 요약, 답변 초안으로 정리합니다.</p>
+          <p id="batchDescription">비식별 기준 문의 5건을 유형, 우선순위, 담당 팀, 요약, 답변 초안으로 정리합니다.</p>
         </div>
-        <div class="evidence-chip"><b>체험 데이터 5건</b> · 별도 사례 검증: 처리 15건 · 긴급 알림 4건 · AI 오류 0건</div>
+        <div class="evidence-chip">
+          <b id="batchId" data-test="batch-id">기준 배치 · BASE-001</b>
+          <span>별도 사례 검증: 처리 15건 · 긴급 알림 4건 · AI 오류 0건</span>
+        </div>
       </div>
 
       <section class="toolbar" aria-label="문의 분류 도구">
-        <div class="toolbar-group">
+        <div class="toolbar-group toolbar-actions">
           <button class="button button-primary" id="classifyButton" data-test="run" type="button">5건 분류 실행</button>
-          <button class="button button-secondary" id="resetButton" data-test="reset" type="button">초기화</button>
+          <button class="button button-secondary" id="generateButton" data-test="generate" type="button" aria-describedby="generatorHelp">새 합성 문의 5건</button>
+          <button class="button button-secondary" id="resetButton" data-test="reset" type="button">기준 배치로 초기화</button>
         </div>
         <div class="toolbar-group">
           <div class="field-inline">
@@ -59,13 +63,16 @@
         </div>
       </section>
 
+      <p class="generator-help" id="generatorHelp">새 배치는 가상 문장을 조합해 이 브라우저에서만 만들며, 개인정보나 실제 고객 데이터를 사용하지 않습니다.
+      </p>
+
       <p class="status-line" id="statusLine" data-test="status" role="status" aria-live="polite">샘플 문의 5건을 불러왔습니다. 분류를 실행해 주세요.</p>
 
       <section class="metric-grid" aria-label="처리 요약">
         <article class="metric-card">
           <span>체험 문의</span>
           <strong id="metricTotal" data-test="count-total">5</strong>
-          <small>비식별 고정 샘플</small>
+          <small id="metricSource" data-test="batch-source">비식별 기준 배치</small>
         </article>
         <article class="metric-card">
           <span>긴급</span>

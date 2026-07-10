@@ -1,6 +1,6 @@
 "use strict";
 
-const SAMPLE_TICKETS = [
+const BASE_TICKETS = [
   {
     id: "TRIAL-001",
     customer: "고객 A",
@@ -31,6 +31,40 @@ const SAMPLE_TICKETS = [
     channel: "웹 폼",
     message: "받은 상품의 옵션이 주문 내용과 달라서 교환 절차를 알고 싶습니다.",
   },
+];
+
+const SYNTHETIC_MESSAGES = [
+  [
+    "결제가 중복 승인된 것으로 보입니다. 결제 내역을 확인하고 처리 일정을 안내해 주세요.",
+    "주문 중 결제 승인 알림이 두 번 왔습니다. 중복 청구인지 빠르게 확인 부탁드립니다.",
+    "결제 완료 후 같은 금액이 두 번 승인된 것 같습니다. 하나를 취소할 수 있는지 확인해 주세요.",
+  ],
+  [
+    "상품 발송 전이라면 주문을 취소하고 싶습니다. 환불 예상 일정도 알려주세요.",
+    "주문 옵션을 잘못 선택해 취소를 요청합니다. 환불까지 걸리는 기간이 궁금합니다.",
+    "아직 출고 전으로 확인됩니다. 주문 취소와 환불 절차를 안내해 주세요.",
+  ],
+  [
+    "기업 행사용으로 40개를 주문하려고 합니다. 견적과 가능한 납기를 알려주세요.",
+    "기업 구매로 80개가 필요합니다. 단체 견적과 희망 납기에 맞출 수 있는지 확인 부탁드립니다.",
+    "기업 복지용 대량 주문을 검토 중입니다. 120개 기준 견적과 납기 범위를 제안해 주세요.",
+  ],
+  [
+    "배송 예정일이 지났는데 운송장 조회가 되지 않습니다. 현재 출고 상태를 확인해 주세요.",
+    "어제 출고 예정이었지만 배송 정보가 없습니다. 운송장 등록 일정을 알려주세요.",
+    "배송 조회 상태가 며칠째 변하지 않습니다. 출고 여부와 예상 일정을 확인해 주세요.",
+  ],
+  [
+    "수령한 상품의 색상 옵션이 주문과 다릅니다. 교환 접수 절차를 안내해 주세요.",
+    "주문한 상품 옵션과 다른 구성을 수령했습니다. 교환에 필요한 내용을 알려주세요.",
+    "받은 상품의 크기가 선택한 옵션과 달라 교환하려고 합니다. 진행 방법을 안내해 주세요.",
+  ],
+];
+
+const CHANNEL_SETS = [
+  ["채팅", "웹 폼", "이메일", "채팅", "웹 폼"],
+  ["이메일", "채팅", "웹 폼", "이메일", "채팅"],
+  ["웹 폼", "이메일", "채팅", "웹 폼", "이메일"],
 ];
 
 const RULES = [
@@ -72,10 +106,14 @@ const RULES = [
 ];
 
 const state = {
+  tickets: BASE_TICKETS.map((ticket) => ({ ...ticket })),
   processed: [],
-  selectedId: SAMPLE_TICKETS[0].id,
+  selectedId: BASE_TICKETS[0].id,
   filter: "all",
   logIndex: 0,
+  batchId: "BASE-001",
+  batchType: "base",
+  generationCount: 0,
 };
 
 const element = (id) => document.getElementById(id);
@@ -100,8 +138,59 @@ function classify(ticket) {
   };
 }
 
+function seededRandom(seed) {
+  let value = seed >>> 0;
+  return () => {
+    value += 0x6d2b79f5;
+    let result = value;
+    result = Math.imul(result ^ (result >>> 15), result | 1);
+    result ^= result + Math.imul(result ^ (result >>> 7), result | 61);
+    return ((result ^ (result >>> 14)) >>> 0) / 4294967296;
+  };
+}
+
+function shuffled(values, random) {
+  const result = [...values];
+  for (let index = result.length - 1; index > 0; index -= 1) {
+    const target = Math.floor(random() * (index + 1));
+    [result[index], result[target]] = [result[target], result[index]];
+  }
+  return result;
+}
+
+function nextSeed() {
+  state.generationCount += 1;
+  const values = new Uint32Array(1);
+  if (globalThis.crypto && typeof globalThis.crypto.getRandomValues === "function") {
+    globalThis.crypto.getRandomValues(values);
+  } else {
+    values[0] = (Date.now() ^ Math.imul(state.generationCount, 0x9e3779b9)) >>> 0;
+  }
+  return (values[0] ^ Math.imul(state.generationCount, 0x85ebca6b)) >>> 0;
+}
+
+function createSyntheticBatch() {
+  const seed = nextSeed();
+  const random = seededRandom(seed);
+  const categoryIndexes = shuffled([0, 1, 2, 3, 4], random);
+  const channels = CHANNEL_SETS[Math.floor(random() * CHANNEL_SETS.length)];
+  const token = seed.toString(16).toUpperCase().padStart(8, "0").slice(-6);
+  const batchId = `SYN-${token}-${String(state.generationCount).padStart(2, "0")}`;
+  const tickets = categoryIndexes.map((categoryIndex, index) => {
+    const messages = SYNTHETIC_MESSAGES[categoryIndex];
+    return {
+      id: `${batchId}-${String(index + 1).padStart(2, "0")}`,
+      customer: `가상 고객 ${index + 1}`,
+      channel: channels[index],
+      message: messages[Math.floor(random() * messages.length)],
+    };
+  });
+
+  return { batchId, tickets };
+}
+
 function currentTickets() {
-  return state.processed.length ? state.processed : SAMPLE_TICKETS;
+  return state.processed.length ? state.processed : state.tickets;
 }
 
 function visibleTickets() {
@@ -179,7 +268,8 @@ function renderDetail() {
 
 function renderMetrics() {
   const processed = state.processed;
-  element("metricTotal").textContent = String(SAMPLE_TICKETS.length);
+  element("metricTotal").textContent = String(state.tickets.length);
+  element("metricSource").textContent = state.batchType === "base" ? "비식별 기준 배치" : "새로 생성한 합성 배치";
   element("metricUrgent").textContent = processed.length ? String(processed.filter((item) => item.priority === "긴급").length) : "-";
   element("metricCategories").textContent = processed.length ? String(new Set(processed.map((item) => item.category)).size) : "-";
   element("metricDrafts").textContent = processed.length ? String(processed.filter((item) => item.draft).length) : "-";
@@ -234,7 +324,7 @@ function renderTable() {
       cell.textContent = value;
     });
   });
-  element("tableState").textContent = "5건 준비";
+  element("tableState").textContent = `${state.processed.length}건 준비`;
 }
 
 function render() {
@@ -244,6 +334,9 @@ function render() {
   renderQueue();
   renderTable();
   element("exportButton").disabled = !state.processed.length;
+  element("classifyButton").textContent = `${state.tickets.length}건 분류 실행`;
+  element("batchId").textContent = `${state.batchType === "base" ? "기준 배치" : "합성 배치"} · ${state.batchId}`;
+  element("batchDescription").textContent = `${state.batchType === "base" ? "비식별 기준" : "새로 생성한 비식별 합성"} 문의 ${state.tickets.length}건을 유형, 우선순위, 담당 팀, 요약, 답변 초안으로 정리합니다.`;
 }
 
 function logTime() {
@@ -270,24 +363,42 @@ function saveDraft() {
 }
 
 function runClassification() {
-  state.processed = SAMPLE_TICKETS.map(classify);
+  state.processed = state.tickets.map(classify);
   state.selectedId = state.processed[0].id;
   state.filter = "all";
   element("filterSelect").value = "all";
   render();
-  element("statusLine").textContent = "5건 분류를 완료했습니다. 결과와 답변 초안을 확인할 수 있습니다.";
-  addLog("규칙 기반 문의 분류 5건을 완료했습니다.");
+  element("statusLine").textContent = `${state.batchId} 문의 ${state.processed.length}건 분류를 완료했습니다. 결과와 답변 초안을 확인할 수 있습니다.`;
+  addLog(`${state.batchId} 규칙 기반 문의 분류 ${state.processed.length}건을 완료했습니다.`);
+}
+
+function generateBatch() {
+  saveDraft();
+  const generated = createSyntheticBatch();
+  state.tickets = generated.tickets;
+  state.processed = [];
+  state.selectedId = generated.tickets[0].id;
+  state.filter = "all";
+  state.batchId = generated.batchId;
+  state.batchType = "synthetic";
+  element("filterSelect").value = "all";
+  render();
+  element("statusLine").textContent = `${state.batchId} 합성 문의 5건을 만들었습니다. 분류를 실행해 결과를 확인하세요.`;
+  addLog(`${state.batchId} 비식별 합성 문의 5건을 생성했습니다.`);
 }
 
 function resetDemo() {
+  state.tickets = BASE_TICKETS.map((ticket) => ({ ...ticket }));
   state.processed = [];
-  state.selectedId = SAMPLE_TICKETS[0].id;
+  state.selectedId = BASE_TICKETS[0].id;
   state.filter = "all";
   state.logIndex = 0;
+  state.batchId = "BASE-001";
+  state.batchType = "base";
   element("filterSelect").value = "all";
   render();
   element("statusLine").textContent = "샘플 문의 5건을 불러왔습니다. 분류를 실행해 주세요.";
-  addLog("체험 데이터를 초기 상태로 되돌렸습니다.", true);
+  addLog("체험 데이터를 기준 배치로 되돌렸습니다.", true);
 }
 
 function csvCell(value) {
@@ -322,6 +433,7 @@ function exportCsv() {
 }
 
 element("classifyButton").addEventListener("click", runClassification);
+element("generateButton").addEventListener("click", generateBatch);
 element("resetButton").addEventListener("click", resetDemo);
 element("exportButton").addEventListener("click", exportCsv);
 element("filterSelect").addEventListener("change", (event) => {

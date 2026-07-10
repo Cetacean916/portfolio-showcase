@@ -167,6 +167,58 @@
   padding-left: 12px;
 }
 
+.browser-notification {
+  margin-top: 14px;
+  padding: 13px;
+  border: 1px solid #b8c8d9;
+  background: #f4f7fb;
+}
+
+.browser-notification-head,
+.browser-notification-action {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 14px;
+}
+
+.browser-notification-head h3 {
+  margin: 0;
+  font-size: 12px;
+}
+
+.browser-notification-head p,
+.browser-notification-action p,
+.browser-notification-boundary {
+  margin: 3px 0 0;
+  color: var(--muted);
+  font-size: 10px;
+}
+
+.browser-notification-head .badge {
+  flex: 0 0 auto;
+}
+
+.browser-notification-action {
+  align-items: flex-start;
+  margin-top: 12px;
+}
+
+.browser-notification-action .button {
+  min-width: 206px;
+}
+
+.browser-notification-action p {
+  flex: 1 1 auto;
+  padding-top: 4px;
+}
+
+.browser-notification-boundary {
+  padding-top: 9px;
+  border-top: 1px solid #d5dee8;
+  margin-top: 10px;
+}
+
 .sheet-table {
   max-height: 294px;
 }
@@ -221,5 +273,25 @@
 
   .response-card .kv-list div:nth-child(even) {
     padding-left: 0;
+  }
+
+  .browser-notification-head,
+  .browser-notification-action {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 7px;
+  }
+
+  .browser-notification-head .badge {
+    align-self: flex-start;
+  }
+
+  .browser-notification-action .button {
+    width: 100%;
+    min-width: 0;
+  }
+
+  .browser-notification-action p {
+    padding-top: 0;
   }
 }

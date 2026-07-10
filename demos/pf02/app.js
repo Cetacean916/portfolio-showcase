@@ -40,7 +40,7 @@ const PRESETS = {
     authToken: DEMO_SHARED_SECRET,
   },
   "notification-failure": {
-    label: "알림 실패",
+    label: "외부 알림 실패",
     name: "리드 E",
     email: "notify.fail@example.invalid",
     phone: "MASK-5500",
@@ -61,7 +61,7 @@ const SEED_ROW = {
   validationStatus: "ok",
   duplicateEmail: "no",
   messageHash: "seed000000000000",
-  notificationStatus: "sent_slack",
+  notificationStatus: "simulated_slack",
   notificationChannel: "slack",
   notes: "체험 초기 행",
 };
@@ -73,6 +73,7 @@ const state = {
   authorizedCount: 0,
   logIndex: 0,
   lastAddedRunId: null,
+  lastNotifiableRun: null,
   processing: false,
 };
 
@@ -167,6 +168,129 @@ function render() {
   renderMode();
   renderRows();
   renderMetrics();
+  renderBrowserNotification();
+}
+
+function browserNotificationCapability() {
+  const notificationApi = globalThis.Notification;
+  if (typeof notificationApi !== "function" || typeof notificationApi.requestPermission !== "function") return "unsupported";
+  if (!globalThis.isSecureContext) return "insecure";
+  return ["default", "denied", "granted"].includes(notificationApi.permission) ? notificationApi.permission : "unsupported";
+}
+
+function browserNotificationCopy(capability) {
+  const copies = {
+    unsupported: {
+      badge: "미지원",
+      badgeClass: "badge badge-warning",
+      button: "앱 안에서 결과 확인",
+    },
+    insecure: {
+      badge: "보안 연결 필요",
+      badgeClass: "badge badge-warning",
+      button: "앱 안에서 결과 확인",
+    },
+    denied: {
+      badge: "권한 차단",
+      badgeClass: "badge badge-danger",
+      button: "앱 안에서 결과 확인",
+    },
+    default: {
+      badge: "권한 미선택",
+      badgeClass: "badge badge-info",
+      button: "권한 요청 후 알림 보내기",
+    },
+    granted: {
+      badge: "사용 가능",
+      badgeClass: "badge badge-success",
+      button: "기기 알림 보내기",
+    },
+  };
+  return copies[capability] || copies.unsupported;
+}
+
+function renderBrowserNotification(message) {
+  const capability = browserNotificationCapability();
+  const copy = browserNotificationCopy(capability);
+  const permission = element("browserNotificationPermission");
+  const button = element("browserNotificationButton");
+
+  permission.className = copy.badgeClass;
+  permission.textContent = copy.badge;
+  button.disabled = state.processing || !state.lastNotifiableRun;
+  button.textContent = state.lastNotifiableRun ? copy.button : "요청 실행 후 사용";
+
+  if (message) {
+    element("browserNotificationStatus").textContent = message;
+  } else if (!state.lastNotifiableRun) {
+    element("browserNotificationStatus").textContent = "성공한 요청을 먼저 실행해 주세요.";
+  }
+}
+
+function notifiableResultCopy(run) {
+  const statusLabels = {
+    new: "정상 접수",
+    missing_email: "이메일 검토 필요",
+    duplicate_candidate: "중복 후보 검토 필요",
+  };
+  const channel = run.channel === "email" ? "Email" : "Slack";
+  return {
+    title: "PF02 로컬 처리 알림",
+    body: `${run.runId} · ${statusLabels[run.status] || "처리 완료"} · ${channel} 외부 알림 재현 완료`,
+  };
+}
+
+async function sendBrowserNotification() {
+  const run = state.lastNotifiableRun;
+  if (!run) {
+    renderBrowserNotification("알림으로 확인할 성공 요청이 없습니다.");
+    return;
+  }
+
+  let capability = browserNotificationCapability();
+  if (capability === "unsupported") {
+    renderBrowserNotification(`${run.runId} 처리 완료를 앱 안에서 확인했습니다. 이 브라우저는 기기 알림을 지원하지 않습니다.`);
+    addLog(`${run.runId}: 기기 알림 미지원으로 앱 안에서 결과를 표시했습니다.`);
+    return;
+  }
+  if (capability === "insecure") {
+    renderBrowserNotification(`${run.runId} 처리 완료를 앱 안에서 확인했습니다. 기기 알림은 HTTPS 또는 localhost에서 사용할 수 있습니다.`);
+    addLog(`${run.runId}: 보안 연결 요건으로 기기 알림 대신 앱 안에 결과를 표시했습니다.`);
+    return;
+  }
+
+  if (capability === "default") {
+    try {
+      capability = await Notification.requestPermission();
+    } catch {
+      renderBrowserNotification(`${run.runId} 처리 완료를 앱 안에서 확인했습니다. 브라우저가 알림 권한 요청을 완료하지 못했습니다.`);
+      addLog(`${run.runId}: 권한 요청 오류로 기기 알림 대신 앱 안에 결과를 표시했습니다.`);
+      renderBrowserNotification();
+      return;
+    }
+  }
+
+  if (capability !== "granted") {
+    renderBrowserNotification(`${run.runId} 처리 완료를 앱 안에서 확인했습니다. 브라우저 설정에서 알림 권한이 차단되어 있습니다.`);
+    addLog(`${run.runId}: 알림 권한 차단으로 앱 안에서 결과를 표시했습니다.`);
+    renderBrowserNotification();
+    return;
+  }
+
+  const copy = notifiableResultCopy(run);
+  try {
+    new Notification(copy.title, {
+      body: copy.body,
+      lang: "ko",
+      tag: `pf02-${run.runId}`,
+    });
+    renderBrowserNotification(`${run.runId}의 비식별 처리 결과를 이 기기의 브라우저 알림으로 표시했습니다.`);
+    addLog(`${run.runId}: 로컬 기기 알림을 표시했습니다. 외부 전송은 없습니다.`);
+  } catch {
+    renderBrowserNotification(`${run.runId} 처리 완료를 앱 안에서 확인했습니다. 이 환경에서는 기기 알림 창을 표시할 수 없습니다.`);
+    addLog(`${run.runId}: 표시 제한으로 기기 알림 대신 앱 안에 결과를 표시했습니다.`);
+  }
+  renderBrowserNotification();
 }
 
 function logTime() {
@@ -224,6 +348,8 @@ function finishResponse({ ok, status, runId = "-" }) {
 async function processRequest() {
   const payload = formPayload();
   const scenario = presetKey();
+  state.lastNotifiableRun = null;
+  renderBrowserNotification("현재 요청을 처리한 뒤 기기 알림 사용 여부를 안내합니다.");
   resetPipeline();
 
   if (!secureEquals(payload.authToken, DEMO_SHARED_SECRET)) {
@@ -232,7 +358,8 @@ async function processRequest() {
     setStage("storage", "skipped", "저장 안 함");
     setStage("notification", "skipped", "건너뜀");
     finishResponse({ ok: false, status: "unauthorized" });
-    element("statusLine").textContent = "요청 인증에 실패했습니다. 행 저장과 알림은 실행되지 않았습니다.";
+    element("statusLine").textContent = "요청 인증에 실패했습니다. 행 저장과 외부 알림 재현은 실행되지 않았습니다.";
+    renderBrowserNotification("요청 인증 실패로 로컬 기기 알림 대상이 생성되지 않았습니다.");
     addLog("공유 비밀 요청 인증 실패로 요청을 거부했습니다.");
     return;
   }
@@ -287,7 +414,12 @@ async function processRequest() {
     row.notes = [row.notes, "알림 전달 실패: 행은 정상 저장"].filter(Boolean).join(" · ");
     setStage("notification", "failure", "실패");
   } else {
-    row.notificationStatus = state.mode === "email" ? "sent_email" : "sent_slack";
+    row.notificationStatus = state.mode === "email" ? "simulated_email" : "simulated_slack";
+    state.lastNotifiableRun = {
+      runId,
+      status: row.status,
+      channel: state.mode,
+    };
     setStage("notification", "success", "전송 재현");
   }
 
@@ -298,15 +430,18 @@ async function processRequest() {
     ? "알림은 실패했지만 체험 행을 저장했습니다."
     : validations.length
       ? "검토 필요 상태로 체험 행을 저장하고 알림을 재현했습니다."
-      : "정상 접수, 알림, 체험 행 저장을 완료했습니다.";
+      : "정상 접수, 외부 알림 재현, 체험 행 저장을 완료했습니다.";
   element("statusLine").textContent = outcome;
   addLog(`${runId}: ${row.status}, ${row.notificationStatus}, 행 저장 완료.`);
+  renderBrowserNotification(notificationFailed
+    ? "외부 알림 실패 시나리오는 로컬 기기 알림 대상에서 제외됩니다. 다른 성공 시나리오를 실행해 주세요."
+    : `${runId} 처리 완료. 버튼을 누르면 권한 상태에 따라 로컬 기기 알림을 표시합니다.`);
 }
 
 async function runRequest() {
   if (state.processing) return;
   state.processing = true;
-  const controls = ["runButton", "resetButton", "presetSelect", "slackModeButton", "emailModeButton"].map(element);
+  const controls = ["runButton", "resetButton", "presetSelect", "slackModeButton", "emailModeButton", "browserNotificationButton"].map(element);
   controls.forEach((control) => { control.disabled = true; });
   element("runButton").textContent = "처리 중";
   try {
@@ -315,6 +450,7 @@ async function runRequest() {
     state.processing = false;
     controls.forEach((control) => { control.disabled = false; });
     element("runButton").textContent = "요청 실행";
+    renderBrowserNotification(element("browserNotificationStatus").textContent);
   }
 }
 
@@ -325,6 +461,7 @@ function resetDemo() {
   state.authorizedCount = 0;
   state.logIndex = 0;
   state.lastAddedRunId = null;
+  state.lastNotifiableRun = null;
   element("presetSelect").value = "normal";
   applyPreset();
   resetPipeline();
@@ -337,7 +474,7 @@ function setMode(mode) {
   state.mode = mode;
   renderMode();
   resetPipeline();
-  element("statusLine").textContent = `${mode === "slack" ? "Slack" : "Email"} 알림 재현 모드로 변경했습니다.`;
+  element("statusLine").textContent = `${mode === "slack" ? "Slack" : "Email"} 외부 알림 재현 모드로 변경했습니다.`;
   addLog(`${mode === "slack" ? "Slack" : "Email"} 알림 모드를 선택했습니다.`);
 }
 
@@ -379,6 +516,7 @@ element("resetButton").addEventListener("click", resetDemo);
 element("exportButton").addEventListener("click", exportCsv);
 element("slackModeButton").addEventListener("click", () => setMode("slack"));
 element("emailModeButton").addEventListener("click", () => setMode("email"));
+element("browserNotificationButton").addEventListener("click", sendBrowserNotification);
 element("requestForm").addEventListener("submit", (event) => {
   event.preventDefault();
   runRequest();

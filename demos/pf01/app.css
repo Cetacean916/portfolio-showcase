@@ -4,6 +4,21 @@
   --accent-ink: #15523a;
 }
 
+.evidence-chip {
+  display: grid;
+  gap: 2px;
+}
+
+.generator-help {
+  margin: -6px 2px 8px;
+  color: var(--muted);
+  font-size: 11px;
+}
+
+.toolbar-actions {
+  flex-wrap: wrap;
+}
+
 .ticket-list {
   display: grid;
   max-height: 520px;
@@ -154,5 +169,15 @@
 
   .classification-grid div:last-child {
     border-bottom: 0;
+  }
+}
+
+@media (max-width: 780px) {
+  .toolbar-actions .button {
+    min-width: min(100%, 180px);
+  }
+
+  .generator-help {
+    margin-top: -4px;
   }
 }

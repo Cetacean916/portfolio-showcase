@@ -7,7 +7,7 @@
       http-equiv="Content-Security-Policy"
       content="default-src 'self'; script-src 'self'; style-src 'self'; img-src 'self' data:; connect-src 'none'; object-src 'none'; base-uri 'none'; form-action 'none'; worker-src 'none'"
     />
-    <meta name="description" content="웹훅 입력, 요청 인증, 행 저장, Slack 또는 Email 알림 흐름을 재현한 PF02 체험 데모" />
+    <meta name="description" content="웹훅 입력, 요청 인증, 행 저장, 외부 알림 재현과 로컬 기기 알림을 체험하는 PF02 데모" />
     <title>PF02 웹훅·시트·알림 자동화 체험</title>
     <link rel="icon" href="data:image/gif;base64,R0lGODlhAQABAIAAAAAAAP///ywAAAAAAQABAAACAUwAOw==" />
     <link rel="stylesheet" href="../shared/demo.css" />
@@ -28,7 +28,7 @@
 
     <aside class="boundary-note" aria-label="체험 범위 안내">
       <strong>공개 샘플 체험</strong>
-      <span>외부 Google Sheets, Slack, Email, 서버에 요청하지 않습니다. 비식별 샘플과 결과는 현재 브라우저 메모리에서만 처리됩니다.</span>
+      <span>Google Sheets, Slack, Email, 서버에는 요청하지 않습니다. 사용자가 선택한 로컬 기기 알림만 브라우저에서 직접 표시할 수 있습니다.</span>
     </aside>
 
     <main class="app-shell" id="workspace">
@@ -36,7 +36,7 @@
         <div>
           <p class="eyebrow">In-memory integration simulation</p>
           <h1>리드 접수 자동화 콘솔</h1>
-          <p>요청 인증부터 검증, 알림 시도, Sheet 형태 행 저장까지 예외 흐름을 직접 확인합니다.</p>
+          <p>요청 인증부터 검증, 외부 알림 재현, Sheet 형태 행 저장까지 확인하고 비식별 결과를 로컬 기기 알림으로 표시할 수 있습니다.</p>
         </div>
         <div class="evidence-chip"><b>체험 전용 시뮬레이션</b> · 실제 외부 연동 검증 자료와 별도</div>
       </div>
@@ -50,7 +50,7 @@
               <option value="auth-failure">요청 인증 실패</option>
               <option value="missing-email">이메일 누락</option>
               <option value="duplicate">중복 후보</option>
-              <option value="notification-failure">알림 실패</option>
+              <option value="notification-failure">외부 알림 실패</option>
             </select>
           </div>
           <button class="button button-primary" id="runButton" data-test="run" type="submit" form="requestForm">요청 실행</button>
@@ -58,7 +58,7 @@
         </div>
         <div class="toolbar-group">
           <div class="mode-field">
-            <span id="modeLabel">알림 채널</span>
+            <span id="modeLabel">외부 알림 재현</span>
             <div class="segmented" role="group" aria-labelledby="modeLabel">
               <button id="slackModeButton" data-test="mode-slack" type="button" aria-pressed="true">Slack</button>
               <button id="emailModeButton" data-test="mode-email" type="button" aria-pressed="false">Email</button>
@@ -87,7 +87,7 @@
           <small>누락 또는 중복 후보</small>
         </article>
         <article class="metric-card">
-          <span>알림 실패</span>
+          <span>외부 알림 실패</span>
           <strong id="metricFailed" data-test="count-failed">0</strong>
           <small>실패해도 행 저장</small>
         </article>
@@ -162,7 +162,7 @@
             <div class="panel-header">
               <div>
                 <h2 id="pipelineTitle">요청 처리 상태</h2>
-                <p>인증 실패는 후속 단계로 진행하지 않음</p>
+                <p>인증 실패는 저장과 외부 알림 재현을 진행하지 않음</p>
               </div>
               <span class="badge" id="responseBadge" data-test="result-state">대기</span>
             </div>
@@ -171,7 +171,7 @@
                 <li data-stage="auth"><span>01</span><div><strong>요청 인증</strong><small>공유 비밀 값 비교</small></div><b>대기</b></li>
                 <li data-stage="validation"><span>02</span><div><strong>필드 검증</strong><small>이메일·중복 후보 확인</small></div><b>대기</b></li>
                 <li data-stage="storage"><span>03</span><div><strong>행 저장</strong><small>Sheet 형태 로컬 테이블</small></div><b>대기</b></li>
-                <li data-stage="notification"><span>04</span><div><strong>알림 시도</strong><small>Slack 또는 Email</small></div><b>대기</b></li>
+                <li data-stage="notification"><span>04</span><div><strong>외부 알림 재현</strong><small>Slack 또는 Email 결과</small></div><b>대기</b></li>
               </ol>
 
               <div class="response-card" aria-labelledby="responseTitle">
@@ -183,9 +183,31 @@
                   <div><dt>ok</dt><dd id="responseOk">-</dd></div>
                   <div><dt>status</dt><dd id="responseStatus">waiting</dd></div>
                   <div><dt>run_id</dt><dd id="responseRunId">-</dd></div>
-                  <div><dt>알림 채널</dt><dd id="responseChannel">Slack</dd></div>
+                  <div><dt>외부 알림 재현</dt><dd id="responseChannel">Slack</dd></div>
                 </dl>
               </div>
+
+              <section class="browser-notification" data-test="browser-notification-panel" aria-labelledby="browserNotificationTitle">
+                <div class="browser-notification-head">
+                  <div>
+                    <h3 id="browserNotificationTitle">로컬 기기 알림</h3>
+                    <p>마지막 성공 요청의 비식별 처리 결과만 이 기기의 브라우저 알림으로 표시합니다.</p>
+                  </div>
+                  <span class="badge" id="browserNotificationPermission" data-test="browser-notification-permission">상태 확인</span>
+                </div>
+                <div class="browser-notification-action">
+                  <button
+                    class="button button-secondary"
+                    id="browserNotificationButton"
+                    data-test="browser-notification"
+                    type="button"
+                    aria-describedby="browserNotificationStatus browserNotificationBoundary"
+                    disabled
+                  >요청 실행 후 사용</button>
+                  <p id="browserNotificationStatus" data-test="browser-notification-status" role="status" aria-live="polite">성공한 요청을 먼저 실행해 주세요.</p>
+                </div>
+                <p class="browser-notification-boundary" id="browserNotificationBoundary">Slack·Email 전송과 별개이며, 입력값을 수집하거나 외부로 보내지 않습니다. 권한 요청은 이 버튼을 눌렀을 때만 시작됩니다.</p>
+              </section>
             </div>
           </section>
 
@@ -207,7 +229,7 @@
                     <th scope="col">이메일</th>
                     <th scope="col">status</th>
                     <th scope="col">validation</th>
-                    <th scope="col">notification</th>
+                    <th scope="col">외부 알림 재현</th>
                   </tr>
                 </thead>
                 <tbody id="sheetRows"></tbody>
