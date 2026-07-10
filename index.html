@@ -1,0 +1,105 @@
+<!doctype html>
+<html lang="ko">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="OddRoom과 PF01~PF04, PF06의 실제 화면, 작동 근거, 서비스 범위를 확인하는 웹 제작·업무 자동화 포트폴리오.">
+  <meta name="theme-color" content="#f3f4ef">
+  <meta property="og:type" content="website">
+  <meta property="og:url" content="https://cetacean916.github.io/portfolio-showcase/">
+  <meta property="og:locale" content="ko_KR">
+  <meta property="og:title" content="Junsoo Work Index | 웹 제작·업무 자동화 포트폴리오">
+  <meta property="og:description" content="검증된 자체 제작 사례 6개의 화면, 작동 근거, 포함·제외 범위를 확인합니다.">
+  <meta property="og:image" content="https://cetacean916.github.io/portfolio-showcase/assets/media/oddroom/main-image.png">
+  <link rel="canonical" href="https://cetacean916.github.io/portfolio-showcase/">
+  <title>Junsoo Work Index | 웹 제작·업무 자동화 포트폴리오</title>
+  <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 64 64'%3E%3Crect width='64' height='64' rx='6' fill='%2317201d'/%3E%3Ctext x='32' y='40' text-anchor='middle' font-family='Arial' font-size='23' font-weight='700' fill='white'%3EJW%3C/text%3E%3C/svg%3E">
+  <link rel="manifest" href="site.webmanifest">
+  <link rel="preload" href="assets/fonts/Pretendard-Regular.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="preload" href="assets/fonts/Pretendard-ExtraBold.woff2" as="font" type="font/woff2" crossorigin>
+  <link rel="stylesheet" href="assets/css/styles.css">
+</head>
+<body>
+  <a class="skip-link" href="#work">작업 목록으로 이동</a>
+  <header class="site-header">
+    <a class="brand" href="index.html" aria-label="Junsoo Work Index 홈">
+      <span class="brand-mark">JW</span>
+      <span><b>WORK INDEX</b><small>WEB · AUTOMATION · API</small></span>
+    </a>
+    <nav class="main-nav" aria-label="주요 메뉴">
+      <a href="#work">작업</a>
+      <a href="#capabilities">서비스</a>
+      <a href="#standards">검증 기준</a>
+    </nav>
+    <button class="header-cta" type="button" data-copy-brief>상담 문구 복사</button>
+  </header>
+
+  <main>
+    <section class="intro" aria-labelledby="intro-title">
+      <div class="intro-copy">
+        <p class="eyebrow">SELECTED WORK · 2026</p>
+        <h1 id="intro-title">웹페이지 제작 · 업무 자동화 포트폴리오</h1>
+        <p>보이는 화면, 실제 작동 근거, 테스트 결과, 포함·제외 범위를 함께 정리한 자체 제작 사례입니다.</p>
+      </div>
+      <dl class="intro-facts" aria-label="포트폴리오 요약">
+        <div><dt>06</dt><dd>완성 사례</dd></div>
+        <div><dt>03</dt><dd>공개 영상</dd></div>
+        <div><dt>01</dt><dd>공개 사이트</dd></div>
+      </dl>
+    </section>
+
+    <section class="work-section" id="work" aria-labelledby="work-title">
+      <div class="section-heading">
+        <div><p class="eyebrow">PROJECT CATALOG</p><h2 id="work-title">완성된 작업</h2></div>
+        <div class="filter-bar" role="group" aria-label="작업 유형 필터">
+          <button type="button" data-filter="all" aria-pressed="true">전체</button>
+          <button type="button" data-filter="web" aria-pressed="false">웹사이트</button>
+          <button type="button" data-filter="automation" aria-pressed="false">자동화</button>
+          <button type="button" data-filter="data" aria-pressed="false">데이터</button>
+          <button type="button" data-filter="backend" aria-pressed="false">백엔드</button>
+        </div>
+      </div>
+      <div class="project-grid" data-project-grid aria-live="polite"></div>
+      <p class="empty-state" data-empty-state hidden>선택한 유형의 작업이 없습니다.</p>
+    </section>
+
+    <section class="capability-section" id="capabilities" aria-labelledby="capability-title">
+      <div class="section-heading compact">
+        <div><p class="eyebrow">SERVICE RANGE</p><h2 id="capability-title">제작 범위</h2></div>
+        <p>작게 검증한 뒤 필요한 연동만 확장합니다.</p>
+      </div>
+      <div class="capability-table" role="table" aria-label="서비스 제작 범위">
+        <div class="table-row table-head" role="row"><span role="columnheader">분야</span><span role="columnheader">핵심 산출물</span><span role="columnheader">검증 방식</span></div>
+        <div class="table-row" role="row"><b role="cell">상용 웹사이트</b><span role="cell">반응형 화면 · 동적 UI · 공개 배포</span><span role="cell">모바일/데스크톱 브라우저 QA</span></div>
+        <div class="table-row" role="row"><b role="cell">업무 자동화</b><span role="cell">입력 · 처리 · 결과 · 인수 문서</span><span role="cell">정상/오류/중복 실행 증거</span></div>
+        <div class="table-row" role="row"><b role="cell">데이터 정리</b><span role="cell">정상 · 오류 · 중복 파일 · 리포트</span><span role="cell">결과 건수와 자동 테스트 대조</span></div>
+        <div class="table-row" role="row"><b role="cell">API 오류 수정</b><span role="cell">재현 · 수정 코드 · 테스트 리포트</span><span role="cell">before/after 응답과 회귀 테스트</span></div>
+      </div>
+    </section>
+
+    <section class="standards-section" id="standards" aria-labelledby="standards-title">
+      <div class="standards-copy">
+        <p class="eyebrow">DELIVERY STANDARD</p>
+        <h2 id="standards-title">완료의 기준을 먼저 고정합니다</h2>
+        <p>화면만 만든 상태가 아니라 샘플 입력, 실제 결과, 실패 케이스, 전달 범위가 서로 맞아야 완료로 판단합니다.</p>
+      </div>
+      <div class="standard-list">
+        <article><span>01</span><div><h3>범위</h3><p>포함 기능과 제외 항목을 등록 전 고정합니다.</p></div></article>
+        <article><span>02</span><div><h3>작동</h3><p>실제 입력부터 결과 파일·화면까지 재현합니다.</p></div></article>
+        <article><span>03</span><div><h3>증거</h3><p>테스트, 영상, 체크섬을 같은 결과와 연결합니다.</p></div></article>
+        <article><span>04</span><div><h3>보안</h3><p>비밀값과 외부 식별자를 공개 자료에서 제외합니다.</p></div></article>
+      </div>
+    </section>
+
+    <section class="contact-section" aria-labelledby="contact-title">
+      <div><p class="eyebrow">PROJECT INTAKE</p><h2 id="contact-title">자료와 성공 기준부터 확인합니다</h2><p>서비스 종류, 현재 문제, 샘플 자료, 원하는 결과, 희망 일정을 정리하면 범위를 빠르게 판단할 수 있습니다.</p></div>
+      <button type="button" class="primary-button" data-copy-brief>상담 시작 문구 복사</button>
+      <p class="copy-status" data-copy-status role="status" aria-live="polite"></p>
+    </section>
+  </main>
+
+  <footer class="site-footer"><p>Junsoo Work Index · 자체 제작 포트폴리오</p><p>실제 운영 연동 범위와 결과는 상담 후 확정합니다.</p></footer>
+  <script src="assets/js/projects.js"></script>
+  <script src="assets/js/main.js"></script>
+</body>
+</html>

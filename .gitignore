@@ -1,0 +1,15 @@
+.DS_Store
+Thumbs.db
+node_modules/
+validation/
+scripts/
+*.log
+*.zip
+*.tar
+*.tar.gz
+*.7z
+*.db
+*.sqlite*
+.env
+.env.*
+!.env.example

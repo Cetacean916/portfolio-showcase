@@ -1,0 +1,4 @@
+User-agent: *
+Allow: /
+
+Sitemap: https://cetacean916.github.io/portfolio-showcase/sitemap.xml

@@ -1,0 +1,10 @@
+{
+  "name": "Junsoo Work Index",
+  "short_name": "Work Index",
+  "start_url": "./index.html",
+  "scope": "./",
+  "display": "standalone",
+  "background_color": "#f3f4ef",
+  "theme_color": "#f3f4ef",
+  "lang": "ko-KR"
+}
