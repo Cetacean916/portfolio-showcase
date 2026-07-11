@@ -19,7 +19,7 @@ window.PORTFOLIO_PROJECTS = [
     title: "AI 고객문의 요약·분류 자동화", short: "문의 요약, 우선순위, 담당팀, 답변 초안을 한 흐름으로",
     summary: "샘플 문의를 분류해 CSV·시트형 결과와 고우선순위 알림 계약까지 확인하는 자동화입니다.",
     image: "assets/media/pf01/main-image.png", gallery: ["assets/media/pf01/detail-01-overview.png", "assets/media/pf01/detail-02-flow.png", "assets/media/pf01/detail-03-result.png"], video: "assets/media/pf01/demo-video.mp4", videoPoster: "assets/media/pf01/video-poster.png",
-    facts: [["15", "별도 실연동 처리"], ["4", "별도 실연동 알림"], ["0", "AI 오류"]],
+    facts: [["15", "별도 실연동 처리"], ["4", "별도 실연동 알림"], ["0", "샘플 실행 처리 오류"]],
     proof: ["비식별 현행 실행 근거 요약 화면", "정상·오류·경계 테스트", "CSV·시트·알림 출력 계약"],
     problem: "반복 문의를 사람이 처음부터 읽고 분류하면 긴급 문의의 첫 대응이 늦어집니다.",
     solution: "요약, 카테고리, 우선순위, 담당팀, 답변 초안을 생성하고 결과 파일과 알림 대상으로 분리합니다.",
