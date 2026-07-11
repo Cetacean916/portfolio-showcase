@@ -17,6 +17,16 @@ PF02 can display a sanitized result through the local browser notification API
 only after a successful trial request and an explicit user action; Slack and
 Email delivery remain clearly labeled simulations.
 
+`inquiry-automation.html` provides a service-level route through the related
+automation evidence: PF02 is the intake, validation, storage, and notification
+core; PF01 is the optional AI summary and classification layer; and PF04 is the
+optional approval and management-screen extension. Each project remains a
+separate case and trial.
+
+The portfolio-wide inquiry buttons copy a platform-neutral project brief only.
+They do not open an external contact channel, and each button reports copy
+success or failure next to the control.
+
 ## Published Cases
 
 - OddRoom: 14-page commercial website

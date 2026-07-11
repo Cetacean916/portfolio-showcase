@@ -29,10 +29,13 @@
     </a>
     <nav class="main-nav" aria-label="주요 메뉴">
       <a href="#work">작업</a>
-      <a href="#capabilities">서비스</a>
+      <a href="inquiry-automation.html">자동화 서비스</a>
       <a href="#standards">검증 기준</a>
     </nav>
-    <button class="header-cta" type="button" data-copy-brief>상담 문구 복사</button>
+    <div class="copy-control copy-control--header" data-copy-control>
+      <button class="header-cta" type="button" data-copy-brief aria-describedby="header-copy-status">문의 내용 작성 양식 복사</button>
+      <p class="copy-status" id="header-copy-status" data-copy-status role="status" aria-live="polite"></p>
+    </div>
   </header>
 
   <main>
@@ -45,7 +48,7 @@
       <dl class="intro-facts" aria-label="포트폴리오 요약">
         <div><dt>06</dt><dd>완성 사례</dd></div>
         <div><dt>04</dt><dd>체험 데모</dd></div>
-        <div><dt>03</dt><dd>공개 영상</dd></div>
+        <div><dt>05</dt><dd>공개 영상</dd></div>
         <div><dt>01</dt><dd>공개 사이트</dd></div>
       </dl>
     </section>
@@ -73,7 +76,7 @@
       <div class="capability-table" role="table" aria-label="서비스 제작 범위">
         <div class="table-row table-head" role="row"><span role="columnheader">분야</span><span role="columnheader">핵심 산출물</span><span role="columnheader">검증 방식</span></div>
         <div class="table-row" role="row"><b role="cell">상용 웹사이트</b><span role="cell">반응형 화면 · 동적 UI · 공개 배포</span><span role="cell">모바일/데스크톱 브라우저 QA</span></div>
-        <div class="table-row" role="row"><b role="cell">업무 자동화</b><span role="cell">입력 · 처리 · 결과 · 인수 문서</span><span role="cell">정상/오류/중복 실행 증거</span></div>
+        <div class="table-row" role="row"><b role="cell"><a class="table-link" href="inquiry-automation.html">문의·접수 업무 자동화</a></b><span role="cell">입력 · 검증 · 저장 · 알림 · 확장 화면</span><span role="cell">정상/오류/중복 실행 증거</span></div>
         <div class="table-row" role="row"><b role="cell">데이터 정리</b><span role="cell">정상 · 오류 · 중복 파일 · 리포트</span><span role="cell">결과 건수와 자동 테스트 대조</span></div>
         <div class="table-row" role="row"><b role="cell">API 오류 수정</b><span role="cell">재현 · 수정 코드 · 테스트 리포트</span><span role="cell">before/after 응답과 회귀 테스트</span></div>
       </div>
@@ -95,13 +98,16 @@
 
     <section class="contact-section" aria-labelledby="contact-title">
       <div><p class="eyebrow">PROJECT INTAKE</p><h2 id="contact-title">자료와 성공 기준부터 확인합니다</h2><p>서비스 종류, 현재 문제, 샘플 자료, 원하는 결과, 희망 일정을 정리하면 범위를 빠르게 판단할 수 있습니다.</p></div>
-      <button type="button" class="primary-button" data-copy-brief>상담 시작 문구 복사</button>
-      <p class="copy-status" data-copy-status role="status" aria-live="polite"></p>
+      <div class="copy-control copy-control--contact" data-copy-control>
+        <button type="button" class="primary-button" data-copy-brief aria-describedby="contact-copy-status">문의 내용 작성 양식 복사</button>
+        <p class="copy-status" id="contact-copy-status" data-copy-status role="status" aria-live="polite"></p>
+      </div>
     </section>
   </main>
 
   <footer class="site-footer"><p>Junsoo Work Index · 자체 제작 포트폴리오</p><p>실제 운영 연동 범위와 결과는 상담 후 확정합니다.</p></footer>
   <script src="assets/js/projects.js"></script>
   <script src="assets/js/main.js"></script>
+  <script src="assets/js/contact.js"></script>
 </body>
 </html>

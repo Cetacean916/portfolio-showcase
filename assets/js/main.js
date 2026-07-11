@@ -3,7 +3,6 @@
   const grid = document.querySelector("[data-project-grid]");
   const empty = document.querySelector("[data-empty-state]");
   const filters = [...document.querySelectorAll("[data-filter]")];
-  const brief = "안녕하세요. 포트폴리오를 보고 문의드립니다.\n1. 필요한 서비스:\n2. 현재 문제 또는 반복 업무:\n3. 샘플 자료 제공 가능 여부:\n4. 원하는 결과물:\n5. 희망 일정:\n6. 반드시 포함하거나 제외할 범위:";
 
   const escape = (value) => String(value).replace(/[&<>\"]/g, (char) => ({ "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[char]));
   const cards = projects.map((project) => {
@@ -26,16 +25,4 @@
     if (empty) empty.hidden = visible !== 0;
   }
   filters.forEach((button) => button.addEventListener("click", () => applyFilter(button.dataset.filter)));
-
-  document.querySelectorAll("[data-copy-brief]").forEach((button) => button.addEventListener("click", async () => {
-    const statuses = document.querySelectorAll("[data-copy-status]");
-    try {
-      await navigator.clipboard.writeText(brief);
-      statuses.forEach((node) => { node.textContent = "상담 문구를 복사했습니다."; });
-      button.textContent = "복사 완료";
-      window.setTimeout(() => { button.textContent = button.classList.contains("header-cta") ? "상담 문구 복사" : "상담 시작 문구 복사"; }, 1800);
-    } catch {
-      statuses.forEach((node) => { node.textContent = "브라우저에서 복사 권한을 허용한 뒤 다시 시도해주세요."; });
-    }
-  }));
 })();
