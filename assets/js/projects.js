@@ -108,5 +108,44 @@ window.PORTFOLIO_PROJECTS = [
     tech: ["Java 21", "Spring Boot", "MockMvc", "JUnit", "H2·Maven"],
     disclosure: "로컬 H2와 더미 요청으로 재현·수정한 자체 제작 사례입니다. 운영 배포와 운영 DB 변경은 포함하지 않습니다.",
     videoSummary: "before 500 재현부터 after 400·201·409 응답과 MockMvc 자동 테스트 5건까지 실제 실행 화면으로 확인합니다."
+  },
+  {
+    id: "pf07", code: "PF07", filters: ["automation", "backend", "web"], accent: "blue",
+    title: "OddRoom Woo OrderOps", short: "WooCommerce 주문을 HubSpot·Slack으로 전달하고 실패 상태까지 복구",
+    summary: "실제 WooCommerce 주문 사실을 불변 outbox에 기록하고 주문별 직렬화, 서명 검증, 제한 재시도, 운영자 확인, reconciliation, clean restore로 전달 상태를 증명했습니다.",
+    image: "assets/media/pf07/main-image.png", gallery: ["assets/media/pf07/detail-01-overview.png", "assets/media/pf07/detail-02-flow.png", "assets/media/pf07/detail-03-result.png"],
+    video: "assets/media/pf07/demo-video.mp4", videoPoster: "assets/media/pf07/video-poster.png", recoveryVideo: "assets/media/pf07/recovery-clip.mp4",
+    facts: [["4", "주문 이벤트"], ["6", "자동 시도 상한"], ["RESTORED", "교체 복구"]],
+    proof: ["3개 변수 입력 주문과 4개 이벤트", "worker 3개·Manual Retry 1회의 중복 억제", "독립 WordPress+n8n clean restore"],
+    problem: "주문을 사람이 CRM에 옮기면 누락과 중복 효과가 생기고, 외부 API가 중간에 실패했을 때 무엇이 이미 반영됐는지 확인하기 어렵습니다.",
+    solution: "WooCommerce 사실을 한 번 직렬화해 outbox에 보존하고, Action Scheduler·행 claim·주문 lease·원문 HMAC·write-once checkpoint로 정상과 실패 후 복구를 같은 운영 경로에 묶었습니다.",
+    included: ["4개 주문 이벤트와 불변 snapshot", "HubSpot Contact·Deal·association 및 Slack", "제한 재시도·operator_wait·reconciliation", "HTTPS staging·백업·clean restore", "보호 raw와 공개 redacted evidence"],
+    excluded: ["실결제·실고객·실매출 처리", "부분 환불·chargeback·모든 WooCommerce edge case", "고가용성·production SLA·enterprise scale", "formal exactly-once delivery", "Slack accepted/response-lost window 제거"],
+    tech: ["WordPress 7.0.2", "WooCommerce 10.9.4", "PHP 8.3", "Action Scheduler 4.0.0", "n8n 2.25.7", "HubSpot API", "Slack API", "Docker Compose"],
+    disclosure: "합성 주문과 비금전 결제 경로로 검증한 ON_DEMAND_ONLY staging 사례입니다. 정적 case와 redacted evidence는 runtime uptime과 독립적으로 공개됩니다.",
+    videoSummary: "70초 동안 주문 capture, outbox fencing, signed n8n adapter, HubSpot·Slack checkpoint, bounded retry, operator review, reconciliation, clean restore를 실제 마스킹 화면과 관찰 수치로 연결합니다.",
+    recoveryVideoSummary: "실패 직전 checkpoint에서 자동 재시도 또는 operator_wait로 갈라지고, 증거가 있는 경우에만 안전한 phase에서 한 번 재개하는 18초 복구 클립입니다.",
+    sourceUrl: "https://github.com/Cetacean916/oddroom-woo-orderops",
+    proofScorecard: [
+      ["지원 주문 이벤트", "4종", "GATE-02"],
+      ["서로 다른 변수 입력 주문", "3건", "GATE-03"],
+      ["동시 중복 억제", "worker 3 + retry conflict 1", "GATE-04"],
+      ["자동 시도 상한", "6회 · 2/5/10/20/30초", "GATE-06"],
+      ["부분 실패 복구", "CRM checkpoint 유지 · Slack 총 1", "GATE-07"],
+      ["Reconciliation", "누락 4 + schedule-only 1 · 두 번째 0", "GATE-08"],
+      ["Clean restore", "Deal 1 · payment Slack 1 · duplicate +0", "GATE-10"]
+    ],
+    evidenceLinks: [
+      ["공개 소스", "https://github.com/Cetacean916/oddroom-woo-orderops"],
+      ["10-gate evidence index", "https://github.com/Cetacean916/oddroom-woo-orderops/blob/main/evidence/public/acceptance-matrix.json"],
+      ["WordPress tests", "https://github.com/Cetacean916/oddroom-woo-orderops/blob/main/plugin/oddroom-orderops/tests/run.php"],
+      ["n8n workflow", "https://github.com/Cetacean916/oddroom-woo-orderops/blob/main/workflow/oddroom-orderops-vsl.json"],
+      ["복구 runbook", "https://github.com/Cetacean916/oddroom-woo-orderops/blob/main/docs/RECOVERY-RUNBOOK.md"]
+    ],
+    whatProves: ["WooCommerce custom plugin with durable event tracking", "tested duplicate suppression and bounded retries", "signed n8n adapter to HubSpot and Slack", "fault-injection and reconciliation evidence", "staging backup/restore drill completed"],
+    doesNotProve: ["Production load, scale, uptime, or SLA", "실결제·실고객·실매출·실환불 처리", "부분 환불, chargeback, reopened/reversed terminal order, 모든 WooCommerce edge case", "PF07이 보존하지 못한 최초 cancellation timestamp 재구성", "Formal exactly-once delivery", "캡처된 유효 signed request의 transport replay 방지", "Slack accepted/response-lost window 제거", "동일 HubSpot Deal에 대한 무관한 외부 writer 방어"],
+    hostingAvailability: "ON_DEMAND_ONLY · 합성 staging runtime은 검증 창에서만 HTTPS로 실행하며 정적 case와 evidence는 계속 공개됩니다.",
+    buyerFit: "불변 주문 capture, CRM·알림 연동, 제한 재시도, 운영자 확인, 복구 근거가 필요한 맞춤형 WooCommerce 운영",
+    buyerNonFit: "고규모 production 증명, 실결제, 모든 WooCommerce lifecycle, formal exactly-once, turnkey multi-tenant SaaS"
   }
 ];

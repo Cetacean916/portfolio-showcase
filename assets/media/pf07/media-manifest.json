@@ -1,0 +1,55 @@
+{
+  "schema_version": 1,
+  "case_id": "pf07",
+  "classification": "PUBLIC_SANITIZED_MEDIA",
+  "registration_manifest_case_count": 6,
+  "metadata_stripped": true,
+  "source_commitments": {
+    "public_acceptance_matrix_sha256": "7dac382c22bb815be9b16e83dc67419e3cfc2c1d4135bb10ce7e9bd39fb7e9e4",
+    "public_product_quality_record_sha256": "6871ef8596b81fe8667ef00e53c78511aa7b6f622e3abafbf12c9519f491d58d",
+    "public_restore_drill_record_sha256": "2a6cbb394390a03ac8bc411f47c7f991416feec76423e1f7c9e969accaaf3637"
+  },
+  "assets": {
+    "main-image.png": {
+      "sha256": "cbd7a5c14d692fbcd8ecef2327244ec11de3c9f95dfdabfb7af6a05a6af8c320",
+      "width": 1200,
+      "height": 1200
+    },
+    "detail-01-overview.png": {
+      "sha256": "527a08fa42955f98ced77dd60ffa91fd9ac1865faa29b404bae552d0a5e21e98",
+      "width": 1200,
+      "height": 1350
+    },
+    "detail-02-flow.png": {
+      "sha256": "a224cbfe265e7ad98caf48c77f206d99872a5dbcd0ebd9a48b6c84ca3725662a",
+      "width": 1200,
+      "height": 1350
+    },
+    "detail-03-result.png": {
+      "sha256": "548cbe000cc3d11a5ff7630da7201b7e8cf8941b43b806a1fe01a9c245dfa459",
+      "width": 1200,
+      "height": 1350
+    },
+    "video-poster.png": {
+      "sha256": "c7315cf879e00a636d0481fa4c67bd8c5fa44f1c1cd735300c7ce8c160feb5bd",
+      "width": 1440,
+      "height": 1000
+    },
+    "demo-video.mp4": {
+      "sha256": "5071f9530306eb53805295a70857368a3ad1a7865e452eff9fc4391dd645ebe3",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "width": 1280,
+      "height": 720,
+      "duration_seconds": 70
+    },
+    "recovery-clip.mp4": {
+      "sha256": "370b40887450f2a508a2025db0f3eea7e432cb435cbb4b0bbdf03ccceddafc43",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "width": 1280,
+      "height": 720,
+      "duration_seconds": 18
+    }
+  }
+}

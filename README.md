@@ -1,6 +1,6 @@
 # Junsoo Work Index
 
-OddRoom and five verified automation/backend case studies in a responsive,
+OddRoom and six verified automation/backend case studies in a responsive,
 data-driven static portfolio.
 
 PF01 through PF04 include network-free interactive trials under `demos/`.
@@ -35,6 +35,13 @@ success or failure next to the control.
 - PF03: Excel/CSV cleanup and reporting automation
 - PF04: leave and business-trip approval board
 - PF06: Spring Boot API error repair and regression tests
+- PF07: WooCommerce order delivery, bounded retry, operator recovery, and clean restore
+
+PF07 links the public source repository and redacted ten-gate evidence to a
+seven-row buyer scorecard, a 70-second walkthrough, and an 18-second recovery
+clip. Its synthetic staging runtime is on-demand only; the static case remains
+available independently and does not claim real payments, production scale,
+formal exactly-once delivery, or removal of Slack's ambiguous response window.
 
 The site is designed to grow by adding a project definition and its reviewed
 public media. Each case identifies its evidence, delivery boundary, technology,

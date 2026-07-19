@@ -9,6 +9,19 @@
 
 .table-link{display:inline-flex;min-height:44px;align-items:center;border-bottom:1px solid currentColor;color:var(--green)}
 .table-link:hover,.table-link:focus-visible{color:var(--ink)}
+.case-scorecard,.case-evidence-links,.case-claims{padding:76px 0;border-top:1px solid var(--line)}
+.scorecard-wrap{overflow-x:auto;border:1px solid var(--line);background:#fff}
+.scorecard-wrap table{width:100%;min-width:720px;border-collapse:collapse}
+.scorecard-wrap th,.scorecard-wrap td{padding:17px 18px;border-bottom:1px solid var(--line);text-align:left}
+.scorecard-wrap tbody tr:last-child th,.scorecard-wrap tbody tr:last-child td{border-bottom:0}
+.scorecard-wrap thead th{background:var(--ink);color:#fff;font-size:12px;text-transform:uppercase}
+.scorecard-wrap tbody th{font-weight:700}.scorecard-wrap code{color:var(--blue);font-weight:800}
+.evidence-link-grid{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px}
+.evidence-link-grid a{display:flex;align-items:center;justify-content:space-between;gap:20px;min-height:64px;padding:16px 18px;border:1px solid var(--line);background:#fff}
+.evidence-link-grid a:hover,.evidence-link-grid a:focus-visible{border-color:var(--green)}.evidence-link-grid b{color:var(--green);white-space:nowrap}
+.claims-grid,.buyer-fit-grid{display:grid;grid-template-columns:1fr 1fr;gap:20px}.claims-grid article,.buyer-fit-grid article{padding:27px;border:1px solid var(--line);background:#fff}.claims-grid article:last-child{background:#f0ece2;border-left:4px solid var(--amber)}
+.claims-grid h3,.buyer-fit-grid h3{margin:0 0 15px}.claims-grid ul{margin:0;padding-left:20px}.claims-grid li{margin:9px 0;color:var(--muted)}.buyer-fit-grid{margin-top:20px}.buyer-fit-grid p{margin:0;color:var(--muted)}
+.recovery-video video{max-height:520px}
 button:disabled{cursor:wait;opacity:.72}
 .copy-control{position:relative;display:flex;min-width:0}
 .copy-control .copy-status{position:static;right:auto;bottom:auto;margin:0;color:var(--muted);font-size:12px;line-height:1.45}
@@ -108,6 +121,8 @@ button:disabled{cursor:wait;opacity:.72}
   .service-case h2{font-size:30px}
   .service-case-lead{font-size:17px}
   .service-case-actions{flex-wrap:wrap}
+  .case-scorecard,.case-evidence-links,.case-claims{padding:58px 0}
+  .evidence-link-grid,.claims-grid,.buyer-fit-grid{grid-template-columns:1fr}
   .service-fit-row{grid-template-columns:1fr;gap:7px;padding:18px 8px}
   .service-fit-head{display:none}
   .service-boundary-copy h2{font-size:30px}

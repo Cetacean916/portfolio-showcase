@@ -17,6 +17,11 @@ The OddRoom screenshots show a self-authored composition. Any bundled source
 photographs visible within that composition were selected from CC0/public-domain
 sources documented by the original OddRoom project's asset-credit manifest.
 
+PF07 screenshots and videos include the CC0 shopping photograph documented in
+the public PF07 repository's `ASSET-LICENSES.md` and `THIRD_PARTY_NOTICES.md`.
+All order, customer, CRM, Slack, and administrator facts shown in PF07 media are
+synthetic or masked public aliases.
+
 ## Font
 
 The site bundles Pretendard. Its license text is included at
