@@ -5,20 +5,35 @@
   "registration_manifest_case_count": 6,
   "metadata_stripped": true,
   "source_commitments": {
-    "public_acceptance_matrix_sha256": "7dac382c22bb815be9b16e83dc67419e3cfc2c1d4135bb10ce7e9bd39fb7e9e4",
-    "public_product_quality_record_sha256": "6871ef8596b81fe8667ef00e53c78511aa7b6f622e3abafbf12c9519f491d58d",
-    "public_restore_drill_record_sha256": "2a6cbb394390a03ac8bc411f47c7f991416feec76423e1f7c9e969accaaf3637"
+    "public_acceptance_matrix_sha256": "9eb03c413467e0796ec36f535aa15e4526a3e7aca3681d8f9ad44a78dd95caf4",
+    "public_product_quality_record_sha256": "2448e84d2d7f9a8f5bb909452790c490bbdb6b4fdb0cd7b21fbb89523b66c900",
+    "public_restore_drill_record_sha256": "baf16705f13a781d966fbb0deed8e37c40b04ce4a3f81f5afb3f47676f81cd0b",
+    "execution_proof_sha256": "de126a9ffec03256b814d68c895657d6924f529650449a815c943b4604bb09b2",
+    "recording_script_sha256": "cbb1bfa65978c6ef2868a2cc6f4654aabc166dda20c7314967605b09c6c02a97",
+    "still_composition_script_sha256": "12c4d7fcdcf8d7ecb05b5650a1a1ce604893b9edce49f1eb18a7f45c7a9709c7"
   },
   "assets": {
     "main-image.png": {
-      "sha256": "cbd7a5c14d692fbcd8ecef2327244ec11de3c9f95dfdabfb7af6a05a6af8c320",
+      "sha256": "d66cc936f9127969e838ddb9175883dfcabe1f5c7632cf2fd28030fc4ce05654",
       "width": 1200,
-      "height": 1200
+      "height": 1200,
+      "source_video": "demo-video.mp4",
+      "source_video_sha256": "7206918c0224b8ba283413c6ae07bf8d9cbcf96a04894f50507fe1218bded7c8",
+      "source_event_frame_sha256": {
+        "LIVE_STOREFRONT": "b2aaadafc532625924a449f9fe2ed0e568037d7b8382784e638f0faf5daf8c70"
+      }
     },
     "detail-01-overview.png": {
-      "sha256": "527a08fa42955f98ced77dd60ffa91fd9ac1865faa29b404bae552d0a5e21e98",
+      "sha256": "6523e3d48304c9251c17ecb4f283ec7a3b717568df9bb97f5ab1227830ebda76",
       "width": 1200,
-      "height": 1350
+      "height": 1350,
+      "source_video": "demo-video.mp4",
+      "source_video_sha256": "7206918c0224b8ba283413c6ae07bf8d9cbcf96a04894f50507fe1218bded7c8",
+      "source_event_frame_sha256": {
+        "LIVE_STOREFRONT": "b2aaadafc532625924a449f9fe2ed0e568037d7b8382784e638f0faf5daf8c70",
+        "PRODUCT_SELECTED": "871391fae2ff0bb6f9acad7c1ed4203e44ece82002e5a450acf35a0885cb723d",
+        "CHECKOUT_INPUT": "8f5910b342ef51796d1cc875951d90fbc83afc983546d4424c718c0497f487e5"
+      }
     },
     "detail-02-flow.png": {
       "sha256": "a224cbfe265e7ad98caf48c77f206d99872a5dbcd0ebd9a48b6c84ca3725662a",
@@ -31,25 +46,38 @@
       "height": 1350
     },
     "video-poster.png": {
-      "sha256": "c7315cf879e00a636d0481fa4c67bd8c5fa44f1c1cd735300c7ce8c160feb5bd",
+      "sha256": "6fa725d4a8070441543d746d4a02fbe8b8cbfba595758fddb81debd64dab6348",
       "width": 1440,
       "height": 1000
     },
     "demo-video.mp4": {
-      "sha256": "5071f9530306eb53805295a70857368a3ad1a7865e452eff9fc4391dd645ebe3",
+      "sha256": "7206918c0224b8ba283413c6ae07bf8d9cbcf96a04894f50507fe1218bded7c8",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 70
+      "duration_seconds": 72.767,
+      "frame_count": 2183,
+      "sampled_frame_count": 73,
+      "unique_sampled_frames": 45,
+      "execution_proof": "execution-proof.json"
     },
     "recovery-clip.mp4": {
-      "sha256": "370b40887450f2a508a2025db0f3eea7e432cb435cbb4b0bbdf03ccceddafc43",
+      "sha256": "ef8b2c05dde7c602df5659a1ef43e4770f6c3b9115c338317e2a1ffdc34a613a",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 18
+      "duration_seconds": 28.333,
+      "frame_count": 850,
+      "sampled_frame_count": 28,
+      "unique_sampled_frames": 19,
+      "execution_proof": "execution-proof.json"
+    },
+    "execution-proof.json": {
+      "sha256": "de126a9ffec03256b814d68c895657d6924f529650449a815c943b4604bb09b2",
+      "schema_version": 1,
+      "classification": "PUBLIC_SANITIZED_EXECUTION_PROOF"
     }
   }
 }

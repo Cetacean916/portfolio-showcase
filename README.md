@@ -38,10 +38,13 @@ success or failure next to the control.
 - PF07: WooCommerce order delivery, bounded retry, operator recovery, and clean restore
 
 PF07 links the public source repository and redacted ten-gate evidence to a
-seven-row buyer scorecard, a 70-second walkthrough, and an 18-second recovery
-clip. Its synthetic staging runtime is on-demand only; the static case remains
-available independently and does not claim real payments, production scale,
-formal exactly-once delivery, or removal of Slack's ambiguous response window.
+seven-row buyer scorecard, a 72.767-second continuous execution recording, and
+a 28.333-second continuous recovery recording. They show real browser input,
+visible WP-CLI and container operations, and observed state transitions rather
+than explanatory slide sequences. Its synthetic staging runtime is on-demand
+only; the static case remains available independently and does not claim real
+payments, production scale, formal exactly-once delivery, or removal of
+Slack's ambiguous response window.
 
 The site is designed to grow by adding a project definition and its reviewed
 public media. Each case identifies its evidence, delivery boundary, technology,
