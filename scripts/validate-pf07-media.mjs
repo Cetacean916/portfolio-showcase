@@ -76,20 +76,20 @@ const expectedTimelines = {
 
 const ocrRequirements = {
   "demo-video.mp4": {
-    LAUNCH_HUB: [/package launch hub/i, /ready/i, /actual hub controls/i],
+    LAUNCH_HUB: [/final linux package/i, /ready/i, /actual hub.*controls/i],
     CHECKOUT_INPUT: [/checkout/i, /test street/i, /seoul/i],
-    ORDER_RECEIVED: [/order received/i],
-    OUTBOX_PENDING: [/outbox pending/i, /order[\s._-]*cr\w*[\s._-]+pendin/i],
+    ORDER_RECEIVED: [/woocommerce.*actual synthetic order/i],
+    OUTBOX_PENDING: [/actual final admin/i, /order[\s._-]*cr\w*[\s._-]+pendin/i],
     WORKER_RUN: [/final package worker/i, /action-scheduler run/i],
-    ADMIN_COMPLETED: [/admin completed?/i, /order[\s._-]*created/i, /completed/i, /\b200\b/i],
-    INTEGRATION_RESULT: [/integration result/i, /woo.*pf[o0]7.*n8n.*crm.*slack/i, /identifiers.*masked/i],
+    ADMIN_COMPLETED: [/order[\s._-]*created/i, /completed/i, /\b200\b/i],
+    INTEGRATION_RESULT: [/woo.*pf[o0]7.*n(?:8)?n.*crm.*slack/i, /identifiers.*masked/i],
   },
   "recovery-clip.mp4": {
-    OUTBOX_PENDING: [/outbox pending/i, /order[\s._-]*cr\w*[\s._-]+pendin/i],
+    OUTBOX_PENDING: [/same delivered\s+runtime/i, /order[\s._-]*cr\w*[\s._-]+pendin/i],
     FAILURE_WORKER_RUN: [/final package worker/i, /action-scheduler run/i],
-    FAILED: [/failed/i, /422/i],
-    NORMAL_SCENARIO: [/normal scenario/i, /actual package hub control/i],
-    MANUAL_RETRY: [/manual retry/i, /scheduled one follow-up/i],
+    FAILED: [/manual retry now available/i, /422/i],
+    NORMAL_SCENARIO: [/actual package hub control/i, /worker result/i],
+    MANUAL_RETRY: [/actual administrator action/i, /scheduled one follow-up/i],
     RECOVERY_WORKER_RUN: [/final package worker/i, /action-scheduler run/i],
     RECOVERED: [/recovered/i, /http\s*200/i],
   },
@@ -104,6 +104,11 @@ const ocrRegions = {
     RECOVERY_WORKER_RUN: { left: 500, top: 475, width: 750, height: 220 },
   },
 };
+// The isolated recorder runs Chromium in fullscreen, which places the public
+// evidence caption against the upper edge instead of the host window-manager
+// offset used by the earlier capture profile. Keep OCR scoped to that caption
+// so page copy cannot accidentally satisfy the evidence assertion.
+const captionOcrRegion = { left: 840, top: 20, width: 420, height: 150 };
 
 const forbiddenMetadataKeys = new Set([
   "artist", "author", "comment", "copyright", "creation_time", "description",
@@ -218,7 +223,7 @@ export async function validatePf07ExecutionMedia({ mediaRoot, recordingScriptPat
   const regeneratedPoster = run("ffmpeg", [
     "-hide_banner", "-loglevel", "error", "-i", path.join(mediaRoot, poster.source_video),
     "-ss", String(poster.source_at_seconds), "-frames:v", "1",
-    "-vf", "scale=1440:810:force_original_aspect_ratio=decrease,pad=1440:1000:(ow-iw)/2:(oh-ih)/2:color=0x07111f",
+    "-vf", "scale=1440:810:force_original_aspect_ratio=decrease,pad=1440:1000:(ow-iw)/2:(oh-ih)/2:color=0x171714",
     "-map_metadata", "-1", "-f", "image2pipe", "-vcodec", "png", "-",
   ]);
   requireCondition(sha256(regeneratedPoster) === poster.sha256, "poster is not the committed execution-video frame");
@@ -233,8 +238,8 @@ export async function validatePf07ExecutionMedia({ mediaRoot, recordingScriptPat
       for (const [eventName, patterns] of Object.entries(events)) {
         const frame = frameBuffers.get(`${fileName}:${eventName}`);
         requireCondition(frame, `${fileName}: OCR frame is missing for ${eventName}`);
-        const rectangle = ocrRegions[fileName]?.[eventName];
-        const result = await worker.recognize(frame, rectangle ? { rectangle } : {});
+        const rectangle = ocrRegions[fileName]?.[eventName] || captionOcrRegion;
+        const result = await worker.recognize(frame, { rectangle });
         const text = result.data.text.replace(/\s+/g, " ");
         requireCondition(patterns.every((pattern) => pattern.test(text)), `${fileName}: frame text did not establish ${eventName}`);
       }

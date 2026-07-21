@@ -8,50 +8,50 @@
     "public_acceptance_matrix_sha256": "8ec29edad80c081d01a9921e5734b9279d5bb42db074e0cc630dad91fb758dda",
     "public_product_quality_record_sha256": "099e142170cd882e0e4aed06995ea6753944f464074c1ab4251bc4b6eedf0214",
     "public_restore_drill_record_sha256": "031e1e52f5e48fb4eb41b74d4fd4a277816efe12ec622fd95f2c5d72dbb8c868",
-    "execution_proof_sha256": "e8c2043cc604b6671a873f617728aac51a73c50758729a690f7783d2a8c9be11",
-    "recording_script_sha256": "6a67a0381f739c4259599b355dfd27b7bbec603040d8ff572af741c43dae4f7c",
-    "still_composition_script_sha256": "016a1fbfaa6cdf773a5866fabb12147cbabf798d2ef8de94ad235988ec76c37d"
+    "execution_proof_sha256": "36af69edb3f24e2451884915c73a2eddc286e030f81175eba7df20316ad967a9",
+    "recording_script_sha256": "4bc7ebf29d281735c696f96a72b360099f795e45997fc34453832e2f34ad8fec",
+    "still_composition_script_sha256": "a77e3e33e8f9c67fa3fb2df63e4af6ea43338b29249d681262228026555bb1ea"
   },
   "assets": {
     "main-image.png": {
-      "sha256": "e7396da5d76109a205e8a81cad3bf7ec93399a98ba86af2ad39a217178c0d89e",
+      "sha256": "50baee68d346cfb1decc17788dd4a8274df48b1c9f14712af9a9fbeac531ea2f",
       "width": 1200,
       "height": 1200,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "3bdbc5557402e1b1b8ced9e60bd684841d3c6c4fd883d0c809494becfa82cbdf",
+      "source_video_sha256": "ca34344506b3e8621aa7eb916ef95ec36be600d8ba147e727253568c7cac843a",
       "source_event_frame_sha256": {
-        "LIVE_STOREFRONT": "93ad1a8cf656d5e2c5e8826117d2d710702c60d1953a70e675f9519991d17c5a"
+        "LIVE_STOREFRONT": "48df3c59ed987b5b1fb5ecc687572ec7bf607c25721f4b1b3e1b90256678558b"
       }
     },
     "detail-01-overview.png": {
-      "sha256": "f21bf598bb2398693f86bba8399c569467dfe299168a74a503e24cde3732ae7b",
+      "sha256": "89c68ae89a95b11a06317d38cefb94f722659403af0751c1f54f452784d14242",
       "width": 1200,
       "height": 1350,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "3bdbc5557402e1b1b8ced9e60bd684841d3c6c4fd883d0c809494becfa82cbdf",
+      "source_video_sha256": "ca34344506b3e8621aa7eb916ef95ec36be600d8ba147e727253568c7cac843a",
       "source_event_frame_sha256": {
-        "LIVE_STOREFRONT": "93ad1a8cf656d5e2c5e8826117d2d710702c60d1953a70e675f9519991d17c5a",
-        "PRODUCT_SELECTED": "89c4c912452886a9dc82d194300f93818f560171c71e7bb6c80f5928a2120696",
-        "CHECKOUT_INPUT": "0f7572313279cbba95c5aa5d0a24474d2d9c7d6abf157d1001842dfe05f61110"
+        "LIVE_STOREFRONT": "48df3c59ed987b5b1fb5ecc687572ec7bf607c25721f4b1b3e1b90256678558b",
+        "PRODUCT_SELECTED": "a42d97fa59d2117c666387197154a171df9d802d85d3a0a59f458afc936284a4",
+        "CHECKOUT_INPUT": "92e0afa132d13cd2200eaaefc53093e056d9275593fbb321915f3cc49012110e"
       }
     },
     "detail-02-flow.png": {
-      "sha256": "a224cbfe265e7ad98caf48c77f206d99872a5dbcd0ebd9a48b6c84ca3725662a",
+      "sha256": "7e82d5798d08fda9182e332465af2d401c3a28c57390672914e679f1c587c577",
       "width": 1200,
       "height": 1350
     },
     "detail-03-result.png": {
-      "sha256": "548cbe000cc3d11a5ff7630da7201b7e8cf8941b43b806a1fe01a9c245dfa459",
+      "sha256": "5be06806a0aa701379bb5fafec90d4eed81e43f52d82b1bfe462e9cab972342f",
       "width": 1200,
       "height": 1350
     },
     "video-poster.png": {
-      "sha256": "6341a9fa7eea16e55c3f4953be446d67e5f91c0bf34d674f628e05d922b86346",
+      "sha256": "d3f60bf3d320ba4948ea62e47853ef336fff01b60e3b79c2b6be8e9444b1c857",
       "width": 1440,
       "height": 1000
     },
     "demo-video.mp4": {
-      "sha256": "3bdbc5557402e1b1b8ced9e60bd684841d3c6c4fd883d0c809494becfa82cbdf",
+      "sha256": "ca34344506b3e8621aa7eb916ef95ec36be600d8ba147e727253568c7cac843a",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
@@ -59,23 +59,23 @@
       "duration_seconds": 62,
       "frame_count": 1860,
       "sampled_frame_count": 62,
-      "unique_sampled_frames": 40,
+      "unique_sampled_frames": 39,
       "execution_proof": "execution-proof.json"
     },
     "recovery-clip.mp4": {
-      "sha256": "5e37d80cc7051c5bb3bfcaec84a59845dc276680321db6ca972011a7cb6207b0",
+      "sha256": "1d428f15ed887b5ef57566d9f34f5b31d6403f93c660a67e3485af414f76005c",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 17.566667,
-      "frame_count": 527,
-      "sampled_frame_count": 18,
-      "unique_sampled_frames": 15,
+      "duration_seconds": 24.266667,
+      "frame_count": 728,
+      "sampled_frame_count": 24,
+      "unique_sampled_frames": 17,
       "execution_proof": "execution-proof.json"
     },
     "execution-proof.json": {
-      "sha256": "e8c2043cc604b6671a873f617728aac51a73c50758729a690f7783d2a8c9be11",
+      "sha256": "36af69edb3f24e2451884915c73a2eddc286e030f81175eba7df20316ad967a9",
       "schema_version": 1,
       "classification": "PUBLIC_SANITIZED_EXECUTION_PROOF"
     }

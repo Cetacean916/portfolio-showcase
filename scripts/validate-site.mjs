@@ -11,8 +11,8 @@ const errors = [];
 const publicIds = ["oddroom", "pf01", "pf02", "pf03", "pf04", "pf06", "pf07"];
 const registrationIds = ["oddroom", "pf01", "pf02", "pf03", "pf04", "pf06"];
 const demoIds = ["pf01", "pf02", "pf03", "pf04"];
-const registrationRoot = path.resolve(root, "../등록 준비/00-크몽");
-const productRoot = path.resolve(root, "../유형별 포트폴리오");
+const registrationRoot = path.resolve(process.env.PORTFOLIO_REGISTRATION_ROOT || path.resolve(root, "../등록 준비/00-크몽"));
+const productRoot = path.resolve(process.env.PORTFOLIO_PRODUCT_ROOT || path.resolve(root, "../유형별 포트폴리오"));
 const publicTrialVideoPolicy = {
   pf01: {
     demoBuildId: "PF01_PUBLIC_TRIAL_20260711_01",
@@ -133,14 +133,14 @@ try {
 try {
   await validatePf07ExecutionMedia({
     mediaRoot: path.join(root, "assets/media/pf07"),
-    recordingScriptPath: path.join(productRoot, "07-OddRoom-Woo-OrderOps/scripts/record-public-media.mjs"),
+    recordingScriptPath: path.join(root, "assets/media/pf07/provenance/record-public-media.mjs"),
   });
 } catch (error) {
   errors.push(`pf07: execution media semantics failed: ${error.message}`);
 }
 try {
   const proof = JSON.parse(await fs.readFile(path.join(root, "assets/media/pf07/execution-proof.json"), "utf8"));
-  const stillBuilder = await fs.readFile(path.join(productRoot, "07-OddRoom-Woo-OrderOps/scripts/build-public-stills.mjs"));
+  const stillBuilder = await fs.readFile(path.join(root, "assets/media/pf07/provenance/build-public-stills.mjs"));
   const demo = proof.videos?.["demo-video.mp4"];
   const expectedFrames = Object.fromEntries(
     (demo?.timeline || [])
@@ -205,6 +205,69 @@ try {
   errors.push(`pf07: refinement media allowlist unavailable: ${error.message}`);
 }
 
+let pf07CurrentUiManifest;
+const pf07CurrentUiRoot = path.join(root, "assets/media/pf07/current-ui");
+try {
+  pf07CurrentUiManifest = JSON.parse(await fs.readFile(path.join(root, "assets/media/pf07/current-ui-manifest.json"), "utf8"));
+  const declared = pf07CurrentUiManifest.assets || [];
+  const actual = (await walk(pf07CurrentUiRoot)).map((absolute) => path.relative(pf07CurrentUiRoot, absolute).split(path.sep).join("/")).sort();
+  const declaredNames = declared.map((asset) => asset.filename).sort();
+  const expectedCoreSurfaces = ["storefront-home-desktop", "storefront-home-mobile", "storefront-shop-desktop", "product-detail-desktop", "operator-console-desktop", "runtime-hub-desktop"];
+  const surfaceSet = (locale) => declared.filter((asset) => asset.locale === locale).map((asset) => asset.surface).sort();
+  const captureBuilder = await fs.readFile(path.join(root, "assets/media/pf07/provenance/capture-final-stills.mjs"));
+  const mirroredPublicManifest = await fs.readFile(path.join(pf07RefinementRoot, "PUBLIC-ASSET-MANIFEST.txt"));
+  if (pf07CurrentUiManifest.schema !== "pf07.current-ui-manifest.v2"
+    || pf07CurrentUiManifest.state !== "CURRENT_REFERENCE_APPLIED"
+    || pf07CurrentUiManifest.classification !== "PUBLIC_SANITIZED_RUNTIME_CAPTURE"
+    || pf07CurrentUiManifest.package_build_id !== "pf07-build-e6996fd41e28b1ac42b8"
+    || pf07CurrentUiManifest.package_version !== "1.0.0"
+    || pf07CurrentUiManifest.artifact_set_sha256 !== "1609690b2688f8ee00f43b83d24194465b0d0055aeeeee1487937c9832d025be"
+    || pf07CurrentUiManifest.linux_package_manifest_sha256 !== "916ab331c0079abaa1269bd2c15c42bd112af3ea3923f57b335ad5332961e06f"
+    || pf07CurrentUiManifest.capture_builder !== "scripts/capture-final-stills.mjs"
+    || pf07CurrentUiManifest.capture_builder_sha256 !== sha256(captureBuilder)
+    || pf07CurrentUiManifest.source_public_asset_manifest_sha256 !== sha256(mirroredPublicManifest)
+    || pf07CurrentUiManifest.exact_file_count !== 14
+    || declared.length !== 14
+    || pf07CurrentUiManifest.locale_asset_counts?.ko !== 8
+    || pf07CurrentUiManifest.locale_asset_counts?.en !== 6
+    || new Set(declared.map((asset) => asset.asset_id)).size !== 14
+    || JSON.stringify(surfaceSet("en")) !== JSON.stringify(expectedCoreSurfaces.slice().sort())
+    || JSON.stringify(surfaceSet("ko")) !== JSON.stringify([...expectedCoreSurfaces, "cart-desktop", "checkout-desktop"].sort())
+    || JSON.stringify(actual) !== JSON.stringify(declaredNames)) {
+    errors.push("pf07: current UI manifest identity or exact file set failed");
+  }
+  for (const asset of declared) {
+    const bytes = await fs.readFile(path.join(pf07CurrentUiRoot, asset.filename));
+    const dimensions = [bytes.readUInt32BE(16), bytes.readUInt32BE(20)];
+    const chunks = [];
+    for (let offset = 8; offset + 12 <= bytes.length;) {
+      const length = bytes.readUInt32BE(offset);
+      chunks.push(bytes.subarray(offset + 4, offset + 8).toString("ascii"));
+      offset += 12 + length;
+    }
+    const governedSource = pf07RefinementAllowlist?.exact_file_set?.find((file) => file.relative_path === asset.source_ledger_relative_path);
+    if (!/^(?:ko|en)\//.test(asset.filename)
+      || !asset.filename.startsWith(`${asset.locale}/`)
+      || !/^[A-Z]{2}-.+/.test(asset.asset_id)
+      || !asset.source_asset_id
+      || asset.transformation !== "byte-for-byte-copy"
+      || !/^ACCEPTED_/.test(asset.direct_review_result || "")
+      || !governedSource
+      || governedSource.sha256 !== asset.sha256
+      || !/^[0-9a-f]{64}$/.test(asset.sha256)
+      || sha256(bytes) !== asset.sha256
+      || bytes.length !== asset.bytes
+      || bytes.subarray(0, 8).toString("hex") !== "89504e470d0a1a0a"
+      || dimensions[0] !== asset.width
+      || dimensions[1] !== asset.height
+      || chunks.some((type) => ["tEXt", "zTXt", "iTXt", "eXIf"].includes(type))) {
+      errors.push(`pf07: current UI asset integrity failed ${asset.filename}`);
+    }
+  }
+} catch (error) {
+  errors.push(`pf07: current UI manifest unavailable: ${error.message}`);
+}
+
 const assetHashes = {};
 for (const project of projects) {
   let registrationCaseRoot;
@@ -228,9 +291,17 @@ for (const project of projects) {
       const data = await fs.readFile(path.join(root, relative));
       assetHashes[relative] = sha256(data);
       if (project.id === "pf07") {
-        const candidateRelative = relative.replace(/^assets\/media\/pf07\/refinement\//, "");
-        const committed = pf07RefinementAllowlist?.exact_file_set?.find((file) => file.relative_path === candidateRelative);
-        if (!committed || committed.sha256 !== assetHashes[relative]) errors.push(`${relative}: PF07 refinement allowlist hash mismatch`);
+        if (relative.startsWith("assets/media/pf07/refinement/")) {
+          const candidateRelative = relative.replace(/^assets\/media\/pf07\/refinement\//, "");
+          const committed = pf07RefinementAllowlist?.exact_file_set?.find((file) => file.relative_path === candidateRelative);
+          if (!committed || committed.sha256 !== assetHashes[relative]) errors.push(`${relative}: PF07 refinement allowlist hash mismatch`);
+        } else if (relative.startsWith("assets/media/pf07/current-ui/")) {
+          const filename = relative.replace(/^assets\/media\/pf07\/current-ui\//, "");
+          const current = pf07CurrentUiManifest?.assets?.find((asset) => asset.filename === filename);
+          if (!current || current.sha256 !== assetHashes[relative]) errors.push(`${relative}: PF07 current UI manifest hash mismatch`);
+        } else {
+          errors.push(`${relative}: PF07 image is outside the refinement and current UI authorities`);
+        }
         if (relative.endsWith(".svg")) {
           const source = data.toString("utf8");
           if (!/<svg\b/i.test(source) || !/\bviewBox=["'][^"']+["']/i.test(source) || /<script\b/i.test(source)) errors.push(`${relative}: invalid or active SVG`);
@@ -355,7 +426,18 @@ for (const project of projects) {
     const stableReleasePrefix = "https://github.com/Cetacean916/oddroom-woo-orderops/releases/download/pf07-v1.0.0/";
     const expectedReleaseFiles = ["pf07-windows-x64-1.0.0.zip", "pf07-windows-kvm-test-kit-1.0.0.zip", "pf07-macos-universal-1.0.0.zip", "pf07-linux-x86_64-1.0.0.tar.gz", "pf07-linux-server-1.0.0.tar.gz"];
     const expectedPostCandidateIds = ["CASE-017", "CASE-018", "CASE-019", "CASE-020"];
+    const expectedConnectedIds = ["CASE-014", "CASE-015", "CASE-016"];
     if (!refinement?.repositoryUrl || !refinement?.mediaBase || !refinement?.locales?.ko || !refinement?.locales?.en) errors.push("pf07: bilingual refinement contract is incomplete");
+    if (project.caseUrl !== "case-pf07-ko.html"
+      || ![project.image, ...project.gallery].every((relative) => relative.startsWith("assets/media/pf07/current-ui/ko/"))) {
+      errors.push("pf07: canonical static case or Korean card media binding failed");
+    }
+    if (refinement?.currentCandidate?.buildId !== "pf07-build-e6996fd41e28b1ac42b8"
+      || refinement?.currentCandidate?.artifactSetSha256 !== "1609690b2688f8ee00f43b83d24194465b0d0055aeeeee1487937c9832d025be"
+      || refinement?.currentCandidate?.publicationState !== "LOCAL_CANDIDATE_NOT_PUBLISHED"
+      || refinement?.currentCandidate?.publishedBaselineTag !== "pf07-v1.0.0") {
+      errors.push("pf07: current candidate versus published baseline boundary failed");
+    }
     if (refinement?.releaseUrl !== "https://github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.0") errors.push("pf07: stable release page URL is missing or incorrect");
     if (!Array.isArray(refinement?.releaseAssets)
       || refinement.releaseAssets.length !== 5
@@ -370,6 +452,12 @@ for (const project of projects) {
       || refinement.postCandidateAssets.some((relative) => !pf07RefinementAllowlist?.exact_file_set?.some((file) => file.relative_path === relative))) {
       errors.push("pf07: post-candidate CASE-017 through CASE-020 mapping is incomplete or unbound");
     }
+    if (!Array.isArray(refinement?.connectedAssets)
+      || refinement.connectedAssets.length !== 3
+      || JSON.stringify(refinement.connectedAssets.map((relative) => relative.match(/CASE-0(?:14|15|16)/)?.[0])) !== JSON.stringify(expectedConnectedIds)
+      || refinement.connectedAssets.some((relative) => !pf07RefinementAllowlist?.exact_file_set?.some((file) => file.relative_path === relative))) {
+      errors.push("pf07: connected CASE-014 through CASE-016 mapping is incomplete or unbound");
+    }
     if (/[ㄱ-ㆎ가-힣]/.test(JSON.stringify(refinement?.locales?.en || {}))) errors.push("pf07: English-only copy contains Hangul");
     for (const locale of [refinement?.locales?.ko, refinement?.locales?.en]) {
       for (const field of ["title", "lead", "summary", "pathSteps", "surfaces", "recoveryLabels", "connectedLabels", "packages", "downloadLabels", "finalProofLabels", "fit", "nonFit", "boundary"]) {
@@ -383,8 +471,8 @@ for (const project of projects) {
 }
 
 const rootPublicFiles = [
-  "index.html", "inquiry-automation.html", "case.html", "404.html", "assets/css/styles.css", "assets/css/demo-integration.css", "assets/css/pf07-case.css",
-  "assets/js/projects.js", "assets/js/main.js", "assets/js/case.js", "assets/js/contact.js", "assets/media/pf07/media-manifest.json", "assets/media/pf07/media-allowlist.json", "site.webmanifest", "robots.txt", "sitemap.xml",
+  "index.html", "inquiry-automation.html", "case.html", "case-pf07-ko.html", "case-pf07-en.html", "404.html", "assets/css/styles.css", "assets/css/demo-integration.css", "assets/css/pf07-case.css",
+  "assets/js/projects.js", "assets/js/main.js", "assets/js/case.js", "assets/js/contact.js", "assets/media/pf07/media-manifest.json", "assets/media/pf07/media-allowlist.json", "assets/media/pf07/current-ui-manifest.json", "site.webmanifest", "robots.txt", "sitemap.xml",
 ];
 const demoRoot = path.join(root, "demos");
 let demoPublicFiles = [];
@@ -464,11 +552,13 @@ for (const relative of demoPublicFiles) {
   }
 }
 
-const [indexPage, servicePage, contactScript, sitemap] = await Promise.all([
+const [indexPage, servicePage, contactScript, sitemap, pf07KoPage, pf07EnPage] = await Promise.all([
   fs.readFile(path.join(root, "index.html"), "utf8"),
   fs.readFile(path.join(root, "inquiry-automation.html"), "utf8"),
   fs.readFile(path.join(root, "assets/js/contact.js"), "utf8"),
   fs.readFile(path.join(root, "sitemap.xml"), "utf8"),
+  fs.readFile(path.join(root, "case-pf07-ko.html"), "utf8"),
+  fs.readFile(path.join(root, "case-pf07-en.html"), "utf8"),
 ]);
 const validateCopyControls = (owner, content, expectedCount) => {
   const buttons = [...content.matchAll(/<button\b[^>]*data-copy-brief[^>]*aria-describedby="([^"]+)"[^>]*>\s*문의 내용 작성 양식 복사\s*<\/button>/g)];
@@ -489,7 +579,21 @@ for (const boundary of ["실제 Google Sheets·Slack·Email에 전송하지 않�
   if (!servicePage.includes(boundary)) errors.push(`inquiry-automation.html: missing boundary disclosure ${boundary}`);
 }
 if (!servicePage.includes('rel="canonical" href="https://cetacean916.github.io/portfolio-showcase/inquiry-automation.html"') || !sitemap.includes("https://cetacean916.github.io/portfolio-showcase/inquiry-automation.html")) errors.push("inquiry-automation.html: canonical URL or sitemap entry missing");
-if (!sitemap.includes("https://cetacean916.github.io/portfolio-showcase/case.html?id=pf07")) errors.push("sitemap.xml: PF07 case URL missing");
+for (const [language, source, locale, ogAsset] of [
+  ["ko", pf07KoPage, "ko_KR", "BRAND-007_og-ko.png"],
+  ["en", pf07EnPage, "en_US", "BRAND-008_og-en.png"],
+]) {
+  const canonicalUrl = `https://cetacean916.github.io/portfolio-showcase/case-pf07-${language}.html`;
+  if (!source.includes(`<html lang="${language}">`)
+    || !source.includes(`<meta property="og:locale" content="${locale}">`)
+    || !source.includes(`<meta property="og:url" content="${canonicalUrl}">`)
+    || !source.includes(`<link rel="canonical" href="${canonicalUrl}">`)
+    || !source.includes(`assets/media/pf07/refinement/brand/${ogAsset}`)
+    || !source.includes(`window.PF07_STATIC_CASE_ID = "pf07"; window.PF07_STATIC_LANGUAGE = "${language}";`)) {
+    errors.push(`case-pf07-${language}.html: static localized metadata or route authority failed`);
+  }
+  if (!sitemap.includes(canonicalUrl)) errors.push(`sitemap.xml: PF07 ${language} static case URL missing`);
+}
 for (const relative of rootPublicFiles.filter((item) => item.endsWith(".js"))) {
   const syntax = spawnSync("node", ["--check", path.join(root, relative)], { encoding: "utf8" });
   if (syntax.status !== 0) errors.push(`${relative}: JavaScript syntax check failed: ${syntax.stderr.trim()}`);

@@ -70,7 +70,7 @@ try {
     ["index-desktop", "index.html", 1440, 1000], ["index-tablet", "index.html", 900, 900], ["index-mobile", "index.html", 390, 844], ["index-small", "index.html", 360, 740],
     ["service-desktop", "inquiry-automation.html", 1440, 1000], ["service-tablet", "inquiry-automation.html", 900, 900], ["service-mobile", "inquiry-automation.html", 390, 844], ["service-small", "inquiry-automation.html", 360, 740],
     ...["oddroom", "pf01", "pf02", "pf03", "pf04", "pf06"].flatMap((id) => [[`case-${id}-desktop`, `case.html?id=${id}`, 1440, 1000], [`case-${id}-mobile`, `case.html?id=${id}`, 390, 844]]),
-    ...["ko", "en"].flatMap((language) => [[`case-pf07-${language}-desktop`, `case.html?id=pf07&lang=${language}`, 1440, 1000], [`case-pf07-${language}-tablet`, `case.html?id=pf07&lang=${language}`, 768, 900], [`case-pf07-${language}-mobile`, `case.html?id=pf07&lang=${language}`, 390, 844]]),
+    ...["ko", "en"].flatMap((language) => [[`case-pf07-${language}-desktop`, `case-pf07-${language}.html`, 1440, 1000], [`case-pf07-${language}-tablet`, `case-pf07-${language}.html`, 768, 900], [`case-pf07-${language}-mobile`, `case-pf07-${language}.html`, 390, 844]]),
     ["demo-pf01-narrow", "demos/pf01/", 320, 740],
     ...["pf01", "pf02", "pf03", "pf04"].flatMap((id) => [
       [`demo-${id}-desktop`, `demos/${id}/`, 1440, 1000],
@@ -142,6 +142,12 @@ try {
         cards: document.querySelectorAll('[data-project-card]').length,
         caseRoot: Boolean(document.querySelector('.case-page,.pf07-case')),
         pf07Root: Boolean(document.querySelector('.pf07-case')),
+        pf07CurrentUiSources: [...document.querySelectorAll('.pf07-hero-media img,.pf07-current-surface img')].map((node) => node.getAttribute('src') || node.currentSrc),
+        pf07ConnectedEvidenceSources: [...document.querySelectorAll('[data-connected-evidence] img')].map((node) => node.getAttribute('src') || node.currentSrc),
+        pf07HistoricalEvidenceSources: [...document.querySelectorAll('[data-historical-release-evidence]')].map((node) => node.getAttribute('href')),
+        pf07VideoCount: document.querySelectorAll('.pf07-case video').length,
+        pf07VideoLanguageBoundary: Boolean(document.querySelector('[data-video-language-boundary]')),
+        pf07CandidateReleaseBoundary: Boolean(document.querySelector('[data-candidate-release-boundary]')),
         htmlLanguage: document.documentElement.lang,
         hangulCount: (document.body.innerText.match(/[ㄱ-ㆎ가-힣]/g) || []).length,
         serviceRoot: Boolean(document.querySelector('.service-intro')),
@@ -169,10 +175,23 @@ try {
     if (page.startsWith("index")) assert(audit.cards === 7, `${name}: expected 7 cards, found ${audit.cards}`);
     if (page.startsWith("inquiry-automation")) assert(audit.serviceRoot, `${name}: service page did not render`);
     if (page.startsWith("case")) assert(audit.caseRoot, `${name}: case did not render`);
-    if (page.includes("id=pf07")) {
+    if (page.startsWith("case-pf07-") || page.includes("id=pf07")) {
       assert(audit.pf07Root, `${name}: PF07 refinement case did not render`);
-      if (page.includes("lang=en")) assert(audit.htmlLanguage === "en" && audit.hangulCount === 0, `${name}: English-only presentation failed lang=${audit.htmlLanguage} hangul=${audit.hangulCount}`);
-      else assert(audit.htmlLanguage === "ko", `${name}: Korean presentation lang mismatch ${audit.htmlLanguage}`);
+      assert(audit.pf07ConnectedEvidenceSources.length === 3
+        && ["CASE-014", "CASE-015", "CASE-016"].every((id) => audit.pf07ConnectedEvidenceSources.some((source) => source.includes(id))), `${name}: connected evidence is not buyer-reachable ${JSON.stringify(audit.pf07ConnectedEvidenceSources)}`);
+      assert(audit.pf07HistoricalEvidenceSources.length === 4
+        && ["CASE-017", "CASE-018", "CASE-019", "CASE-020"].every((id) => audit.pf07HistoricalEvidenceSources.some((source) => source.includes(id))), `${name}: published baseline evidence is not buyer-reachable ${JSON.stringify(audit.pf07HistoricalEvidenceSources)}`);
+      assert(audit.pf07CandidateReleaseBoundary, `${name}: current candidate and published baseline are not visibly separated`);
+      const english = page.includes("lang=en") || page.includes("-en.html");
+      const localeSegment = english ? "/current-ui/en/" : "/current-ui/ko/";
+      assert(audit.pf07CurrentUiSources.length === 6 && audit.pf07CurrentUiSources.every((source) => source.includes(localeSegment)), `${name}: localized current UI source binding failed ${JSON.stringify(audit.pf07CurrentUiSources)}`);
+      if (english) {
+        assert(audit.htmlLanguage === "en" && audit.hangulCount === 0, `${name}: English-only presentation failed lang=${audit.htmlLanguage} hangul=${audit.hangulCount}`);
+        assert(audit.pf07VideoCount === 0 && audit.pf07VideoLanguageBoundary, `${name}: Korean runtime video leaked into the English presentation`);
+      } else {
+        assert(audit.htmlLanguage === "ko", `${name}: Korean presentation lang mismatch ${audit.htmlLanguage}`);
+        assert(audit.pf07VideoCount === 2 && !audit.pf07VideoLanguageBoundary, `${name}: Korean execution media presentation failed`);
+      }
     }
     if (page.startsWith("demos/")) {
       assert(audit.isDemo, `${name}: demo did not render`);
@@ -503,7 +522,7 @@ try {
   const rootFocus = await evaluate(`(() => { const node=document.querySelector('[data-filter="all"]'); node.focus(); const style=getComputedStyle(node); return { outline: style.outlineStyle, color: style.outlineColor }; })()`);
   assert(rootFocus.outline === "solid" && rootFocus.color === "rgb(111, 74, 0)", `root focus contrast token mismatch ${JSON.stringify(rootFocus)}`);
   const filterAudit = await evaluate(`(() => { document.querySelector('[data-filter="backend"]').click(); return [...document.querySelectorAll('[data-project-card]')].filter((card) => !card.hidden).map((card) => card.querySelector('h3').textContent.trim()); })()`);
-  assert(filterAudit.length === 2 && filterAudit.some((title) => title.includes("Spring Boot")) && filterAudit.some((title) => title.includes("OddRoom OrderOps")), "filter interaction failed");
+  assert(filterAudit.length === 2 && filterAudit.some((title) => title.includes("Spring Boot")) && filterAudit.some((title) => title.includes("OFFSET / PF07")), "filter interaction failed");
 
   await evaluate(`(() => {
     window.__copiedBrief = '';

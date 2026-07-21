@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "checkedAt": "2026-07-21T09:45:47.391Z",
+  "checkedAt": "2026-07-21T19:34:33.385Z",
   "products": [
     "oddroom",
     "pf01",
@@ -28,6 +28,8 @@
     "index.html",
     "inquiry-automation.html",
     "case.html",
+    "case-pf07-ko.html",
+    "case-pf07-en.html",
     "404.html",
     "assets/css/styles.css",
     "assets/css/demo-integration.css",
@@ -38,6 +40,7 @@
     "assets/js/contact.js",
     "assets/media/pf07/media-manifest.json",
     "assets/media/pf07/media-allowlist.json",
+    "assets/media/pf07/current-ui-manifest.json",
     "site.webmanifest",
     "robots.txt",
     "sitemap.xml",
@@ -89,9 +92,9 @@
     "assets/media/pf06/detail-02-flow.png": "10b5aed20af5f1fac03ba9f98915b67ec49726e00f578078c0adfd1e695da03d",
     "assets/media/pf06/detail-03-result.png": "cb936894d0de5741e8938462e9067e48d313e0ecf16a6a5167a652daa4f89adb",
     "assets/media/pf06/demo-video.mp4": "300cc6c4c27b5a121c6056ecc9fbb47b3e6b049a37f7a9068ac2c4449befbb73",
-    "assets/media/pf07/refinement/case/CASE-001_case-hero_ko.svg": "8dc5861c8b2450824dc1fc4358ed334c8dbb1fa824b92598be6f7014c54e4907",
-    "assets/media/pf07/refinement/case/CASE-002_system-boundary_ko.svg": "6b909a3b40b7ea3d6fb84ea923569b87a4eeb1301ce5073f31eaf511d89cfe27",
-    "assets/media/pf07/refinement/own-ui-captures/during-implementation/CASE-011_admin-retry-wait.png": "f5236a52a2a2dbcd8f054f538a5b29af8f2f894c7bad24fcf67c1d91ba5fbf24",
-    "assets/media/pf07/refinement/own-ui-captures/during-implementation/CASE-012_admin-recovered.png": "2082ab0d1db852d56ba67829c10c950df91a5b93d1c60790d91d590df3ac0588"
+    "assets/media/pf07/current-ui/ko/storefront-home-desktop.png": "edfa9dd74d8bd396109db553f1c6382100592c13d3451d64c303eca605436cc0",
+    "assets/media/pf07/current-ui/ko/storefront-shop-desktop.png": "677e4226d75e9a82a8e422780802537d2e22ef9ef796a983269ee6beaa565c4b",
+    "assets/media/pf07/current-ui/ko/operator-console-desktop.png": "9210f16a77346a65ad14a5c695aa372d9b6038c3df9adaa322678803d29dc8a8",
+    "assets/media/pf07/current-ui/ko/runtime-hub-desktop.png": "9304dfdc2bb3af791885660a431e86c000feb2cd0128712b58d50f1b090cd080"
   }
 }

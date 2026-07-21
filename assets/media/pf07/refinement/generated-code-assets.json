@@ -12,7 +12,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "viewBox 0 0 388 72",
       "role": "BRAND-001",
-      "sha256": "51b90e0bded56ca5fcf611fabb1643ddc74f66968c5a7d28dd1bc62d054e161c",
+      "sha256": "228fc7308290d3d7ac03f13c1e8dcd7b3f01651902407dac6edc591f95f0b752",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -20,7 +20,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "viewBox 0 0 64 64",
       "role": "BRAND-002",
-      "sha256": "a48ded6625125a284bd46c17fd92eefc4e0844e7f78ed018798061db2f71dd0f",
+      "sha256": "08ced7c45c2707a5f54192afb0aea846330624ad58d2714b6b18451e7c65b2b5",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -28,7 +28,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "viewBox 0 0 64 64",
       "role": "BRAND-003",
-      "sha256": "53b8a06f973b9e119a66c9fab6ab7036c1988835e5ec50c2f81682092520aa38",
+      "sha256": "7fc58a6a879467a60ca9b8916b81d8c72ca139785d7afafe7c594195add94daa",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -36,7 +36,7 @@
       "media_type": "image/png",
       "dimensions": "1024x1024",
       "role": "raster derivative of brand/BRAND-003_favicon.svg",
-      "sha256": "2802e2f10897a728cdd2b3c44295f66dbf0ff89ae37e9b0ed62cccf1ea2c728c",
+      "sha256": "393b92ac92fa9fe31abac32d6ef896ed8abed8a6a932f945ad54199c18bcd97e",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -44,7 +44,7 @@
       "media_type": "image/png",
       "dimensions": "16x16",
       "role": "raster derivative of brand/BRAND-003_favicon.svg",
-      "sha256": "6621a714c20d32c63526073cdc9b02f3c3f7637f9a22f99ba95e9e6fdd00ca27",
+      "sha256": "326d86f4d577364a93f5bea555b49c4a71b6855301bab639e61a92bd2968075d",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -52,7 +52,7 @@
       "media_type": "image/png",
       "dimensions": "180x180",
       "role": "raster derivative of brand/BRAND-003_favicon.svg",
-      "sha256": "47d79e412a4f96ec23d6204ab343da907792abdb67dd04638c0a25b361e6f13f",
+      "sha256": "018d0804494ed84f1eb9e0540212f2326ffdf1852e78d5c4e9c92f4ea3f4003b",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -60,7 +60,7 @@
       "media_type": "image/png",
       "dimensions": "32x32",
       "role": "raster derivative of brand/BRAND-003_favicon.svg",
-      "sha256": "fce999e68e5f4dee24fb11b0a3f0b1aa18dedf1e51710147699fc9a2cc90a3c1",
+      "sha256": "703be41f2b681cdd942c49778f254281591f9ede91557a15ddec6d8f38a5f9e2",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -68,7 +68,7 @@
       "media_type": "image/png",
       "dimensions": "512x512",
       "role": "raster derivative of brand/BRAND-003_favicon.svg",
-      "sha256": "e220fe2fd31f3b6cc2d5f93349a2b4e73bf43bd4a9be27c2b6f6dd888485ae2c",
+      "sha256": "daa2a00a9a481b3e0b056702d6cb420ee091ead28862374a3578dfdb971b7256",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -76,7 +76,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "viewBox 0 0 388 72",
       "role": "BRAND-004",
-      "sha256": "6c31fe42ed239c60e4381a60d7836baa6123762eba71a20cc77b3631a18539bb",
+      "sha256": "a22ba7fb6cbfe5be200a52da0f91ad83e0c796bc9d425fd6cab51adf2ae66d04",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -84,7 +84,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "viewBox 0 0 388 72",
       "role": "BRAND-005",
-      "sha256": "df88aa9f31a1356328c2f598f6e498ffa692571fc0aac083d26a414e36533e41",
+      "sha256": "fc1c68ad78094a2e12b2aa08d3cce019ad2d646bbcc9bc9fe7e1f42e79c4e642",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -92,7 +92,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "viewBox 0 0 2400 1600",
       "role": "BRAND-006",
-      "sha256": "3aed321f42a03ad73dc944e258c15a20eafbbf2968fc48202527e73ffbb35fb5",
+      "sha256": "ab18f6ebbc2ce474213faba50c28cb96c2d5af747dc5b031db0bf37c751c530e",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -100,7 +100,7 @@
       "media_type": "image/png",
       "dimensions": "1200x630",
       "role": "raster derivative of brand/BRAND-007_og-ko.svg",
-      "sha256": "35e5e5de6349d2af5ab825f3a1d1745d5fd742b6e52a06d95c08cda247ff914f",
+      "sha256": "5e752e06361c6b9013a1d9ded0d88d82a6f0b7e72165876f44cc39edb139029a",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -108,7 +108,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1200x630",
       "role": "BRAND-007",
-      "sha256": "4500c3107810c2cc46a43fd194f34fab5ba6b655c1c1c8b6b79af579e0904c30",
+      "sha256": "32487d3b356210aab2d2dc85cd643786eae1c9042fb82090b91cd9da5c5e5ea9",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -116,7 +116,7 @@
       "media_type": "image/png",
       "dimensions": "1200x630",
       "role": "raster derivative of brand/BRAND-008_og-en.svg",
-      "sha256": "e6348200c11d53879c8ce9d4ea77d77a371e5b18818b42313a2aa4b5c2a95afe",
+      "sha256": "717917a045db46387e4fbc1deaf0aeb36eb74e88bf25b42c30366a4205208e19",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -124,7 +124,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1200x630",
       "role": "BRAND-008",
-      "sha256": "19bb27509d43d759542d000e2904546b8912023af84761a19425ec5d948ee82f",
+      "sha256": "26a3bdf1d349765da9a008cb0b5fe636b74ae779663082787e12221606ea30f9",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -132,7 +132,7 @@
       "media_type": "image/png",
       "dimensions": "1600x1200",
       "role": "raster derivative of brand/BRAND-009_neutral-fallback.svg",
-      "sha256": "4d8b106d329ee3a77d4504e034d4e2292a7a042c6061e28bd0073182559ccfc6",
+      "sha256": "92eee139efb864a93d884eb865aee125e6e89846c5be3f7920cfe85bca114905",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -140,7 +140,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x1200",
       "role": "BRAND-009",
-      "sha256": "6c598f4a0c16cf781cf23e43b33787581ac08e69a5cf8fe3aaf588b77103531d",
+      "sha256": "e624778e4c385bba2b10268178e08434829b9bc3b7d36f4400f12183932ad0ee",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -148,7 +148,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2880x1800",
       "role": "CASE-001",
-      "sha256": "a670b814b22a14318ab6633dc6d91f1e281bb0a44cf83eaa6afa7858c046e979",
+      "sha256": "f509ca868ba67417908d85e33d4014c1384f63a8e620574f6486dac37cbba672",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -156,7 +156,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2880x1800",
       "role": "CASE-001",
-      "sha256": "8dc5861c8b2450824dc1fc4358ed334c8dbb1fa824b92598be6f7014c54e4907",
+      "sha256": "e9722f211caa6f8053003c105c70029b3ddf40a767b114b40d102c7c79c4f288",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -164,7 +164,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1200",
       "role": "CASE-002",
-      "sha256": "c4b5e61eeae381c59dfd6aaf22dc442621a08421df418be548835af2f57e4833",
+      "sha256": "8e33fb10525c7187254416be134161613fa3f4fdcce088326fedca1d7ace5961",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -172,7 +172,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1200",
       "role": "CASE-002",
-      "sha256": "6b909a3b40b7ea3d6fb84ea923569b87a4eeb1301ce5073f31eaf511d89cfe27",
+      "sha256": "c156324c24c6cc7b57f7df559e4361f29c0d6ee5b9d130cb0bdd3b3114c1cf0f",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -180,7 +180,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1200",
       "role": "CASE-003",
-      "sha256": "72becfab899c8197a1ce3aa74d921a8fd74930dc3691d7c3afd0dbd59a8b8bce",
+      "sha256": "10c4806fb6418a89b862b0b651fc91a604e33fbb9d46f2a3a7b5a9c6225976d8",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -188,7 +188,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1200",
       "role": "CASE-003",
-      "sha256": "8bc5918ff2d9c2065b55bcb32759685f86298282e06be897db769e7939a7b042",
+      "sha256": "861fbe215a89c7cda7745eefc60ddf975b1e4c51959b8deec9c739165bb0f76b",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -196,7 +196,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1200",
       "role": "CASE-004",
-      "sha256": "45334bc82b756e17640c75680244078a010231a97f77fd9aacf6f49d1e3363b9",
+      "sha256": "2d52f4e7f790863ef1125522e4bd70098cb006a8085a7d565d6dcd968c3f45bd",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -204,7 +204,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1200",
       "role": "CASE-004",
-      "sha256": "34f3c484bf5a683164dbb12418396ba0515728554ab7f3602a10927c3daabb84",
+      "sha256": "e5f4727859dc6b49eb346f4f6987ddbb27080d465d4c182d179d66350d8e8935",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -212,7 +212,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x600",
       "role": "COMMERCE-001",
-      "sha256": "eec98e9e08c90c9ef882888251a8c460f1b730eda14c43ca0ea19aa7ce973fd8",
+      "sha256": "8235af3f7c58d92ad995380a1df6d065b03deb8843a91db7524232442898cec3",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -220,7 +220,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x1200",
       "role": "COMMERCE-002",
-      "sha256": "cc76d56a03d1d7b84aad16a892c1ca87add2fc2b654ea08be79c35ec4c183b34",
+      "sha256": "2081ec12c2d376fd57f3f5b46bd203555a4c99505ca02e638ab2fc456f067914",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -228,7 +228,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x1200",
       "role": "COMMERCE-003",
-      "sha256": "9f1f7aa502bf5e10fd41a668f50de91ac6920c4a4ff4e117fe6360839789927b",
+      "sha256": "79450a3c487f1bd40b93a2752c0b1928631c837f8e2dde2bd086eeb416c97a05",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -236,7 +236,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x1200",
       "role": "COMMERCE-004",
-      "sha256": "2c0f65338a9b076d9a0cadaaab80bc43b6fec7bc28ef3c160392e81a5ae7f656",
+      "sha256": "9373cd582c6263d126276867160d732333c99c3f5364f19bddcee83f1098178e",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -244,7 +244,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x1200",
       "role": "COMMERCE-005",
-      "sha256": "3274136816b70c4983f2cd67ae357969bd2aa06bc7f736a2785b9962aea7f89b",
+      "sha256": "1114916f99c3a0789cd7f6f2437a0a1a7bcfab82cb83560cee312fed1b0cd973",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -252,7 +252,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x1200",
       "role": "COMMERCE-006",
-      "sha256": "88af99e0bcef07373e811234a664c1b64498b7abd4152a769e908d5ffb2c8334",
+      "sha256": "470fbc982fcec4bfacf86e3ddea6ec32bf01ff462d9a3ba10b89ecd93b6e1b3d",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -260,7 +260,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1600",
       "role": "HOME-004",
-      "sha256": "db5a46d7c1e50063f1d58fbc78eaa38e3fd778a8b255d06fd159a0dae2bf8bb3",
+      "sha256": "435d14fec082d19cc78c3d1d77a5676cb085d7737638dc23692c22171001fb02",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -268,7 +268,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1600",
       "role": "HOME-004",
-      "sha256": "b4d8456de990127b677dc9fba55d9f6da73e925a7f29bc82b57f8698a21f444b",
+      "sha256": "93533fb3b08ad58239a43821f90e61e1241372c89977210cb64adb90bea7a5b9",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -276,7 +276,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1600",
       "role": "HOME-005",
-      "sha256": "b40e20dd65756592be99b38d51c9ec63f9fec4956bdd84233ece45e12186414a",
+      "sha256": "31c5b80c638350d751055224bf02a107adf37b7a59d483f3333863ad6878d2d7",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -284,7 +284,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "2400x1600",
       "role": "HOME-005",
-      "sha256": "941c457bba493f876e19aeb20017ccb246ef28964c8cc8f02219eed12d4b666f",
+      "sha256": "9b8b6bfad1cb5ab10c7eb9b4cf6d81d0797c0e4eaa8713481277e2e17ccf0175",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -292,7 +292,7 @@
       "media_type": "image/png",
       "dimensions": "1024x1024",
       "role": "raster derivative of runner/RUN-001_windows.svg",
-      "sha256": "ccd438335a131149a5d19de5009746988fd6423b001450f55a3090fcadc0acf3",
+      "sha256": "51deb3395f14d93e7104610fb5d9a4179df19872a6a24c665d93eabda623c5f5",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -300,7 +300,7 @@
       "media_type": "image/x-icon",
       "dimensions": "multi-resolution",
       "role": "RUN-001",
-      "sha256": "e6059c7c80d2eed2800b63da3e12bc2d8a447dad8d0d1f48928d9a4cac7187b4",
+      "sha256": "f502c2bdde5eee5aff9113cbd155fccc00b429a791a833062699fffc55ebb83e",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -308,7 +308,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1024x1024",
       "role": "RUN-001",
-      "sha256": "ff0e81811260c60d9bc185cefd71f0a22d5e0cb0d72a1c695b48cf4952352a21",
+      "sha256": "e18bf01ebbe1d833b7fce71ba303c179b7bcb465d17af64e02221685eb2ab469",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -316,7 +316,7 @@
       "media_type": "image/png",
       "dimensions": "1024x1024",
       "role": "raster derivative of runner/RUN-002_macos.svg",
-      "sha256": "90bfb4c9abbe04e119b7d2faa0c5d3828ba66a16c6c5f854addf4f3abd47ed39",
+      "sha256": "589638038b647e3fc5eafb0492864de032f8251b227fee748bee5d54ca195809",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -324,7 +324,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1024x1024",
       "role": "RUN-002",
-      "sha256": "f369874e372ca2e546453b40844e2c31d0eb6482f38a54c0cf1229953aa48f64",
+      "sha256": "83492cd1d3dc5e9f423c534193a79516dd60e2c607ac47f8d143c5f61b73f098",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -332,7 +332,7 @@
       "media_type": "image/png",
       "dimensions": "512x512",
       "role": "raster derivative of runner/RUN-003_linux.svg",
-      "sha256": "c975c6b1c2aff018c1dd35a62e676eb6ae3ebc36e1f3a539c9d3a7a83f129156",
+      "sha256": "8975e3d46c0cdaed86846090f82e5e296de6d1353d8c97d975d48d43469434ee",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -340,7 +340,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1024x1024",
       "role": "RUN-003",
-      "sha256": "547b356ad4664e7477de34376dc93cfb91a7d54196224c655432ec40b7a8d8f4",
+      "sha256": "87042307fcbf2ade3de537abca07653a4d6a7fcc1e2b7fd342223f085790b5a8",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -348,7 +348,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x900",
       "role": "RUN-004",
-      "sha256": "8f445a98a443a09619133481911bc54ff0cbd633c3c8e7d533ff534de234fe3e",
+      "sha256": "8a3b79519c75ba8a2b15fb276bb22b089bcd4dc0e52c908ecc7c60d0dcb3b86a",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -356,7 +356,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x900",
       "role": "RUN-005",
-      "sha256": "033b07009b75c0bcb33f27d0431f5a90f514a18bbe543c9e2609f43b3ca8c5cd",
+      "sha256": "6b6a90490750047ae2d69fb8171ca585e5a5a0f66ba189c81d59eaa4a5b01d17",
       "review_result": "ACCEPTED_CODE_ASSET"
     },
     {
@@ -364,7 +364,7 @@
       "media_type": "image/svg+xml",
       "dimensions": "1600x900",
       "role": "RUN-006",
-      "sha256": "908906c3eeae30bb655f7fee8fa054459198566f4447ea545f299378a14e56d8",
+      "sha256": "0122968851316e017d4b02ea2e2ca35f9b6b8cffd056cd3a7083f03730aff87f",
       "review_result": "ACCEPTED_CODE_ASSET"
     }
   ]

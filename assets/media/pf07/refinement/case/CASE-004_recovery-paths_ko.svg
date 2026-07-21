@@ -1,48 +1,48 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1200" viewBox="0 0 2400 1200" role="img" aria-label="PF07 recovery paths ko">
   <defs>
-    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#d8d3c8" stroke-width="1" opacity=".45"/></pattern>
-    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#17201d" flood-opacity=".12"/></filter>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#d8d6cf" stroke-width="1" opacity=".45"/></pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="0" stdDeviation="0" flood-opacity="0"/></filter>
   </defs>
   
-    <rect width="2400" height="1200" fill="#f5f2ea"/><rect width="2400" height="1200" fill="url(#grid)"/>
-    <text x="120" y="164" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="64" font-weight="800" text-anchor="start">실패 종류마다 복구 경로를 분리합니다.</text><text x="120" y="226" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" font-weight="800" text-anchor="start">CASE-004 · RECOVERY</text>
-    <g transform="translate(120 360)" filter="url(#shadow)"><rect width="2160" height="180" rx="32" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+    <rect width="2400" height="1200" fill="#f3f0e7"/><rect width="2400" height="1200" fill="url(#grid)"/>
+    <text x="120" y="164" fill="#171714" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="64" font-weight="800" text-anchor="start">실패 종류마다 복구 경로를 분리합니다.</text><text x="120" y="226" fill="#667045" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" font-weight="800" text-anchor="start">CASE-004 · RECOVERY</text>
+    <g transform="translate(120 360)" filter="url(#shadow)"><rect width="2160" height="180" rx="32" fill="#ffffff" stroke="#d8d6cf" stroke-width="3"/>
       
   <g><rect x="48" y="58" width="480" height="64" rx="32" fill="#eef2ec" stroke="#c6d5ca" stroke-width="2"/>
-  <text x="288" y="100" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">일시 오류</text></g>
-      <path d="M590 90h230" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round"/><path d="m800 66 34 24-34 24" fill="none" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="288" y="100" fill="#667045" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">일시 오류</text></g>
+      <path d="M590 90h230" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round"/><path d="m800 66 34 24-34 24" fill="none" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
       
   <g><rect x="880" y="58" width="480" height="64" rx="32" fill="#edf0f2" stroke="#c2ced3" stroke-width="2"/>
-  <text x="1120" y="100" fill="#45697b" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">제한 재시도</text></g>
-      <path d="M1422 90h230" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round"/><path d="m1632 66 34 24-34 24" fill="none" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1120" y="100" fill="#536475" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">제한 재시도</text></g>
+      <path d="M1422 90h230" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round"/><path d="m1632 66 34 24-34 24" fill="none" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
       
   <g><rect x="1712" y="58" width="400" height="64" rx="32" fill="#eef2ec" stroke="#c6d5ca" stroke-width="2"/>
-  <text x="1912" y="100" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">같은 outbox</text></g>
-    </g><g transform="translate(120 596)" filter="url(#shadow)"><rect width="2160" height="180" rx="32" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+  <text x="1912" y="100" fill="#667045" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">같은 outbox</text></g>
+    </g><g transform="translate(120 596)" filter="url(#shadow)"><rect width="2160" height="180" rx="32" fill="#ffffff" stroke="#d8d6cf" stroke-width="3"/>
       
   <g><rect x="48" y="58" width="480" height="64" rx="32" fill="#f6ece9" stroke="#ddafa5" stroke-width="2"/>
-  <text x="288" y="100" fill="#a85545" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">결과 불명</text></g>
-      <path d="M590 90h230" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round"/><path d="m800 66 34 24-34 24" fill="none" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="288" y="100" fill="#b42318" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">결과 불명</text></g>
+      <path d="M590 90h230" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round"/><path d="m800 66 34 24-34 24" fill="none" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
       
   <g><rect x="880" y="58" width="480" height="64" rx="32" fill="#edf0f2" stroke="#c2ced3" stroke-width="2"/>
-  <text x="1120" y="100" fill="#45697b" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">운영자 판정</text></g>
-      <path d="M1422 90h230" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round"/><path d="m1632 66 34 24-34 24" fill="none" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1120" y="100" fill="#536475" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">운영자 판정</text></g>
+      <path d="M1422 90h230" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round"/><path d="m1632 66 34 24-34 24" fill="none" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
       
   <g><rect x="1712" y="58" width="400" height="64" rx="32" fill="#eef2ec" stroke="#c6d5ca" stroke-width="2"/>
-  <text x="1912" y="100" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">중복 방지</text></g>
-    </g><g transform="translate(120 832)" filter="url(#shadow)"><rect width="2160" height="180" rx="32" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+  <text x="1912" y="100" fill="#667045" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">중복 방지</text></g>
+    </g><g transform="translate(120 832)" filter="url(#shadow)"><rect width="2160" height="180" rx="32" fill="#ffffff" stroke="#d8d6cf" stroke-width="3"/>
       
   <g><rect x="48" y="58" width="480" height="64" rx="32" fill="#eef2ec" stroke="#c6d5ca" stroke-width="2"/>
-  <text x="288" y="100" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">누락 의심</text></g>
-      <path d="M590 90h230" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round"/><path d="m800 66 34 24-34 24" fill="none" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="288" y="100" fill="#667045" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">누락 의심</text></g>
+      <path d="M590 90h230" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round"/><path d="m800 66 34 24-34 24" fill="none" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
       
   <g><rect x="880" y="58" width="480" height="64" rx="32" fill="#edf0f2" stroke="#c2ced3" stroke-width="2"/>
-  <text x="1120" y="100" fill="#45697b" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">reconcile</text></g>
-      <path d="M1422 90h230" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round"/><path d="m1632 66 34 24-34 24" fill="none" stroke="#d8d3c8" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
+  <text x="1120" y="100" fill="#536475" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">reconcile</text></g>
+      <path d="M1422 90h230" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round"/><path d="m1632 66 34 24-34 24" fill="none" stroke="#d8d6cf" stroke-width="10" stroke-linecap="round" stroke-linejoin="round"/>
       
   <g><rect x="1712" y="58" width="400" height="64" rx="32" fill="#eef2ec" stroke="#c6d5ca" stroke-width="2"/>
-  <text x="1912" y="100" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">새 사실만 보충</text></g>
+  <text x="1912" y="100" fill="#667045" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">새 사실만 보충</text></g>
     </g>
   
 </svg>
