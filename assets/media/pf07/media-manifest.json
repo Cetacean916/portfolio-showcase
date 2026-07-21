@@ -5,9 +5,9 @@
   "registration_manifest_case_count": 6,
   "metadata_stripped": true,
   "source_commitments": {
-    "public_acceptance_matrix_sha256": "3c3e3b48cd43baa544f49fed3ae022071731dc1ef74892ce1268c2fbcda909a1",
-    "public_product_quality_record_sha256": "b8b08f532dd1ee2be838e1a3cc54ad7525632d254d7879bfe788db7b43c95ab8",
-    "public_restore_drill_record_sha256": "80945d694bb4d86f9c29fbe479c94843bcf5c00a2345a60b238199f57595a5ed",
+    "public_acceptance_matrix_sha256": "8ec29edad80c081d01a9921e5734b9279d5bb42db074e0cc630dad91fb758dda",
+    "public_product_quality_record_sha256": "099e142170cd882e0e4aed06995ea6753944f464074c1ab4251bc4b6eedf0214",
+    "public_restore_drill_record_sha256": "031e1e52f5e48fb4eb41b74d4fd4a277816efe12ec622fd95f2c5d72dbb8c868",
     "execution_proof_sha256": "e8c2043cc604b6671a873f617728aac51a73c50758729a690f7783d2a8c9be11",
     "recording_script_sha256": "6a67a0381f739c4259599b355dfd27b7bbec603040d8ff572af741c43dae4f7c",
     "still_composition_script_sha256": "016a1fbfaa6cdf773a5866fabb12147cbabf798d2ef8de94ad235988ec76c37d"
