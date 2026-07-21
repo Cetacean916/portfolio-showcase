@@ -1,60 +1,25 @@
 # Junsoo Work Index
 
-OddRoom and six verified automation/backend case studies in a responsive,
-data-driven static portfolio.
+OddRoom, PF01, PF02, PF03, PF04, PF06의 화면, 실행 근거, 포함·제외 범위를 공개하는 정적 포트폴리오 사이트입니다. PF01~PF04는 브라우저에서 직접 조작하는 공개 샘플 체험판을 제공하며, PF05는 후속 작업으로 제외합니다.
 
-PF01 through PF04 include network-free interactive trials under `demos/`.
-All four trials also include current walkthrough videos recorded from their
-public demo interfaces. The trials use fictional, sanitized data in browser
-memory and do not call the source backends, external AI, Sheets, Slack, Email,
-or company systems. PF01 can generate fresh synthetic inquiry batches and
-classify a visitor-written inquiry with transparent keyword scoring. This
-public trial does not call AI; commissioned delivery can connect a
-client-provided or client-approved AI API, internal company API, or
-on-premises model, with accounts, usage costs, and security policy agreed
-separately.
-PF02 can display a sanitized result through the local browser notification API
-only after a successful trial request and an explicit user action; Slack and
-Email delivery remain clearly labeled simulations.
+프로젝트 데이터는 `assets/js/projects.js`에 모아 이후 사례를 추가할 수 있게 했습니다. 각 사례는 `case.html?id=<project>`에서 같은 구조로 렌더링되고, 체험판은 `demos/pf01/`부터 `demos/pf04/`까지 독립된 전체 화면 도구로 실행됩니다. PF07은 공개 저장소와 redacted evidence, 실제 입력·WP-CLI·컨테이너 동작·상태 전이를 연속 녹화한 72.767초 walkthrough와 28.333초 복구 clip, proof scorecard, claims boundary를 갖춘 일곱 번째 공개 사례이며 기존 6건 등록 manifest에는 추가하지 않습니다. `inquiry-automation.html`은 PF02 접수·검증·저장·알림을 기본 흐름으로, PF01 AI 분류와 PF04 승인·관리 화면을 선택 확장으로 정리한 서비스 진입 페이지입니다.
 
-`inquiry-automation.html` provides a service-level route through the related
-automation evidence: PF02 is the intake, validation, storage, and notification
-core; PF01 is the optional AI summary and classification layer; and PF04 is the
-optional approval and management-screen extension. Each project remains a
-separate case and trial.
+PF01은 비식별 합성 문의를 만들거나 사용자가 직접 작성한 문의를 키워드 점수 규칙으로 분류합니다. 실제 제작에서는 의뢰인이 제공하거나 사용을 승인한 AI API, 사내 API 또는 온프레미스 모델로 교체·연동할 수 있습니다. PF02는 사용자가 허용한 경우 비식별 처리 결과를 실제 로컬 브라우저 알림으로 표시합니다. 공개 체험판은 실제 AI·Sheets·Slack·Email·업무 서버에 연결되지 않습니다. 사이트의 `문의 내용 작성 양식 복사` 버튼은 외부 연락처로 이동하지 않고 플랫폼 중립적인 요구사항 양식만 복사하며, 성공·실패 안내를 클릭 위치에서 제공합니다.
 
-The portfolio-wide inquiry buttons copy a platform-neutral project brief only.
-They do not open an external contact channel, and each button reports copy
-success or failure next to the control.
+## 자산 동기화와 검증
 
-## Published Cases
+```bash
+npm ci
+npm run sync
+npm test
+```
 
-- OddRoom: 14-page commercial website
-- PF01: AI inquiry summary and classification automation
-- PF02: form/webhook to sheet and notification automation
-- PF03: Excel/CSV cleanup and reporting automation
-- PF04: leave and business-trip approval board
-- PF06: Spring Boot API error repair and regression tests
-- PF07: WooCommerce order delivery, bounded retry, operator recovery, and clean restore
+- `sync`: `등록 준비/00-크몽`의 검증 이미지 24장, PF01~PF04 현행 영상 포스터 4장, 공개 영상 5개를 임시 스테이징에서 검증한 뒤 공개 폴더로 동기화
+- `validate`: 프로젝트 7개, 데모 4개, PNG·영상, 재귀 링크, 외부 요청, 민감 경로, PF05 제외 여부를 검증하고 PF07 영상은 전체 decode·프레임 해시·동적 샘플·OCR 상태 전환까지 독립 확인
+- `smoke`: 기존 페이지와 PF01~PF04 데모의 데스크톱·모바일 화면, 오버플로, 텍스트 잘림, 키보드 접근, 핵심 기능과 다운로드를 실제 브라우저에서 검증
 
-PF07 links the public source repository and redacted ten-gate evidence to a
-seven-row buyer scorecard, a 72.767-second continuous execution recording, and
-a 28.333-second continuous recovery recording. They show real browser input,
-visible WP-CLI and container operations, and observed state transitions rather
-than explanatory slide sequences. Its synthetic staging runtime is on-demand
-only; the static case remains available independently and does not claim real
-payments, production scale, formal exactly-once delivery, or removal of
-Slack's ambiguous response window.
+새 clone에서는 반드시 `npm ci`를 먼저 실행합니다. 이 단계가 PF07 의미 검증에 필요한 고정 버전 Tesseract.js와 오프라인 영어 OCR 모델을 설치하며, 시스템에는 `ffmpeg`와 `ffprobe`가 있어야 합니다.
 
-The site is designed to grow by adding a project definition and its reviewed
-public media. Each case identifies its evidence, delivery boundary, technology,
-and self-initiated sample status. Source-package test results are presented as
-separate evidence and are not represented as tests executed by the static
-browser trials.
+PF01~PF03 정적 이미지는 검토 승인된 현행 체험 영상의 입력·결과·근거 프레임에서 생성합니다. 생성기와 검증기는 데모 소스 해시, 영상 보고서, 대표 프레임, 등록 이미지, 공개 이미지가 한 체인으로 일치하는지 확인합니다.
 
-## License
-
-Site and public trial source code are available under the MIT License.
-Portfolio screenshots, video posters, case-study copy, and demonstration
-videos are not licensed for reuse. See `ASSET-NOTICE.md` for media and font
-details.
+공개 대상 파일은 `index.html`, `case.html`, `inquiry-automation.html`, 정적 사이트 루트 파일, `assets/`, `demos/`, `.nojekyll`, `robots.txt`, `sitemap.xml`, `site.webmanifest`입니다. `scripts/`와 `validation/`은 원본 검증용이며 배포본에서는 제외할 수 있습니다.

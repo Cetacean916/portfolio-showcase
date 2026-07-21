@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1600" viewBox="0 0 2400 1600" role="img" aria-label="PF07 failure retry recovery en">
+  <defs>
+    <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#d8d3c8" stroke-width="1" opacity=".45"/></pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="20" stdDeviation="24" flood-color="#17201d" flood-opacity=".12"/></filter>
+  </defs>
+  
+    <rect width="2400" height="1600" fill="#f5f2ea"/><rect width="2400" height="1600" fill="url(#grid)"/>
+    
+  <g transform="translate(120 112)"><rect width="80" height="80" rx="20" fill="#3f6250"/>
+  <path d="M22.400000000000002 24.8h24c9.6 0 16 6.4 16 16v14.399999999999999h-19.2v-9.6c0-3.2-2.4-5.6000000000000005-5.6000000000000005-5.6000000000000005h-16v-15.2h0.8z" fill="none" stroke="#f5f2ea" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/></g><text x="226" y="164" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="32" font-weight="800" text-anchor="start">ODDROOM / ORDEROPS</text>
+    <text x="120" y="340" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="74" font-weight="800" text-anchor="start">Failure stays visible until the same event recovers.</text>
+    <text x="120" y="420" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="32" font-weight="700" text-anchor="start">Observed terminal → manual retry → completed path</text>
+    <path d="M330 840H2070" stroke="#d8d3c8" stroke-width="18" stroke-linecap="round"/>
+    <g transform="translate(210 650)" filter="url(#shadow)"><rect width="450" height="430" rx="36" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+        <circle cx="72" cy="78" r="30" fill="#a85545"/><text x="120" y="88" fill="#a85545" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" font-weight="800" text-anchor="start">01</text>
+        <text x="42" y="192" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="34" font-weight="800" text-anchor="start">FAILED</text><text x="42" y="252" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="25" font-weight="600" text-anchor="start">422 · payload kept</text>
+        <rect x="42" y="318" width="366" height="12" rx="6" fill="#d8d3c8"/><rect x="42" y="318" width="92" height="12" rx="6" fill="#a85545"/>
+      </g><g transform="translate(765 650)" filter="url(#shadow)"><rect width="450" height="430" rx="36" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+        <circle cx="72" cy="78" r="30" fill="#c68b39"/><text x="120" y="88" fill="#c68b39" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" font-weight="800" text-anchor="start">02</text>
+        <text x="42" y="192" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="34" font-weight="800" text-anchor="start">BOUNDED RETRY</text><text x="42" y="252" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="25" font-weight="600" text-anchor="start">attempt 2 / 6</text>
+        <rect x="42" y="318" width="366" height="12" rx="6" fill="#d8d3c8"/><rect x="42" y="318" width="178" height="12" rx="6" fill="#c68b39"/>
+      </g><g transform="translate(1320 650)" filter="url(#shadow)"><rect width="450" height="430" rx="36" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+        <circle cx="72" cy="78" r="30" fill="#45697b"/><text x="120" y="88" fill="#45697b" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" font-weight="800" text-anchor="start">03</text>
+        <text x="42" y="192" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="34" font-weight="800" text-anchor="start">OPERATOR REVIEW</text><text x="42" y="252" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="25" font-weight="600" text-anchor="start">outcome decision</text>
+        <rect x="42" y="318" width="366" height="12" rx="6" fill="#d8d3c8"/><rect x="42" y="318" width="270" height="12" rx="6" fill="#45697b"/>
+      </g><g transform="translate(1875 650)" filter="url(#shadow)"><rect width="450" height="430" rx="36" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+        <circle cx="72" cy="78" r="30" fill="#3f6250"/><text x="120" y="88" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="24" font-weight="800" text-anchor="start">04</text>
+        <text x="42" y="192" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="34" font-weight="800" text-anchor="start">RECOVERED</text><text x="42" y="252" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="25" font-weight="600" text-anchor="start">200 · no duplicate effect</text>
+        <rect x="42" y="318" width="366" height="12" rx="6" fill="#d8d3c8"/><rect x="42" y="318" width="366" height="12" rx="6" fill="#3f6250"/>
+      </g>
+    <text x="120" y="1390" fill="#18201d" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="30" font-weight="700" text-anchor="start">Same payload hash · same order · write-once checkpoint</text>
+    
+  <g><rect x="1830" y="1340" width="450" height="64" rx="32" fill="#edf2ec" stroke="#c6d5ca" stroke-width="2"/>
+  <text x="2055" y="1382" fill="#3f6250" font-family="Arial, 'Noto Sans KR', sans-serif" font-size="22" font-weight="700" text-anchor="middle">DEMO_MODE · OBSERVED</text></g>
+  
+</svg>

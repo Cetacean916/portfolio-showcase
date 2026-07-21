@@ -3,169 +3,164 @@
   "case_id": "pf07",
   "classification": "PUBLIC_SANITIZED_EXECUTION_PROOF",
   "recording_script": "scripts/record-public-media.mjs",
-  "recording_script_sha256": "cbb1bfa65978c6ef2868a2cc6f4654aabc166dda20c7314967605b09c6c02a97",
+  "recording_script_sha256": "6a67a0381f739c4259599b355dfd27b7bbec603040d8ff572af741c43dae4f7c",
   "metadata_stripped": true,
-  "public_https_storefront_preflight": "PASS",
+  "package_build_id": "pf07-build-6359b71f0044da5a37a0",
+  "package_artifact_manifest_sha256": "6943e20b26be9ed94865388041aa9867b9f72f38c3fb1f5cf292af57810cd19b",
+  "final_linux_package_preflight": "PASS",
   "synthetic_checkout_window_prepared_via_wp_cli": true,
   "videos": {
     "demo-video.mp4": {
-      "sha256": "7206918c0224b8ba283413c6ae07bf8d9cbcf96a04894f50507fe1218bded7c8",
+      "sha256": "3bdbc5557402e1b1b8ced9e60bd684841d3c6c4fd883d0c809494becfa82cbdf",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "frame_count": 2183,
-      "duration_seconds": 72.767,
-      "sampled_frame_count": 73,
-      "unique_sampled_frames": 45,
+      "frame_count": 1860,
+      "duration_seconds": 62,
+      "sampled_frame_count": 62,
+      "unique_sampled_frames": 40,
       "continuous_capture": true,
+      "actual_launcher_hub_observed": true,
       "actual_checkout_observed": true,
       "foreground_worker_observed": true,
       "visible_worker_terminal_observed": true,
       "final_status": "completed",
       "timeline": [
         {
+          "event": "LAUNCH_HUB",
+          "at_seconds": 0.827,
+          "observation": "final_package_hub_ready",
+          "frame_sha256": "32cebb982a78bddf8be090144f5736c0421fa6178be3e83a7430b4f15eb6995e"
+        },
+        {
           "event": "LIVE_STOREFRONT",
-          "at_seconds": 1.569,
+          "at_seconds": 7.071,
           "observation": "home_visible",
-          "frame_sha256": "b2aaadafc532625924a449f9fe2ed0e568037d7b8382784e638f0faf5daf8c70"
+          "frame_sha256": "93ad1a8cf656d5e2c5e8826117d2d710702c60d1953a70e675f9519991d17c5a"
         },
         {
           "event": "SHOP_OPENED",
-          "at_seconds": 10.535,
+          "at_seconds": 12.582,
           "observation": "shop_visible",
-          "frame_sha256": "7254aa74edf71cadbd4ee9e2fa250b504b1249a6cc0a68aeaf10827efbfdfabd"
+          "frame_sha256": "91823809ac86d83412e035eaf32f5ce69808b2b180e27752f63b375798fbbb5a"
         },
         {
           "event": "PRODUCT_SELECTED",
-          "at_seconds": 15.768,
+          "at_seconds": 16.15,
           "observation": "product_page_visible",
-          "frame_sha256": "871391fae2ff0bb6f9acad7c1ed4203e44ece82002e5a450acf35a0885cb723d"
+          "frame_sha256": "89c4c912452886a9dc82d194300f93818f560171c71e7bb6c80f5928a2120696"
         },
         {
           "event": "CART_READY",
-          "at_seconds": 25.618,
+          "at_seconds": 21.131,
           "observation": "cart_contains_product",
-          "frame_sha256": "86ef00a5ac34d388d1b3fa71c6a06dc74ebb92bc3f643dc352a015ef6741d767"
+          "frame_sha256": "d21191de053ea1a26d3552e3938a5dbc454ff2cdb309c7e619fb3d60b8962c2f"
         },
         {
           "event": "CHECKOUT_INPUT",
-          "at_seconds": 37.011,
+          "at_seconds": 27.624,
           "observation": "synthetic_checkout_input_visible",
-          "frame_sha256": "8f5910b342ef51796d1cc875951d90fbc83afc983546d4424c718c0497f487e5"
+          "frame_sha256": "0f7572313279cbba95c5aa5d0a24474d2d9c7d6abf157d1001842dfe05f61110"
         },
         {
           "event": "ORDER_RECEIVED",
-          "at_seconds": 40.184,
+          "at_seconds": 31.195,
           "observation": "woocommerce_confirmation_visible",
-          "frame_sha256": "4e30989c24a4fa33d89d56c493e337f9440f13b5858a7f5c215cdc385f35d2af"
+          "frame_sha256": "c0866184ace6c483f2b127b87a788fd6b45b33d587bfc46e555aeb0943d7dfe6"
         },
         {
           "event": "OUTBOX_PENDING",
-          "at_seconds": 47.034,
+          "at_seconds": 34.539,
           "observation": "status_pending",
-          "frame_sha256": "da5e869d40ad8b1c106ae1ab735eba064125d2184c2f38a77059a10b882d38e0"
+          "frame_sha256": "7f26adf9d5e41bb20cd832fa858a4c715d4fbcfaa8e3b36f63ae60156aa64988"
         },
         {
           "event": "WORKER_RUN",
-          "at_seconds": 52.104,
-          "observation": "visible_terminal_foreground_queue_exit_zero",
-          "frame_sha256": "68e944404efa0ba3684b8d793cc6d66dff127b3c8d1c37812f88e72b5f825961"
+          "at_seconds": 37.365,
+          "observation": "visible_terminal_foreground_worker_exit_zero",
+          "frame_sha256": "1d4988a79738ab4927c3efe4dc3c96531a4a0a698100991a91d8d9f15d527ba2"
         },
         {
           "event": "ADMIN_COMPLETED",
-          "at_seconds": 61.917,
+          "at_seconds": 41.523,
           "observation": "status_completed",
-          "frame_sha256": "ccaf87d25faf978b7e7c21002855027d469fbd1a515f325c46c281981d6d30d9"
+          "frame_sha256": "1e67d9b0f9719d61420664662e7df141a0fce6745a8b0de3b35f3a7da989418d"
         },
         {
-          "event": "CHECKPOINTS_MASKED",
-          "at_seconds": 67.05,
-          "observation": "crm_checkpoint_columns_visible_masked",
-          "frame_sha256": "ca821df53ecc6538e687ef469c51d81c8d0905621b8ca7c554eb95ace26c62c8"
+          "event": "INTEGRATION_RESULT",
+          "at_seconds": 44.185,
+          "observation": "masked_integration_correlation_visible",
+          "frame_sha256": "5050b5db0dc127eda01eb515c9ec66100bc4a132f8614096267b48eb0fbfe78f"
         }
       ]
     },
     "recovery-clip.mp4": {
-      "sha256": "ef8b2c05dde7c602df5659a1ef43e4770f6c3b9115c338317e2a1ffdc34a613a",
+      "sha256": "5e37d80cc7051c5bb3bfcaec84a59845dc276680321db6ca972011a7cb6207b0",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "frame_count": 850,
-      "duration_seconds": 28.333,
-      "sampled_frame_count": 28,
-      "unique_sampled_frames": 19,
+      "frame_count": 527,
+      "duration_seconds": 17.567,
+      "sampled_frame_count": 18,
+      "unique_sampled_frames": 15,
       "continuous_capture": true,
-      "actual_endpoint_failure_observed": true,
-      "retry_wait_observed": true,
-      "distinct_followup_action_observed": true,
-      "endpoint_restore_observed": true,
-      "visible_endpoint_control_terminal_observed": true,
+      "actual_terminal_failure_observed": true,
+      "actual_hub_scenario_transition_observed": true,
+      "manual_retry_observed": true,
       "visible_worker_terminal_observed": true,
-      "final_status": "completed",
+      "final_status": "recovered",
       "timeline": [
         {
           "event": "OUTBOX_PENDING",
-          "at_seconds": 0.815,
+          "at_seconds": 0.827,
           "observation": "status_pending",
-          "frame_sha256": "b05007d9124012e0647ad52dff09082418d348da9f12794accb45714a3879a6c"
-        },
-        {
-          "event": "ENDPOINT_STOP_COMMAND",
-          "at_seconds": 2.319,
-          "observation": "visible_terminal_stop_n8n_exit_zero",
-          "frame_sha256": "7e8a9436dd702cc535e4f990f69b201626717d70d0f2410c111e7a7f379e36f5"
-        },
-        {
-          "event": "ENDPOINT_DOWN",
-          "at_seconds": 3.715,
-          "observation": "restored_n8n_stopped",
-          "frame_sha256": "d9c58ab836455d01686d6eac9fd090011c467bd052dbcbda056ace29484f2a76"
+          "frame_sha256": "8dcc3a42a0728cdf702964da700e9f776d2b5525697bed2bfe4345a6c51c2b44"
         },
         {
           "event": "FAILURE_WORKER_RUN",
-          "at_seconds": 4.819,
+          "at_seconds": 1.956,
           "observation": "visible_terminal_failure_worker_exit_zero",
-          "frame_sha256": "d57953243c94c5f5d2ac4aa224e22d019d3ccc78d19569c2f8d349fdb136b233"
+          "frame_sha256": "b8721390375c4bb0e891903748084b7f8b8a356e26bd55e3b7d6eeb1a11aadc1"
         },
         {
-          "event": "RETRY_WAIT",
-          "at_seconds": 10.381,
-          "observation": "status_retry_wait_with_distinct_followup_action",
-          "frame_sha256": "4041de5d09d722c456bf252045da7cb89002c38962e7ce42ca8995b431cec6bb"
+          "event": "FAILED",
+          "at_seconds": 5.921,
+          "observation": "status_failed_manual_retry_visible",
+          "frame_sha256": "73e88fd9437814c1fc3096dc6e9b7cc54fd554c306d69d0567866345a5ef4948"
         },
         {
-          "event": "ENDPOINT_START_COMMAND",
-          "at_seconds": 11.886,
-          "observation": "visible_terminal_start_n8n_exit_zero",
-          "frame_sha256": "a17290fbaf49a5e6582b5c428564b690a1dc26c9f7d6e880c819d27b4969da71"
+          "event": "NORMAL_SCENARIO",
+          "at_seconds": 9.64,
+          "observation": "actual_hub_normal_scenario_applied",
+          "frame_sha256": "cf289faea85a372c6f4cef98817ae00ff4f096b0a7d701052c6e8707255babdb"
         },
         {
-          "event": "ENDPOINT_RESTORED",
-          "at_seconds": 16.481,
-          "observation": "restored_n8n_healthy",
-          "frame_sha256": "ce046ac78c96f4925b870fc03cc74f1bfd7334803d9cef00a44f9954dec82fac"
+          "event": "MANUAL_RETRY",
+          "at_seconds": 12.553,
+          "observation": "manual_retry_scheduled_pending",
+          "frame_sha256": "18932be858b97fb9c4d037945bb2c82617fb6238a0b979abab2175fb2e0996ad"
         },
         {
           "event": "RECOVERY_WORKER_RUN",
-          "at_seconds": 17.585,
+          "at_seconds": 13.629,
           "observation": "visible_terminal_recovery_worker_exit_zero",
-          "frame_sha256": "bcc401008989890ae803570678a433bd1ff2c06483ac206107287cc9f08795d0"
+          "frame_sha256": "95ff69fc99a9ef204dbee1f6988a1763abdafbee551105e462a96fa3ca75aa4a"
         },
         {
           "event": "RECOVERED",
-          "at_seconds": 27.847,
-          "observation": "status_completed",
-          "frame_sha256": "529a437b8f639f7c520be7059153eb71854ab40ebf583a9e1c490981e74f2f4f"
+          "at_seconds": 17.235,
+          "observation": "status_recovered",
+          "frame_sha256": "c5c2193b0782a85b92032320275b1efdb77444211b481db41eac227493051ef2"
         }
       ]
     }
   },
   "poster": {
     "file": "video-poster.png",
-    "sha256": "6fa725d4a8070441543d746d4a02fbe8b8cbfba595758fddb81debd64dab6348",
+    "sha256": "6341a9fa7eea16e55c3f4953be446d67e5f91c0bf34d674f628e05d922b86346",
     "source_video": "demo-video.mp4",
-    "source_at_seconds": 62.917
+    "source_at_seconds": 42.023
   }
 }

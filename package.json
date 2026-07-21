@@ -1,0 +1,20 @@
+{
+  "name": "portfolio-showcase",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "record:pf01": "node scripts/record-pf01-public-demo-video.mjs",
+    "record:pf02": "node scripts/record-pf02-public-demo-video.mjs",
+    "approve:pf01": "node scripts/record-pf01-public-demo-video.mjs --approve",
+    "approve:pf02": "node scripts/record-pf02-public-demo-video.mjs --approve",
+    "sync": "bash scripts/sync-public-assets.sh",
+    "validate": "node scripts/validate-site.mjs",
+    "smoke": "node scripts/smoke-site.mjs",
+    "test": "npm run validate && npm run smoke"
+  },
+  "devDependencies": {
+    "@tesseract.js-data/eng": "1.0.0",
+    "tesseract.js": "7.0.0"
+  }
+}

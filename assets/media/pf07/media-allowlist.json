@@ -1,0 +1,2576 @@
+{
+  "schema": "pf07.showcase-media-allowlist.v1",
+  "candidate_state": "FINAL",
+  "final_completion_claim": true,
+  "declared_root": "refinement",
+  "path_resolution": "Resolve every candidate_relative_path against declared_root, relative to this allowlist.",
+  "inventory_id_count": 71,
+  "mapped_public_id_count": 71,
+  "deferred_id_count": 0,
+  "deferred_ids": [],
+  "showcase_only_post_candidate_ids": [
+    "CASE-017",
+    "CASE-018",
+    "CASE-019",
+    "CASE-020"
+  ],
+  "mapping_rows": [
+    {
+      "ASSET_ID": "BRAND-001",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "가로형 워드마크",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-001_wordmark-horizontal.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-001_wordmark-horizontal.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "64",
+            "height": "64",
+            "view_box": "0 0 520 72"
+          },
+          "sha256": "51b90e0bded56ca5fcf611fabb1643ddc74f66968c5a7d28dd1bc62d054e161c"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "BRAND-002",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "정사각형 심볼",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-002_symbol.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-002_symbol.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "64",
+            "height": "64",
+            "view_box": "0 0 64 64"
+          },
+          "sha256": "a48ded6625125a284bd46c17fd92eefc4e0844e7f78ed018798061db2f71dd0f"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "BRAND-003",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "파비콘·앱 아이콘 세트",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-003_favicon.svg",
+        "brand/BRAND-003_icon-1024.png",
+        "brand/BRAND-003_icon-16.png",
+        "brand/BRAND-003_icon-180.png",
+        "brand/BRAND-003_icon-32.png",
+        "brand/BRAND-003_icon-512.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-003_favicon.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "64",
+            "height": "64",
+            "view_box": "0 0 64 64"
+          },
+          "sha256": "53b8a06f973b9e119a66c9fab6ab7036c1988835e5ec50c2f81682092520aa38"
+        },
+        {
+          "candidate_relative_path": "brand/BRAND-003_icon-1024.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1024x1024"
+          },
+          "sha256": "2802e2f10897a728cdd2b3c44295f66dbf0ff89ae37e9b0ed62cccf1ea2c728c"
+        },
+        {
+          "candidate_relative_path": "brand/BRAND-003_icon-16.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "16x16"
+          },
+          "sha256": "6621a714c20d32c63526073cdc9b02f3c3f7637f9a22f99ba95e9e6fdd00ca27"
+        },
+        {
+          "candidate_relative_path": "brand/BRAND-003_icon-180.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "180x180"
+          },
+          "sha256": "47d79e412a4f96ec23d6204ab343da907792abdb67dd04638c0a25b361e6f13f"
+        },
+        {
+          "candidate_relative_path": "brand/BRAND-003_icon-32.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "32x32"
+          },
+          "sha256": "fce999e68e5f4dee24fb11b0a3f0b1aa18dedf1e51710147699fc9a2cc90a3c1"
+        },
+        {
+          "candidate_relative_path": "brand/BRAND-003_icon-512.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "512x512"
+          },
+          "sha256": "e220fe2fd31f3b6cc2d5f93349a2b4e73bf43bd4a9be27c2b6f6dd888485ae2c"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "BRAND-004",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "밝은 배경용 로고",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-004_logo-on-light.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-004_logo-on-light.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "64",
+            "height": "64",
+            "view_box": "0 0 440 80"
+          },
+          "sha256": "6c31fe42ed239c60e4381a60d7836baa6123762eba71a20cc77b3631a18539bb"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "BRAND-005",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "어두운 배경용 로고",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-005_logo-on-dark.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-005_logo-on-dark.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "64",
+            "height": "64",
+            "view_box": "0 0 440 80"
+          },
+          "sha256": "df88aa9f31a1356328c2f598f6e498ffa692571fc0aac083d26a414e36533e41"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "BRAND-006",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "브랜드 패턴 또는 질감",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-006_offset-grid-pattern.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-006_offset-grid-pattern.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "240",
+            "height": "160",
+            "view_box": "0 0 240 160"
+          },
+          "sha256": "3aed321f42a03ad73dc944e258c15a20eafbbf2968fc48202527e73ffbb35fb5"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "BRAND-007",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "한국어 중심 OG 카드",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-007_og-ko.png",
+        "brand/BRAND-007_og-ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-007_og-ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1200x630"
+          },
+          "sha256": "35e5e5de6349d2af5ab825f3a1d1745d5fd742b6e52a06d95c08cda247ff914f"
+        },
+        {
+          "candidate_relative_path": "brand/BRAND-007_og-ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1200",
+            "height": "630",
+            "view_box": "0 0 1200 630"
+          },
+          "sha256": "4500c3107810c2cc46a43fd194f34fab5ba6b655c1c1c8b6b79af579e0904c30"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "BRAND-008",
+      "visibility": "PUBLIC",
+      "language": [
+        "en"
+      ],
+      "role_state": "영어 전용 OG 카드",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-008_og-en.png",
+        "brand/BRAND-008_og-en.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-008_og-en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1200x630"
+          },
+          "sha256": "e6348200c11d53879c8ce9d4ea77d77a371e5b18818b42313a2aa4b5c2a95afe"
+        },
+        {
+          "candidate_relative_path": "brand/BRAND-008_og-en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1200",
+            "height": "630",
+            "view_box": "0 0 1200 630"
+          },
+          "sha256": "19bb27509d43d759542d000e2904546b8912023af84761a19425ec5d948ee82f"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "BRAND-009",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "이미지 로드 실패용 중립 fallback",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "brand/BRAND-009_neutral-fallback.png",
+        "brand/BRAND-009_neutral-fallback.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "brand/BRAND-009_neutral-fallback.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1600x1200"
+          },
+          "sha256": "4d8b106d329ee3a77d4504e034d4e2292a7a042c6061e28bd0073182559ccfc6"
+        },
+        {
+          "candidate_relative_path": "brand/BRAND-009_neutral-fallback.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "6c598f4a0c16cf781cf23e43b33787581ac08e69a5cf8fe3aaf588b77103531d"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "HOME-001",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "데스크톱 히어로 키비주얼",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-lifestyle/HOME-001_데스크톱-히어로_generated.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-lifestyle/HOME-001_데스크톱-히어로_generated.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2880x1800"
+          },
+          "sha256": "e96425f66876aaf360bc7347feb01a6105fad56e0317004379f4ebad90562bf7"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "HOME-002",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "모바일 히어로 별도 구도",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-lifestyle/HOME-002_모바일-히어로_generated.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-lifestyle/HOME-002_모바일-히어로_generated.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1600x2000"
+          },
+          "sha256": "e7ae35a2a19e573b90f03238ed86b933d2cd682049fee28cd0cf7b3506439ba6"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "HOME-003",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "구매·주문 운영 맥락 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-lifestyle/HOME-003_주문-포장_generated.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-lifestyle/HOME-003_주문-포장_generated.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x1600"
+          },
+          "sha256": "6a6faa6e4298c25849edee3286a24dc0b1acead4cf00fcad997c62332c0d6577"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "HOME-004",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "실패·재시도·복구 맥락 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/HOME-004_failure-retry-recovery_en.svg",
+        "own-ui-captures/during-implementation/HOME-004_failure-retry-recovery_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/HOME-004_failure-retry-recovery_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1600",
+            "view_box": "0 0 2400 1600"
+          },
+          "sha256": "db5a46d7c1e50063f1d58fbc78eaa38e3fd778a8b255d06fd159a0dae2bf8bb3"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/HOME-004_failure-retry-recovery_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1600",
+            "view_box": "0 0 2400 1600"
+          },
+          "sha256": "b4d8456de990127b677dc9fba55d9f6da73e925a7f29bc82b57f8698a21f444b"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "HOME-005",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "WooCommerce→CRM 연동 개념 비주얼",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/HOME-005_integration-architecture_en.svg",
+        "own-ui-captures/during-implementation/HOME-005_integration-architecture_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/HOME-005_integration-architecture_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1600",
+            "view_box": "0 0 2400 1600"
+          },
+          "sha256": "b40e20dd65756592be99b38d51c9ec63f9fec4956bdd84233ece45e12186414a"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/HOME-005_integration-architecture_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1600",
+            "view_box": "0 0 2400 1600"
+          },
+          "sha256": "941c457bba493f876e19aeb20017ccb246ef28964c8cc8f02219eed12d4b666f"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "HOME-006",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "운영자 관리 장면",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-lifestyle/HOME-006_운영자-장면_generated.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-lifestyle/HOME-006_운영자-장면_generated.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x1600"
+          },
+          "sha256": "b30b4f5b8ebf0cc546b3297bb4a552a5fac487d47e361e10baaabb5363ef878e"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "HOME-007",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "마지막 CTA용 별도 비주얼",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-lifestyle/HOME-007_CTA-정물_generated.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-lifestyle/HOME-007_CTA-정물_generated.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x1200"
+          },
+          "sha256": "827dfdff1d2b793c0806130471d497f24d00278664eb2eff39afa969636683ee"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "SIMPLE-001",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "상점 카드 전용 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/simple/SIMPLE-001_상점카드_offset-dock.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/simple/SIMPLE-001_상점카드_offset-dock.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x3000"
+          },
+          "sha256": "6788fdc87128464ab0b5dfca5afd18713c85c6b6cdd80cf3e808ffd8bb5c6369"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "SIMPLE-002",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "상품 상세 대표 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/simple/SIMPLE-002_PDP-대표_offset-dock.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/simple/SIMPLE-002_PDP-대표_offset-dock.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "8d1d485d433458005bc02d4a34d30cd684fad3ce385b60993e48eb7b8ce17038"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "SIMPLE-003",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "구성품 플랫레이",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/simple/SIMPLE-003_구성품-플랫레이_offset-dock.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/simple/SIMPLE-003_구성품-플랫레이_offset-dock.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "16644d6ab5b51d795f023b811348fee6c81b315015cb58e455291b356e3beed9"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "SIMPLE-004",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "재질·디테일 근접 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/simple/SIMPLE-004_재질-디테일_offset-dock.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/simple/SIMPLE-004_재질-디테일_offset-dock.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "372e0ad212f5be4b064cba0d82bee5f7e54b6d9365811da92ca32099fc25d15b"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "SIMPLE-005",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "실제 사용 장면",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/simple/SIMPLE-005_사용-장면_offset-dock.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/simple/SIMPLE-005_사용-장면_offset-dock.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2880x1800"
+          },
+          "sha256": "65f3cc0103fc6200c9c3173378bff02c2c2764a8f623a2482f5657a871f34fa4"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "SIMPLE-006",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "포장·후면·보조 정보 장면",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/simple/SIMPLE-006_포장-보조정보_offset-dock.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/simple/SIMPLE-006_포장-보조정보_offset-dock.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "d489489a8017cdaac355d9f818516ea5903d12bc6461416c740f09c776a900e0"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-001",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "상점 카드 전용 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-001_상점카드_foldline-graphite.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-001_상점카드_foldline-graphite.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x3000"
+          },
+          "sha256": "4d0c8db56b2cf5b654124d5044733585101a80acb56b323788e36517292dd399"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-002",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "상품 상세 대표 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-002_PDP-대표_foldline-open.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-002_PDP-대표_foldline-open.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "85970a4db7e1456a2b3983d91e9717012a7691021546adb2b751b57d1077d12f"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-003",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "옵션 A 대표 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-003_옵션A-graphite_foldline.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-003_옵션A-graphite_foldline.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "3647c26b1b5c4bf0204cb7131c13dfda030b60c5b41f51d493087f5cb6a54f8d"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-004",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "옵션 B 대표 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-004_옵션B-sandstone_foldline.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-004_옵션B-sandstone_foldline.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "2e74f5d1d94c3a917ad15bc2089a4757c09fde100fa54730eb56bc75cb6d3132"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-005",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "옵션 비교 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-005_옵션비교_graphite-sandstone_foldline.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-005_옵션비교_graphite-sandstone_foldline.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2880x1800"
+          },
+          "sha256": "96736cd63e7eee6dd7a2c87bb716b2d3bea754a40ef43c45855a3515c4790c88"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-006",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "구성품 플랫레이",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-006_구성품-플랫레이_foldline.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-006_구성품-플랫레이_foldline.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "f9190604cc8ebdbb86c2009fda07ceae81e7d882fcfb1d6775492728e8b1c3e1"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-007",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "재질·디테일 근접 이미지",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-007_지퍼-재질-디테일_foldline.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-007_지퍼-재질-디테일_foldline.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "e4cc2144ac64bdaf02a866e54aef361c9c08cb56c8641de9166a32f62addfec4"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-008",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "실제 사용 장면",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-008_실사용-장면_foldline.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-008_실사용-장면_foldline.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2880x1800"
+          },
+          "sha256": "bae416002819cbde522598c370c1a97cce234a33b33d9710434808f63c3f97c3"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "VARIABLE-009",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "포장·후면·보조 정보 장면",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "generated-product/variable/VARIABLE-009_후면-보조정보_foldline.webp"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "generated-product/variable/VARIABLE-009_후면-보조정보_foldline.webp",
+          "media_type": "image/webp",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "2400x2400"
+          },
+          "sha256": "7ce0d4a1caa5b67bfbcb1a88796e531fb8513b30f2fb5b00748b1292525bb991"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "COMMERCE-001",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "쿠폰·프로모션 배너",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "commerce/COMMERCE-001_neutral-state.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "commerce/COMMERCE-001_neutral-state.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "600",
+            "view_box": "0 0 1600 600"
+          },
+          "sha256": "eec98e9e08c90c9ef882888251a8c460f1b730eda14c43ca0ea19aa7ce973fd8"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "COMMERCE-002",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "빈 장바구니 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "commerce/COMMERCE-002_neutral-state.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "commerce/COMMERCE-002_neutral-state.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "cc76d56a03d1d7b84aad16a892c1ca87add2fc2b654ea08be79c35ec4c183b34"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "COMMERCE-003",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "주문 내역 없음 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "commerce/COMMERCE-003_neutral-state.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "commerce/COMMERCE-003_neutral-state.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "9f1f7aa502bf5e10fd41a668f50de91ac6920c4a4ff4e117fe6360839789927b"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "COMMERCE-004",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "합성 주문 완료 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "commerce/COMMERCE-004_neutral-state.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "commerce/COMMERCE-004_neutral-state.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "2c0f65338a9b076d9a0cadaaab80bc43b6fec7bc28ef3c160392e81a5ae7f656"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "COMMERCE-005",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "처리 실패 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "commerce/COMMERCE-005_neutral-state.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "commerce/COMMERCE-005_neutral-state.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "3274136816b70c4983f2cd67ae357969bd2aa06bc7f736a2785b9962aea7f89b"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "COMMERCE-006",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "복구 완료 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "commerce/COMMERCE-006_neutral-state.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "commerce/COMMERCE-006_neutral-state.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "88af99e0bcef07373e811234a664c1b64498b7abd4152a769e908d5ffb2c8334"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-001",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "케이스 페이지 히어로",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "case/CASE-001_case-hero_en.svg",
+        "case/CASE-001_case-hero_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "case/CASE-001_case-hero_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2880",
+            "height": "1800",
+            "view_box": "0 0 2880 1800"
+          },
+          "sha256": "a670b814b22a14318ab6633dc6d91f1e281bb0a44cf83eaa6afa7858c046e979"
+        },
+        {
+          "candidate_relative_path": "case/CASE-001_case-hero_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2880",
+            "height": "1800",
+            "view_box": "0 0 2880 1800"
+          },
+          "sha256": "8dc5861c8b2450824dc1fc4358ed334c8dbb1fa824b92598be6f7014c54e4907"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-002",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "전체 시스템 구조도",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "case/CASE-002_system-boundary_en.svg",
+        "case/CASE-002_system-boundary_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "case/CASE-002_system-boundary_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1200",
+            "view_box": "0 0 2400 1200"
+          },
+          "sha256": "c4b5e61eeae381c59dfd6aaf22dc442621a08421df418be548835af2f57e4833"
+        },
+        {
+          "candidate_relative_path": "case/CASE-002_system-boundary_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1200",
+            "view_box": "0 0 2400 1200"
+          },
+          "sha256": "6b909a3b40b7ea3d6fb84ea923569b87a4eeb1301ce5073f31eaf511d89cfe27"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-003",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "주문 이벤트 상태 흐름도",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "case/CASE-003_event-state_en.svg",
+        "case/CASE-003_event-state_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "case/CASE-003_event-state_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1200",
+            "view_box": "0 0 2400 1200"
+          },
+          "sha256": "72becfab899c8197a1ce3aa74d921a8fd74930dc3691d7c3afd0dbd59a8b8bce"
+        },
+        {
+          "candidate_relative_path": "case/CASE-003_event-state_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1200",
+            "view_box": "0 0 2400 1200"
+          },
+          "sha256": "8bc5918ff2d9c2065b55bcb32759685f86298282e06be897db769e7939a7b042"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-004",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "재시도·복구 흐름도",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "case/CASE-004_recovery-paths_en.svg",
+        "case/CASE-004_recovery-paths_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "case/CASE-004_recovery-paths_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1200",
+            "view_box": "0 0 2400 1200"
+          },
+          "sha256": "45334bc82b756e17640c75680244078a010231a97f77fd9aacf6f49d1e3363b9"
+        },
+        {
+          "candidate_relative_path": "case/CASE-004_recovery-paths_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1200",
+            "view_box": "0 0 2400 1200"
+          },
+          "sha256": "34f3c484bf5a683164dbb12418396ba0515728554ab7f3602a10927c3daabb84"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-005",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "한국어 상점 데스크톱 화면",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-005_storefront-desktop_ko.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-005_storefront-desktop_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x1000"
+          },
+          "sha256": "dd97edddb7d8a5b059b110976cd19e2531718963c9c4c3c988e7a313164a848a"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-006",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "한국어 상점 모바일 화면",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-006_storefront-mobile_ko.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-006_storefront-mobile_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "390x844"
+          },
+          "sha256": "687a6d6149916dfa3554cd48a26ed45254d7fa7bc5b52c26ab5db606b52cf8d1"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-007",
+      "visibility": "PUBLIC",
+      "language": [
+        "en"
+      ],
+      "role_state": "영어 전용 상점 화면",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-007_storefront-desktop_en.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-007_storefront-desktop_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x1000"
+          },
+          "sha256": "e79700f7073e48f6e0548ff3cb753a366b66a93e6f8c3fdd827830088de1b460"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-008",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "상품 상세 화면",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-008_variable-product_ko.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-008_variable-product_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x1000"
+          },
+          "sha256": "8c333a45c4aff24ca2b02fe78b81c9e808f04581c92501022dc64dab7ba03835"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-009",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "장바구니·결제 화면",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-009_cart_ko.png",
+        "own-ui-captures/after-completion/CASE-009_checkout_ko.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-009_cart_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x1000"
+          },
+          "sha256": "071bbbf96b880815393977281f2ca449a71ffb23a2c7bdc6955d09147c859c59"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-009_checkout_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x1000"
+          },
+          "sha256": "6173b5f39eaf531023309e441bd069a4c520f1d8c376aabacb1343e292f88d01"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-010",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "language-neutral"
+      ],
+      "role_state": "관리 이벤트 테이블 정상 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/CASE-010_admin-normal_en.png",
+        "own-ui-captures/during-implementation/CASE-010_admin-normal.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-010_admin-normal_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1146x249"
+          },
+          "sha256": "b41e72aed5542e2ecc9cdb778882359e370f37010b48c3253bebb8e73f753fb6"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-010_admin-normal.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1146x250"
+          },
+          "sha256": "980fb74b4457c261fae9322d371e64a5524cd301559ff55d40b0ae4fb6fe4c81"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-011",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "language-neutral"
+      ],
+      "role_state": "실패·재시도 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/CASE-011_admin-retry-wait_en.png",
+        "own-ui-captures/during-implementation/CASE-011_admin-retry-wait.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-011_admin-retry-wait_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1146x250"
+          },
+          "sha256": "5ee42c07a9688f2199aa3fc0a7da2a6b3ab7a7d39d751cc84f4ffbd787c540fd"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-011_admin-retry-wait.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1240x650"
+          },
+          "sha256": "f5236a52a2a2dbcd8f054f538a5b29af8f2f894c7bad24fcf67c1d91ba5fbf24"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-012",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "language-neutral"
+      ],
+      "role_state": "복구 완료 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/CASE-012_admin-recovered_en.png",
+        "own-ui-captures/during-implementation/CASE-012_admin-recovered.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-012_admin-recovered_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1146x250"
+          },
+          "sha256": "a0f358355d5c2efda988ff1965f8981e217ca53341531188da20329b64b43fdd"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-012_admin-recovered.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1240x650"
+          },
+          "sha256": "2082ab0d1db852d56ba67829c10c950df91a5b93d1c60790d91d590df3ac0588"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-013",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "language-neutral"
+      ],
+      "role_state": "Reconcile 전후 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/CASE-013_reconcile-after_en.png",
+        "own-ui-captures/during-implementation/CASE-013_reconcile-after.png",
+        "own-ui-captures/during-implementation/CASE-013_reconcile-before.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-013_reconcile-after_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "538x789"
+          },
+          "sha256": "29ace17f2a9de776b67be360b78249e3feb86d6548a428a6e234faff6b8be99a"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-013_reconcile-after.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "538x770"
+          },
+          "sha256": "1d5be1a391ff74deb7eec0cb74d7e8bc77af059d8fae42c70ed7f86769b210ca"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-013_reconcile-before.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "538x769"
+          },
+          "sha256": "2b46ee015d9f7b98fc27dfa29f338459d8fac03aaef3a6c1d2f17eba8b901cd3"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-014",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "n8n 실행 증거",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/CASE-014_n8n-execution-evidence.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-014_n8n-execution-evidence.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "7b2a6ce32ba7c3245d00aaea7bd6d084d76d37ddfd743a6a88cc2e3980f40100"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-015",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "HubSpot Deal·Contact 증거",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/CASE-015_hubspot-deal-contact-evidence.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-015_hubspot-deal-contact-evidence.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "4750f391880b9ab3f1edb87dc805c65c4b470527712a46554945104de72f71c7"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-016",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "Slack 메시지 증거",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/CASE-016_slack-delivery-evidence.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/CASE-016_slack-delivery-evidence.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "1200",
+            "view_box": "0 0 1600 1200"
+          },
+          "sha256": "971c032d72e37c6b20dfb873630cf716bb185c6fbc74bba23b9f30a83aa8b864"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-017",
+      "visibility": "PUBLIC",
+      "language": [
+        "ko"
+      ],
+      "role_state": "깨끗한 복원·재실행 증거",
+      "review_result": "ACCEPTED_STEP090_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-017_final-clean-restore-rerun_ko.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-017_final-clean-restore-rerun_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x3330"
+          },
+          "sha256": "8d8693baa26f76843ca6b9c65f4403ddc591723560666758a1a857dd34fb0095"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-018",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "플랫폼별 제공 구성·사용 진입점 패널",
+      "review_result": "ACCEPTED_STEP090_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-018_platform-delivery-entrypoints.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-018_platform-delivery-entrypoints.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2880",
+            "height": "1800",
+            "view_box": "0 0 2880 1800"
+          },
+          "sha256": "b393d6946f16e4b228f1dd7f35e522eabfae9482b19a5be4f378be8214f67332"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-019",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "검증 점수표·관측 수치 그래픽",
+      "review_result": "ACCEPTED_STEP090_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-019_final-observation-scorecard.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-019_final-observation-scorecard.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "2400",
+            "height": "1400",
+            "view_box": "0 0 2400 1400"
+          },
+          "sha256": "360e550332aefb1a0c0994eba50a6a819f931ea825a731e891e32396972f0a7e"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "CASE-020",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "저장소·CI·배포 증거",
+      "review_result": "ACCEPTED_STEP090_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/CASE-020_final-ci-artifact.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/CASE-020_final-ci-artifact.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x1100"
+          },
+          "sha256": "8edd36e06fc485e4206ad21bbcb064e841456d06d5e3a82d4546cdde0ec6d863"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "RUN-001",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "Windows 실행기 아이콘",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "runner/RUN-001_windows-1024.png",
+        "runner/RUN-001_windows.ico",
+        "runner/RUN-001_windows.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "runner/RUN-001_windows-1024.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1024x1024"
+          },
+          "sha256": "ccd438335a131149a5d19de5009746988fd6423b001450f55a3090fcadc0acf3"
+        },
+        {
+          "candidate_relative_path": "runner/RUN-001_windows.ico",
+          "media_type": "image/x-icon",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "16x1632x32180x180512x512"
+          },
+          "sha256": "e6059c7c80d2eed2800b63da3e12bc2d8a447dad8d0d1f48928d9a4cac7187b4"
+        },
+        {
+          "candidate_relative_path": "runner/RUN-001_windows.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1024",
+            "height": "1024",
+            "view_box": "0 0 1024 1024"
+          },
+          "sha256": "ff0e81811260c60d9bc185cefd71f0a22d5e0cb0d72a1c695b48cf4952352a21"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "RUN-002",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "macOS 앱 아이콘",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "runner/RUN-002_macos-1024.png",
+        "runner/RUN-002_macos.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "runner/RUN-002_macos-1024.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1024x1024"
+          },
+          "sha256": "90bfb4c9abbe04e119b7d2faa0c5d3828ba66a16c6c5f854addf4f3abd47ed39"
+        },
+        {
+          "candidate_relative_path": "runner/RUN-002_macos.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1024",
+            "height": "1024",
+            "view_box": "0 0 1024 1024"
+          },
+          "sha256": "f369874e372ca2e546453b40844e2c31d0eb6482f38a54c0cf1229953aa48f64"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "RUN-003",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "Linux 실행기 아이콘",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "runner/RUN-003_linux-512.png",
+        "runner/RUN-003_linux.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "runner/RUN-003_linux-512.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "512x512"
+          },
+          "sha256": "c975c6b1c2aff018c1dd35a62e676eb6ae3ebc36e1f3a539c9d3a7a83f129156"
+        },
+        {
+          "candidate_relative_path": "runner/RUN-003_linux.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1024",
+            "height": "1024",
+            "view_box": "0 0 1024 1024"
+          },
+          "sha256": "547b356ad4664e7477de34376dc93cfb91a7d54196224c655432ec40b7a8d8f4"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "RUN-004",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "허브 상단 비주얼",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "runner/RUN-004_hub.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "runner/RUN-004_hub.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "900",
+            "view_box": "0 0 1600 900"
+          },
+          "sha256": "8f445a98a443a09619133481911bc54ff0cbd633c3c8e7d533ff534de234fe3e"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "RUN-005",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "설치 성공 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "runner/RUN-005_ready.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "runner/RUN-005_ready.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "900",
+            "view_box": "0 0 1600 900"
+          },
+          "sha256": "033b07009b75c0bcb33f27d0431f5a90f514a18bbe543c9e2609f43b3ca8c5cd"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "RUN-006",
+      "visibility": "PUBLIC",
+      "language": [
+        "language-neutral"
+      ],
+      "role_state": "설치 경고·복구 상태",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "runner/RUN-006_recovery.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "runner/RUN-006_recovery.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1600",
+            "height": "900",
+            "view_box": "0 0 1600 900"
+          },
+          "sha256": "908906c3eeae30bb655f7fee8fa054459198566f4447ea545f299378a14e56d8"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "GUIDE-001",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "Windows 독립 테스트 패키지 다운로드·압축해제·시작",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/GUIDE-001_windows-download-start_en.svg",
+        "own-ui-captures/after-completion/GUIDE-001_windows-download-start_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-001_windows-download-start_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1440",
+            "height": "900",
+            "view_box": "0 0 1440 900"
+          },
+          "sha256": "8fa58787eacfed2feb14a42ebd2ff768aecb7a85904b0393b40eb840e29b2c6d"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-001_windows-download-start_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1440",
+            "height": "900",
+            "view_box": "0 0 1440 900"
+          },
+          "sha256": "e56f2ae8e2fac804de8c9fce5000c7cc747a615c56cbfe0cff8e1aee0179d9a2"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "GUIDE-002",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "Windows 사전 점검·결과 확인·증거 내보내기",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_en.svg",
+        "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1440",
+            "height": "900",
+            "view_box": "0 0 1440 900"
+          },
+          "sha256": "9eee969a088fea559a34981ed3db8cb4f021b123ac065cfec7c9bae95f9863e3"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1440",
+            "height": "900",
+            "view_box": "0 0 1440 900"
+          },
+          "sha256": "0b3ec32af1ef12cc1fdb077582feb4ef9f6d7fe26410a696e95573cda7a7a74d"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "GUIDE-003",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "macOS 다운로드·Applications·최초 실행",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_en.svg",
+        "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1440",
+            "height": "900",
+            "view_box": "0 0 1440 900"
+          },
+          "sha256": "0207c2ce222efd567303ee037b204f844afed6df273b193b2593bdf83114e639"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1440",
+            "height": "900",
+            "view_box": "0 0 1440 900"
+          },
+          "sha256": "b3a2c272081dd210c2fe33ba7f3f40dd7bacd7267770c667274cb63fea070435"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "GUIDE-004",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "macOS 권한·컨테이너 연결",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_en.svg",
+        "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_ko.svg"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_en.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1440",
+            "height": "900",
+            "view_box": "0 0 1440 900"
+          },
+          "sha256": "e111bae12f0dcb33396be25c63dfc690329c926b9c9764c0a5ded5790d5d689c"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_ko.svg",
+          "media_type": "image/svg+xml",
+          "dimensions_or_vector_view_box": {
+            "width": "1440",
+            "height": "900",
+            "view_box": "0 0 1440 900"
+          },
+          "sha256": "783ffd0ab0d68190f4fb8daf53707513d020d0366d6f606b12b2491705cb5554"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "GUIDE-005",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "Linux 설치·실행",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/GUIDE-005_linux-install-run_en.png",
+        "own-ui-captures/after-completion/GUIDE-005_linux-install-run_ko.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-005_linux-install-run_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x1000"
+          },
+          "sha256": "2c38dd7eda12df1550e581d0105764bf64dc39ceaf3e2289a759f6e753e61e7c"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-005_linux-install-run_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x1000"
+          },
+          "sha256": "9d2ab685e2b6fec02dcd4edbabdbc67ab16c738ee9d59c8d79b03f53c6111da6"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "GUIDE-006",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "language-neutral"
+      ],
+      "role_state": "HubSpot·Slack 설정 마법사",
+      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/during-implementation/GUIDE-006_connected-setup_en.png",
+        "own-ui-captures/during-implementation/GUIDE-006_connected-setup.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/GUIDE-006_connected-setup_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "685x890"
+          },
+          "sha256": "80c8727cdd496fd341143ff08664ac9a3394eed9950557b5a17835de4cc08a28"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/during-implementation/GUIDE-006_connected-setup.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1120x1100"
+          },
+          "sha256": "9f1fe1630c8410eedff3d71c741af61e0521b455c715c529885c7636e8c73f53"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "GUIDE-007",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "Linux 서버 배포",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/GUIDE-007_linux-server-deployment_en.png",
+        "own-ui-captures/after-completion/GUIDE-007_linux-server-deployment_ko.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-007_linux-server-deployment_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x900"
+          },
+          "sha256": "e16ed3096012f60a413e8f0cea0d4a68574173692ef952d88ef7f9265d99abd2"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-007_linux-server-deployment_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "1440x900"
+          },
+          "sha256": "7703e99cc5c9f37947db76c6f054c86942db768537e8424730d24aacec819d14"
+        }
+      ]
+    },
+    {
+      "ASSET_ID": "GUIDE-008",
+      "visibility": "PUBLIC",
+      "language": [
+        "en",
+        "ko"
+      ],
+      "role_state": "HTTPS 터널 선택 기능",
+      "review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
+      "candidate_relative_paths": [
+        "own-ui-captures/after-completion/GUIDE-008_https-tunnel_en.png",
+        "own-ui-captures/after-completion/GUIDE-008_https-tunnel_ko.png"
+      ],
+      "files": [
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-008_https-tunnel_en.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "392x806"
+          },
+          "sha256": "42d32fb2a342e6bb074a9bea11a036cec07a6c89eb9f2c13aec3192d4a89955a"
+        },
+        {
+          "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-008_https-tunnel_ko.png",
+          "media_type": "image/png",
+          "dimensions_or_vector_view_box": {
+            "raster_dimensions": "392x784"
+          },
+          "sha256": "8531fade9a508c9e58d43ef1cfb70a75fa8aba14d458827ff62711ae74393ee9"
+        }
+      ]
+    }
+  ],
+  "support_files": [
+    {
+      "candidate_relative_path": "generated-code-assets.json",
+      "classification": "generation-record",
+      "sha256": "04eea8420449bf722ef6a4ef2ee12034b4ee04275e0d938a4c13c0c6e2d4b50e"
+    },
+    {
+      "candidate_relative_path": "icons/circle-check.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "664f380816443630297e558ca814a05d0c0d77088cdc460fa166e7efdcb9dc9b"
+    },
+    {
+      "candidate_relative_path": "icons/download.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "e437a601669bc58d28c11aa20acc578640f246609834c3fffb8ce39d78bbd9cb"
+    },
+    {
+      "candidate_relative_path": "icons/external-link.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "8bf47fc2e8c74689d7db614aebd3786837df4e078ffe421e32197ff768607bf1"
+    },
+    {
+      "candidate_relative_path": "icons/inbox.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "8090e0ad3174c2e747f8b359d72aae1a0880e1dcd900097db3816a180338e956"
+    },
+    {
+      "candidate_relative_path": "icons/package-check.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "a34dddb1273d3629ee35ca11c374273ec6bb1ec58709d6021d3c7584c49980d5"
+    },
+    {
+      "candidate_relative_path": "icons/receipt-text.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "e4b66eb0ca1a183f23d443c1c70fc0a182f63b170094fd46d3d858a806450912"
+    },
+    {
+      "candidate_relative_path": "icons/rotate-ccw.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "c69af4ed26e03b69e304514ea3233a6fcf6f4eb81f846230cb02c17d459ec634"
+    },
+    {
+      "candidate_relative_path": "icons/server.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "97d4e6356eb1650aa60c19f50df712760528f2a69be4f9d254c99efc17ddf07d"
+    },
+    {
+      "candidate_relative_path": "icons/settings.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "dfb4a677b761bcfab85203b0673500e655780bda89505fbf386f70b524fca20e"
+    },
+    {
+      "candidate_relative_path": "icons/shopping-cart.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "ea4147b94c991214fa7685ec8f1960391245e6fa967e1a3cf7d88c67739aa31c"
+    },
+    {
+      "candidate_relative_path": "icons/terminal.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "54fe74006dd1abfa88d256c34fab35594832297192546231ddd25d91fbe5c991"
+    },
+    {
+      "candidate_relative_path": "icons/triangle-alert.svg",
+      "classification": "licensed-ui-support",
+      "sha256": "299331a089cd8270faa0761c0a69f3cc254fe58d5f77b39c511a576f7e18f626"
+    },
+    {
+      "candidate_relative_path": "own-ui-captures/after-completion/README.md",
+      "classification": "public-guidance-and-boundary",
+      "sha256": "750074c72bda955ea2ff14abbace1874d539585925f40fef0e5e34402e374f84"
+    },
+    {
+      "candidate_relative_path": "own-ui-captures/during-implementation/connected-service-observation.json",
+      "classification": "sanitized-observation-support",
+      "sha256": "e2c9a8ec5b470b0d91730a16293bcbdc634cdd3a7c82ceee74ba6ee37800ff5c"
+    },
+    {
+      "candidate_relative_path": "own-ui-captures/during-implementation/README.md",
+      "classification": "public-guidance-and-boundary",
+      "sha256": "c2c0195cf38f0a795181c1e2e861ad0242f1a9440af54b6db6acc57a02024495"
+    },
+    {
+      "candidate_relative_path": "own-ui-captures/README.md",
+      "classification": "public-guidance-and-boundary",
+      "sha256": "b4bfad0ed58b5228fca91e3836b2ef642d4aea75490848e3f3fceecd85055226"
+    },
+    {
+      "candidate_relative_path": "PUBLIC-ASSET-MANIFEST.txt",
+      "classification": "public-set-control",
+      "sha256": "ae5dcd62c929c0d562691f817043e46011b04d69cb5caed3c6556b0ceedbc30b"
+    },
+    {
+      "candidate_relative_path": "README.md",
+      "classification": "public-guidance-and-boundary",
+      "sha256": "5c8e57fa4eb64ed12b1509bdd5475d7eff0af656a1ae1c36f3bb4839f4c7325b"
+    },
+    {
+      "candidate_relative_path": "third-party-notices/LUCIDE-LICENSE.txt",
+      "classification": "license-notice",
+      "sha256": "c5dca8858f5b5aeda2ff1cd3e86cd9fc066ea5057193088c9364a16e4e68c292"
+    }
+  ],
+  "exact_file_count": 123,
+  "exact_file_set": [
+    {
+      "relative_path": "brand/BRAND-001_wordmark-horizontal.svg",
+      "sha256": "51b90e0bded56ca5fcf611fabb1643ddc74f66968c5a7d28dd1bc62d054e161c"
+    },
+    {
+      "relative_path": "brand/BRAND-002_symbol.svg",
+      "sha256": "a48ded6625125a284bd46c17fd92eefc4e0844e7f78ed018798061db2f71dd0f"
+    },
+    {
+      "relative_path": "brand/BRAND-003_favicon.svg",
+      "sha256": "53b8a06f973b9e119a66c9fab6ab7036c1988835e5ec50c2f81682092520aa38"
+    },
+    {
+      "relative_path": "brand/BRAND-003_icon-1024.png",
+      "sha256": "2802e2f10897a728cdd2b3c44295f66dbf0ff89ae37e9b0ed62cccf1ea2c728c"
+    },
+    {
+      "relative_path": "brand/BRAND-003_icon-16.png",
+      "sha256": "6621a714c20d32c63526073cdc9b02f3c3f7637f9a22f99ba95e9e6fdd00ca27"
+    },
+    {
+      "relative_path": "brand/BRAND-003_icon-180.png",
+      "sha256": "47d79e412a4f96ec23d6204ab343da907792abdb67dd04638c0a25b361e6f13f"
+    },
+    {
+      "relative_path": "brand/BRAND-003_icon-32.png",
+      "sha256": "fce999e68e5f4dee24fb11b0a3f0b1aa18dedf1e51710147699fc9a2cc90a3c1"
+    },
+    {
+      "relative_path": "brand/BRAND-003_icon-512.png",
+      "sha256": "e220fe2fd31f3b6cc2d5f93349a2b4e73bf43bd4a9be27c2b6f6dd888485ae2c"
+    },
+    {
+      "relative_path": "brand/BRAND-004_logo-on-light.svg",
+      "sha256": "6c31fe42ed239c60e4381a60d7836baa6123762eba71a20cc77b3631a18539bb"
+    },
+    {
+      "relative_path": "brand/BRAND-005_logo-on-dark.svg",
+      "sha256": "df88aa9f31a1356328c2f598f6e498ffa692571fc0aac083d26a414e36533e41"
+    },
+    {
+      "relative_path": "brand/BRAND-006_offset-grid-pattern.svg",
+      "sha256": "3aed321f42a03ad73dc944e258c15a20eafbbf2968fc48202527e73ffbb35fb5"
+    },
+    {
+      "relative_path": "brand/BRAND-007_og-ko.png",
+      "sha256": "35e5e5de6349d2af5ab825f3a1d1745d5fd742b6e52a06d95c08cda247ff914f"
+    },
+    {
+      "relative_path": "brand/BRAND-007_og-ko.svg",
+      "sha256": "4500c3107810c2cc46a43fd194f34fab5ba6b655c1c1c8b6b79af579e0904c30"
+    },
+    {
+      "relative_path": "brand/BRAND-008_og-en.png",
+      "sha256": "e6348200c11d53879c8ce9d4ea77d77a371e5b18818b42313a2aa4b5c2a95afe"
+    },
+    {
+      "relative_path": "brand/BRAND-008_og-en.svg",
+      "sha256": "19bb27509d43d759542d000e2904546b8912023af84761a19425ec5d948ee82f"
+    },
+    {
+      "relative_path": "brand/BRAND-009_neutral-fallback.png",
+      "sha256": "4d8b106d329ee3a77d4504e034d4e2292a7a042c6061e28bd0073182559ccfc6"
+    },
+    {
+      "relative_path": "brand/BRAND-009_neutral-fallback.svg",
+      "sha256": "6c598f4a0c16cf781cf23e43b33787581ac08e69a5cf8fe3aaf588b77103531d"
+    },
+    {
+      "relative_path": "case/CASE-001_case-hero_en.svg",
+      "sha256": "a670b814b22a14318ab6633dc6d91f1e281bb0a44cf83eaa6afa7858c046e979"
+    },
+    {
+      "relative_path": "case/CASE-001_case-hero_ko.svg",
+      "sha256": "8dc5861c8b2450824dc1fc4358ed334c8dbb1fa824b92598be6f7014c54e4907"
+    },
+    {
+      "relative_path": "case/CASE-002_system-boundary_en.svg",
+      "sha256": "c4b5e61eeae381c59dfd6aaf22dc442621a08421df418be548835af2f57e4833"
+    },
+    {
+      "relative_path": "case/CASE-002_system-boundary_ko.svg",
+      "sha256": "6b909a3b40b7ea3d6fb84ea923569b87a4eeb1301ce5073f31eaf511d89cfe27"
+    },
+    {
+      "relative_path": "case/CASE-003_event-state_en.svg",
+      "sha256": "72becfab899c8197a1ce3aa74d921a8fd74930dc3691d7c3afd0dbd59a8b8bce"
+    },
+    {
+      "relative_path": "case/CASE-003_event-state_ko.svg",
+      "sha256": "8bc5918ff2d9c2065b55bcb32759685f86298282e06be897db769e7939a7b042"
+    },
+    {
+      "relative_path": "case/CASE-004_recovery-paths_en.svg",
+      "sha256": "45334bc82b756e17640c75680244078a010231a97f77fd9aacf6f49d1e3363b9"
+    },
+    {
+      "relative_path": "case/CASE-004_recovery-paths_ko.svg",
+      "sha256": "34f3c484bf5a683164dbb12418396ba0515728554ab7f3602a10927c3daabb84"
+    },
+    {
+      "relative_path": "commerce/COMMERCE-001_neutral-state.svg",
+      "sha256": "eec98e9e08c90c9ef882888251a8c460f1b730eda14c43ca0ea19aa7ce973fd8"
+    },
+    {
+      "relative_path": "commerce/COMMERCE-002_neutral-state.svg",
+      "sha256": "cc76d56a03d1d7b84aad16a892c1ca87add2fc2b654ea08be79c35ec4c183b34"
+    },
+    {
+      "relative_path": "commerce/COMMERCE-003_neutral-state.svg",
+      "sha256": "9f1f7aa502bf5e10fd41a668f50de91ac6920c4a4ff4e117fe6360839789927b"
+    },
+    {
+      "relative_path": "commerce/COMMERCE-004_neutral-state.svg",
+      "sha256": "2c0f65338a9b076d9a0cadaaab80bc43b6fec7bc28ef3c160392e81a5ae7f656"
+    },
+    {
+      "relative_path": "commerce/COMMERCE-005_neutral-state.svg",
+      "sha256": "3274136816b70c4983f2cd67ae357969bd2aa06bc7f736a2785b9962aea7f89b"
+    },
+    {
+      "relative_path": "commerce/COMMERCE-006_neutral-state.svg",
+      "sha256": "88af99e0bcef07373e811234a664c1b64498b7abd4152a769e908d5ffb2c8334"
+    },
+    {
+      "relative_path": "generated-code-assets.json",
+      "sha256": "04eea8420449bf722ef6a4ef2ee12034b4ee04275e0d938a4c13c0c6e2d4b50e"
+    },
+    {
+      "relative_path": "generated-lifestyle/HOME-001_데스크톱-히어로_generated.webp",
+      "sha256": "e96425f66876aaf360bc7347feb01a6105fad56e0317004379f4ebad90562bf7"
+    },
+    {
+      "relative_path": "generated-lifestyle/HOME-002_모바일-히어로_generated.webp",
+      "sha256": "e7ae35a2a19e573b90f03238ed86b933d2cd682049fee28cd0cf7b3506439ba6"
+    },
+    {
+      "relative_path": "generated-lifestyle/HOME-003_주문-포장_generated.webp",
+      "sha256": "6a6faa6e4298c25849edee3286a24dc0b1acead4cf00fcad997c62332c0d6577"
+    },
+    {
+      "relative_path": "generated-lifestyle/HOME-006_운영자-장면_generated.webp",
+      "sha256": "b30b4f5b8ebf0cc546b3297bb4a552a5fac487d47e361e10baaabb5363ef878e"
+    },
+    {
+      "relative_path": "generated-lifestyle/HOME-007_CTA-정물_generated.webp",
+      "sha256": "827dfdff1d2b793c0806130471d497f24d00278664eb2eff39afa969636683ee"
+    },
+    {
+      "relative_path": "generated-product/simple/SIMPLE-001_상점카드_offset-dock.webp",
+      "sha256": "6788fdc87128464ab0b5dfca5afd18713c85c6b6cdd80cf3e808ffd8bb5c6369"
+    },
+    {
+      "relative_path": "generated-product/simple/SIMPLE-002_PDP-대표_offset-dock.webp",
+      "sha256": "8d1d485d433458005bc02d4a34d30cd684fad3ce385b60993e48eb7b8ce17038"
+    },
+    {
+      "relative_path": "generated-product/simple/SIMPLE-003_구성품-플랫레이_offset-dock.webp",
+      "sha256": "16644d6ab5b51d795f023b811348fee6c81b315015cb58e455291b356e3beed9"
+    },
+    {
+      "relative_path": "generated-product/simple/SIMPLE-004_재질-디테일_offset-dock.webp",
+      "sha256": "372e0ad212f5be4b064cba0d82bee5f7e54b6d9365811da92ca32099fc25d15b"
+    },
+    {
+      "relative_path": "generated-product/simple/SIMPLE-005_사용-장면_offset-dock.webp",
+      "sha256": "65f3cc0103fc6200c9c3173378bff02c2c2764a8f623a2482f5657a871f34fa4"
+    },
+    {
+      "relative_path": "generated-product/simple/SIMPLE-006_포장-보조정보_offset-dock.webp",
+      "sha256": "d489489a8017cdaac355d9f818516ea5903d12bc6461416c740f09c776a900e0"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-001_상점카드_foldline-graphite.webp",
+      "sha256": "4d0c8db56b2cf5b654124d5044733585101a80acb56b323788e36517292dd399"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-002_PDP-대표_foldline-open.webp",
+      "sha256": "85970a4db7e1456a2b3983d91e9717012a7691021546adb2b751b57d1077d12f"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-003_옵션A-graphite_foldline.webp",
+      "sha256": "3647c26b1b5c4bf0204cb7131c13dfda030b60c5b41f51d493087f5cb6a54f8d"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-004_옵션B-sandstone_foldline.webp",
+      "sha256": "2e74f5d1d94c3a917ad15bc2089a4757c09fde100fa54730eb56bc75cb6d3132"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-005_옵션비교_graphite-sandstone_foldline.webp",
+      "sha256": "96736cd63e7eee6dd7a2c87bb716b2d3bea754a40ef43c45855a3515c4790c88"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-006_구성품-플랫레이_foldline.webp",
+      "sha256": "f9190604cc8ebdbb86c2009fda07ceae81e7d882fcfb1d6775492728e8b1c3e1"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-007_지퍼-재질-디테일_foldline.webp",
+      "sha256": "e4cc2144ac64bdaf02a866e54aef361c9c08cb56c8641de9166a32f62addfec4"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-008_실사용-장면_foldline.webp",
+      "sha256": "bae416002819cbde522598c370c1a97cce234a33b33d9710434808f63c3f97c3"
+    },
+    {
+      "relative_path": "generated-product/variable/VARIABLE-009_후면-보조정보_foldline.webp",
+      "sha256": "7ce0d4a1caa5b67bfbcb1a88796e531fb8513b30f2fb5b00748b1292525bb991"
+    },
+    {
+      "relative_path": "icons/circle-check.svg",
+      "sha256": "664f380816443630297e558ca814a05d0c0d77088cdc460fa166e7efdcb9dc9b"
+    },
+    {
+      "relative_path": "icons/download.svg",
+      "sha256": "e437a601669bc58d28c11aa20acc578640f246609834c3fffb8ce39d78bbd9cb"
+    },
+    {
+      "relative_path": "icons/external-link.svg",
+      "sha256": "8bf47fc2e8c74689d7db614aebd3786837df4e078ffe421e32197ff768607bf1"
+    },
+    {
+      "relative_path": "icons/inbox.svg",
+      "sha256": "8090e0ad3174c2e747f8b359d72aae1a0880e1dcd900097db3816a180338e956"
+    },
+    {
+      "relative_path": "icons/package-check.svg",
+      "sha256": "a34dddb1273d3629ee35ca11c374273ec6bb1ec58709d6021d3c7584c49980d5"
+    },
+    {
+      "relative_path": "icons/receipt-text.svg",
+      "sha256": "e4b66eb0ca1a183f23d443c1c70fc0a182f63b170094fd46d3d858a806450912"
+    },
+    {
+      "relative_path": "icons/rotate-ccw.svg",
+      "sha256": "c69af4ed26e03b69e304514ea3233a6fcf6f4eb81f846230cb02c17d459ec634"
+    },
+    {
+      "relative_path": "icons/server.svg",
+      "sha256": "97d4e6356eb1650aa60c19f50df712760528f2a69be4f9d254c99efc17ddf07d"
+    },
+    {
+      "relative_path": "icons/settings.svg",
+      "sha256": "dfb4a677b761bcfab85203b0673500e655780bda89505fbf386f70b524fca20e"
+    },
+    {
+      "relative_path": "icons/shopping-cart.svg",
+      "sha256": "ea4147b94c991214fa7685ec8f1960391245e6fa967e1a3cf7d88c67739aa31c"
+    },
+    {
+      "relative_path": "icons/terminal.svg",
+      "sha256": "54fe74006dd1abfa88d256c34fab35594832297192546231ddd25d91fbe5c991"
+    },
+    {
+      "relative_path": "icons/triangle-alert.svg",
+      "sha256": "299331a089cd8270faa0761c0a69f3cc254fe58d5f77b39c511a576f7e18f626"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-005_storefront-desktop_ko.png",
+      "sha256": "dd97edddb7d8a5b059b110976cd19e2531718963c9c4c3c988e7a313164a848a"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-006_storefront-mobile_ko.png",
+      "sha256": "687a6d6149916dfa3554cd48a26ed45254d7fa7bc5b52c26ab5db606b52cf8d1"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-007_storefront-desktop_en.png",
+      "sha256": "e79700f7073e48f6e0548ff3cb753a366b66a93e6f8c3fdd827830088de1b460"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-008_variable-product_ko.png",
+      "sha256": "8c333a45c4aff24ca2b02fe78b81c9e808f04581c92501022dc64dab7ba03835"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-009_cart_ko.png",
+      "sha256": "071bbbf96b880815393977281f2ca449a71ffb23a2c7bdc6955d09147c859c59"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-009_checkout_ko.png",
+      "sha256": "6173b5f39eaf531023309e441bd069a4c520f1d8c376aabacb1343e292f88d01"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-017_final-clean-restore-rerun_ko.png",
+      "sha256": "8d8693baa26f76843ca6b9c65f4403ddc591723560666758a1a857dd34fb0095"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-018_platform-delivery-entrypoints.svg",
+      "sha256": "b393d6946f16e4b228f1dd7f35e522eabfae9482b19a5be4f378be8214f67332"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-019_final-observation-scorecard.svg",
+      "sha256": "360e550332aefb1a0c0994eba50a6a819f931ea825a731e891e32396972f0a7e"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/CASE-020_final-ci-artifact.png",
+      "sha256": "8edd36e06fc485e4206ad21bbcb064e841456d06d5e3a82d4546cdde0ec6d863"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-001_windows-download-start_en.svg",
+      "sha256": "8fa58787eacfed2feb14a42ebd2ff768aecb7a85904b0393b40eb840e29b2c6d"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-001_windows-download-start_ko.svg",
+      "sha256": "e56f2ae8e2fac804de8c9fce5000c7cc747a615c56cbfe0cff8e1aee0179d9a2"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_en.svg",
+      "sha256": "9eee969a088fea559a34981ed3db8cb4f021b123ac065cfec7c9bae95f9863e3"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_ko.svg",
+      "sha256": "0b3ec32af1ef12cc1fdb077582feb4ef9f6d7fe26410a696e95573cda7a7a74d"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_en.svg",
+      "sha256": "0207c2ce222efd567303ee037b204f844afed6df273b193b2593bdf83114e639"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_ko.svg",
+      "sha256": "b3a2c272081dd210c2fe33ba7f3f40dd7bacd7267770c667274cb63fea070435"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_en.svg",
+      "sha256": "e111bae12f0dcb33396be25c63dfc690329c926b9c9764c0a5ded5790d5d689c"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_ko.svg",
+      "sha256": "783ffd0ab0d68190f4fb8daf53707513d020d0366d6f606b12b2491705cb5554"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-005_linux-install-run_en.png",
+      "sha256": "2c38dd7eda12df1550e581d0105764bf64dc39ceaf3e2289a759f6e753e61e7c"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-005_linux-install-run_ko.png",
+      "sha256": "9d2ab685e2b6fec02dcd4edbabdbc67ab16c738ee9d59c8d79b03f53c6111da6"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-007_linux-server-deployment_en.png",
+      "sha256": "e16ed3096012f60a413e8f0cea0d4a68574173692ef952d88ef7f9265d99abd2"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-007_linux-server-deployment_ko.png",
+      "sha256": "7703e99cc5c9f37947db76c6f054c86942db768537e8424730d24aacec819d14"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-008_https-tunnel_en.png",
+      "sha256": "42d32fb2a342e6bb074a9bea11a036cec07a6c89eb9f2c13aec3192d4a89955a"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/GUIDE-008_https-tunnel_ko.png",
+      "sha256": "8531fade9a508c9e58d43ef1cfb70a75fa8aba14d458827ff62711ae74393ee9"
+    },
+    {
+      "relative_path": "own-ui-captures/after-completion/README.md",
+      "sha256": "750074c72bda955ea2ff14abbace1874d539585925f40fef0e5e34402e374f84"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-010_admin-normal_en.png",
+      "sha256": "b41e72aed5542e2ecc9cdb778882359e370f37010b48c3253bebb8e73f753fb6"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-010_admin-normal.png",
+      "sha256": "980fb74b4457c261fae9322d371e64a5524cd301559ff55d40b0ae4fb6fe4c81"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-011_admin-retry-wait_en.png",
+      "sha256": "5ee42c07a9688f2199aa3fc0a7da2a6b3ab7a7d39d751cc84f4ffbd787c540fd"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-011_admin-retry-wait.png",
+      "sha256": "f5236a52a2a2dbcd8f054f538a5b29af8f2f894c7bad24fcf67c1d91ba5fbf24"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-012_admin-recovered_en.png",
+      "sha256": "a0f358355d5c2efda988ff1965f8981e217ca53341531188da20329b64b43fdd"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-012_admin-recovered.png",
+      "sha256": "2082ab0d1db852d56ba67829c10c950df91a5b93d1c60790d91d590df3ac0588"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-013_reconcile-after_en.png",
+      "sha256": "29ace17f2a9de776b67be360b78249e3feb86d6548a428a6e234faff6b8be99a"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-013_reconcile-after.png",
+      "sha256": "1d5be1a391ff74deb7eec0cb74d7e8bc77af059d8fae42c70ed7f86769b210ca"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-013_reconcile-before.png",
+      "sha256": "2b46ee015d9f7b98fc27dfa29f338459d8fac03aaef3a6c1d2f17eba8b901cd3"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-014_n8n-execution-evidence.svg",
+      "sha256": "7b2a6ce32ba7c3245d00aaea7bd6d084d76d37ddfd743a6a88cc2e3980f40100"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-015_hubspot-deal-contact-evidence.svg",
+      "sha256": "4750f391880b9ab3f1edb87dc805c65c4b470527712a46554945104de72f71c7"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/CASE-016_slack-delivery-evidence.svg",
+      "sha256": "971c032d72e37c6b20dfb873630cf716bb185c6fbc74bba23b9f30a83aa8b864"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/connected-service-observation.json",
+      "sha256": "e2c9a8ec5b470b0d91730a16293bcbdc634cdd3a7c82ceee74ba6ee37800ff5c"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/GUIDE-006_connected-setup_en.png",
+      "sha256": "80c8727cdd496fd341143ff08664ac9a3394eed9950557b5a17835de4cc08a28"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/GUIDE-006_connected-setup.png",
+      "sha256": "9f1fe1630c8410eedff3d71c741af61e0521b455c715c529885c7636e8c73f53"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/HOME-004_failure-retry-recovery_en.svg",
+      "sha256": "db5a46d7c1e50063f1d58fbc78eaa38e3fd778a8b255d06fd159a0dae2bf8bb3"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/HOME-004_failure-retry-recovery_ko.svg",
+      "sha256": "b4d8456de990127b677dc9fba55d9f6da73e925a7f29bc82b57f8698a21f444b"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/HOME-005_integration-architecture_en.svg",
+      "sha256": "b40e20dd65756592be99b38d51c9ec63f9fec4956bdd84233ece45e12186414a"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/HOME-005_integration-architecture_ko.svg",
+      "sha256": "941c457bba493f876e19aeb20017ccb246ef28964c8cc8f02219eed12d4b666f"
+    },
+    {
+      "relative_path": "own-ui-captures/during-implementation/README.md",
+      "sha256": "c2c0195cf38f0a795181c1e2e861ad0242f1a9440af54b6db6acc57a02024495"
+    },
+    {
+      "relative_path": "own-ui-captures/README.md",
+      "sha256": "b4bfad0ed58b5228fca91e3836b2ef642d4aea75490848e3f3fceecd85055226"
+    },
+    {
+      "relative_path": "PUBLIC-ASSET-MANIFEST.txt",
+      "sha256": "ae5dcd62c929c0d562691f817043e46011b04d69cb5caed3c6556b0ceedbc30b"
+    },
+    {
+      "relative_path": "README.md",
+      "sha256": "5c8e57fa4eb64ed12b1509bdd5475d7eff0af656a1ae1c36f3bb4839f4c7325b"
+    },
+    {
+      "relative_path": "runner/RUN-001_windows-1024.png",
+      "sha256": "ccd438335a131149a5d19de5009746988fd6423b001450f55a3090fcadc0acf3"
+    },
+    {
+      "relative_path": "runner/RUN-001_windows.ico",
+      "sha256": "e6059c7c80d2eed2800b63da3e12bc2d8a447dad8d0d1f48928d9a4cac7187b4"
+    },
+    {
+      "relative_path": "runner/RUN-001_windows.svg",
+      "sha256": "ff0e81811260c60d9bc185cefd71f0a22d5e0cb0d72a1c695b48cf4952352a21"
+    },
+    {
+      "relative_path": "runner/RUN-002_macos-1024.png",
+      "sha256": "90bfb4c9abbe04e119b7d2faa0c5d3828ba66a16c6c5f854addf4f3abd47ed39"
+    },
+    {
+      "relative_path": "runner/RUN-002_macos.svg",
+      "sha256": "f369874e372ca2e546453b40844e2c31d0eb6482f38a54c0cf1229953aa48f64"
+    },
+    {
+      "relative_path": "runner/RUN-003_linux-512.png",
+      "sha256": "c975c6b1c2aff018c1dd35a62e676eb6ae3ebc36e1f3a539c9d3a7a83f129156"
+    },
+    {
+      "relative_path": "runner/RUN-003_linux.svg",
+      "sha256": "547b356ad4664e7477de34376dc93cfb91a7d54196224c655432ec40b7a8d8f4"
+    },
+    {
+      "relative_path": "runner/RUN-004_hub.svg",
+      "sha256": "8f445a98a443a09619133481911bc54ff0cbd633c3c8e7d533ff534de234fe3e"
+    },
+    {
+      "relative_path": "runner/RUN-005_ready.svg",
+      "sha256": "033b07009b75c0bcb33f27d0431f5a90f514a18bbe543c9e2609f43b3ca8c5cd"
+    },
+    {
+      "relative_path": "runner/RUN-006_recovery.svg",
+      "sha256": "908906c3eeae30bb655f7fee8fa054459198566f4447ea545f299378a14e56d8"
+    },
+    {
+      "relative_path": "third-party-notices/LUCIDE-LICENSE.txt",
+      "sha256": "c5dca8858f5b5aeda2ff1cd3e86cd9fc066ea5057193088c9364a16e4e68c292"
+    }
+  ]
+}

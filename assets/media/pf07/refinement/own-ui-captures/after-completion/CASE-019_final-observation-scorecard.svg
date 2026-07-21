@@ -1,0 +1,69 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<svg xmlns="http://www.w3.org/2000/svg" width="2400" height="1400" viewBox="0 0 2400 1400" role="img" aria-labelledby="title desc">
+  <title id="title">PF07 final observed validation scorecard</title>
+  <desc id="desc">Observed browser, backend, runtime, release, and platform-boundary results without claiming native Windows or macOS execution.</desc>
+  <defs>
+    <pattern id="grid" width="44" height="44" patternUnits="userSpaceOnUse"><path d="M44 0H0V44" fill="none" stroke="#d8d3c8" stroke-width="1" opacity=".46"/></pattern>
+    <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="16" stdDeviation="20" flood-color="#17201d" flood-opacity=".11"/></filter>
+    <style>
+      text{font-family:"DejaVu Sans";fill:#18201d}.eyebrow{font-size:22px;font-weight:800;letter-spacing:3.4px;fill:#3f6250}.title{font-size:76px;font-weight:800;letter-spacing:-2.5px}.subtitle{font-size:27px;font-weight:600;fill:#505750}.metric{font-size:70px;font-weight:850;letter-spacing:-2px}.metric-label{font-size:22px;font-weight:750;fill:#505750}.metric-copy{font-size:17px;font-weight:650;fill:#505750}.section{font-size:20px;font-weight:800;letter-spacing:2px;fill:#3f6250}.row-title{font-size:26px;font-weight:800}.row-copy{font-size:20px;font-weight:600;fill:#505750}.pill{font-size:17px;font-weight:850;letter-spacing:1px}.mono{font-family:"DejaVu Sans Mono";font-size:19px;font-weight:700}.footer{font-size:19px;font-weight:650;fill:#d9e3da}.light{fill:#fffdf8}.light-muted{fill:#d9e3da}.sage-text{fill:#b9c9bc}
+    </style>
+  </defs>
+  <rect width="2400" height="1400" fill="#f5f2ea"/><rect width="2400" height="1400" fill="url(#grid)"/>
+  <rect width="2400" height="20" fill="#3f6250"/>
+  <text x="120" y="112" class="eyebrow">PF07 · OBSERVED VALIDATION · BUILD fc73e14334ce507a9844</text>
+  <text x="120" y="218" class="title">Final product &amp; package scorecard</text>
+  <text x="120" y="270" class="subtitle">Direct checks on the frozen product, exact final-CI bytes, and public Release path</text>
+
+  <g transform="translate(120 342)" filter="url(#shadow)">
+    <rect width="510" height="240" rx="34" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+    <text x="46" y="104" class="metric" fill="#3f6250">580 / 580</text><text x="46" y="156" class="metric-label">browser observations passed</text><text x="46" y="198" class="metric-copy">5 named browsers + WebKit base · 2 locales</text>
+  </g>
+  <g transform="translate(670 342)" filter="url(#shadow)">
+    <rect width="510" height="240" rx="34" fill="#18201d" stroke="#3f6250" stroke-width="3"/>
+    <text x="46" y="104" class="metric sage-text">5 / 5</text><text x="46" y="156" class="metric-label light">VSL invariants passed</text><text x="46" y="198" class="metric-copy light-muted">payload · dedupe · ordering · retry · state</text>
+  </g>
+  <g transform="translate(1220 342)" filter="url(#shadow)">
+    <rect width="510" height="240" rx="34" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+    <text x="46" y="104" class="metric" fill="#3f6250">15 / 15</text><text x="46" y="156" class="metric-label">protected backend checks passed</text><text x="46" y="198" class="metric-copy">normal · failure · retry · recovery · restore</text>
+  </g>
+  <g transform="translate(1770 342)" filter="url(#shadow)">
+    <rect width="510" height="240" rx="34" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+    <text x="46" y="104" class="metric" fill="#3f6250">10 / 10</text><text x="46" y="156" class="metric-label">public Release assets matched</text><text x="46" y="198" class="metric-copy">stable unauthenticated size + SHA readback</text>
+  </g>
+
+  <text x="120" y="678" class="section">CANONICAL RUNTIME &amp; DELIVERY STATES</text>
+  <g transform="translate(120 722)" filter="url(#shadow)">
+    <rect width="2160" height="420" rx="38" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
+    <g transform="translate(44 38)">
+      <circle cx="28" cy="32" r="24" fill="#3f6250"/><path d="m17 32 8 8 16-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="76" y="31" class="row-title">Linux local · actual canonical bytes</text><text x="76" y="66" class="row-copy">5/5 services ready · clean bootstrap · update · encrypted restore · rerun</text>
+      <rect x="1770" y="2" width="270" height="54" rx="27" fill="#e5eee6" stroke="#9fb6a4"/><text x="1905" y="36" text-anchor="middle" class="pill" fill="#31523f">EXECUTED PASS</text>
+    </g>
+    <path d="M44 128h2072" stroke="#d8d3c8" stroke-width="2"/>
+    <g transform="translate(44 148)">
+      <circle cx="28" cy="32" r="24" fill="#3f6250"/><path d="m17 32 8 8 16-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
+      <text x="76" y="31" class="row-title">Linux server · isolated execution</text><text x="76" y="66" class="row-copy">persistence · health · stop/start · actual synthetic order · private binding</text>
+      <rect x="1770" y="2" width="270" height="54" rx="27" fill="#e5eee6" stroke="#9fb6a4"/><text x="1905" y="36" text-anchor="middle" class="pill" fill="#31523f">EXECUTED PASS</text>
+    </g>
+    <path d="M44 238h2072" stroke="#d8d3c8" stroke-width="2"/>
+    <g transform="translate(44 258)">
+      <circle cx="28" cy="32" r="24" fill="#45697b"/><text x="28" y="40" text-anchor="middle" class="pill" fill="#fff">i</text>
+      <text x="76" y="31" class="row-title">Windows buyer + KVM kit</text><text x="76" y="66" class="row-copy">PE, scripts, archive, shared core, and evidence workflow checked</text>
+      <rect x="1640" y="2" width="400" height="54" rx="27" fill="#edf0f2" stroke="#aec2cc"/><text x="1840" y="36" text-anchor="middle" class="pill" fill="#45697b">READY · NATIVE NOT RUN</text>
+    </g>
+    <path d="M44 348h2072" stroke="#d8d3c8" stroke-width="2"/>
+    <g transform="translate(44 368)">
+      <circle cx="28" cy="0" r="24" fill="#7b5a82"/><text x="28" y="8" text-anchor="middle" class="pill" fill="#fff">i</text>
+      <text x="76" y="0" class="row-title">macOS universal app-entry package</text><text x="76" y="35" class="row-copy">app bundle, architectures, shared core, unsigned/notarized boundary checked</text>
+      <rect x="1640" y="-30" width="400" height="54" rx="27" fill="#f0ebf2" stroke="#c9b8cd"/><text x="1840" y="4" text-anchor="middle" class="pill" fill="#6a4872">READY · NATIVE NOT RUN</text>
+    </g>
+  </g>
+
+  <g transform="translate(120 1200)">
+    <rect width="2160" height="112" rx="30" fill="#18201d"/>
+    <text x="48" y="48" class="mono sage-text">CI RUN 29809515092 · COMMIT 5488672 · TAG pf07-v1.0.0</text>
+    <text x="48" y="82" class="footer">1 business runtime · 2 locale views · duplicate external effects 0 · synthetic/test orders only</text>
+    <rect x="1900" y="28" width="204" height="56" rx="28" fill="#c68b39"/><text x="2002" y="64" text-anchor="middle" class="pill" fill="#18201d">0 KRW</text>
+  </g>
+</svg>

@@ -1,0 +1,42 @@
+<svg xmlns="http://www.w3.org/2000/svg" width="1440" height="900" viewBox="0 0 1440 900" role="img" aria-labelledby="title desc">
+  <title id="title">Applications 배치와 최초 실행</title><desc id="desc">최종 앱 번들의 실제 구조와 unsigned 첫 실행 경계를 정확히 안내합니다. 산출물 기반 안내 · 실제 Windows/macOS 실행 화면이 아님</desc>
+  <style>
+    text{font-family:"Noto Sans KR","DejaVu Sans",Arial,sans-serif;fill:#171a18}.eyebrow{font:700 17px "DejaVu Sans Mono",monospace;letter-spacing:2px;fill:#4b6452}.title{font-size:48px;font-weight:800;letter-spacing:-1.8px}.subtitle{font-size:19px;fill:#4f574f}.number{font:800 26px "DejaVu Sans Mono",monospace}.step-title{font-size:21px;font-weight:800}.step-copy{font-size:16px;fill:#4f574f}.meta{font:600 13px "DejaVu Sans Mono",monospace;fill:#4f574f}.boundary{font:700 14px "DejaVu Sans Mono",monospace;letter-spacing:.5px;fill:#7b4d3f}
+  </style>
+  <rect width="1440" height="900" fill="#f5f2e9"/><path d="M0 0h1440v16H0z" fill="#36513d"/>
+  <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIj4KICA8dGl0bGUgaWQ9InRpdGxlIj5PZGRSb29tIE9yZGVyT3BzIG9mZnNldCBsb29wPC90aXRsZT4KICA8cmVjdCB3aWR0aD0iNjQiIGhlaWdodD0iNjQiIHJ4PSIxOCIgZmlsbD0iIzQwNWE0OSIvPgogIDxwYXRoIGQ9Ik0xNyAyMGgyMGExMCAxMCAwIDAgMSAxMCAxMHYxNCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmJmYWY2IiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik00NyA0NEgyN2ExMCAxMCAwIDAgMS0xMC0xMFYyMCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjY2JkNWM1IiBzdHJva2Utd2lkdGg9IjYiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxjaXJjbGUgY3g9IjE3IiBjeT0iMjAiIHI9IjQiIGZpbGw9IiNmYmZhZjYiLz4KICA8Y2lyY2xlIGN4PSI0NyIgY3k9IjQ0IiByPSI0IiBmaWxsPSIjY2JkNWM1Ii8+Cjwvc3ZnPgo=" x="74" y="64" width="62" height="62"/>
+  <text x="158" y="84" class="eyebrow">macOS UNIVERSAL PACKAGE / 1.0.0</text>
+  <text x="158" y="126" class="meta">pf07-macos-universal-1.0.0.zip · SHA-256 475603ce84cef88e0a8fcb4a2889953a26bb8f392d587a1a06c99da8a6d8b9e1</text>
+  <text x="74" y="196" class="title">Applications 배치와 최초 실행</text>
+  <text x="74" y="232" class="subtitle">최종 앱 번들의 실제 구조와 unsigned 첫 실행 경계를 정확히 안내합니다.</text>
+  <g transform="translate(74 276)">
+      <rect width="1292" height="100" rx="18" fill="#fff" stroke="#171a18" stroke-width="2"/>
+      <rect width="92" height="100" rx="18" fill="#d9e9d6"/>
+      <text x="46" y="62" text-anchor="middle" class="number">01</text>
+      <text x="122" y="46" class="step-title">아카이브 검증</text>
+      <text x="122" y="74" class="step-copy">pf07-macos-universal-1.0.0.zip과 SHA-256을 확인합니다.</text>
+    </g>
+<g transform="translate(74 402)">
+      <rect width="1292" height="100" rx="18" fill="#fff" stroke="#171a18" stroke-width="2"/>
+      <rect width="92" height="100" rx="18" fill="#eef1eb"/>
+      <text x="46" y="62" text-anchor="middle" class="number">02</text>
+      <text x="122" y="46" class="step-title">앱 배치</text>
+      <text x="122" y="74" class="step-copy">PF07 Launcher.app을 Applications로 이동합니다.</text>
+    </g>
+<g transform="translate(74 528)">
+      <rect width="1292" height="100" rx="18" fill="#fff" stroke="#171a18" stroke-width="2"/>
+      <rect width="92" height="100" rx="18" fill="#eef1eb"/>
+      <text x="46" y="62" text-anchor="middle" class="number">03</text>
+      <text x="122" y="46" class="step-title">최초 실행 허용</text>
+      <text x="122" y="74" class="step-copy">서명·공증되지 않은 앱의 Finder 열기 또는 개인정보 보호 안내를 따릅니다.</text>
+    </g>
+<g transform="translate(74 654)">
+      <rect width="1292" height="100" rx="18" fill="#fff" stroke="#171a18" stroke-width="2"/>
+      <rect width="92" height="100" rx="18" fill="#eef1eb"/>
+      <text x="46" y="62" text-anchor="middle" class="number">04</text>
+      <text x="122" y="46" class="step-title">명령 폴백</text>
+      <text x="122" y="74" class="step-copy">필요하면 pf07.command 또는 ./pf07을 같은 추출본에서 사용합니다.</text>
+    </g>
+  <rect x="74" y="804" width="1292" height="52" rx="14" fill="#f1e2dc" stroke="#9a6454"/>
+  <text x="98" y="837" class="boundary">산출물 기반 안내 · 실제 Windows/macOS 실행 화면이 아님 · LINUX_STATIC_APP_BUNDLE_AND_SHARED_CORE_VALIDATION_ONLY</text>
+  </svg>

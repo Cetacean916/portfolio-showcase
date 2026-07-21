@@ -1,0 +1,371 @@
+{
+  "schema": "pf07.refinement-generated-code-assets.v1",
+  "generator": "scripts/build-refinement-assets.mjs",
+  "deterministic_inputs": [
+    "implemented PF07 brand",
+    "verified DEMO_MODE and CONNECTED_MODE behavior",
+    "successor asset inventory"
+  ],
+  "files": [
+    {
+      "path": "brand/BRAND-001_wordmark-horizontal.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "viewBox 0 0 388 72",
+      "role": "BRAND-001",
+      "sha256": "51b90e0bded56ca5fcf611fabb1643ddc74f66968c5a7d28dd1bc62d054e161c",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-002_symbol.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "viewBox 0 0 64 64",
+      "role": "BRAND-002",
+      "sha256": "a48ded6625125a284bd46c17fd92eefc4e0844e7f78ed018798061db2f71dd0f",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-003_favicon.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "viewBox 0 0 64 64",
+      "role": "BRAND-003",
+      "sha256": "53b8a06f973b9e119a66c9fab6ab7036c1988835e5ec50c2f81682092520aa38",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-003_icon-1024.png",
+      "media_type": "image/png",
+      "dimensions": "1024x1024",
+      "role": "raster derivative of brand/BRAND-003_favicon.svg",
+      "sha256": "2802e2f10897a728cdd2b3c44295f66dbf0ff89ae37e9b0ed62cccf1ea2c728c",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-003_icon-16.png",
+      "media_type": "image/png",
+      "dimensions": "16x16",
+      "role": "raster derivative of brand/BRAND-003_favicon.svg",
+      "sha256": "6621a714c20d32c63526073cdc9b02f3c3f7637f9a22f99ba95e9e6fdd00ca27",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-003_icon-180.png",
+      "media_type": "image/png",
+      "dimensions": "180x180",
+      "role": "raster derivative of brand/BRAND-003_favicon.svg",
+      "sha256": "47d79e412a4f96ec23d6204ab343da907792abdb67dd04638c0a25b361e6f13f",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-003_icon-32.png",
+      "media_type": "image/png",
+      "dimensions": "32x32",
+      "role": "raster derivative of brand/BRAND-003_favicon.svg",
+      "sha256": "fce999e68e5f4dee24fb11b0a3f0b1aa18dedf1e51710147699fc9a2cc90a3c1",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-003_icon-512.png",
+      "media_type": "image/png",
+      "dimensions": "512x512",
+      "role": "raster derivative of brand/BRAND-003_favicon.svg",
+      "sha256": "e220fe2fd31f3b6cc2d5f93349a2b4e73bf43bd4a9be27c2b6f6dd888485ae2c",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-004_logo-on-light.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "viewBox 0 0 388 72",
+      "role": "BRAND-004",
+      "sha256": "6c31fe42ed239c60e4381a60d7836baa6123762eba71a20cc77b3631a18539bb",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-005_logo-on-dark.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "viewBox 0 0 388 72",
+      "role": "BRAND-005",
+      "sha256": "df88aa9f31a1356328c2f598f6e498ffa692571fc0aac083d26a414e36533e41",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-006_offset-grid-pattern.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "viewBox 0 0 2400 1600",
+      "role": "BRAND-006",
+      "sha256": "3aed321f42a03ad73dc944e258c15a20eafbbf2968fc48202527e73ffbb35fb5",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-007_og-ko.png",
+      "media_type": "image/png",
+      "dimensions": "1200x630",
+      "role": "raster derivative of brand/BRAND-007_og-ko.svg",
+      "sha256": "35e5e5de6349d2af5ab825f3a1d1745d5fd742b6e52a06d95c08cda247ff914f",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-007_og-ko.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1200x630",
+      "role": "BRAND-007",
+      "sha256": "4500c3107810c2cc46a43fd194f34fab5ba6b655c1c1c8b6b79af579e0904c30",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-008_og-en.png",
+      "media_type": "image/png",
+      "dimensions": "1200x630",
+      "role": "raster derivative of brand/BRAND-008_og-en.svg",
+      "sha256": "e6348200c11d53879c8ce9d4ea77d77a371e5b18818b42313a2aa4b5c2a95afe",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-008_og-en.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1200x630",
+      "role": "BRAND-008",
+      "sha256": "19bb27509d43d759542d000e2904546b8912023af84761a19425ec5d948ee82f",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-009_neutral-fallback.png",
+      "media_type": "image/png",
+      "dimensions": "1600x1200",
+      "role": "raster derivative of brand/BRAND-009_neutral-fallback.svg",
+      "sha256": "4d8b106d329ee3a77d4504e034d4e2292a7a042c6061e28bd0073182559ccfc6",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "brand/BRAND-009_neutral-fallback.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x1200",
+      "role": "BRAND-009",
+      "sha256": "6c598f4a0c16cf781cf23e43b33787581ac08e69a5cf8fe3aaf588b77103531d",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "case/CASE-001_case-hero_en.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2880x1800",
+      "role": "CASE-001",
+      "sha256": "a670b814b22a14318ab6633dc6d91f1e281bb0a44cf83eaa6afa7858c046e979",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "case/CASE-001_case-hero_ko.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2880x1800",
+      "role": "CASE-001",
+      "sha256": "8dc5861c8b2450824dc1fc4358ed334c8dbb1fa824b92598be6f7014c54e4907",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "case/CASE-002_system-boundary_en.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1200",
+      "role": "CASE-002",
+      "sha256": "c4b5e61eeae381c59dfd6aaf22dc442621a08421df418be548835af2f57e4833",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "case/CASE-002_system-boundary_ko.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1200",
+      "role": "CASE-002",
+      "sha256": "6b909a3b40b7ea3d6fb84ea923569b87a4eeb1301ce5073f31eaf511d89cfe27",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "case/CASE-003_event-state_en.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1200",
+      "role": "CASE-003",
+      "sha256": "72becfab899c8197a1ce3aa74d921a8fd74930dc3691d7c3afd0dbd59a8b8bce",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "case/CASE-003_event-state_ko.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1200",
+      "role": "CASE-003",
+      "sha256": "8bc5918ff2d9c2065b55bcb32759685f86298282e06be897db769e7939a7b042",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "case/CASE-004_recovery-paths_en.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1200",
+      "role": "CASE-004",
+      "sha256": "45334bc82b756e17640c75680244078a010231a97f77fd9aacf6f49d1e3363b9",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "case/CASE-004_recovery-paths_ko.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1200",
+      "role": "CASE-004",
+      "sha256": "34f3c484bf5a683164dbb12418396ba0515728554ab7f3602a10927c3daabb84",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "commerce/COMMERCE-001_neutral-state.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x600",
+      "role": "COMMERCE-001",
+      "sha256": "eec98e9e08c90c9ef882888251a8c460f1b730eda14c43ca0ea19aa7ce973fd8",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "commerce/COMMERCE-002_neutral-state.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x1200",
+      "role": "COMMERCE-002",
+      "sha256": "cc76d56a03d1d7b84aad16a892c1ca87add2fc2b654ea08be79c35ec4c183b34",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "commerce/COMMERCE-003_neutral-state.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x1200",
+      "role": "COMMERCE-003",
+      "sha256": "9f1f7aa502bf5e10fd41a668f50de91ac6920c4a4ff4e117fe6360839789927b",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "commerce/COMMERCE-004_neutral-state.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x1200",
+      "role": "COMMERCE-004",
+      "sha256": "2c0f65338a9b076d9a0cadaaab80bc43b6fec7bc28ef3c160392e81a5ae7f656",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "commerce/COMMERCE-005_neutral-state.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x1200",
+      "role": "COMMERCE-005",
+      "sha256": "3274136816b70c4983f2cd67ae357969bd2aa06bc7f736a2785b9962aea7f89b",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "commerce/COMMERCE-006_neutral-state.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x1200",
+      "role": "COMMERCE-006",
+      "sha256": "88af99e0bcef07373e811234a664c1b64498b7abd4152a769e908d5ffb2c8334",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "own-ui-captures/during-implementation/HOME-004_failure-retry-recovery_en.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1600",
+      "role": "HOME-004",
+      "sha256": "db5a46d7c1e50063f1d58fbc78eaa38e3fd778a8b255d06fd159a0dae2bf8bb3",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "own-ui-captures/during-implementation/HOME-004_failure-retry-recovery_ko.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1600",
+      "role": "HOME-004",
+      "sha256": "b4d8456de990127b677dc9fba55d9f6da73e925a7f29bc82b57f8698a21f444b",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "own-ui-captures/during-implementation/HOME-005_integration-architecture_en.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1600",
+      "role": "HOME-005",
+      "sha256": "b40e20dd65756592be99b38d51c9ec63f9fec4956bdd84233ece45e12186414a",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "own-ui-captures/during-implementation/HOME-005_integration-architecture_ko.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "2400x1600",
+      "role": "HOME-005",
+      "sha256": "941c457bba493f876e19aeb20017ccb246ef28964c8cc8f02219eed12d4b666f",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-001_windows-1024.png",
+      "media_type": "image/png",
+      "dimensions": "1024x1024",
+      "role": "raster derivative of runner/RUN-001_windows.svg",
+      "sha256": "ccd438335a131149a5d19de5009746988fd6423b001450f55a3090fcadc0acf3",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-001_windows.ico",
+      "media_type": "image/x-icon",
+      "dimensions": "multi-resolution",
+      "role": "RUN-001",
+      "sha256": "e6059c7c80d2eed2800b63da3e12bc2d8a447dad8d0d1f48928d9a4cac7187b4",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-001_windows.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1024x1024",
+      "role": "RUN-001",
+      "sha256": "ff0e81811260c60d9bc185cefd71f0a22d5e0cb0d72a1c695b48cf4952352a21",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-002_macos-1024.png",
+      "media_type": "image/png",
+      "dimensions": "1024x1024",
+      "role": "raster derivative of runner/RUN-002_macos.svg",
+      "sha256": "90bfb4c9abbe04e119b7d2faa0c5d3828ba66a16c6c5f854addf4f3abd47ed39",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-002_macos.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1024x1024",
+      "role": "RUN-002",
+      "sha256": "f369874e372ca2e546453b40844e2c31d0eb6482f38a54c0cf1229953aa48f64",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-003_linux-512.png",
+      "media_type": "image/png",
+      "dimensions": "512x512",
+      "role": "raster derivative of runner/RUN-003_linux.svg",
+      "sha256": "c975c6b1c2aff018c1dd35a62e676eb6ae3ebc36e1f3a539c9d3a7a83f129156",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-003_linux.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1024x1024",
+      "role": "RUN-003",
+      "sha256": "547b356ad4664e7477de34376dc93cfb91a7d54196224c655432ec40b7a8d8f4",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-004_hub.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x900",
+      "role": "RUN-004",
+      "sha256": "8f445a98a443a09619133481911bc54ff0cbd633c3c8e7d533ff534de234fe3e",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-005_ready.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x900",
+      "role": "RUN-005",
+      "sha256": "033b07009b75c0bcb33f27d0431f5a90f514a18bbe543c9e2609f43b3ca8c5cd",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    },
+    {
+      "path": "runner/RUN-006_recovery.svg",
+      "media_type": "image/svg+xml",
+      "dimensions": "1600x900",
+      "role": "RUN-006",
+      "sha256": "908906c3eeae30bb655f7fee8fa054459198566f4447ea545f299378a14e56d8",
+      "review_result": "ACCEPTED_CODE_ASSET"
+    }
+  ]
+}

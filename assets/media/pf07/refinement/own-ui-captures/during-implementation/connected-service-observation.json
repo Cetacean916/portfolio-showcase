@@ -1,0 +1,35 @@
+{
+  "schema": "pf07.public-connected-service-observation.v1",
+  "classification": "PUBLIC_SANITIZED_OBSERVATION",
+  "synthetic_only": true,
+  "observed_at_utc": "2026-07-20T18:57:37Z",
+  "correlation": {
+    "order_ref": "order-…0041",
+    "contact_ref": "contact-…770645",
+    "deal_ref": "deal-…732692",
+    "message_ref": "message-…073359"
+  },
+  "n8n": {
+    "active_workflow": "OddRoom OrderOps",
+    "demo_workflow_active": false,
+    "successful_execution_count": 2,
+    "recent_duration_ms": [
+      3600,
+      6625
+    ]
+  },
+  "hubspot": {
+    "deal_state": "PAYMENT_CONFIRMED",
+    "state_rank": 20,
+    "associated_contact_count": 1
+  },
+  "slack": {
+    "status": "posted",
+    "event_type": "PAYMENT_CONFIRMED",
+    "attempt_count": 1,
+    "http_status": 200
+  },
+  "secrets_present": false,
+  "unmasked_remote_identifiers_present": false,
+  "customer_data_present": false
+}
