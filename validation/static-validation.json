@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "checkedAt": "2026-07-21T19:34:33.385Z",
+  "checkedAt": "2026-07-22T00:22:47.688Z",
   "products": [
     "oddroom",
     "pf01",
@@ -92,9 +92,9 @@
     "assets/media/pf06/detail-02-flow.png": "10b5aed20af5f1fac03ba9f98915b67ec49726e00f578078c0adfd1e695da03d",
     "assets/media/pf06/detail-03-result.png": "cb936894d0de5741e8938462e9067e48d313e0ecf16a6a5167a652daa4f89adb",
     "assets/media/pf06/demo-video.mp4": "300cc6c4c27b5a121c6056ecc9fbb47b3e6b049a37f7a9068ac2c4449befbb73",
-    "assets/media/pf07/current-ui/ko/storefront-home-desktop.png": "edfa9dd74d8bd396109db553f1c6382100592c13d3451d64c303eca605436cc0",
-    "assets/media/pf07/current-ui/ko/storefront-shop-desktop.png": "677e4226d75e9a82a8e422780802537d2e22ef9ef796a983269ee6beaa565c4b",
-    "assets/media/pf07/current-ui/ko/operator-console-desktop.png": "9210f16a77346a65ad14a5c695aa372d9b6038c3df9adaa322678803d29dc8a8",
-    "assets/media/pf07/current-ui/ko/runtime-hub-desktop.png": "9304dfdc2bb3af791885660a431e86c000feb2cd0128712b58d50f1b090cd080"
+    "assets/media/pf07/current-ui/ko/storefront-home-desktop.png": "7c2b7ad6e7a9af657af363aaa3300c2dcf8820b473ef9ebcee8b315003976b3a",
+    "assets/media/pf07/current-ui/ko/storefront-shop-desktop.png": "ea8e516d91f62623bfd0e4179d3fa576a651abcc2f81779092356d521e4c51fd",
+    "assets/media/pf07/current-ui/ko/operator-console-desktop.png": "0e533185f89eb37792654fa4c36764f4b617a3f2604c8030076d46b8b1c4ce21",
+    "assets/media/pf07/current-ui/ko/runtime-hub-desktop.png": "a0c572ece25b59229f4b70fd3e8cd7a26012993bcf07fd9d2da37d09342019f1"
   }
 }

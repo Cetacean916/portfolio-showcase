@@ -22,7 +22,10 @@ the public PF07 repository's `ASSET-LICENSES.md` and `THIRD_PARTY_NOTICES.md`.
 All order, customer, CRM, Slack, and administrator facts shown in PF07 media are
 synthetic or masked public aliases.
 
-## Font
+## Fonts
 
-The site bundles Pretendard. Its license text is included at
+The site bundles Pretendard for interface text and a subsetted Noto Serif KR
+variable font for PF07 editorial headings. Their OFL texts are included at
+`assets/fonts/Pretendard-OFL.txt` and `assets/fonts/NotoSerifKR-OFL.txt`.
+The pre-existing Pretendard license copy remains at
 `assets/fonts/PRETENDARD-LICENSE.txt`.

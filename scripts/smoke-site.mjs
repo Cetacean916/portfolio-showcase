@@ -144,10 +144,10 @@ try {
         pf07Root: Boolean(document.querySelector('.pf07-case')),
         pf07CurrentUiSources: [...document.querySelectorAll('.pf07-hero-media img,.pf07-current-surface img')].map((node) => node.getAttribute('src') || node.currentSrc),
         pf07ConnectedEvidenceSources: [...document.querySelectorAll('[data-connected-evidence] img')].map((node) => node.getAttribute('src') || node.currentSrc),
-        pf07HistoricalEvidenceSources: [...document.querySelectorAll('[data-historical-release-evidence]')].map((node) => node.getAttribute('href')),
+        pf07ReleaseEvidenceSources: [...document.querySelectorAll('[data-release-evidence]')].map((node) => node.getAttribute('href')),
         pf07VideoCount: document.querySelectorAll('.pf07-case video').length,
         pf07VideoLanguageBoundary: Boolean(document.querySelector('[data-video-language-boundary]')),
-        pf07CandidateReleaseBoundary: Boolean(document.querySelector('[data-candidate-release-boundary]')),
+        pf07DeliveryReleaseBoundary: Boolean(document.querySelector('[data-delivery-release-boundary]')),
         htmlLanguage: document.documentElement.lang,
         hangulCount: (document.body.innerText.match(/[ㄱ-ㆎ가-힣]/g) || []).length,
         serviceRoot: Boolean(document.querySelector('.service-intro')),
@@ -179,9 +179,9 @@ try {
       assert(audit.pf07Root, `${name}: PF07 refinement case did not render`);
       assert(audit.pf07ConnectedEvidenceSources.length === 3
         && ["CASE-014", "CASE-015", "CASE-016"].every((id) => audit.pf07ConnectedEvidenceSources.some((source) => source.includes(id))), `${name}: connected evidence is not buyer-reachable ${JSON.stringify(audit.pf07ConnectedEvidenceSources)}`);
-      assert(audit.pf07HistoricalEvidenceSources.length === 4
-        && ["CASE-017", "CASE-018", "CASE-019", "CASE-020"].every((id) => audit.pf07HistoricalEvidenceSources.some((source) => source.includes(id))), `${name}: published baseline evidence is not buyer-reachable ${JSON.stringify(audit.pf07HistoricalEvidenceSources)}`);
-      assert(audit.pf07CandidateReleaseBoundary, `${name}: current candidate and published baseline are not visibly separated`);
+      assert(audit.pf07ReleaseEvidenceSources.length === 4
+        && ["CASE-017", "CASE-018", "CASE-019", "CASE-020"].every((id) => audit.pf07ReleaseEvidenceSources.some((source) => source.includes(id))), `${name}: public 1.0.1 release evidence is not buyer-reachable ${JSON.stringify(audit.pf07ReleaseEvidenceSources)}`);
+      assert(audit.pf07DeliveryReleaseBoundary, `${name}: current public delivery identity is not visibly established`);
       const english = page.includes("lang=en") || page.includes("-en.html");
       const localeSegment = english ? "/current-ui/en/" : "/current-ui/ko/";
       assert(audit.pf07CurrentUiSources.length === 6 && audit.pf07CurrentUiSources.every((source) => source.includes(localeSegment)), `${name}: localized current UI source binding failed ${JSON.stringify(audit.pf07CurrentUiSources)}`);

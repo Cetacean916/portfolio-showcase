@@ -5,77 +5,88 @@
   "registration_manifest_case_count": 6,
   "metadata_stripped": true,
   "source_commitments": {
-    "public_acceptance_matrix_sha256": "8ec29edad80c081d01a9921e5734b9279d5bb42db074e0cc630dad91fb758dda",
-    "public_product_quality_record_sha256": "099e142170cd882e0e4aed06995ea6753944f464074c1ab4251bc4b6eedf0214",
-    "public_restore_drill_record_sha256": "031e1e52f5e48fb4eb41b74d4fd4a277816efe12ec622fd95f2c5d72dbb8c868",
-    "execution_proof_sha256": "36af69edb3f24e2451884915c73a2eddc286e030f81175eba7df20316ad967a9",
-    "recording_script_sha256": "4bc7ebf29d281735c696f96a72b360099f795e45997fc34453832e2f34ad8fec",
+    "public_acceptance_matrix_sha256": "160d5e2c6dcab4a26e7625e3c3954f12b46162122654884f5ef5675bc47a380a",
+    "public_product_quality_record_sha256": "ebec14b31dde3ad494616964b3bd64290affdaa3d27b9e022e60f2fd38d53f9c",
+    "public_restore_drill_record_sha256": "80c0ab6ce60f225d454c3803ae29d9026315f8a181513e3f611b1ba2cac26b85",
+    "execution_proof_sha256": "b7b804318064b88054782d1ecf42ebdbe0955051c892647efcc9f026eb48f7a4",
+    "recording_script_sha256": "657c33d7bb63e075d0e7faa4efd3fe99277d473626628b8c7f2c61b77b1cc5a5",
     "still_composition_script_sha256": "a77e3e33e8f9c67fa3fb2df63e4af6ea43338b29249d681262228026555bb1ea"
   },
   "assets": {
     "main-image.png": {
-      "sha256": "50baee68d346cfb1decc17788dd4a8274df48b1c9f14712af9a9fbeac531ea2f",
+      "sha256": "9f56af58b3e32ab37e686a7b48a086ce6b4e320f75eae024b933453dd7a38962",
       "width": 1200,
       "height": 1200,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "ca34344506b3e8621aa7eb916ef95ec36be600d8ba147e727253568c7cac843a",
+      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
       "source_event_frame_sha256": {
-        "LIVE_STOREFRONT": "48df3c59ed987b5b1fb5ecc687572ec7bf607c25721f4b1b3e1b90256678558b"
+        "LIVE_STOREFRONT": "7ba336cb3bd82be3185bdf43ebb6e0c503151522e3081222754b542fe98ec5c0"
       }
     },
     "detail-01-overview.png": {
-      "sha256": "89c68ae89a95b11a06317d38cefb94f722659403af0751c1f54f452784d14242",
+      "sha256": "1f895a3b81ffdab5474c4c7e2e265cd766d7d6373cad5b31add652c74c298c42",
       "width": 1200,
       "height": 1350,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "ca34344506b3e8621aa7eb916ef95ec36be600d8ba147e727253568c7cac843a",
+      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
       "source_event_frame_sha256": {
-        "LIVE_STOREFRONT": "48df3c59ed987b5b1fb5ecc687572ec7bf607c25721f4b1b3e1b90256678558b",
-        "PRODUCT_SELECTED": "a42d97fa59d2117c666387197154a171df9d802d85d3a0a59f458afc936284a4",
-        "CHECKOUT_INPUT": "92e0afa132d13cd2200eaaefc53093e056d9275593fbb321915f3cc49012110e"
+        "LIVE_STOREFRONT": "7ba336cb3bd82be3185bdf43ebb6e0c503151522e3081222754b542fe98ec5c0",
+        "PRODUCT_SELECTED": "02b800c2b10a22abe16e06d1afc71c9532b611116df1628d9788ec1ce533d8e6",
+        "CHECKOUT_INPUT": "d163362f8b057aa07f0f3113c7e412a5674732101b88c6611651cecdc4858835"
       }
     },
     "detail-02-flow.png": {
-      "sha256": "7e82d5798d08fda9182e332465af2d401c3a28c57390672914e679f1c587c577",
+      "sha256": "a53725fd6800318cec75d37b1ab8416c7d1c2f79bb16b06a0d90604352fecd2d",
       "width": 1200,
-      "height": 1350
+      "height": 1350,
+      "source_video": "demo-video.mp4",
+      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
+      "source_event_frame_sha256": {
+        "ADMIN_COMPLETED": "bc4a073731dc888f54755ca4d96c1324a609eec17b3725d5a2a31a687e69d52b"
+      }
     },
     "detail-03-result.png": {
-      "sha256": "5be06806a0aa701379bb5fafec90d4eed81e43f52d82b1bfe462e9cab972342f",
+      "sha256": "a071b40aadda15b300c7804080f0d62cfdec5e9c95ade6124fcf8b38dfb05fbc",
       "width": 1200,
-      "height": 1350
+      "height": 1350,
+      "source_video": "recovery-clip.mp4",
+      "source_video_sha256": "6272bebb7665a6bc3305ec9a2efbf7f17157142e378a17a5b2ae4ca00b7fd342",
+      "source_event_frame_sha256": {
+        "FAILED": "c715042906c5d67407d104d8e49237ff99e6cbe16e35c456f6d62029831dd5f9",
+        "RECOVERED": "b88cd19d3bc340bae34de857ff2d7d2d2d63e680f6c4b7c6023caa2b7d81f105"
+      }
     },
     "video-poster.png": {
-      "sha256": "d3f60bf3d320ba4948ea62e47853ef336fff01b60e3b79c2b6be8e9444b1c857",
+      "sha256": "e714e542e2561418d285bae01dee6c54d2f90bd3f643c132e7d0918e9003961a",
       "width": 1440,
       "height": 1000
     },
     "demo-video.mp4": {
-      "sha256": "ca34344506b3e8621aa7eb916ef95ec36be600d8ba147e727253568c7cac843a",
+      "sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 62,
-      "frame_count": 1860,
+      "duration_seconds": 62.033,
+      "frame_count": 1861,
       "sampled_frame_count": 62,
       "unique_sampled_frames": 39,
       "execution_proof": "execution-proof.json"
     },
     "recovery-clip.mp4": {
-      "sha256": "1d428f15ed887b5ef57566d9f34f5b31d6403f93c660a67e3485af414f76005c",
+      "sha256": "6272bebb7665a6bc3305ec9a2efbf7f17157142e378a17a5b2ae4ca00b7fd342",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 24.266667,
-      "frame_count": 728,
+      "duration_seconds": 24.133,
+      "frame_count": 724,
       "sampled_frame_count": 24,
-      "unique_sampled_frames": 17,
+      "unique_sampled_frames": 16,
       "execution_proof": "execution-proof.json"
     },
     "execution-proof.json": {
-      "sha256": "36af69edb3f24e2451884915c73a2eddc286e030f81175eba7df20316ad967a9",
+      "sha256": "b7b804318064b88054782d1ecf42ebdbe0955051c892647efcc9f026eb48f7a4",
       "schema_version": 1,
       "classification": "PUBLIC_SANITIZED_EXECUTION_PROOF"
     }

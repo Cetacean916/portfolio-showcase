@@ -1,8 +1,25 @@
+@font-face {
+  font-family: "Offset Grotesk";
+  src: url("../fonts/PretendardVariable.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 45 920;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: "Offset Editorial";
+  src: url("../fonts/NotoSerifKR-Variable-PF07Subset.woff2") format("woff2");
+  font-style: normal;
+  font-weight: 200 900;
+  font-display: swap;
+}
+
 .pf07-case {
   --pf07-ink: #151611;
   --pf07-black: #0f100d;
-  --pf07-orange: #e65b2f;
-  --pf07-olive: #66714a;
+  --pf07-orange: #a43f22;
+  --pf07-orange-on-dark: #ff9a78;
+  --pf07-olive: #4f5c35;
   --pf07-paper: #f1eee6;
   --pf07-surface: #fffefa;
   --pf07-line: #d0ccc1;
@@ -11,6 +28,7 @@
   margin: 0 auto;
   padding: 54px 0 88px;
   color: var(--pf07-ink);
+  font-family: "Offset Grotesk", Pretendard, "Apple SD Gothic Neo", system-ui, sans-serif;
 }
 
 .pf07-case img {
@@ -19,9 +37,14 @@
 }
 
 .pf07-case h1,
-.pf07-case h2,
+.pf07-case h2 {
+  font-family: "Offset Editorial", "Noto Serif KR", serif;
+  font-weight: 520;
+  letter-spacing: -.025em;
+}
+
 .pf07-case h3 {
-  letter-spacing: -.04em;
+  letter-spacing: -.025em;
 }
 
 .pf07-case .eyebrow {
@@ -295,7 +318,7 @@
 .pf07-surface p,
 .pf07-package p {
   margin: 11px 0 0;
-  color: #696a62;
+  color: #57584f;
   font-size: 13px;
   word-break: keep-all;
 }
@@ -356,7 +379,7 @@
   color: #fff;
 }
 
-.pf07-surface:nth-child(5) > span { color: var(--pf07-orange); }
+.pf07-surface:nth-child(5) > span { color: var(--pf07-orange-on-dark); }
 .pf07-surface:nth-child(5) p { color: #c6c8bf; }
 
 .pf07-diagram-pair {
@@ -474,7 +497,7 @@
   color: #fff;
 }
 
-.pf07-connected .eyebrow { color: var(--pf07-orange); }
+.pf07-connected .eyebrow { color: var(--pf07-orange-on-dark); }
 .pf07-connected .pf07-section-heading > p { color: #bfc1b9; }
 
 .pf07-connected-grid { border-color: #474941; }
@@ -485,6 +508,7 @@
 }
 
 .pf07-connected-state + .pf07-connected-state { border-color: #474941; }
+.pf07-connected-state > span { color: var(--pf07-orange-on-dark); }
 .pf07-connected-state p { color: #bfc1b9; }
 
 .pf07-evidence-heading {
@@ -618,7 +642,7 @@
 .pf07-download:focus-visible { background: #25271f; }
 
 .pf07-download span {
-  color: var(--pf07-orange);
+  color: var(--pf07-orange-on-dark);
   font: 800 10px ui-monospace, SFMono-Regular, Consolas, monospace;
 }
 

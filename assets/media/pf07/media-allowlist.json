@@ -1122,7 +1122,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "edfa9dd74d8bd396109db553f1c6382100592c13d3451d64c303eca605436cc0"
+          "sha256": "7c2b7ad6e7a9af657af363aaa3300c2dcf8820b473ef9ebcee8b315003976b3a"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/CASE-005_storefront-shop-desktop_ko.png",
@@ -1130,7 +1130,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "677e4226d75e9a82a8e422780802537d2e22ef9ef796a983269ee6beaa565c4b"
+          "sha256": "ea8e516d91f62623bfd0e4179d3fa576a651abcc2f81779092356d521e4c51fd"
         }
       ]
     },
@@ -1152,7 +1152,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "390x844"
           },
-          "sha256": "56abf7f8527a5924758966274f6cd14d9964e3f0833b31388ec3677d685253ee"
+          "sha256": "3b03657ae1b182561bbbf448df8bebeadb3b300e2bddc44b6a4166acd0092a8f"
         }
       ]
     },
@@ -1176,7 +1176,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "a021d6ff0b7069498992ff9f16eb1328a15b89463a6b1657bfd904dfba394d6c"
+          "sha256": "e147fc46dd30a982e7627be647a263af9ed61eb2fc643baca08599eb755c764f"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/CASE-007_storefront-mobile_en.png",
@@ -1184,7 +1184,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "390x844"
           },
-          "sha256": "8eb328f2b9f8c74218901f30fd9af162c5a0c0879f2e23bb94778f4d1a6f26ef"
+          "sha256": "6f4a2acda7fe980746307a568ca1d923be31251e6beccf6438215f0f63fd8ba9"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/CASE-007_storefront-shop-desktop_en.png",
@@ -1192,7 +1192,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "990014a00b7cf33184e23e8e0aeb171445eb40855d3b308ba1229e9872e2f1e0"
+          "sha256": "8a2eb2d233bfe26693e15d541bd30e81dfe4d09e72094bc5e8c9a1130c9da041"
         }
       ]
     },
@@ -1216,7 +1216,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "9883a426a62ed8ca24b0f76ec7c03d03d49d2cb81053ef290ea983e21dc0f2c7"
+          "sha256": "a405e359865cc4b5d0f519174da2f2e681e1d6203e0f5049105a26e637656315"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/CASE-008_variable-product_ko.png",
@@ -1224,7 +1224,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "4572b60ddaf6659f7f1d72ac85c471a22d068944df127bcaba428511057b3ca5"
+          "sha256": "623271c8ee1bcc2376a8434b1d7f1524269fe80506ccc6261218be20257bc550"
         }
       ]
     },
@@ -1247,7 +1247,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "f3819d40727282a458ff162d89b26094f60a87fac4d8b9ea6eac85dd75277e10"
+          "sha256": "2a197e4ccacc061f5098204bab0b25bde948fad4dbad382aba27e3c414e90f82"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/CASE-009_checkout_ko.png",
@@ -1255,7 +1255,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "02dae5b375bf9a5eb660dffab9e5fe27e8fec8b2578087c8d0e87a722c6f6abf"
+          "sha256": "a05e9be593c8770cc4ed52a82068fcf48c0715a36ebb039c70c8340192a3de5e"
         }
       ]
     },
@@ -1282,7 +1282,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "5333d109ff37c1478b95c00444645953c7ef6ce20807ff989882f79c41c10429"
+          "sha256": "396878c72951b113b9469b9cb9d4b29d95bac4613a7ef95b289d6ab8970aeb10"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/CASE-010_operator-console_ko.png",
@@ -1290,7 +1290,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "9210f16a77346a65ad14a5c695aa372d9b6038c3df9adaa322678803d29dc8a8"
+          "sha256": "0e533185f89eb37792654fa4c36764f4b617a3f2604c8030076d46b8b1c4ce21"
         },
         {
           "candidate_relative_path": "own-ui-captures/during-implementation/CASE-010_admin-normal_en.png",
@@ -1494,7 +1494,7 @@
         "ko"
       ],
       "role_state": "깨끗한 복원·재실행 증거",
-      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "review_result": "ACCEPTED_STEP090_DIRECT_REVIEW",
       "candidate_relative_paths": [
         "own-ui-captures/after-completion/CASE-017_final-clean-restore-rerun_ko.png"
       ],
@@ -1503,9 +1503,9 @@
           "candidate_relative_path": "own-ui-captures/after-completion/CASE-017_final-clean-restore-rerun_ko.png",
           "media_type": "image/png",
           "dimensions_or_vector_view_box": {
-            "raster_dimensions": "1440x3330"
+            "raster_dimensions": "1440x3176"
           },
-          "sha256": "8d8693baa26f76843ca6b9c65f4403ddc591723560666758a1a857dd34fb0095"
+          "sha256": "be257b1397216ab599d0c2fedc499cd9c5eb446b97a6423d47abe0dcc98a48f5"
         }
       ]
     },
@@ -1516,7 +1516,7 @@
         "language-neutral"
       ],
       "role_state": "플랫폼별 제공 구성·사용 진입점 패널",
-      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "review_result": "ACCEPTED_STEP090_DIRECT_REVIEW",
       "candidate_relative_paths": [
         "own-ui-captures/after-completion/CASE-018_platform-delivery-entrypoints.svg"
       ],
@@ -1529,7 +1529,7 @@
             "height": "1800",
             "view_box": "0 0 2880 1800"
           },
-          "sha256": "b393d6946f16e4b228f1dd7f35e522eabfae9482b19a5be4f378be8214f67332"
+          "sha256": "28af1abbaf19f5b95ac1ac3ab3079d2ab757c3cb8d013877404f2d9130dd9e7f"
         }
       ]
     },
@@ -1540,7 +1540,7 @@
         "language-neutral"
       ],
       "role_state": "검증 점수표·관측 수치 그래픽",
-      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "review_result": "ACCEPTED_STEP090_DIRECT_REVIEW",
       "candidate_relative_paths": [
         "own-ui-captures/after-completion/CASE-019_final-observation-scorecard.svg"
       ],
@@ -1553,7 +1553,7 @@
             "height": "1400",
             "view_box": "0 0 2400 1400"
           },
-          "sha256": "360e550332aefb1a0c0994eba50a6a819f931ea825a731e891e32396972f0a7e"
+          "sha256": "27abddc60fd30305c3bb79cb477ce13ea419ae7199516ce2a14a9949775486d0"
         }
       ]
     },
@@ -1564,7 +1564,7 @@
         "language-neutral"
       ],
       "role_state": "저장소·CI·배포 증거",
-      "review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
+      "review_result": "ACCEPTED_STEP090_DIRECT_REVIEW",
       "candidate_relative_paths": [
         "own-ui-captures/after-completion/CASE-020_final-ci-artifact.png"
       ],
@@ -1575,7 +1575,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1100"
           },
-          "sha256": "8edd36e06fc485e4206ad21bbcb064e841456d06d5e3a82d4546cdde0ec6d863"
+          "sha256": "0c68692ea5acc383d85b0a12c72ff1a608f9d152f08d2d65c4a0ff734fc37a15"
         }
       ]
     },
@@ -1781,7 +1781,7 @@
             "height": "900",
             "view_box": "0 0 1440 900"
           },
-          "sha256": "5e5ec0ba81e1e22088b1a29d6b08c3f139d514c154571f886f2dfb2012b4d518"
+          "sha256": "1241be1a2e2f207b4608efdf7e41ec90209d465f9db223fabe16addf9c0693a2"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-001_windows-download-start_ko.svg",
@@ -1791,7 +1791,7 @@
             "height": "900",
             "view_box": "0 0 1440 900"
           },
-          "sha256": "ac87ad0fb799cd341d09407020f0b1745bb8f191c28d2fdc71a124b70991a573"
+          "sha256": "1b7d78fbfff4fefde4401373ad9be0a4d0ef98556be7992ca9c5e8b474b3c275"
         }
       ]
     },
@@ -1817,7 +1817,7 @@
             "height": "900",
             "view_box": "0 0 1440 900"
           },
-          "sha256": "6c068de564b796001e9b51cee092ebeb0309eca45b2c558687ba50176d388485"
+          "sha256": "b4f033cf891738aef058f1b0f6a1a36f981ea5e680553441de59a602c227fd16"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_ko.svg",
@@ -1827,7 +1827,7 @@
             "height": "900",
             "view_box": "0 0 1440 900"
           },
-          "sha256": "66baffdd8ff7f3c310e3215eb4605a6288fe9371479ca123f45db0e31c2ade85"
+          "sha256": "ad0da9a8613479c0abdc8dabd7622a7aeca086279e2099ac29bc4b2cb6645123"
         }
       ]
     },
@@ -1853,7 +1853,7 @@
             "height": "900",
             "view_box": "0 0 1440 900"
           },
-          "sha256": "b62d0bcfceb68fd3a8b0bf163c20fe4a691359cd33bf1732c060a8eb361a0fb5"
+          "sha256": "2f9bcf1e7c5b030672dc62370fb1c2e074836bc26f1489565d8bbe8d099309ea"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_ko.svg",
@@ -1863,7 +1863,7 @@
             "height": "900",
             "view_box": "0 0 1440 900"
           },
-          "sha256": "0d33df62fae5769baf2bab0ef8aa67ddd67057349120113ec075f5d9db845102"
+          "sha256": "a76e44504a21e0399761c7e1a33af4467612e93ffe54de32af33ec69d9cfac0a"
         }
       ]
     },
@@ -1889,7 +1889,7 @@
             "height": "900",
             "view_box": "0 0 1440 900"
           },
-          "sha256": "6d07606a1ce38e292c5f1d3695242a9f03fef1dac290bbbb7b040759db9af610"
+          "sha256": "1f662fedb612acbd050c4328eff9df4df0cc7008422fc6f7bd8ce57c405394c5"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_ko.svg",
@@ -1899,7 +1899,7 @@
             "height": "900",
             "view_box": "0 0 1440 900"
           },
-          "sha256": "c8fb14b79c76657dff5a8eda8d37a0dcc6488c436a07c4af48569b0fae482ebf"
+          "sha256": "c336c3fb8edc461059a821a2b33c1cd51d3d3a2e3e236b42bda650ebaa5f99a0"
         }
       ]
     },
@@ -1923,7 +1923,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "84d5270b6bb3bb2d030bbf23f69299cf010bdbabd88ed757616a341ffdc3b477"
+          "sha256": "3bfcbb28d8c1b0313a1b95a3e99fd6091d425542bd6a98782a9621aa9a069d7f"
         },
         {
           "candidate_relative_path": "own-ui-captures/after-completion/GUIDE-005_linux-install-run_ko.png",
@@ -1931,7 +1931,7 @@
           "dimensions_or_vector_view_box": {
             "raster_dimensions": "1440x1000"
           },
-          "sha256": "9304dfdc2bb3af791885660a431e86c000feb2cd0128712b58d50f1b090cd080"
+          "sha256": "a0c572ece25b59229f4b70fd3e8cd7a26012993bcf07fd9d2da37d09342019f1"
         }
       ]
     },
@@ -2394,107 +2394,107 @@
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-005_storefront-desktop_ko.png",
-      "sha256": "edfa9dd74d8bd396109db553f1c6382100592c13d3451d64c303eca605436cc0"
+      "sha256": "7c2b7ad6e7a9af657af363aaa3300c2dcf8820b473ef9ebcee8b315003976b3a"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-005_storefront-shop-desktop_ko.png",
-      "sha256": "677e4226d75e9a82a8e422780802537d2e22ef9ef796a983269ee6beaa565c4b"
+      "sha256": "ea8e516d91f62623bfd0e4179d3fa576a651abcc2f81779092356d521e4c51fd"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-006_storefront-mobile_ko.png",
-      "sha256": "56abf7f8527a5924758966274f6cd14d9964e3f0833b31388ec3677d685253ee"
+      "sha256": "3b03657ae1b182561bbbf448df8bebeadb3b300e2bddc44b6a4166acd0092a8f"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-007_storefront-desktop_en.png",
-      "sha256": "a021d6ff0b7069498992ff9f16eb1328a15b89463a6b1657bfd904dfba394d6c"
+      "sha256": "e147fc46dd30a982e7627be647a263af9ed61eb2fc643baca08599eb755c764f"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-007_storefront-mobile_en.png",
-      "sha256": "8eb328f2b9f8c74218901f30fd9af162c5a0c0879f2e23bb94778f4d1a6f26ef"
+      "sha256": "6f4a2acda7fe980746307a568ca1d923be31251e6beccf6438215f0f63fd8ba9"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-007_storefront-shop-desktop_en.png",
-      "sha256": "990014a00b7cf33184e23e8e0aeb171445eb40855d3b308ba1229e9872e2f1e0"
+      "sha256": "8a2eb2d233bfe26693e15d541bd30e81dfe4d09e72094bc5e8c9a1130c9da041"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-008_variable-product_en.png",
-      "sha256": "9883a426a62ed8ca24b0f76ec7c03d03d49d2cb81053ef290ea983e21dc0f2c7"
+      "sha256": "a405e359865cc4b5d0f519174da2f2e681e1d6203e0f5049105a26e637656315"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-008_variable-product_ko.png",
-      "sha256": "4572b60ddaf6659f7f1d72ac85c471a22d068944df127bcaba428511057b3ca5"
+      "sha256": "623271c8ee1bcc2376a8434b1d7f1524269fe80506ccc6261218be20257bc550"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-009_cart_ko.png",
-      "sha256": "f3819d40727282a458ff162d89b26094f60a87fac4d8b9ea6eac85dd75277e10"
+      "sha256": "2a197e4ccacc061f5098204bab0b25bde948fad4dbad382aba27e3c414e90f82"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-009_checkout_ko.png",
-      "sha256": "02dae5b375bf9a5eb660dffab9e5fe27e8fec8b2578087c8d0e87a722c6f6abf"
+      "sha256": "a05e9be593c8770cc4ed52a82068fcf48c0715a36ebb039c70c8340192a3de5e"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-010_operator-console_en.png",
-      "sha256": "5333d109ff37c1478b95c00444645953c7ef6ce20807ff989882f79c41c10429"
+      "sha256": "396878c72951b113b9469b9cb9d4b29d95bac4613a7ef95b289d6ab8970aeb10"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-010_operator-console_ko.png",
-      "sha256": "9210f16a77346a65ad14a5c695aa372d9b6038c3df9adaa322678803d29dc8a8"
+      "sha256": "0e533185f89eb37792654fa4c36764f4b617a3f2604c8030076d46b8b1c4ce21"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-017_final-clean-restore-rerun_ko.png",
-      "sha256": "8d8693baa26f76843ca6b9c65f4403ddc591723560666758a1a857dd34fb0095"
+      "sha256": "be257b1397216ab599d0c2fedc499cd9c5eb446b97a6423d47abe0dcc98a48f5"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-018_platform-delivery-entrypoints.svg",
-      "sha256": "b393d6946f16e4b228f1dd7f35e522eabfae9482b19a5be4f378be8214f67332"
+      "sha256": "28af1abbaf19f5b95ac1ac3ab3079d2ab757c3cb8d013877404f2d9130dd9e7f"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-019_final-observation-scorecard.svg",
-      "sha256": "360e550332aefb1a0c0994eba50a6a819f931ea825a731e891e32396972f0a7e"
+      "sha256": "27abddc60fd30305c3bb79cb477ce13ea419ae7199516ce2a14a9949775486d0"
     },
     {
       "relative_path": "own-ui-captures/after-completion/CASE-020_final-ci-artifact.png",
-      "sha256": "8edd36e06fc485e4206ad21bbcb064e841456d06d5e3a82d4546cdde0ec6d863"
+      "sha256": "0c68692ea5acc383d85b0a12c72ff1a608f9d152f08d2d65c4a0ff734fc37a15"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-001_windows-download-start_en.svg",
-      "sha256": "5e5ec0ba81e1e22088b1a29d6b08c3f139d514c154571f886f2dfb2012b4d518"
+      "sha256": "1241be1a2e2f207b4608efdf7e41ec90209d465f9db223fabe16addf9c0693a2"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-001_windows-download-start_ko.svg",
-      "sha256": "ac87ad0fb799cd341d09407020f0b1745bb8f191c28d2fdc71a124b70991a573"
+      "sha256": "1b7d78fbfff4fefde4401373ad9be0a4d0ef98556be7992ca9c5e8b474b3c275"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_en.svg",
-      "sha256": "6c068de564b796001e9b51cee092ebeb0309eca45b2c558687ba50176d388485"
+      "sha256": "b4f033cf891738aef058f1b0f6a1a36f981ea5e680553441de59a602c227fd16"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-002_windows-preflight-evidence_ko.svg",
-      "sha256": "66baffdd8ff7f3c310e3215eb4605a6288fe9371479ca123f45db0e31c2ade85"
+      "sha256": "ad0da9a8613479c0abdc8dabd7622a7aeca086279e2099ac29bc4b2cb6645123"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_en.svg",
-      "sha256": "b62d0bcfceb68fd3a8b0bf163c20fe4a691359cd33bf1732c060a8eb361a0fb5"
+      "sha256": "2f9bcf1e7c5b030672dc62370fb1c2e074836bc26f1489565d8bbe8d099309ea"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-003_macos-download-first-launch_ko.svg",
-      "sha256": "0d33df62fae5769baf2bab0ef8aa67ddd67057349120113ec075f5d9db845102"
+      "sha256": "a76e44504a21e0399761c7e1a33af4467612e93ffe54de32af33ec69d9cfac0a"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_en.svg",
-      "sha256": "6d07606a1ce38e292c5f1d3695242a9f03fef1dac290bbbb7b040759db9af610"
+      "sha256": "1f662fedb612acbd050c4328eff9df4df0cc7008422fc6f7bd8ce57c405394c5"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-004_macos-permission-runtime_ko.svg",
-      "sha256": "c8fb14b79c76657dff5a8eda8d37a0dcc6488c436a07c4af48569b0fae482ebf"
+      "sha256": "c336c3fb8edc461059a821a2b33c1cd51d3d3a2e3e236b42bda650ebaa5f99a0"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-005_linux-install-run_en.png",
-      "sha256": "84d5270b6bb3bb2d030bbf23f69299cf010bdbabd88ed757616a341ffdc3b477"
+      "sha256": "3bfcbb28d8c1b0313a1b95a3e99fd6091d425542bd6a98782a9621aa9a069d7f"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-005_linux-install-run_ko.png",
-      "sha256": "9304dfdc2bb3af791885660a431e86c000feb2cd0128712b58d50f1b090cd080"
+      "sha256": "a0c572ece25b59229f4b70fd3e8cd7a26012993bcf07fd9d2da37d09342019f1"
     },
     {
       "relative_path": "own-ui-captures/after-completion/GUIDE-007_linux-server-deployment_en.png",

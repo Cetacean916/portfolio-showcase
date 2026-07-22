@@ -219,10 +219,10 @@ try {
   if (pf07CurrentUiManifest.schema !== "pf07.current-ui-manifest.v2"
     || pf07CurrentUiManifest.state !== "CURRENT_REFERENCE_APPLIED"
     || pf07CurrentUiManifest.classification !== "PUBLIC_SANITIZED_RUNTIME_CAPTURE"
-    || pf07CurrentUiManifest.package_build_id !== "pf07-build-e6996fd41e28b1ac42b8"
-    || pf07CurrentUiManifest.package_version !== "1.0.0"
-    || pf07CurrentUiManifest.artifact_set_sha256 !== "1609690b2688f8ee00f43b83d24194465b0d0055aeeeee1487937c9832d025be"
-    || pf07CurrentUiManifest.linux_package_manifest_sha256 !== "916ab331c0079abaa1269bd2c15c42bd112af3ea3923f57b335ad5332961e06f"
+    || pf07CurrentUiManifest.package_build_id !== "pf07-build-13003091bee3a5201dba"
+    || pf07CurrentUiManifest.package_version !== "1.0.1"
+    || pf07CurrentUiManifest.artifact_set_sha256 !== "6ef2ca1d0c2f4ba783181c3e5d59dfb02e535ab9435aab82e66f140f07829926"
+    || pf07CurrentUiManifest.linux_package_manifest_sha256 !== "d467392d1ea0fa75b05b2991f35d2ad12fb110b66f6e256b7a585c8894c801f8"
     || pf07CurrentUiManifest.capture_builder !== "scripts/capture-final-stills.mjs"
     || pf07CurrentUiManifest.capture_builder_sha256 !== sha256(captureBuilder)
     || pf07CurrentUiManifest.source_public_asset_manifest_sha256 !== sha256(mirroredPublicManifest)
@@ -423,8 +423,14 @@ for (const project of projects) {
   for (const field of ["facts", "proof", "included", "excluded", "tech"]) if (!Array.isArray(project[field]) || project[field].length < 3) errors.push(`${project.id}: incomplete ${field}`);
   if (project.id === "pf07") {
     const refinement = project.refinement;
-    const stableReleasePrefix = "https://github.com/Cetacean916/oddroom-woo-orderops/releases/download/pf07-v1.0.0/";
-    const expectedReleaseFiles = ["pf07-windows-x64-1.0.0.zip", "pf07-windows-kvm-test-kit-1.0.0.zip", "pf07-macos-universal-1.0.0.zip", "pf07-linux-x86_64-1.0.0.tar.gz", "pf07-linux-server-1.0.0.tar.gz"];
+    const stableReleasePrefix = "https://github.com/Cetacean916/oddroom-woo-orderops/releases/download/pf07-v1.0.1/";
+    const expectedReleaseAssets = [
+      ["pf07-windows-x64-1.0.1.zip", "59d2391b1fa67b33ddfd3fad9f6bb665118d0f98a026ee662fe8d124b20f6444"],
+      ["pf07-windows-kvm-test-kit-1.0.1.zip", "9aff25538b04dc6248fa5fbc7acef1b01c3ecba4dd1ab51e1c12982649066f81"],
+      ["pf07-macos-universal-1.0.1.zip", "eea0d8b1a147c33fe70fa3bc57d495e4336d9101fd859ebcb5ca3e276d8912f2"],
+      ["pf07-linux-x86_64-1.0.1.tar.gz", "a6a98ab573b301b49477621dc9a36bfa5b43d10bc9d755968a25bf1372628a80"],
+      ["pf07-linux-server-1.0.1.tar.gz", "0df834d9f53484367eb74eede3692cd122fdfceee37b3408639554387904aeb6"],
+    ];
     const expectedPostCandidateIds = ["CASE-017", "CASE-018", "CASE-019", "CASE-020"];
     const expectedConnectedIds = ["CASE-014", "CASE-015", "CASE-016"];
     if (!refinement?.repositoryUrl || !refinement?.mediaBase || !refinement?.locales?.ko || !refinement?.locales?.en) errors.push("pf07: bilingual refinement contract is incomplete");
@@ -432,16 +438,17 @@ for (const project of projects) {
       || ![project.image, ...project.gallery].every((relative) => relative.startsWith("assets/media/pf07/current-ui/ko/"))) {
       errors.push("pf07: canonical static case or Korean card media binding failed");
     }
-    if (refinement?.currentCandidate?.buildId !== "pf07-build-e6996fd41e28b1ac42b8"
-      || refinement?.currentCandidate?.artifactSetSha256 !== "1609690b2688f8ee00f43b83d24194465b0d0055aeeeee1487937c9832d025be"
-      || refinement?.currentCandidate?.publicationState !== "LOCAL_CANDIDATE_NOT_PUBLISHED"
-      || refinement?.currentCandidate?.publishedBaselineTag !== "pf07-v1.0.0") {
-      errors.push("pf07: current candidate versus published baseline boundary failed");
+    if (refinement?.currentDelivery?.buildId !== "pf07-build-13003091bee3a5201dba"
+      || refinement?.currentDelivery?.artifactSetSha256 !== "6ef2ca1d0c2f4ba783181c3e5d59dfb02e535ab9435aab82e66f140f07829926"
+      || refinement?.currentDelivery?.publicationState !== "PUBLIC_PACKAGE_RELEASE_PASS"
+      || refinement?.currentDelivery?.releaseTag !== "pf07-v1.0.1"
+      || refinement?.currentDelivery?.immutablePredecessorTag !== "pf07-v1.0.0") {
+      errors.push("pf07: current public delivery identity or immutable predecessor boundary failed");
     }
-    if (refinement?.releaseUrl !== "https://github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.0") errors.push("pf07: stable release page URL is missing or incorrect");
+    if (refinement?.releaseUrl !== "https://github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.1") errors.push("pf07: stable release page URL is missing or incorrect");
     if (!Array.isArray(refinement?.releaseAssets)
       || refinement.releaseAssets.length !== 5
-      || JSON.stringify(refinement.releaseAssets.map((asset) => asset.filename)) !== JSON.stringify(expectedReleaseFiles)
+      || JSON.stringify(refinement.releaseAssets.map((asset) => [asset.filename, asset.sha256])) !== JSON.stringify(expectedReleaseAssets)
       || new Set(refinement.releaseAssets.map((asset) => asset.url)).size !== 5
       || refinement.releaseAssets.some((asset) => asset.url !== `${stableReleasePrefix}${asset.filename}` || !/^[0-9a-f]{64}$/.test(asset.sha256))) {
       errors.push("pf07: exact stable package download set is incomplete or invalid");
@@ -560,6 +567,20 @@ const [indexPage, servicePage, contactScript, sitemap, pf07KoPage, pf07EnPage] =
   fs.readFile(path.join(root, "case-pf07-ko.html"), "utf8"),
   fs.readFile(path.join(root, "case-pf07-en.html"), "utf8"),
 ]);
+const pf07FontAssets = {
+  "assets/fonts/PretendardVariable.woff2": "9599f12fd42fc0bce1cd50b47a0c022e108d7aa64dd0d1bb0ed44f3282d900b4",
+  "assets/fonts/NotoSerifKR-Variable-PF07Subset.woff2": "e5c26900eed5d9b3a6ddfd2979a64637ecd5671884e3af5b6f764459383605e3",
+  "assets/fonts/Pretendard-OFL.txt": "82e9c8a4b203261f10ddba1296422d64914ff3d4b7bd8a12896d03f0f088d70a",
+  "assets/fonts/NotoSerifKR-OFL.txt": "5e0da210fb04058a8c0087985d2d456b931c2579811a49655721d3cf0c36b6d6",
+};
+for (const [relative, expectedSha256] of Object.entries(pf07FontAssets)) {
+  try {
+    const bytes = await fs.readFile(path.join(root, relative));
+    if (sha256(bytes) !== expectedSha256) errors.push(`pf07: governed font asset hash mismatch ${relative}`);
+  } catch (error) {
+    errors.push(`pf07: governed font asset unavailable ${relative}: ${error.message}`);
+  }
+}
 const validateCopyControls = (owner, content, expectedCount) => {
   const buttons = [...content.matchAll(/<button\b[^>]*data-copy-brief[^>]*aria-describedby="([^"]+)"[^>]*>\s*문의 내용 작성 양식 복사\s*<\/button>/g)];
   if (buttons.length !== expectedCount) errors.push(`${owner}: expected ${expectedCount} neutral copy controls, found ${buttons.length}`);
@@ -588,6 +609,8 @@ for (const [language, source, locale, ogAsset] of [
     || !source.includes(`<meta property="og:locale" content="${locale}">`)
     || !source.includes(`<meta property="og:url" content="${canonicalUrl}">`)
     || !source.includes(`<link rel="canonical" href="${canonicalUrl}">`)
+    || !source.includes(`<link rel="preload" href="assets/fonts/PretendardVariable.woff2" as="font" type="font/woff2" crossorigin>`)
+    || !source.includes(`<link rel="preload" href="assets/fonts/NotoSerifKR-Variable-PF07Subset.woff2" as="font" type="font/woff2" crossorigin>`)
     || !source.includes(`assets/media/pf07/refinement/brand/${ogAsset}`)
     || !source.includes(`window.PF07_STATIC_CASE_ID = "pf07"; window.PF07_STATIC_LANGUAGE = "${language}";`)) {
     errors.push(`case-pf07-${language}.html: static localized metadata or route authority failed`);
