@@ -1,6 +1,6 @@
 PF07 PUBLIC ASSET MANIFEST v1
 Root: public-assets
-Exact file count: 123
+Exact file count: 129
 Set rule: every file below is public-reviewed; no unlisted file is allowed.
 
 brand/BRAND-001_wordmark-horizontal.svg
@@ -68,11 +68,17 @@ icons/shopping-cart.svg
 icons/terminal.svg
 icons/triangle-alert.svg
 own-ui-captures/after-completion/CASE-005_storefront-desktop_ko.png
+own-ui-captures/after-completion/CASE-005_storefront-shop-desktop_ko.png
 own-ui-captures/after-completion/CASE-006_storefront-mobile_ko.png
 own-ui-captures/after-completion/CASE-007_storefront-desktop_en.png
+own-ui-captures/after-completion/CASE-007_storefront-mobile_en.png
+own-ui-captures/after-completion/CASE-007_storefront-shop-desktop_en.png
+own-ui-captures/after-completion/CASE-008_variable-product_en.png
 own-ui-captures/after-completion/CASE-008_variable-product_ko.png
 own-ui-captures/after-completion/CASE-009_cart_ko.png
 own-ui-captures/after-completion/CASE-009_checkout_ko.png
+own-ui-captures/after-completion/CASE-010_operator-console_en.png
+own-ui-captures/after-completion/CASE-010_operator-console_ko.png
 own-ui-captures/after-completion/CASE-017_final-clean-restore-rerun_ko.png
 own-ui-captures/after-completion/CASE-018_platform-delivery-entrypoints.svg
 own-ui-captures/after-completion/CASE-019_final-observation-scorecard.svg

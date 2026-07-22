@@ -5,77 +5,88 @@
   "registration_manifest_case_count": 6,
   "metadata_stripped": true,
   "source_commitments": {
-    "public_acceptance_matrix_sha256": "8ec29edad80c081d01a9921e5734b9279d5bb42db074e0cc630dad91fb758dda",
-    "public_product_quality_record_sha256": "099e142170cd882e0e4aed06995ea6753944f464074c1ab4251bc4b6eedf0214",
-    "public_restore_drill_record_sha256": "031e1e52f5e48fb4eb41b74d4fd4a277816efe12ec622fd95f2c5d72dbb8c868",
-    "execution_proof_sha256": "e8c2043cc604b6671a873f617728aac51a73c50758729a690f7783d2a8c9be11",
-    "recording_script_sha256": "6a67a0381f739c4259599b355dfd27b7bbec603040d8ff572af741c43dae4f7c",
-    "still_composition_script_sha256": "016a1fbfaa6cdf773a5866fabb12147cbabf798d2ef8de94ad235988ec76c37d"
+    "public_acceptance_matrix_sha256": "160d5e2c6dcab4a26e7625e3c3954f12b46162122654884f5ef5675bc47a380a",
+    "public_product_quality_record_sha256": "ebec14b31dde3ad494616964b3bd64290affdaa3d27b9e022e60f2fd38d53f9c",
+    "public_restore_drill_record_sha256": "80c0ab6ce60f225d454c3803ae29d9026315f8a181513e3f611b1ba2cac26b85",
+    "execution_proof_sha256": "b7b804318064b88054782d1ecf42ebdbe0955051c892647efcc9f026eb48f7a4",
+    "recording_script_sha256": "657c33d7bb63e075d0e7faa4efd3fe99277d473626628b8c7f2c61b77b1cc5a5",
+    "still_composition_script_sha256": "a77e3e33e8f9c67fa3fb2df63e4af6ea43338b29249d681262228026555bb1ea"
   },
   "assets": {
     "main-image.png": {
-      "sha256": "e7396da5d76109a205e8a81cad3bf7ec93399a98ba86af2ad39a217178c0d89e",
+      "sha256": "9f56af58b3e32ab37e686a7b48a086ce6b4e320f75eae024b933453dd7a38962",
       "width": 1200,
       "height": 1200,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "3bdbc5557402e1b1b8ced9e60bd684841d3c6c4fd883d0c809494becfa82cbdf",
+      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
       "source_event_frame_sha256": {
-        "LIVE_STOREFRONT": "93ad1a8cf656d5e2c5e8826117d2d710702c60d1953a70e675f9519991d17c5a"
+        "LIVE_STOREFRONT": "7ba336cb3bd82be3185bdf43ebb6e0c503151522e3081222754b542fe98ec5c0"
       }
     },
     "detail-01-overview.png": {
-      "sha256": "f21bf598bb2398693f86bba8399c569467dfe299168a74a503e24cde3732ae7b",
+      "sha256": "1f895a3b81ffdab5474c4c7e2e265cd766d7d6373cad5b31add652c74c298c42",
       "width": 1200,
       "height": 1350,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "3bdbc5557402e1b1b8ced9e60bd684841d3c6c4fd883d0c809494becfa82cbdf",
+      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
       "source_event_frame_sha256": {
-        "LIVE_STOREFRONT": "93ad1a8cf656d5e2c5e8826117d2d710702c60d1953a70e675f9519991d17c5a",
-        "PRODUCT_SELECTED": "89c4c912452886a9dc82d194300f93818f560171c71e7bb6c80f5928a2120696",
-        "CHECKOUT_INPUT": "0f7572313279cbba95c5aa5d0a24474d2d9c7d6abf157d1001842dfe05f61110"
+        "LIVE_STOREFRONT": "7ba336cb3bd82be3185bdf43ebb6e0c503151522e3081222754b542fe98ec5c0",
+        "PRODUCT_SELECTED": "02b800c2b10a22abe16e06d1afc71c9532b611116df1628d9788ec1ce533d8e6",
+        "CHECKOUT_INPUT": "d163362f8b057aa07f0f3113c7e412a5674732101b88c6611651cecdc4858835"
       }
     },
     "detail-02-flow.png": {
-      "sha256": "a224cbfe265e7ad98caf48c77f206d99872a5dbcd0ebd9a48b6c84ca3725662a",
+      "sha256": "a53725fd6800318cec75d37b1ab8416c7d1c2f79bb16b06a0d90604352fecd2d",
       "width": 1200,
-      "height": 1350
+      "height": 1350,
+      "source_video": "demo-video.mp4",
+      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
+      "source_event_frame_sha256": {
+        "ADMIN_COMPLETED": "bc4a073731dc888f54755ca4d96c1324a609eec17b3725d5a2a31a687e69d52b"
+      }
     },
     "detail-03-result.png": {
-      "sha256": "548cbe000cc3d11a5ff7630da7201b7e8cf8941b43b806a1fe01a9c245dfa459",
+      "sha256": "a071b40aadda15b300c7804080f0d62cfdec5e9c95ade6124fcf8b38dfb05fbc",
       "width": 1200,
-      "height": 1350
+      "height": 1350,
+      "source_video": "recovery-clip.mp4",
+      "source_video_sha256": "6272bebb7665a6bc3305ec9a2efbf7f17157142e378a17a5b2ae4ca00b7fd342",
+      "source_event_frame_sha256": {
+        "FAILED": "c715042906c5d67407d104d8e49237ff99e6cbe16e35c456f6d62029831dd5f9",
+        "RECOVERED": "b88cd19d3bc340bae34de857ff2d7d2d2d63e680f6c4b7c6023caa2b7d81f105"
+      }
     },
     "video-poster.png": {
-      "sha256": "6341a9fa7eea16e55c3f4953be446d67e5f91c0bf34d674f628e05d922b86346",
+      "sha256": "e714e542e2561418d285bae01dee6c54d2f90bd3f643c132e7d0918e9003961a",
       "width": 1440,
       "height": 1000
     },
     "demo-video.mp4": {
-      "sha256": "3bdbc5557402e1b1b8ced9e60bd684841d3c6c4fd883d0c809494becfa82cbdf",
+      "sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 62,
-      "frame_count": 1860,
+      "duration_seconds": 62.033,
+      "frame_count": 1861,
       "sampled_frame_count": 62,
-      "unique_sampled_frames": 40,
+      "unique_sampled_frames": 39,
       "execution_proof": "execution-proof.json"
     },
     "recovery-clip.mp4": {
-      "sha256": "5e37d80cc7051c5bb3bfcaec84a59845dc276680321db6ca972011a7cb6207b0",
+      "sha256": "6272bebb7665a6bc3305ec9a2efbf7f17157142e378a17a5b2ae4ca00b7fd342",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 17.566667,
-      "frame_count": 527,
-      "sampled_frame_count": 18,
-      "unique_sampled_frames": 15,
+      "duration_seconds": 24.133,
+      "frame_count": 724,
+      "sampled_frame_count": 24,
+      "unique_sampled_frames": 16,
       "execution_proof": "execution-proof.json"
     },
     "execution-proof.json": {
-      "sha256": "e8c2043cc604b6671a873f617728aac51a73c50758729a690f7783d2a8c9be11",
+      "sha256": "b7b804318064b88054782d1ecf42ebdbe0955051c892647efcc9f026eb48f7a4",
       "schema_version": 1,
       "classification": "PUBLIC_SANITIZED_EXECUTION_PROOF"
     }
