@@ -219,10 +219,10 @@ try {
   if (pf07CurrentUiManifest.schema !== "pf07.current-ui-manifest.v2"
     || pf07CurrentUiManifest.state !== "CURRENT_REFERENCE_APPLIED"
     || pf07CurrentUiManifest.classification !== "PUBLIC_SANITIZED_RUNTIME_CAPTURE"
-    || pf07CurrentUiManifest.package_build_id !== "pf07-build-13003091bee3a5201dba"
-    || pf07CurrentUiManifest.package_version !== "1.0.1"
-    || pf07CurrentUiManifest.artifact_set_sha256 !== "6ef2ca1d0c2f4ba783181c3e5d59dfb02e535ab9435aab82e66f140f07829926"
-    || pf07CurrentUiManifest.linux_package_manifest_sha256 !== "d467392d1ea0fa75b05b2991f35d2ad12fb110b66f6e256b7a585c8894c801f8"
+    || pf07CurrentUiManifest.package_build_id !== "pf07-build-b99af2ac12d22b464865"
+    || pf07CurrentUiManifest.package_version !== "1.0.2"
+    || pf07CurrentUiManifest.artifact_set_sha256 !== "5c2865206308c7a763a57d4690fe5d79e301611bdaeeaee918fc8be1baab6b69"
+    || pf07CurrentUiManifest.linux_package_manifest_sha256 !== "87945c04ddf3c435a323b69a5d1bf9b0d7eb11527f0fb5101afe358a10c6f228"
     || pf07CurrentUiManifest.capture_builder !== "scripts/capture-final-stills.mjs"
     || pf07CurrentUiManifest.capture_builder_sha256 !== sha256(captureBuilder)
     || pf07CurrentUiManifest.source_public_asset_manifest_sha256 !== sha256(mirroredPublicManifest)
@@ -423,13 +423,13 @@ for (const project of projects) {
   for (const field of ["facts", "proof", "included", "excluded", "tech"]) if (!Array.isArray(project[field]) || project[field].length < 3) errors.push(`${project.id}: incomplete ${field}`);
   if (project.id === "pf07") {
     const refinement = project.refinement;
-    const stableReleasePrefix = "https://github.com/Cetacean916/oddroom-woo-orderops/releases/download/pf07-v1.0.1/";
+    const stableReleasePrefix = "https://github.com/Cetacean916/oddroom-woo-orderops/releases/download/pf07-v1.0.2/";
     const expectedReleaseAssets = [
-      ["pf07-windows-x64-1.0.1.zip", "59d2391b1fa67b33ddfd3fad9f6bb665118d0f98a026ee662fe8d124b20f6444"],
-      ["pf07-windows-kvm-test-kit-1.0.1.zip", "9aff25538b04dc6248fa5fbc7acef1b01c3ecba4dd1ab51e1c12982649066f81"],
-      ["pf07-macos-universal-1.0.1.zip", "eea0d8b1a147c33fe70fa3bc57d495e4336d9101fd859ebcb5ca3e276d8912f2"],
-      ["pf07-linux-x86_64-1.0.1.tar.gz", "a6a98ab573b301b49477621dc9a36bfa5b43d10bc9d755968a25bf1372628a80"],
-      ["pf07-linux-server-1.0.1.tar.gz", "0df834d9f53484367eb74eede3692cd122fdfceee37b3408639554387904aeb6"],
+      ["pf07-windows-x64-1.0.2.zip", "9d6fa0bcd723538207faeac4aeccc7d9bc5ebe6f57fdd3e0f1cba22ea5a6e264"],
+      ["pf07-windows-kvm-test-kit-1.0.2.zip", "9c73d488809890e5ed162f921ff0865fdf06f3285dcc5a88c7c6dac1472f8dbf"],
+      ["pf07-macos-universal-1.0.2.zip", "e7d33ec9af839f88930263320be3a34023037261d70cf6fb0b1d99a6d311591e"],
+      ["pf07-linux-x86_64-1.0.2.tar.gz", "9a3899571305d696d4399381004382d74af9a4145792f8cdaa945dd190dd9aca"],
+      ["pf07-linux-server-1.0.2.tar.gz", "c5192598b4d4b531aa91b3c1d47e7cd48ddd04d6655baac413673535e16ad2ce"],
     ];
     const expectedPostCandidateIds = ["CASE-017", "CASE-018", "CASE-019", "CASE-020"];
     const expectedConnectedIds = ["CASE-014", "CASE-015", "CASE-016"];
@@ -438,14 +438,14 @@ for (const project of projects) {
       || ![project.image, ...project.gallery].every((relative) => relative.startsWith("assets/media/pf07/current-ui/ko/"))) {
       errors.push("pf07: canonical static case or Korean card media binding failed");
     }
-    if (refinement?.currentDelivery?.buildId !== "pf07-build-13003091bee3a5201dba"
-      || refinement?.currentDelivery?.artifactSetSha256 !== "6ef2ca1d0c2f4ba783181c3e5d59dfb02e535ab9435aab82e66f140f07829926"
+    if (refinement?.currentDelivery?.buildId !== "pf07-build-b99af2ac12d22b464865"
+      || refinement?.currentDelivery?.artifactSetSha256 !== "5c2865206308c7a763a57d4690fe5d79e301611bdaeeaee918fc8be1baab6b69"
       || refinement?.currentDelivery?.publicationState !== "PUBLIC_PACKAGE_RELEASE_PASS"
-      || refinement?.currentDelivery?.releaseTag !== "pf07-v1.0.1"
-      || refinement?.currentDelivery?.immutablePredecessorTag !== "pf07-v1.0.0") {
+      || refinement?.currentDelivery?.releaseTag !== "pf07-v1.0.2"
+      || refinement?.currentDelivery?.immutablePredecessorTag !== "pf07-v1.0.1") {
       errors.push("pf07: current public delivery identity or immutable predecessor boundary failed");
     }
-    if (refinement?.releaseUrl !== "https://github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.1") errors.push("pf07: stable release page URL is missing or incorrect");
+    if (refinement?.releaseUrl !== "https://github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.2") errors.push("pf07: stable release page URL is missing or incorrect");
     if (!Array.isArray(refinement?.releaseAssets)
       || refinement.releaseAssets.length !== 5
       || JSON.stringify(refinement.releaseAssets.map((asset) => [asset.filename, asset.sha256])) !== JSON.stringify(expectedReleaseAssets)

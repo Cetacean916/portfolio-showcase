@@ -180,7 +180,7 @@ try {
       assert(audit.pf07ConnectedEvidenceSources.length === 3
         && ["CASE-014", "CASE-015", "CASE-016"].every((id) => audit.pf07ConnectedEvidenceSources.some((source) => source.includes(id))), `${name}: connected evidence is not buyer-reachable ${JSON.stringify(audit.pf07ConnectedEvidenceSources)}`);
       assert(audit.pf07ReleaseEvidenceSources.length === 4
-        && ["CASE-017", "CASE-018", "CASE-019", "CASE-020"].every((id) => audit.pf07ReleaseEvidenceSources.some((source) => source.includes(id))), `${name}: public 1.0.1 release evidence is not buyer-reachable ${JSON.stringify(audit.pf07ReleaseEvidenceSources)}`);
+        && ["CASE-017", "CASE-018", "CASE-019", "CASE-020"].every((id) => audit.pf07ReleaseEvidenceSources.some((source) => source.includes(id))), `${name}: public 1.0.2 release evidence is not buyer-reachable ${JSON.stringify(audit.pf07ReleaseEvidenceSources)}`);
       assert(audit.pf07DeliveryReleaseBoundary, `${name}: current public delivery identity is not visibly established`);
       const english = page.includes("lang=en") || page.includes("-en.html");
       const localeSegment = english ? "/current-ui/en/" : "/current-ui/ko/";

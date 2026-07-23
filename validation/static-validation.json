@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "checkedAt": "2026-07-22T00:22:47.688Z",
+  "checkedAt": "2026-07-23T03:15:49.401Z",
   "products": [
     "oddroom",
     "pf01",
@@ -93,8 +93,8 @@
     "assets/media/pf06/detail-03-result.png": "cb936894d0de5741e8938462e9067e48d313e0ecf16a6a5167a652daa4f89adb",
     "assets/media/pf06/demo-video.mp4": "300cc6c4c27b5a121c6056ecc9fbb47b3e6b049a37f7a9068ac2c4449befbb73",
     "assets/media/pf07/current-ui/ko/storefront-home-desktop.png": "7c2b7ad6e7a9af657af363aaa3300c2dcf8820b473ef9ebcee8b315003976b3a",
-    "assets/media/pf07/current-ui/ko/storefront-shop-desktop.png": "ea8e516d91f62623bfd0e4179d3fa576a651abcc2f81779092356d521e4c51fd",
-    "assets/media/pf07/current-ui/ko/operator-console-desktop.png": "0e533185f89eb37792654fa4c36764f4b617a3f2604c8030076d46b8b1c4ce21",
-    "assets/media/pf07/current-ui/ko/runtime-hub-desktop.png": "a0c572ece25b59229f4b70fd3e8cd7a26012993bcf07fd9d2da37d09342019f1"
+    "assets/media/pf07/current-ui/ko/storefront-shop-desktop.png": "8230b603a0a9b43f5bcf915eca618604a52513fd7411ad8cff6e7c2154f42d67",
+    "assets/media/pf07/current-ui/ko/operator-console-desktop.png": "11c3b341c3857110f09c057462e39658b211eda8c768811f81b5936ab184f08f",
+    "assets/media/pf07/current-ui/ko/runtime-hub-desktop.png": "9f9bb7507f749d6b689a63798a892cf6fb6cc4905ace315b25f7686a19cdf9ff"
   }
 }

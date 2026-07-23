@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <svg xmlns="http://www.w3.org/2000/svg" width="2880" height="1800" viewBox="0 0 2880 1800" role="img" aria-labelledby="title desc">
   <title id="title">PF07 platform delivery and entrypoint matrix</title>
-  <desc id="desc">Five exact version 1.0.1 GitHub Release artifacts, their entrypoints, and honest execution boundaries.</desc>
+  <desc id="desc">Five exact version 1.0.2 GitHub Release artifacts, their entrypoints, and honest execution boundaries.</desc>
   <defs>
     <pattern id="grid" width="48" height="48" patternUnits="userSpaceOnUse"><path d="M48 0H0V48" fill="none" stroke="#d8d3c8" stroke-width="1" opacity=".5"/></pattern>
     <filter id="shadow" x="-20%" y="-20%" width="140%" height="160%"><feDropShadow dx="0" dy="18" stdDeviation="22" flood-color="#17201d" flood-opacity=".12"/></filter>
@@ -16,7 +16,7 @@
   <g transform="translate(150 118)">
     <rect width="86" height="86" rx="25" fill="#18201d"/><path d="M25 25h36v36H25zM35 15v56M15 35h56" fill="none" stroke="#b9c9bc" stroke-width="8" stroke-linecap="round"/><circle cx="58" cy="58" r="10" fill="#c68b39"/>
   </g>
-  <text x="268" y="161" class="eyebrow">ODDROOM / ORDEROPS · RELEASE pf07-v1.0.1</text>
+  <text x="268" y="161" class="eyebrow">ODDROOM / ORDEROPS · RELEASE pf07-v1.0.2</text>
   <text x="150" y="318" class="title">One release. Five delivery artifacts.</text>
   <text x="150" y="378" class="subtitle">Exact final-CI bytes · stable GitHub Release URLs · one package-owned business runtime</text>
 
@@ -26,8 +26,8 @@
     <circle cx="72" cy="82" r="30" fill="#45697b"/><text x="72" y="93" text-anchor="middle" class="check">W</text>
     <text x="122" y="88" class="platform">Windows buyer · x86_64</text>
     <rect x="600" y="54" width="162" height="50" rx="25" fill="#edf0f2" stroke="#aec2cc"/><text x="681" y="86" text-anchor="middle" class="state" fill="#45697b">ARTIFACT READY</text>
-    <text x="58" y="156" class="file">pf07-windows-x64-1.0.1.zip</text>
-    <text x="58" y="194" class="meta">SHA-256 59d2391b1fa6… · 101 files</text>
+    <text x="58" y="156" class="file">pf07-windows-x64-1.0.2.zip</text>
+    <text x="58" y="194" class="meta">SHA-256 9d6fa0bcd723… · 101 files</text>
     <text x="58" y="272" class="label">GRAPHICAL ENTRYPOINT</text><text x="58" y="316" class="entry">PF07-Launcher.exe</text>
     <text x="58" y="378" class="label">COMMAND FALLBACK</text><text x="58" y="421" class="entry">START-PF07.cmd · Start-PF07.ps1</text>
     <text x="58" y="466" class="boundary">Cross-build + PE + script + shared-core validation · native Windows not run</text>
@@ -39,8 +39,8 @@
     <circle cx="72" cy="82" r="30" fill="#45697b"/><text x="72" y="93" text-anchor="middle" class="check">K</text>
     <text x="122" y="88" class="platform">Windows KVM test kit</text>
     <rect x="600" y="54" width="162" height="50" rx="25" fill="#edf0f2" stroke="#aec2cc"/><text x="681" y="86" text-anchor="middle" class="state" fill="#45697b">WORKFLOW READY</text>
-    <text x="58" y="156" class="file">pf07-windows-kvm-test-kit-1.0.1.zip</text>
-    <text x="58" y="194" class="meta">SHA-256 9aff25538b04… · 10 files</text>
+    <text x="58" y="156" class="file">pf07-windows-kvm-test-kit-1.0.2.zip</text>
+    <text x="58" y="194" class="meta">SHA-256 9c73d4888098… · 10 files</text>
     <text x="58" y="272" class="label">GUI-FIRST CHECKLIST</text><text x="58" y="316" class="entry">RUN-KVM-TEST.cmd · PF07-KVM-TEST.html</text>
     <text x="58" y="378" class="label">MACHINE-READABLE EVIDENCE</text><text x="58" y="421" class="entry">PF07-KVM-Evidence.ps1</text>
     <text x="58" y="466" class="boundary">Artifact-bound owner workflow · actual owner KVM execution not claimed</text>
@@ -52,8 +52,8 @@
     <circle cx="72" cy="82" r="30" fill="#7b5a82"/><text x="72" y="93" text-anchor="middle" class="check">M</text>
     <text x="122" y="88" class="platform">macOS · arm64 + x86_64</text>
     <rect x="600" y="54" width="162" height="50" rx="25" fill="#f0ebf2" stroke="#c9b8cd"/><text x="681" y="86" text-anchor="middle" class="state" fill="#6a4872">ARTIFACT READY</text>
-    <text x="58" y="156" class="file">pf07-macos-universal-1.0.1.zip</text>
-    <text x="58" y="194" class="meta">SHA-256 eea0d8b1a147… · 102 files</text>
+    <text x="58" y="156" class="file">pf07-macos-universal-1.0.2.zip</text>
+    <text x="58" y="194" class="meta">SHA-256 e7d33ec9af83… · 102 files</text>
     <text x="58" y="272" class="label">APP ENTRYPOINT</text><text x="58" y="316" class="entry">PF07 Launcher.app</text>
     <text x="58" y="378" class="label">SHARED COMMAND CORE</text><text x="58" y="421" class="entry">launcher/bin/pf07 · pf07-hub</text>
     <text x="58" y="466" class="boundary">Unsigned / not notarized · app bundle validated · native macOS not run</text>
@@ -65,8 +65,8 @@
     <circle cx="76" cy="82" r="32" fill="#3f6250"/><text x="76" y="94" text-anchor="middle" class="check">L</text>
     <text x="132" y="88" class="platform">Linux local · x86_64</text>
     <rect x="996" y="52" width="206" height="52" rx="26" fill="#e5eee6" stroke="#9fb6a4"/><text x="1099" y="85" text-anchor="middle" class="state" fill="#31523f">EXECUTED PASS</text>
-    <text x="58" y="156" class="file">pf07-linux-x86_64-1.0.1.tar.gz</text>
-    <text x="58" y="194" class="meta">SHA-256 a6a98ab573b3… · 100 files</text>
+    <text x="58" y="156" class="file">pf07-linux-x86_64-1.0.2.tar.gz</text>
+    <text x="58" y="194" class="meta">SHA-256 9a3899571305… · 100 files</text>
     <text x="58" y="274" class="label">GRAPHICAL + COMMAND ENTRYPOINTS</text><text x="58" y="320" class="entry">PF07-Launcher · PF07-OrderOps.desktop · ./pf07</text>
     <text x="58" y="382" class="boundary">Clean bootstrap · rerun · update · encrypted backup/restore · uninstall boundary</text>
     <text x="58" y="426" class="boundary">DEMO_MODE + CONNECTED_MODE · Korean-primary ↔ English-only · one runtime</text>
@@ -78,8 +78,8 @@
     <circle cx="76" cy="82" r="32" fill="#b9c9bc"/><text x="76" y="94" text-anchor="middle" class="check" fill="#18201d">S</text>
     <text x="132" y="88" class="platform light">Linux server · x86_64</text>
     <rect x="996" y="52" width="206" height="52" rx="26" fill="#2d4939" stroke="#6f927b"/><text x="1099" y="85" text-anchor="middle" class="state light">EXECUTED PASS</text>
-    <text x="58" y="156" class="file light">pf07-linux-server-1.0.1.tar.gz</text>
-    <text x="58" y="194" class="meta sage-text">SHA-256 0df834d9f534… · 102 files</text>
+    <text x="58" y="156" class="file light">pf07-linux-server-1.0.2.tar.gz</text>
+    <text x="58" y="194" class="meta sage-text">SHA-256 c5192598b4d4… · 102 files</text>
     <text x="58" y="274" class="label sage-text">SERVER ENTRYPOINT</text><text x="58" y="320" class="entry light">server/pf07-server start · status · stop</text>
     <text x="58" y="382" class="boundary light-muted">Isolated server deployment · local/private binding · persistence verified</text>
     <text x="58" y="426" class="boundary light-muted">Only WordPress bound to loopback; database and workers remain internal</text>
@@ -87,6 +87,6 @@
 
   <rect x="150" y="1580" width="2580" height="100" rx="30" fill="#18201d"/>
   <text x="205" y="1642" class="footer light">PUBLIC RELEASE</text>
-  <text x="472" y="1642" class="footer sage-text">github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.1</text>
+  <text x="472" y="1642" class="footer sage-text">github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.2</text>
   <text x="2572" y="1642" text-anchor="end" class="footer amber-text">0 KRW</text>
 </svg>

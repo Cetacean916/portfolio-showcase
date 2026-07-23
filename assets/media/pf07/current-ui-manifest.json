@@ -2,13 +2,13 @@
   "schema": "pf07.current-ui-manifest.v2",
   "state": "CURRENT_REFERENCE_APPLIED",
   "classification": "PUBLIC_SANITIZED_RUNTIME_CAPTURE",
-  "package_build_id": "pf07-build-13003091bee3a5201dba",
-  "package_version": "1.0.1",
-  "artifact_set_sha256": "6ef2ca1d0c2f4ba783181c3e5d59dfb02e535ab9435aab82e66f140f07829926",
-  "linux_package_manifest_sha256": "d467392d1ea0fa75b05b2991f35d2ad12fb110b66f6e256b7a585c8894c801f8",
+  "package_build_id": "pf07-build-b99af2ac12d22b464865",
+  "package_version": "1.0.2",
+  "artifact_set_sha256": "5c2865206308c7a763a57d4690fe5d79e301611bdaeeaee918fc8be1baab6b69",
+  "linux_package_manifest_sha256": "87945c04ddf3c435a323b69a5d1bf9b0d7eb11527f0fb5101afe358a10c6f228",
   "capture_builder": "scripts/capture-final-stills.mjs",
-  "capture_builder_sha256": "1b04470f0e2c1ebb0c3ed04442f1a6be8154beedc97a0317aa5486ad0987d995",
-  "source_asset_ledger_sha256": "4dab6cb558fb9ba6c3598ee39eec4312bd317c3b214bf8b33361bbc5a2fc32ea",
+  "capture_builder_sha256": "6452c6f9da6de573c31cdcc5ab24e90dc8f71966e4b1513830d9ea574f3e171f",
+  "source_asset_ledger_sha256": "bef7720668c9cc45c5ba782c85596a01dba32d4cd5953704b1012220f5c23fd1",
   "source_public_asset_manifest_sha256": "b0dc1e1b28671150d39b7241d23bc128e05b28fdf83eb3dea89ef579c5f2eb63",
   "exact_file_count": 14,
   "locale_asset_counts": {
@@ -43,8 +43,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 390,
       "height": 844,
-      "bytes": 228809,
-      "sha256": "3b03657ae1b182561bbbf448df8bebeadb3b300e2bddc44b6a4166acd0092a8f"
+      "bytes": 229474,
+      "sha256": "715be4f174679b49c4cab79b62d9760970481b05b7f470d82e4f42847ecec62d"
     },
     {
       "asset_id": "KO-SHOP-DESKTOP",
@@ -58,8 +58,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 111381,
-      "sha256": "ea8e516d91f62623bfd0e4179d3fa576a651abcc2f81779092356d521e4c51fd"
+      "bytes": 111371,
+      "sha256": "8230b603a0a9b43f5bcf915eca618604a52513fd7411ad8cff6e7c2154f42d67"
     },
     {
       "asset_id": "KO-PRODUCT-DESKTOP",
@@ -73,8 +73,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 316638,
-      "sha256": "623271c8ee1bcc2376a8434b1d7f1524269fe80506ccc6261218be20257bc550"
+      "bytes": 316630,
+      "sha256": "7f9fb43504a1d69b23f632120e34e340a92a2266b01c1982eeec23c14730d211"
     },
     {
       "asset_id": "KO-ADMIN-DESKTOP",
@@ -88,8 +88,8 @@
       "direct_review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 127625,
-      "sha256": "0e533185f89eb37792654fa4c36764f4b617a3f2604c8030076d46b8b1c4ce21"
+      "bytes": 128417,
+      "sha256": "11c3b341c3857110f09c057462e39658b211eda8c768811f81b5936ab184f08f"
     },
     {
       "asset_id": "KO-HUB-DESKTOP",
@@ -103,8 +103,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 119747,
-      "sha256": "a0c572ece25b59229f4b70fd3e8cd7a26012993bcf07fd9d2da37d09342019f1"
+      "bytes": 119808,
+      "sha256": "9f9bb7507f749d6b689a63798a892cf6fb6cc4905ace315b25f7686a19cdf9ff"
     },
     {
       "asset_id": "KO-CART-DESKTOP",
@@ -133,8 +133,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 78030,
-      "sha256": "a05e9be593c8770cc4ed52a82068fcf48c0715a36ebb039c70c8340192a3de5e"
+      "bytes": 79079,
+      "sha256": "aef173ea97acbf0669a631a5db3654aad7a407ff9ead1204df43c51c1d6d7480"
     },
     {
       "asset_id": "EN-HOME-DESKTOP",
@@ -148,8 +148,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 1360858,
-      "sha256": "e147fc46dd30a982e7627be647a263af9ed61eb2fc643baca08599eb755c764f"
+      "bytes": 1361196,
+      "sha256": "90a6218a7ed0fb3a86b15c9b3ccc4806280d47145eb65730332c0397731b8448"
     },
     {
       "asset_id": "EN-HOME-MOBILE",
@@ -163,8 +163,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 390,
       "height": 844,
-      "bytes": 240930,
-      "sha256": "6f4a2acda7fe980746307a568ca1d923be31251e6beccf6438215f0f63fd8ba9"
+      "bytes": 241927,
+      "sha256": "e8edbfe975f545621739d8cd92daf0b51d9813c7835d3cd50d54924ba42bbf45"
     },
     {
       "asset_id": "EN-SHOP-DESKTOP",
@@ -178,8 +178,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 86260,
-      "sha256": "8a2eb2d233bfe26693e15d541bd30e81dfe4d09e72094bc5e8c9a1130c9da041"
+      "bytes": 86588,
+      "sha256": "f3570382d0dcfabda7eb91ca61e0075f7ead3ba0a705b0b583f3cdada8f22df8"
     },
     {
       "asset_id": "EN-PRODUCT-DESKTOP",
@@ -193,8 +193,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 307496,
-      "sha256": "a405e359865cc4b5d0f519174da2f2e681e1d6203e0f5049105a26e637656315"
+      "bytes": 307865,
+      "sha256": "30178c74061b91dc5af57837697d5b45926c0b8d2547d95a8ec14d40bacefc65"
     },
     {
       "asset_id": "EN-ADMIN-DESKTOP",
@@ -208,8 +208,8 @@
       "direct_review_result": "ACCEPTED_STEP040_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 150218,
-      "sha256": "396878c72951b113b9469b9cb9d4b29d95bac4613a7ef95b289d6ab8970aeb10"
+      "bytes": 151925,
+      "sha256": "c5912aedd110e7853e4a791c3cd9a88ea220caa8fc5ee6ec8d0ec4a35309a889"
     },
     {
       "asset_id": "EN-HUB-DESKTOP",
@@ -223,8 +223,8 @@
       "direct_review_result": "ACCEPTED_STEP080_DIRECT_REVIEW",
       "width": 1440,
       "height": 1000,
-      "bytes": 135916,
-      "sha256": "3bfcbb28d8c1b0313a1b95a3e99fd6091d425542bd6a98782a9621aa9a069d7f"
+      "bytes": 135986,
+      "sha256": "43291d83c357ccfa6b64e0d7985fc1b9573c5378414b5f5fb7b3ed6b495556b8"
     }
   ]
 }

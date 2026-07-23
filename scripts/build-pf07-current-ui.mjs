@@ -18,7 +18,7 @@ const currentUiRoot = path.resolve(currentUiInput);
 if (path.basename(currentUiRoot) !== "current-ui") throw new Error("refusing a current UI output root not named current-ui");
 
 const artifactSetPath = path.join(buildRoot, "ARTIFACT-MANIFEST.json");
-const linuxPackageManifestPath = path.join(buildRoot, "packages", "PF07-OrderOps-1.0.1-linux-x86_64", "ARTIFACT-MANIFEST.json");
+const linuxPackageManifestPath = path.join(buildRoot, "packages", "PF07-OrderOps-1.0.2-linux-x86_64", "ARTIFACT-MANIFEST.json");
 const sourcePublicManifestPath = path.join(publicAssetRoot, "PUBLIC-ASSET-MANIFEST.txt");
 const captureBuilderPath = path.resolve(path.dirname(fileURLToPath(import.meta.url)), "../../유형별 포트폴리오/07-OddRoom-Woo-OrderOps/scripts/capture-final-stills.mjs");
 const outputManifestPath = path.join(path.dirname(currentUiRoot), "current-ui-manifest.json");
@@ -54,8 +54,8 @@ if (ledger.schema !== "pf07.final-public-asset-ledger.v1" || ledger.ledger_state
   || ledger.inventory_id_count !== 71 || ledger.accepted_public_id_count !== 71) {
   throw new Error("PF07 source asset ledger identity failed");
 }
-if (artifactSet.schema !== "pf07.artifact-set-manifest.v1" || artifactSet.package_version !== "1.0.1"
-  || artifactSet.build_id !== "pf07-build-13003091bee3a5201dba") {
+if (artifactSet.schema !== "pf07.artifact-set-manifest.v1" || artifactSet.package_version !== "1.0.2"
+  || artifactSet.build_id !== "pf07-build-b99af2ac12d22b464865") {
   throw new Error("PF07 final artifact-set identity failed");
 }
 

@@ -5,88 +5,88 @@
   "registration_manifest_case_count": 6,
   "metadata_stripped": true,
   "source_commitments": {
-    "public_acceptance_matrix_sha256": "78922c5acb9a87d73dff13507a1232e1e1ab91be64f964265b64f3c99da6d060",
-    "public_product_quality_record_sha256": "02623e56207ad646036b9d383be56f755863a9ec984f8f6273b61b1d7f748d63",
-    "public_restore_drill_record_sha256": "7ceaf8a7d23d0c52b0fdd38321fc7dfc02d7ffa30586e0cb5b4bdee494da075c",
-    "execution_proof_sha256": "b7b804318064b88054782d1ecf42ebdbe0955051c892647efcc9f026eb48f7a4",
-    "recording_script_sha256": "657c33d7bb63e075d0e7faa4efd3fe99277d473626628b8c7f2c61b77b1cc5a5",
+    "public_acceptance_matrix_sha256": "d6311f58940879e1f8f69b9bc4d25a1bfd4e584ed403560a09e6ff0db74cda29",
+    "public_product_quality_record_sha256": "3ba674e4b06068d66731f824282f049dcd1a15803ab479ddca516ba959d1653c",
+    "public_restore_drill_record_sha256": "ea0f27518c9cec17a0b35764c7a07e4d162b8788516addb4b6d819b7f265c814",
+    "execution_proof_sha256": "19b1e501b1a89e9b5773d69df53ea339a29d1303a1f9942df392d00d459187d6",
+    "recording_script_sha256": "0dad9dc966b3e11d069e1e4ec73d237d18d6cd9e6861ddfcec7de4927b14aa2d",
     "still_composition_script_sha256": "a77e3e33e8f9c67fa3fb2df63e4af6ea43338b29249d681262228026555bb1ea"
   },
   "assets": {
     "main-image.png": {
-      "sha256": "9f56af58b3e32ab37e686a7b48a086ce6b4e320f75eae024b933453dd7a38962",
+      "sha256": "f6c8d2f701ef898aa3f1ec9650da159651b2fda8b922ced8a909402012d1ec06",
       "width": 1200,
       "height": 1200,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
+      "source_video_sha256": "0c089334d1d9138074fc96136698efbcd9a5ba4885aa260250b4a16f44af7323",
       "source_event_frame_sha256": {
-        "LIVE_STOREFRONT": "7ba336cb3bd82be3185bdf43ebb6e0c503151522e3081222754b542fe98ec5c0"
+        "LIVE_STOREFRONT": "4625e288c16451b181d7cce316ba26780f4b9c1e9f1e0f1a7c939da9bd019286"
       }
     },
     "detail-01-overview.png": {
-      "sha256": "1f895a3b81ffdab5474c4c7e2e265cd766d7d6373cad5b31add652c74c298c42",
+      "sha256": "dd321efe75a71158b299a7df0b1e650d1feeef3da5c4f83755a5f1e027fbf322",
       "width": 1200,
       "height": 1350,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
+      "source_video_sha256": "0c089334d1d9138074fc96136698efbcd9a5ba4885aa260250b4a16f44af7323",
       "source_event_frame_sha256": {
-        "LIVE_STOREFRONT": "7ba336cb3bd82be3185bdf43ebb6e0c503151522e3081222754b542fe98ec5c0",
-        "PRODUCT_SELECTED": "02b800c2b10a22abe16e06d1afc71c9532b611116df1628d9788ec1ce533d8e6",
-        "CHECKOUT_INPUT": "d163362f8b057aa07f0f3113c7e412a5674732101b88c6611651cecdc4858835"
+        "LIVE_STOREFRONT": "4625e288c16451b181d7cce316ba26780f4b9c1e9f1e0f1a7c939da9bd019286",
+        "PRODUCT_SELECTED": "63108cb4d469f21df32afc6016e11992759f1a93403466537659e7d9140e5b85",
+        "CHECKOUT_INPUT": "98327ab4ccff16fefd93e158259113fc87b155e44522edfa92dabbdb966c87fe"
       }
     },
     "detail-02-flow.png": {
-      "sha256": "a53725fd6800318cec75d37b1ab8416c7d1c2f79bb16b06a0d90604352fecd2d",
+      "sha256": "b88937aa158e15e6f03830b4ba44c82602944b10cffc8001cd61b66d7e223290",
       "width": 1200,
       "height": 1350,
       "source_video": "demo-video.mp4",
-      "source_video_sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
+      "source_video_sha256": "0c089334d1d9138074fc96136698efbcd9a5ba4885aa260250b4a16f44af7323",
       "source_event_frame_sha256": {
-        "ADMIN_COMPLETED": "bc4a073731dc888f54755ca4d96c1324a609eec17b3725d5a2a31a687e69d52b"
+        "ADMIN_COMPLETED": "4111347c062565b682deadd261388a625c1f63b276b54f57877f065fb5ba1f55"
       }
     },
     "detail-03-result.png": {
-      "sha256": "a071b40aadda15b300c7804080f0d62cfdec5e9c95ade6124fcf8b38dfb05fbc",
+      "sha256": "8811c460df65dd35011a2135791e375b40392d702e5900a8c016633759fc0e97",
       "width": 1200,
       "height": 1350,
       "source_video": "recovery-clip.mp4",
-      "source_video_sha256": "6272bebb7665a6bc3305ec9a2efbf7f17157142e378a17a5b2ae4ca00b7fd342",
+      "source_video_sha256": "000003155e8f9a8d6419315f4c4aa19625b20482dfc50cf88341be90ef92852d",
       "source_event_frame_sha256": {
-        "FAILED": "c715042906c5d67407d104d8e49237ff99e6cbe16e35c456f6d62029831dd5f9",
-        "RECOVERED": "b88cd19d3bc340bae34de857ff2d7d2d2d63e680f6c4b7c6023caa2b7d81f105"
+        "FAILED": "efc310f6102c71857e4a481a2afd3280efadd1c1a2fc13a9c897bf5ec0264e4d",
+        "RECOVERED": "f05db2a3f1e86133896f1939e2372925923675091578f0974cfeaf06c3a1a0f7"
       }
     },
     "video-poster.png": {
-      "sha256": "e714e542e2561418d285bae01dee6c54d2f90bd3f643c132e7d0918e9003961a",
+      "sha256": "41f5bf613f2e9cd3698bb98db4afd66357f9ee5d01a9e029deea1821971e22a6",
       "width": 1440,
       "height": 1000
     },
     "demo-video.mp4": {
-      "sha256": "2b9a30938f112bf138aea0c794deb4adf884fc90aa381ff1f589f8611a645f98",
+      "sha256": "0c089334d1d9138074fc96136698efbcd9a5ba4885aa260250b4a16f44af7323",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 62.033,
-      "frame_count": 1861,
+      "duration_seconds": 61.867,
+      "frame_count": 1856,
       "sampled_frame_count": 62,
-      "unique_sampled_frames": 39,
+      "unique_sampled_frames": 41,
       "execution_proof": "execution-proof.json"
     },
     "recovery-clip.mp4": {
-      "sha256": "6272bebb7665a6bc3305ec9a2efbf7f17157142e378a17a5b2ae4ca00b7fd342",
+      "sha256": "000003155e8f9a8d6419315f4c4aa19625b20482dfc50cf88341be90ef92852d",
       "codec": "h264",
       "pixel_format": "yuv420p",
       "width": 1280,
       "height": 720,
-      "duration_seconds": 24.133,
-      "frame_count": 724,
-      "sampled_frame_count": 24,
-      "unique_sampled_frames": 16,
+      "duration_seconds": 27.867,
+      "frame_count": 836,
+      "sampled_frame_count": 28,
+      "unique_sampled_frames": 17,
       "execution_proof": "execution-proof.json"
     },
     "execution-proof.json": {
-      "sha256": "b7b804318064b88054782d1ecf42ebdbe0955051c892647efcc9f026eb48f7a4",
+      "sha256": "19b1e501b1a89e9b5773d69df53ea339a29d1303a1f9942df392d00d459187d6",
       "schema_version": 1,
       "classification": "PUBLIC_SANITIZED_EXECUTION_PROOF"
     }
