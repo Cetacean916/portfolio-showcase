@@ -5,8 +5,8 @@
   </style>
   <rect width="1440" height="900" fill="#f5f2e9"/><path d="M0 0h1440v16H0z" fill="#36513d"/>
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIj4KICA8dGl0bGUgaWQ9InRpdGxlIj5PRkZTRVQgbWFyazwvdGl0bGU+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZjNmMGU3Ii8+CiAgPHJlY3QgeD0iNyIgeT0iOSIgd2lkdGg9IjM1IiBoZWlnaHQ9IjIwIiBmaWxsPSIjYTQzZjIyIi8+CiAgPHJlY3QgeD0iMjIiIHk9IjM1IiB3aWR0aD0iMzUiIGhlaWdodD0iMjAiIGZpbGw9IiMxNzE3MTQiLz4KICA8cGF0aCBkPSJNNDIgMTloOXYxNmgtOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY3MDQ1IiBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg==" x="74" y="64" width="62" height="62"/>
-  <text x="158" y="84" class="eyebrow">WINDOWS BUYER PACKAGE / 1.0.1</text>
-  <text x="158" y="126" class="meta">pf07-windows-x64-1.0.1.zip · SHA-256 59d2391b1fa67b33ddfd3fad9f6bb665118d0f98a026ee662fe8d124b20f6444</text>
+  <text x="158" y="84" class="eyebrow">WINDOWS BUYER PACKAGE / 1.0.2</text>
+  <text x="158" y="126" class="meta">pf07-windows-x64-1.0.2.zip · SHA-256 9d6fa0bcd723538207faeac4aeccc7d9bc5ebe6f57fdd3e0f1cba22ea5a6e264</text>
   <text x="74" y="196" class="title">From download to launch hub</text>
   <text x="74" y="232" class="subtitle">Follow the exact file names and entrypoints in the final Windows x64 artifact.</text>
   <g transform="translate(74 276)">
@@ -14,7 +14,7 @@
       <rect width="92" height="100" rx="18" fill="#d9e9d6"/>
       <text x="46" y="62" text-anchor="middle" class="number">01</text>
       <text x="122" y="46" class="step-title">Download the archive</text>
-      <text x="122" y="74" class="step-copy">Verify the SHA-256 of pf07-windows-x64-1.0.1.zip.</text>
+      <text x="122" y="74" class="step-copy">Verify the SHA-256 of pf07-windows-x64-1.0.2.zip.</text>
     </g>
 <g transform="translate(74 402)">
       <rect width="1292" height="100" rx="18" fill="#fff" stroke="#171a18" stroke-width="2"/>

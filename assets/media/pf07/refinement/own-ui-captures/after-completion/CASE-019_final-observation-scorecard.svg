@@ -13,7 +13,7 @@
   </defs>
   <rect width="2400" height="1400" fill="#f5f2ea"/><rect width="2400" height="1400" fill="url(#grid)"/>
   <rect width="2400" height="20" fill="#3f6250"/>
-  <text x="120" y="112" class="eyebrow">PF07 · OBSERVED VALIDATION · BUILD 13003091bee3a5201dba</text>
+  <text x="120" y="112" class="eyebrow">PF07 · OBSERVED VALIDATION · BUILD b99af2ac12d22b464865</text>
   <text x="120" y="218" class="title">Final product &amp; package scorecard</text>
   <text x="120" y="270" class="subtitle">Direct checks on the frozen product, exact final-CI bytes, and public Release path</text>
 
@@ -39,7 +39,7 @@
     <rect width="2160" height="420" rx="38" fill="#fffdf8" stroke="#d8d3c8" stroke-width="3"/>
     <g transform="translate(44 38)">
       <circle cx="28" cy="32" r="24" fill="#3f6250"/><path d="m17 32 8 8 16-19" fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round" stroke-linejoin="round"/>
-      <text x="76" y="31" class="row-title">Linux local · actual canonical CI bytes</text><text x="76" y="66" class="row-copy">5/5 ready · clean bootstrap · encrypted restore · 1.0.0 → 1.0.1 controlled update</text>
+      <text x="76" y="31" class="row-title">Linux local · actual canonical CI bytes</text><text x="76" y="66" class="row-copy">5/5 ready · clean bootstrap · encrypted restore · 1.0.1 → 1.0.2 controlled update</text>
       <rect x="1770" y="2" width="270" height="54" rx="27" fill="#e5eee6" stroke="#9fb6a4"/><text x="1905" y="36" text-anchor="middle" class="pill" fill="#31523f">EXECUTED PASS</text>
     </g>
     <path d="M44 128h2072" stroke="#d8d3c8" stroke-width="2"/>
@@ -64,7 +64,7 @@
 
   <g transform="translate(120 1200)">
     <rect width="2160" height="112" rx="30" fill="#18201d"/>
-    <text x="48" y="48" class="mono sage-text">CI RUN 29876933349 · COMMIT 0279394 · TAG pf07-v1.0.1</text>
+    <text x="48" y="48" class="mono sage-text">CI RUN 29972236888 · COMMIT 97d40c7 · TAG pf07-v1.0.2</text>
     <text x="48" y="82" class="footer">1 business runtime · 2 locale views · duplicate external effects 0 · synthetic/test orders only</text>
     <rect x="1900" y="28" width="204" height="56" rx="28" fill="#c68b39"/><text x="2002" y="64" text-anchor="middle" class="pill" fill="#18201d">0 KRW</text>
   </g>

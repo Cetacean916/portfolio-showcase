@@ -82,7 +82,7 @@
     const finalStateDetails = language === "en"
       ? ["Clean restore and 5/5 ready", "Five bounded platform entry points", "Public browser and recovery scorecard", "Public CI and canonical artifact"]
       : ["Clean restore와 5/5 ready", "경계가 명시된 플랫폼 진입점 5개", "공개 브라우저·복구 점수표", "공개 CI와 canonical artifact"];
-    const releaseEvidenceAction = language === "en" ? "Open public 1.0.1 evidence ↗" : "공개 1.0.1 근거 열기 ↗";
+    const releaseEvidenceAction = language === "en" ? "Open public 1.0.2 evidence ↗" : "공개 1.0.2 근거 열기 ↗";
     const finalProofCards = copy.finalProofLabels.map((label, index) => `<article class="pf07-proof"><span>${String(index + 1).padStart(2, "0")}</span><h3>${escape(label)}</h3><p>${escape(finalStateDetails[index])}</p><a href="${escape(`${project.refinement.mediaBase}/${project.refinement.postCandidateAssets[index]}`)}" target="_blank" rel="noopener" data-release-evidence>${escape(releaseEvidenceAction)}</a></article>`).join("");
     const releaseDownloads = project.refinement.releaseAssets.map((asset, index) => `<a class="pf07-download" href="${escape(asset.url)}" target="_blank" rel="noopener" aria-label="${escape(copy.downloadLabels[index])}: ${escape(asset.filename)}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${escape(copy.downloadLabels[index])}</strong><code>${escape(asset.filename)}</code><small>SHA-256 ${escape(asset.sha256.slice(0, 16))}…</small><b>${escape(copy.downloadAction)} ↗</b></a>`).join("");
     const scorecardRows = copy.scorecard.map(([label, value, gate]) => `<tr><th scope="row">${escape(label)}</th><td>${escape(value)}</td><td><code>${escape(gate)}</code></td></tr>`).join("");

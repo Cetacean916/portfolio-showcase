@@ -2,7 +2,7 @@
 
 OddRoom, PF01, PF02, PF03, PF04, PF06의 화면, 실행 근거, 포함·제외 범위를 공개하는 정적 포트폴리오 사이트입니다. PF01~PF04는 브라우저에서 직접 조작하는 공개 샘플 체험판을 제공하며, PF05는 후속 작업으로 제외합니다.
 
-프로젝트 데이터는 `assets/js/projects.js`에 모아 이후 사례를 추가할 수 있게 했습니다. 각 사례는 `case.html?id=<project>`에서 같은 구조로 렌더링되고, 체험판은 `demos/pf01/`부터 `demos/pf04/`까지 독립된 전체 화면 도구로 실행됩니다. PF07은 공개 저장소와 redacted evidence, 실제 입력·WP-CLI·컨테이너 동작·상태 전이를 연속 녹화한 62.033초 walkthrough와 24.067초 복구 clip, proof scorecard, claims boundary를 갖춘 일곱 번째 공개 사례이며 기존 6건 등록 manifest에는 추가하지 않습니다. `inquiry-automation.html`은 PF02 접수·검증·저장·알림을 기본 흐름으로, PF01 AI 분류와 PF04 승인·관리 화면을 선택 확장으로 정리한 서비스 진입 페이지입니다.
+프로젝트 데이터는 `assets/js/projects.js`에 모아 이후 사례를 추가할 수 있게 했습니다. 각 사례는 `case.html?id=<project>`에서 같은 구조로 렌더링되고, 체험판은 `demos/pf01/`부터 `demos/pf04/`까지 독립된 전체 화면 도구로 실행됩니다. PF07은 공개 저장소와 redacted evidence, 실제 입력·WP-CLI·컨테이너 동작·상태 전이를 연속 녹화한 61.867초 walkthrough와 27.867초 복구 clip, proof scorecard, claims boundary를 갖춘 일곱 번째 공개 사례이며 기존 6건 등록 manifest에는 추가하지 않습니다. `inquiry-automation.html`은 PF02 접수·검증·저장·알림을 기본 흐름으로, PF01 AI 분류와 PF04 승인·관리 화면을 선택 확장으로 정리한 서비스 진입 페이지입니다.
 
 PF01은 비식별 합성 문의를 만들거나 사용자가 직접 작성한 문의를 키워드 점수 규칙으로 분류합니다. 실제 제작에서는 의뢰인이 제공하거나 사용을 승인한 AI API, 사내 API 또는 온프레미스 모델로 교체·연동할 수 있습니다. PF02는 사용자가 허용한 경우 비식별 처리 결과를 실제 로컬 브라우저 알림으로 표시합니다. 공개 체험판은 실제 AI·Sheets·Slack·Email·업무 서버에 연결되지 않습니다. 사이트의 `문의 내용 작성 양식 복사` 버튼은 외부 연락처로 이동하지 않고 플랫폼 중립적인 요구사항 양식만 복사하며, 성공·실패 안내를 클릭 위치에서 제공합니다.
 
