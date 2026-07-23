@@ -279,8 +279,13 @@ button:disabled{cursor:wait;opacity:.72}
 
 .portfolio-hub .hub-hero h1 {
   max-width: 650px;
-  font-size: clamp(55px, 5.4vw, 82px);
-  line-height: 1.02;
+  font-size: clamp(44px, 3.7vw, 54px);
+  line-height: 1.08;
+}
+
+.portfolio-hub .hub-hero h1 > span {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .portfolio-hub .intro-copy > p:last-of-type {
@@ -747,7 +752,7 @@ button:disabled{cursor:wait;opacity:.72}
   }
 
   .portfolio-hub .hub-hero h1 {
-    font-size: clamp(43px, 13vw, 58px);
+    font-size: clamp(36px, 9.2vw, 42px);
   }
 
   .portfolio-hub .intro-copy > p:last-of-type {
@@ -847,7 +852,7 @@ button:disabled{cursor:wait;opacity:.72}
 
 @media (max-width: 380px) {
   .portfolio-hub .hub-hero h1 {
-    font-size: 40px;
+    font-size: 35px;
   }
 
   .portfolio-hub .hub-feature-bar {
