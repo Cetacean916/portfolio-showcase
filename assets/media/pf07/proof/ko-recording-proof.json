@@ -1,0 +1,181 @@
+{
+  "schema_version": 1,
+  "case_id": "pf07",
+  "classification": "PUBLIC_SANITIZED_EXECUTION_PROOF",
+  "recording_script": "scripts/record-public-media.mjs",
+  "recording_script_sha256": "4932eae4bb4ff52070f89911b23d5285e893a7ae39996fce21a2d1ea05197f9d",
+  "metadata_stripped": true,
+  "package_build_id": "pf07-build-c14f8fe0b8e95bea97bf",
+  "runtime_locale": "ko_KR",
+  "package_artifact_manifest_sha256": "4507f33a5c79d8fdf019023fecbcffc8664c2e8078a1edbfd88b83d6d37e43aa",
+  "final_linux_package_preflight": "PASS",
+  "synthetic_checkout_window_prepared_via_wp_cli": true,
+  "videos": {
+    "demo-video.mp4": {
+      "sha256": "42af10a5d0e64f38fd0734e9805fc779664809d8a3afe6d7f0ce70df2d1c900d",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "width": 1280,
+      "height": 720,
+      "frame_count": 1861,
+      "duration_seconds": 62.033,
+      "sampled_frame_count": 62,
+      "unique_sampled_frames": 40,
+      "continuous_capture": true,
+      "actual_launcher_hub_observed": true,
+      "actual_checkout_observed": true,
+      "foreground_worker_observed": true,
+      "visible_worker_terminal_observed": true,
+      "final_status": "completed",
+      "timeline": [
+        {
+          "event": "LAUNCH_HUB",
+          "at_seconds": 1.319,
+          "observation": "final_package_hub_ready",
+          "frame_sha256": "b81faf7fbc11dca63cb7ef7ad4c84353dc1948956b9479169d09e0f762e44b40"
+        },
+        {
+          "event": "LIVE_STOREFRONT",
+          "at_seconds": 9.409,
+          "observation": "home_visible",
+          "frame_sha256": "37d9eee25b7ed5615d6548d670e75a901cf48aca032230d6766f2e5798cdbf9e"
+        },
+        {
+          "event": "SHOP_OPENED",
+          "at_seconds": 15.666,
+          "observation": "shop_visible",
+          "frame_sha256": "aae9b985cedb6b6ef2e06999aaa7f2a766c66b78414c7cdd7c8d7c9dc9882afa"
+        },
+        {
+          "event": "PRODUCT_SELECTED",
+          "at_seconds": 20.174,
+          "observation": "product_page_visible",
+          "frame_sha256": "6e89069d8a6480582f9ec8cf1df3b45d62d6a9faeda3e49669199fa8b8e409e4"
+        },
+        {
+          "event": "CART_READY",
+          "at_seconds": 26.014,
+          "observation": "cart_contains_product",
+          "frame_sha256": "f35b12870a39734b705cbc1a0de85cf72be3201655b83fb4f47cc3553da3fe46"
+        },
+        {
+          "event": "CHECKOUT_INPUT",
+          "at_seconds": 33.482,
+          "observation": "synthetic_checkout_input_visible",
+          "frame_sha256": "244701950e7a5f87c9d508a2d2830ad44e5e67f7d18e1bc7c57bb024fb2f046b"
+        },
+        {
+          "event": "ORDER_RECEIVED",
+          "at_seconds": 37.813,
+          "observation": "woocommerce_confirmation_visible",
+          "frame_sha256": "c896bce950b5404b1d9d311ead4abbdb4606dc82298515a1199df3add700ed12"
+        },
+        {
+          "event": "OUTBOX_PENDING",
+          "at_seconds": 41.857,
+          "observation": "status_pending",
+          "frame_sha256": "c9fe378b331fa053944c35936d575a64a75fd4ccccd5604bd6faf04bd2cf5b94"
+        },
+        {
+          "event": "WORKER_RUN",
+          "at_seconds": 45.167,
+          "observation": "visible_terminal_foreground_worker_exit_zero",
+          "frame_sha256": "bdf625570dafa8b663263383455c748874a63f207090be15ac02dc427baf7720"
+        },
+        {
+          "event": "ADMIN_COMPLETED",
+          "at_seconds": 51.812,
+          "observation": "status_completed",
+          "frame_sha256": "f01366f531abfe6175c3dced466138d8d47a24c641a5ba2c017df6f280499445"
+        },
+        {
+          "event": "INTEGRATION_RESULT",
+          "at_seconds": 54.991,
+          "observation": "masked_integration_correlation_visible",
+          "frame_sha256": "b60376e51f1ba56172f5e4d81a1807c1f45d200132548acd5944bfb2da4786cc"
+        }
+      ]
+    },
+    "recovery-clip.mp4": {
+      "sha256": "bd4e78e807edf6001cf1b1cfde4040d47e2ceea3054c768a4ec71795ac750b8f",
+      "codec": "h264",
+      "pixel_format": "yuv420p",
+      "width": 1280,
+      "height": 720,
+      "frame_count": 865,
+      "duration_seconds": 28.833,
+      "sampled_frame_count": 29,
+      "unique_sampled_frames": 17,
+      "continuous_capture": true,
+      "actual_terminal_failure_observed": true,
+      "actual_hub_scenario_transition_observed": true,
+      "manual_retry_observed": true,
+      "visible_worker_terminal_observed": true,
+      "final_status": "recovered",
+      "timeline": [
+        {
+          "event": "OUTBOX_PENDING",
+          "at_seconds": 1.314,
+          "observation": "status_pending",
+          "frame_sha256": "d10007f462747d8ac0b569ac8f93e7248ca6b6a497702a1bee5df6d26eb1a6bc"
+        },
+        {
+          "event": "FAILURE_WORKER_RUN",
+          "at_seconds": 2.926,
+          "observation": "visible_terminal_failure_worker_exit_zero",
+          "frame_sha256": "29473e4018b58b68788f28c57bbadac23636359a2ea54e76ae8b23e133bfb444"
+        },
+        {
+          "event": "FAILED",
+          "at_seconds": 8.967,
+          "observation": "status_failed_manual_retry_visible",
+          "frame_sha256": "0a5aa9cd1128b580b1b1eeb55e13b108134f4107cc3eaba0c2dc015d106ffac2"
+        },
+        {
+          "event": "NORMAL_SCENARIO",
+          "at_seconds": 17.25,
+          "observation": "actual_hub_normal_scenario_applied",
+          "frame_sha256": "ab13395f88850ca88545a3463dffb03346d733baf03b23a4443b616b7a29d4fc"
+        },
+        {
+          "event": "MANUAL_RETRY",
+          "at_seconds": 21.332,
+          "observation": "manual_retry_scheduled_pending",
+          "frame_sha256": "4b578cdf7d43a2bfd59cf32c1c9b57ae547ddd23ba1e792c714dfe9d0bbc7ca5"
+        },
+        {
+          "event": "RECOVERY_WORKER_RUN",
+          "at_seconds": 22.971,
+          "observation": "visible_terminal_recovery_worker_exit_zero",
+          "frame_sha256": "6ba4d213c9d748d2e3f8248c452c54a414fea59d92b1ae3a8f0909dfd74de1c2"
+        },
+        {
+          "event": "RECOVERED",
+          "at_seconds": 28.468,
+          "observation": "status_recovered",
+          "frame_sha256": "97777d30ee4708ee488e776615756e33384b74b8ab2fcfb8dd71f240cd472e5f"
+        }
+      ]
+    }
+  },
+  "poster": {
+    "file": "video-poster.png",
+    "sha256": "5572f96c5fcf18a47c4d6d2070db1885ed807718640f8ded682780ff36745d15",
+    "source_video": "demo-video.mp4",
+    "source_at_seconds": 52.312
+  },
+  "state_stills": {
+    "operator-failed.png": {
+      "sha256": "37e7a4e49ba216b584234b9f10ca7033e8f4f9bc169d51316d6faeccf0a466e4",
+      "state": "failed"
+    },
+    "operator-retrying.png": {
+      "sha256": "a10f2f5432a1f23ed11389d43e2153cdd550b07301bd36c6d62f1b78422c4b35",
+      "state": "manual_retry_queued"
+    },
+    "operator-recovered.png": {
+      "sha256": "a710436e720b7f6db72d22b6bdb653788a68e63ddf74060b29c9bea1fba0ec38",
+      "state": "recovered"
+    }
+  }
+}

@@ -2,8 +2,6 @@ import crypto from "node:crypto";
 import fs from "node:fs/promises";
 import path from "node:path";
 import { spawnSync } from "node:child_process";
-import { createWorker } from "tesseract.js";
-import englishData from "@tesseract.js-data/eng";
 
 const sha256 = (data) => crypto.createHash("sha256").update(data).digest("hex");
 
@@ -24,9 +22,12 @@ const run = (command, args, encoding = null) => {
 };
 
 const probeVideo = (videoPath) => JSON.parse(run("ffprobe", [
-  "-v", "error", "-select_streams", "v:0", "-count_frames",
-  "-show_entries", "stream=codec_name,pix_fmt,width,height,nb_read_frames:format=duration,size:format_tags",
-  "-of", "json", videoPath,
+  "-v", "error",
+  "-select_streams", "v:0",
+  "-count_frames",
+  "-show_entries", "stream=codec_name,pix_fmt,width,height,avg_frame_rate,nb_read_frames:format=duration,size:format_tags",
+  "-of", "json",
+  videoPath,
 ], "utf8"));
 
 const decodeVideo = (videoPath) => {
@@ -34,14 +35,22 @@ const decodeVideo = (videoPath) => {
 };
 
 const frameAt = (videoPath, seconds) => run("ffmpeg", [
-  "-hide_banner", "-loglevel", "error", "-i", videoPath, "-ss", String(seconds),
-  "-frames:v", "1", "-f", "image2pipe", "-vcodec", "png", "-",
+  "-hide_banner", "-loglevel", "error",
+  "-i", videoPath,
+  "-ss", String(seconds),
+  "-frames:v", "1",
+  "-f", "image2pipe",
+  "-vcodec", "png",
+  "-",
 ]);
 
 const sampleDynamics = (videoPath) => {
   const output = run("ffmpeg", [
-    "-hide_banner", "-loglevel", "error", "-i", videoPath,
-    "-vf", "fps=1,scale=160:90,format=gray", "-f", "framemd5", "-",
+    "-hide_banner", "-loglevel", "error",
+    "-i", videoPath,
+    "-vf", "fps=1,scale=160:90,format=gray",
+    "-f", "framemd5",
+    "-",
   ]).toString("utf8");
   const hashes = output.split("\n")
     .filter((line) => line && !line.startsWith("#"))
@@ -49,8 +58,22 @@ const sampleDynamics = (videoPath) => {
   return { sampled: hashes.length, unique: new Set(hashes).size };
 };
 
+const expectedRelease = {
+  package_version: "1.0.3",
+  release_tag: "pf07-v1.0.3",
+  immutable_predecessor_tag: "pf07-v1.0.2",
+  source_commit: "4085e87f5d221d36ba5a58e859f12806e4b10d36",
+  source_tree: "214ee2e8773a1f6109641869f06a8d13d4cd5310",
+  package_build_id: "pf07-build-c14f8fe0b8e95bea97bf",
+  artifact_set_sha256: "74b458a861d51da2e681b1201f138527731a2b87cde38f2f5f47438b3d20833e",
+  release_manifest_sha256: "2880647f7d40e98f6af0c53eefa392941d9af01cc2efb50bcf46fc54c0b41b89",
+  linux_package_filename: "pf07-linux-x86_64-1.0.3.tar.gz",
+  linux_package_sha256: "cd60c8b6b280f1347123262d4895b0fdf53e8d6de07eb59020d57fb8c4c67f2e",
+  linux_package_manifest_sha256: "4507f33a5c79d8fdf019023fecbcffc8664c2e8078a1edbfd88b83d6d37e43aa",
+};
+
 const expectedTimelines = {
-  "demo-video.mp4": [
+  "purchase-delivery.mp4": [
     ["LAUNCH_HUB", "final_package_hub_ready"],
     ["LIVE_STOREFRONT", "home_visible"],
     ["SHOP_OPENED", "shop_visible"],
@@ -63,7 +86,7 @@ const expectedTimelines = {
     ["ADMIN_COMPLETED", "status_completed"],
     ["INTEGRATION_RESULT", "masked_integration_correlation_visible"],
   ],
-  "recovery-clip.mp4": [
+  "failure-recovery.mp4": [
     ["OUTBOX_PENDING", "status_pending"],
     ["FAILURE_WORKER_RUN", "visible_terminal_failure_worker_exit_zero"],
     ["FAILED", "status_failed_manual_retry_visible"],
@@ -74,185 +97,366 @@ const expectedTimelines = {
   ],
 };
 
-const ocrRequirements = {
-  "demo-video.mp4": {
-    LAUNCH_HUB: [/final linux package/i, /ready/i, /actual hub.*controls/i],
-    CHECKOUT_INPUT: [/checkout/i, /test street/i, /seoul/i],
-    ORDER_RECEIVED: [/woocommerce.*actual synthetic order/i],
-    OUTBOX_PENDING: [/actual final admin/i, /order[\s._-]*cr\w*[\s._-]+pendin/i],
-    WORKER_RUN: [/final package worker/i, /action-scheduler run/i],
-    ADMIN_COMPLETED: [/order[\s._-]*created/i, /completed/i, /\b200\b/i],
-    INTEGRATION_RESULT: [/woo.*pf[o0]7.*n(?:8)?n.*crm.*slack/i, /identifiers.*masked/i],
+const roles = {
+  "guided-overview": {
+    role: "guided_overview",
+    minimum: 30,
+    maximum: 45,
   },
-  "recovery-clip.mp4": {
-    OUTBOX_PENDING: [/same delivered\s+runtime/i, /order[\s._-]*cr\w*[\s._-]+pendin/i],
-    FAILURE_WORKER_RUN: [/final package worker/i, /action-scheduler run/i],
-    FAILED: [/manual retry now available/i, /422/i],
-    NORMAL_SCENARIO: [/actual package hub control/i, /worker result/i],
-    MANUAL_RETRY: [/actual administrator action/i, /scheduled one follow-up/i],
-    RECOVERY_WORKER_RUN: [/final package worker/i, /action-scheduler run/i],
-    RECOVERED: [/recovered/i, /http\s*200/i],
+  "purchase-delivery": {
+    role: "purchase_delivery",
+    minimum: 60,
+    maximum: 90,
+  },
+  "failure-recovery": {
+    role: "failure_recovery",
+    minimum: 8,
+    maximum: 30,
   },
 };
-
-const ocrRegions = {
-  "demo-video.mp4": {
-    WORKER_RUN: { left: 500, top: 475, width: 750, height: 220 },
-  },
-  "recovery-clip.mp4": {
-    FAILURE_WORKER_RUN: { left: 500, top: 475, width: 750, height: 220 },
-    RECOVERY_WORKER_RUN: { left: 500, top: 475, width: 750, height: 220 },
-  },
-};
-// The isolated recorder runs Chromium in fullscreen, which places the public
-// evidence caption against the upper edge instead of the host window-manager
-// offset used by the earlier capture profile. Keep OCR scoped to that caption
-// so page copy cannot accidentally satisfy the evidence assertion.
-const captionOcrRegion = { left: 840, top: 20, width: 420, height: 150 };
 
 const forbiddenMetadataKeys = new Set([
   "artist", "author", "comment", "copyright", "creation_time", "description",
   "encoded_by", "location", "location-eng", "title",
 ]);
 
-export async function validatePf07ExecutionMedia({ mediaRoot, recordingScriptPath }) {
-  const manifestPath = path.join(mediaRoot, "media-manifest.json");
-  const proofPath = path.join(mediaRoot, "execution-proof.json");
-  const [manifestBytes, proofBytes, recordingScriptBytes] = await Promise.all([
-    fs.readFile(manifestPath),
-    fs.readFile(proofPath),
-    fs.readFile(recordingScriptPath),
+const hasForbiddenJsonValue = (source) => (
+  /\/home\/|file:\/\/|xox[baprs]-|gh[pousr]_|AKIA[0-9A-Z]{16}/i.test(source)
+);
+
+const parseVttTimestamp = (value) => {
+  const parts = value.trim().split(":").map(Number);
+  requireCondition(parts.length === 2 || parts.length === 3, `invalid WebVTT timestamp: ${value}`);
+  if (parts.length === 2) return parts[0] * 60 + parts[1];
+  return parts[0] * 3600 + parts[1] * 60 + parts[2];
+};
+
+const validatePng = (bytes, asset, label) => {
+  requireCondition(bytes.subarray(0, 8).toString("hex") === "89504e470d0a1a0a", `${label}: PNG signature failed`);
+  requireCondition(bytes.readUInt32BE(16) === asset.width
+    && bytes.readUInt32BE(20) === asset.height
+    && bytes.length === asset.bytes
+    && sha256(bytes) === asset.sha256, `${label}: PNG byte commitment failed`);
+  const chunks = [];
+  for (let offset = 8; offset + 12 <= bytes.length;) {
+    const length = bytes.readUInt32BE(offset);
+    chunks.push(bytes.subarray(offset + 4, offset + 8).toString("ascii"));
+    offset += 12 + length;
+  }
+  requireCondition(!chunks.some((type) => ["tEXt", "zTXt", "iTXt", "eXIf"].includes(type)), `${label}: PNG metadata remains`);
+};
+
+export async function validatePf07ExecutionMedia({ mediaRoot }) {
+  const projectRoot = path.resolve(mediaRoot, "../../..");
+  const [manifestBytes, proofBytes, currentUiBytes] = await Promise.all([
+    fs.readFile(path.join(mediaRoot, "media-manifest.json")),
+    fs.readFile(path.join(mediaRoot, "execution-proof.json")),
+    fs.readFile(path.join(mediaRoot, "current-ui-manifest.json")),
   ]);
   const manifest = JSON.parse(manifestBytes.toString("utf8"));
   const proof = JSON.parse(proofBytes.toString("utf8"));
+  const currentUi = JSON.parse(currentUiBytes.toString("utf8"));
 
-  requireCondition(manifest.schema_version === 1
+  requireCondition(manifest.schema === "pf07.localized-showcase-media-manifest.v2"
+    && manifest.state === "CURRENT_RELEASE_BOUND"
     && manifest.case_id === "pf07"
-    && manifest.classification === "PUBLIC_SANITIZED_MEDIA"
-    && manifest.metadata_stripped === true, "manifest identity or metadata boundary failed");
-  requireCondition(proof.schema_version === 1
+    && manifest.classification === "PUBLIC_SANITIZED_LOCALIZED_RUNTIME_MEDIA"
+    && manifest.metadata_stripped === true
+    && manifest.registration_manifest_case_count === 6, "localized media manifest identity failed");
+  requireCondition(proof.schema === "pf07.localized-showcase-execution-proof.v2"
     && proof.case_id === "pf07"
-    && proof.classification === "PUBLIC_SANITIZED_EXECUTION_PROOF", "execution proof identity failed");
+    && proof.classification === "PUBLIC_SANITIZED_EXECUTION_PROOF"
+    && proof.metadata_stripped === true, "aggregate execution proof identity failed");
   requireCondition(!Object.hasOwn(proof, "status") && !Object.hasOwn(proof, "result"), "execution proof must not self-declare PASS");
-  requireCondition(proof.synthetic_checkout_window_prepared_via_wp_cli === true, "protected checkout preparation disclosure is missing");
-  requireCondition(!/\/home\/|https?:\/\/|[A-Za-z0-9._%+-]+@[A-Za-z0-9.-]+\.[A-Za-z]{2,}/.test(proofBytes.toString("utf8")), "execution proof contains a locator or contact-like value");
+  requireCondition(currentUi.schema === "pf07.current-ui-manifest.v3"
+    && currentUi.state === "CURRENT_RELEASE_BOUND"
+    && currentUi.case_id === "pf07", "current UI manifest is not release-bound");
+  requireCondition(JSON.stringify(manifest.release) === JSON.stringify(expectedRelease)
+    && JSON.stringify(proof.release) === JSON.stringify(expectedRelease)
+    && JSON.stringify(currentUi.release) === JSON.stringify(expectedRelease), "1.0.3 release identity commitment failed");
+  requireCondition(!hasForbiddenJsonValue(manifestBytes.toString("utf8"))
+    && !hasForbiddenJsonValue(proofBytes.toString("utf8"))
+    && !hasForbiddenJsonValue(currentUiBytes.toString("utf8")), "public PF07 manifest contains a protected locator or token");
 
   const proofHash = sha256(proofBytes);
-  const scriptHash = sha256(recordingScriptBytes);
-  requireCondition(manifest.source_commitments?.execution_proof_sha256 === proofHash
-    && manifest.assets?.["execution-proof.json"]?.sha256 === proofHash, "execution proof hash commitment failed");
-  requireCondition(proof.recording_script_sha256 === scriptHash
-    && manifest.source_commitments?.recording_script_sha256 === scriptHash, "recording script commitment failed");
+  requireCondition(manifest.execution_proof?.file === "assets/media/pf07/execution-proof.json"
+    && manifest.execution_proof?.sha256 === proofHash, "aggregate execution proof hash commitment failed");
+  requireCondition(proof.final_linux_package_preflight === "PASS"
+    && proof.synthetic_checkout_window_prepared_via_wp_cli === true
+    && proof.exact_runtime_locale_count === 2, "aggregate execution preflight boundary failed");
 
-  const frameBuffers = new Map();
-  const summaries = {};
-  for (const [fileName, expectedTimeline] of Object.entries(expectedTimelines)) {
-    const videoPath = path.join(mediaRoot, fileName);
-    const videoBytes = await fs.readFile(videoPath);
-    const videoProof = proof.videos?.[fileName];
-    const asset = manifest.assets?.[fileName];
-    requireCondition(videoProof && asset, `${fileName}: proof or manifest entry is missing`);
-    requireCondition(sha256(videoBytes) === videoProof.sha256 && videoProof.sha256 === asset.sha256, `${fileName}: byte commitment failed`);
-
-    const probe = probeVideo(videoPath);
-    const stream = probe.streams?.[0];
-    const format = probe.format;
-    const duration = Number(format?.duration);
-    const frameCount = Number(stream?.nb_read_frames);
-    requireCondition(stream?.codec_name === "h264" && stream?.pix_fmt === "yuv420p"
-      && Number(stream?.width) === 1280 && Number(stream?.height) === 720, `${fileName}: codec or dimensions failed`);
-    requireCondition(Math.abs(duration - Number(videoProof.duration_seconds)) < 0.01
-      && Math.abs(duration - Number(asset.duration_seconds)) < 0.01
-      && frameCount === Number(videoProof.frame_count)
-      && frameCount === Number(asset.frame_count), `${fileName}: duration or frame-count commitment failed`);
-    requireCondition(Math.abs(frameCount / duration - 30) < 0.1, `${fileName}: continuous 30fps capture was not established`);
-    requireCondition(fileName === "demo-video.mp4" ? duration >= 60 && duration <= 90 : duration >= 8 && duration <= 30, `${fileName}: contract duration failed`);
-    const tags = Object.keys(format?.tags || {}).map((key) => key.toLowerCase());
-    requireCondition(!tags.some((key) => forbiddenMetadataKeys.has(key)), `${fileName}: identifying metadata remains`);
-    decodeVideo(videoPath);
-
-    const dynamics = sampleDynamics(videoPath);
-    requireCondition(dynamics.sampled === Number(videoProof.sampled_frame_count)
-      && dynamics.sampled === Number(asset.sampled_frame_count)
-      && dynamics.unique === Number(videoProof.unique_sampled_frames)
-      && dynamics.unique === Number(asset.unique_sampled_frames), `${fileName}: dynamic-sample commitment failed`);
-    requireCondition(dynamics.unique > expectedTimeline.length, `${fileName}: content does not distinguish continuous execution from event slides`);
-
-    const actualTimeline = videoProof.timeline;
-    requireCondition(Array.isArray(actualTimeline) && actualTimeline.length === expectedTimeline.length, `${fileName}: exact timeline inventory failed`);
-    let previousTime = -1;
-    const eventFrameHashes = new Set();
-    for (let index = 0; index < expectedTimeline.length; index += 1) {
-      const event = actualTimeline[index];
-      const [expectedEvent, expectedObservation] = expectedTimeline[index];
-      requireCondition(event?.event === expectedEvent && event?.observation === expectedObservation, `${fileName}: timeline event ${index + 1} failed`);
-      requireCondition(Number.isFinite(event.at_seconds) && event.at_seconds > previousTime && event.at_seconds < duration, `${fileName}: timeline time ${expectedEvent} failed`);
-      previousTime = event.at_seconds;
-      const frame = frameAt(videoPath, event.at_seconds);
-      requireCondition(sha256(frame) === event.frame_sha256, `${fileName}: frame commitment failed for ${expectedEvent}`);
-      frameBuffers.set(`${fileName}:${expectedEvent}`, frame);
-      eventFrameHashes.add(event.frame_sha256);
-    }
-    requireCondition(eventFrameHashes.size === expectedTimeline.length, `${fileName}: event frames are not visually distinct`);
-
-    if (fileName === "demo-video.mp4") {
-      requireCondition(videoProof.continuous_capture === true
-        && videoProof.actual_launcher_hub_observed === true
-        && videoProof.actual_checkout_observed === true
-        && videoProof.foreground_worker_observed === true
-        && videoProof.visible_worker_terminal_observed === true
-        && videoProof.final_status === "completed", "demo execution flags failed");
-    } else {
-      requireCondition(videoProof.continuous_capture === true
-        && videoProof.actual_terminal_failure_observed === true
-        && videoProof.actual_hub_scenario_transition_observed === true
-        && videoProof.manual_retry_observed === true
-        && videoProof.visible_worker_terminal_observed === true
-        && videoProof.final_status === "recovered", "recovery execution flags failed");
-    }
-    summaries[fileName] = { duration_seconds: duration, frame_count: frameCount, unique_sampled_frames: dynamics.unique };
+  const expectedScripts = {
+    still_capture: "assets/media/pf07/provenance/capture-final-stills.mjs",
+    retry_state_capture: "assets/media/pf07/provenance/capture-v1.0.3-retry-state.mjs",
+    ko_recording_capture: "assets/media/pf07/provenance/record-public-media-ko-capture.mjs",
+    current_recording_capture: "assets/media/pf07/provenance/record-public-media.mjs",
+    release_evidence_builder: "assets/media/pf07/provenance/build-v1.0.3-release-evidence.mjs",
+  };
+  for (const [id, relative] of Object.entries(expectedScripts)) {
+    const bytes = await fs.readFile(path.join(projectRoot, relative));
+    const expectedHash = sha256(bytes);
+    requireCondition(manifest.capture_authorities?.[id]?.file === relative
+      && manifest.capture_authorities?.[id]?.sha256 === expectedHash
+      && proof.capture_authorities?.[id]?.file === relative
+      && proof.capture_authorities?.[id]?.sha256 === expectedHash
+      && currentUi.capture_authorities?.[id]?.file === relative
+      && currentUi.capture_authorities?.[id]?.sha256 === expectedHash, `${id}: capture authority commitment failed`);
   }
 
-  const posterPath = path.join(mediaRoot, "video-poster.png");
-  const posterBytes = await fs.readFile(posterPath);
-  const poster = proof.poster;
-  requireCondition(poster?.file === "video-poster.png"
-    && poster.source_video === "demo-video.mp4"
-    && sha256(posterBytes) === poster.sha256
-    && poster.sha256 === manifest.assets?.["video-poster.png"]?.sha256, "poster commitment failed");
-  const regeneratedPoster = run("ffmpeg", [
-    "-hide_banner", "-loglevel", "error", "-i", path.join(mediaRoot, poster.source_video),
-    "-ss", String(poster.source_at_seconds), "-frames:v", "1",
-    "-vf", "scale=1440:810:force_original_aspect_ratio=decrease,pad=1440:1000:(ow-iw)/2:(oh-ih)/2:color=0x171714",
-    "-map_metadata", "-1", "-f", "image2pipe", "-vcodec", "png", "-",
-  ]);
-  requireCondition(sha256(regeneratedPoster) === poster.sha256, "poster is not the committed execution-video frame");
-
-  const worker = await createWorker("eng", 1, {
-    langPath: englishData.langPath,
-    gzip: englishData.gzip,
-    cacheMethod: "none",
-  });
-  try {
-    for (const [fileName, events] of Object.entries(ocrRequirements)) {
-      for (const [eventName, patterns] of Object.entries(events)) {
-        const frame = frameBuffers.get(`${fileName}:${eventName}`);
-        requireCondition(frame, `${fileName}: OCR frame is missing for ${eventName}`);
-        const rectangle = ocrRegions[fileName]?.[eventName] || captionOcrRegion;
-        const result = await worker.recognize(frame, { rectangle });
-        const text = result.data.text.replace(/\s+/g, " ");
-        requireCondition(patterns.every((pattern) => pattern.test(text)), `${fileName}: frame text did not establish ${eventName}`);
-      }
+  const expectedMediaFiles = [];
+  for (const locale of ["ko", "en"]) {
+    for (const slug of Object.keys(roles)) {
+      expectedMediaFiles.push(
+        `assets/media/pf07/videos/${locale}/${slug}.mp4`,
+        `assets/media/pf07/posters/${locale}/${slug}.png`,
+        `assets/media/pf07/captions/${locale}/${slug}.vtt`,
+      );
     }
-  } finally {
-    await worker.terminate();
+    expectedMediaFiles.push(`assets/media/pf07/proof/${locale}-recording-proof.json`);
+  }
+  expectedMediaFiles.sort();
+  const declaredFiles = (manifest.assets || []).map((asset) => asset.file).sort();
+  requireCondition(manifest.exact_asset_count === 20
+    && manifest.locale_asset_counts?.ko === 10
+    && manifest.locale_asset_counts?.en === 10
+    && manifest.assets?.length === 20
+    && new Set(manifest.assets.map((asset) => asset.asset_id)).size === 20
+    && JSON.stringify(declaredFiles) === JSON.stringify(expectedMediaFiles), "localized media exact asset set failed");
+
+  const manifestByFile = new Map(manifest.assets.map((asset) => [asset.file, asset]));
+  const summaries = {};
+  for (const locale of ["ko", "en"]) {
+    const proofRelative = `assets/media/pf07/proof/${locale}-recording-proof.json`;
+    const localizedProofBytes = await fs.readFile(path.join(projectRoot, proofRelative));
+    const localizedProofText = localizedProofBytes.toString("utf8");
+    const localizedProof = JSON.parse(localizedProofText);
+    const aggregateProof = proof.recording_proofs?.[locale];
+    const proofAsset = manifestByFile.get(proofRelative);
+    const runtimeLocale = locale === "ko" ? "ko_KR" : "en_US";
+    const recordingAuthorityId = locale === "ko" ? "ko_recording_capture" : "current_recording_capture";
+    const recordingAuthority = manifest.capture_authorities?.[recordingAuthorityId];
+    requireCondition(localizedProof.schema_version === 1
+      && localizedProof.case_id === "pf07"
+      && localizedProof.classification === "PUBLIC_SANITIZED_EXECUTION_PROOF"
+      && localizedProof.metadata_stripped === true
+      && localizedProof.runtime_locale === runtimeLocale
+      && localizedProof.package_build_id === expectedRelease.package_build_id
+      && localizedProof.package_artifact_manifest_sha256 === expectedRelease.linux_package_manifest_sha256
+      && localizedProof.final_linux_package_preflight === "PASS"
+      && localizedProof.synthetic_checkout_window_prepared_via_wp_cli === true, `${locale}: localized recording proof identity failed`);
+    requireCondition(!Object.hasOwn(localizedProof, "status")
+      && !Object.hasOwn(localizedProof, "result")
+      && !hasForbiddenJsonValue(localizedProofText), `${locale}: localized proof boundary failed`);
+    const localizedProofHash = sha256(localizedProofBytes);
+    requireCondition(aggregateProof?.file === proofRelative
+      && aggregateProof?.sha256 === localizedProofHash
+      && aggregateProof?.runtime_locale === runtimeLocale
+      && proofAsset?.sha256 === localizedProofHash
+      && proofAsset?.bytes === localizedProofBytes.length
+      && localizedProof.recording_script_sha256 === recordingAuthority.sha256
+      && aggregateProof?.recording_script_sha256 === recordingAuthority.sha256
+      && proofAsset?.recording_script_sha256 === recordingAuthority.sha256, `${locale}: localized proof or capture-script commitment failed`);
+
+    for (const slug of ["purchase-delivery", "failure-recovery"]) {
+      const fileName = `${slug}.mp4`;
+      const relative = `assets/media/pf07/videos/${locale}/${fileName}`;
+      const absolute = path.join(projectRoot, relative);
+      const bytes = await fs.readFile(absolute);
+      const asset = manifestByFile.get(relative);
+      const proofKey = slug === "purchase-delivery" ? "demo-video.mp4" : "recovery-clip.mp4";
+      const videoProof = localizedProof.videos?.[proofKey];
+      const timelineContract = expectedTimelines[fileName];
+      requireCondition(asset?.kind === "video"
+        && asset.locale === locale
+        && asset.role === roles[slug].role
+        && asset.proof_video_key === proofKey
+        && asset.source_proof === proofRelative
+        && asset.source_proof_sha256 === localizedProofHash
+        && asset.transformation === "byte-for-byte-promotion-from-localized-recording"
+        && sha256(bytes) === asset.sha256
+        && asset.sha256 === videoProof?.sha256, `${relative}: proof or byte commitment failed`);
+      const probe = probeVideo(absolute);
+      const stream = probe.streams?.[0];
+      const format = probe.format;
+      const duration = Number(format?.duration);
+      const frameCount = Number(stream?.nb_read_frames);
+      requireCondition(stream?.codec_name === "h264"
+        && stream?.pix_fmt === "yuv420p"
+        && stream?.avg_frame_rate === "30/1"
+        && Number(stream?.width) === 1280
+        && Number(stream?.height) === 720
+        && Math.abs(duration - Number(asset.duration_seconds)) < 0.001
+        && Math.abs(duration - Number(videoProof.duration_seconds)) < 0.001
+        && frameCount === Number(asset.frame_count)
+        && frameCount === Number(videoProof.frame_count)
+        && Number(format?.size) === asset.bytes, `${relative}: codec, dimensions, duration, or frame commitment failed`);
+      requireCondition(duration >= roles[slug].minimum
+        && duration <= roles[slug].maximum
+        && Math.abs(frameCount / duration - 30) < 0.1, `${relative}: duration or continuous-frame contract failed`);
+      const tags = Object.keys(format?.tags || {}).map((key) => key.toLowerCase());
+      requireCondition(!tags.some((key) => forbiddenMetadataKeys.has(key)), `${relative}: identifying video metadata remains`);
+      decodeVideo(absolute);
+
+      const dynamics = sampleDynamics(absolute);
+      requireCondition(dynamics.sampled === Number(videoProof.sampled_frame_count)
+        && dynamics.unique === Number(videoProof.unique_sampled_frames)
+        && dynamics.unique > timelineContract.length, `${relative}: dynamic continuous-capture evidence failed`);
+
+      const timeline = videoProof.timeline;
+      requireCondition(Array.isArray(timeline) && timeline.length === timelineContract.length, `${relative}: exact timeline inventory failed`);
+      let previousTime = -1;
+      const frameHashes = new Set();
+      for (let index = 0; index < timelineContract.length; index += 1) {
+        const event = timeline[index];
+        const [expectedEvent, expectedObservation] = timelineContract[index];
+        requireCondition(event?.event === expectedEvent
+          && event?.observation === expectedObservation
+          && Number.isFinite(event.at_seconds)
+          && event.at_seconds > previousTime
+          && event.at_seconds < duration, `${relative}: timeline event ${index + 1} failed`);
+        previousTime = event.at_seconds;
+        const frame = frameAt(absolute, event.at_seconds);
+        requireCondition(sha256(frame) === event.frame_sha256, `${relative}: frame commitment failed for ${expectedEvent}`);
+        frameHashes.add(event.frame_sha256);
+      }
+      requireCondition(frameHashes.size === timelineContract.length, `${relative}: event frames are not distinct`);
+      if (slug === "purchase-delivery") {
+        requireCondition(videoProof.continuous_capture === true
+          && videoProof.actual_launcher_hub_observed === true
+          && videoProof.actual_checkout_observed === true
+          && videoProof.foreground_worker_observed === true
+          && videoProof.visible_worker_terminal_observed === true
+          && videoProof.final_status === "completed", `${relative}: purchase-delivery execution flags failed`);
+      } else {
+        requireCondition(videoProof.continuous_capture === true
+          && videoProof.actual_terminal_failure_observed === true
+          && videoProof.actual_hub_scenario_transition_observed === true
+          && videoProof.manual_retry_observed === true
+          && videoProof.visible_worker_terminal_observed === true
+          && videoProof.final_status === "recovered", `${relative}: failure-recovery execution flags failed`);
+      }
+      summaries[`${locale}/${slug}`] = {
+        duration_seconds: duration,
+        frame_count: frameCount,
+        unique_sampled_frames: dynamics.unique,
+      };
+    }
+
+    const localizedStateFiles = {
+      "operator-failed.png": `assets/media/pf07/current-ui/${locale}/operator-failed-desktop.png`,
+      "operator-recovered.png": `assets/media/pf07/current-ui/${locale}/operator-recovered-desktop.png`,
+    };
+    for (const [proofName, relative] of Object.entries(localizedStateFiles)) {
+      const bytes = await fs.readFile(path.join(projectRoot, relative));
+      requireCondition(localizedProof.state_stills?.[proofName]?.sha256 === sha256(bytes), `${locale}: ${proofName} state-still commitment failed`);
+    }
+
+    const guidedRelative = `assets/media/pf07/videos/${locale}/guided-overview.mp4`;
+    const purchaseRelative = `assets/media/pf07/videos/${locale}/purchase-delivery.mp4`;
+    const guidedAsset = manifestByFile.get(guidedRelative);
+    const guidedBytes = await fs.readFile(path.join(projectRoot, guidedRelative));
+    const guidedProbe = probeVideo(path.join(projectRoot, guidedRelative));
+    const guidedStream = guidedProbe.streams?.[0];
+    const guidedFormat = guidedProbe.format;
+    const guidedDuration = Number(guidedFormat?.duration);
+    const purchaseDuration = summaries[`${locale}/purchase-delivery`].duration_seconds;
+    requireCondition(guidedAsset?.kind === "video"
+      && guidedAsset.role === roles["guided-overview"].role
+      && guidedAsset.derived_from === purchaseRelative
+      && guidedAsset.transformation === "continuous-time-compression:setpts=0.64*PTS"
+      && sha256(guidedBytes) === guidedAsset.sha256
+      && guidedStream?.codec_name === "h264"
+      && guidedStream?.pix_fmt === "yuv420p"
+      && guidedStream?.avg_frame_rate === "30/1"
+      && Number(guidedStream?.width) === 1280
+      && Number(guidedStream?.height) === 720
+      && Number(guidedStream?.nb_read_frames) === guidedAsset.frame_count
+      && Number(guidedFormat?.size) === guidedAsset.bytes
+      && Math.abs(guidedDuration - guidedAsset.duration_seconds) < 0.001
+      && guidedDuration >= roles["guided-overview"].minimum
+      && guidedDuration <= roles["guided-overview"].maximum
+      && Math.abs((guidedDuration / purchaseDuration) - 0.64) < 0.01, `${guidedRelative}: guided continuous derivative contract failed`);
+    const guidedTags = Object.keys(guidedFormat?.tags || {}).map((key) => key.toLowerCase());
+    requireCondition(!guidedTags.some((key) => forbiddenMetadataKeys.has(key)), `${guidedRelative}: identifying video metadata remains`);
+    decodeVideo(path.join(projectRoot, guidedRelative));
+    const guidedDynamics = sampleDynamics(path.join(projectRoot, guidedRelative));
+    requireCondition(guidedDynamics.unique > 12, `${guidedRelative}: guided tour is not a dynamic continuous recording`);
+    summaries[`${locale}/guided-overview`] = {
+      duration_seconds: guidedDuration,
+      frame_count: Number(guidedStream.nb_read_frames),
+      unique_sampled_frames: guidedDynamics.unique,
+    };
+  }
+
+  const posterHashes = new Set();
+  for (const locale of ["ko", "en"]) {
+    for (const slug of Object.keys(roles)) {
+      const posterRelative = `assets/media/pf07/posters/${locale}/${slug}.png`;
+      const posterAsset = manifestByFile.get(posterRelative);
+      const posterBytes = await fs.readFile(path.join(projectRoot, posterRelative));
+      requireCondition(posterAsset?.kind === "poster"
+        && posterAsset.locale === locale
+        && posterAsset.role === roles[slug].role
+        && posterAsset.source_video === `assets/media/pf07/videos/${locale}/${slug}.mp4`
+        && posterAsset.review_result === "ACCEPTED_STEP050_DIRECT_REVIEW"
+        && posterAsset.width === 1280
+        && posterAsset.height === 720, `${posterRelative}: poster authority failed`);
+      validatePng(posterBytes, posterAsset, posterRelative);
+      posterHashes.add(posterAsset.sha256);
+
+      const captionRelative = `assets/media/pf07/captions/${locale}/${slug}.vtt`;
+      const captionAsset = manifestByFile.get(captionRelative);
+      const captionBytes = await fs.readFile(path.join(projectRoot, captionRelative));
+      const captionText = captionBytes.toString("utf8");
+      const videoDuration = summaries[`${locale}/${slug}`].duration_seconds;
+      requireCondition(captionAsset?.kind === "captions"
+        && captionAsset.format === "WEBVTT"
+        && captionAsset.locale === locale
+        && captionAsset.role === roles[slug].role
+        && captionAsset.source_video === `assets/media/pf07/videos/${locale}/${slug}.mp4`
+        && captionAsset.bytes === captionBytes.length
+        && captionAsset.sha256 === sha256(captionBytes)
+        && captionText.startsWith("WEBVTT\n")
+        && !hasForbiddenJsonValue(captionText), `${captionRelative}: caption identity or byte commitment failed`);
+      const cues = [...captionText.matchAll(/(\d{2}:\d{2}(?::\d{2})?\.\d{3})\s+-->\s+(\d{2}:\d{2}(?::\d{2})?\.\d{3})/g)];
+      requireCondition(cues.length >= 4, `${captionRelative}: too few caption cues`);
+      let previousEnd = 0;
+      for (const cue of cues) {
+        const start = parseVttTimestamp(cue[1]);
+        const end = parseVttTimestamp(cue[2]);
+        requireCondition(start >= previousEnd - 0.001
+          && end > start
+          && end <= videoDuration + 0.001, `${captionRelative}: caption timing contract failed`);
+        previousEnd = end;
+      }
+      requireCondition(locale === "ko"
+        ? /[가-힣]/.test(captionText)
+        : !/[ㄱ-ㆎ가-힣]/.test(captionText), `${captionRelative}: caption language boundary failed`);
+    }
+  }
+  requireCondition(posterHashes.size === 6, "localized outcome-specific posters are not all distinct");
+
+  const retryState = proof.retry_wait_observation;
+  requireCondition(retryState?.state === "retry_wait"
+    && retryState?.http_status === 503
+    && retryState?.attempt === 1
+    && retryState?.capture_authority === expectedScripts.retry_state_capture
+    && retryState?.capture_authority_sha256 === manifest.capture_authorities.retry_state_capture.sha256, "retry-wait observation identity failed");
+  for (const locale of ["ko", "en"]) {
+    const relative = `assets/media/pf07/current-ui/${locale}/operator-retrying-desktop.png`;
+    const bytes = await fs.readFile(path.join(projectRoot, relative));
+    requireCondition(retryState.assets?.[locale]?.file === relative
+      && retryState.assets?.[locale]?.sha256 === sha256(bytes), `${locale}: actual retry-wait still commitment failed`);
   }
 
   return {
     status: "PASS",
-    proof_sha256: proofHash,
-    recording_script_sha256: scriptHash,
+    release_tag: expectedRelease.release_tag,
+    execution_proof_sha256: proofHash,
+    localized_video_count: 6,
+    localized_poster_count: 6,
+    localized_caption_count: 6,
+    localized_recording_proof_count: 2,
     videos: summaries,
-    ocr_event_count: Object.values(ocrRequirements).reduce((sum, events) => sum + Object.keys(events).length, 0),
   };
 }

@@ -8,6 +8,6 @@
 - Lucide SVG 12개와 라이선스 고지
 - 캡처 시점·공개 경계·생성 기록을 설명하는 support 파일
 
-`HOME-004`·`HOME-005`와 `CASE-010~016`·`GUIDE-006`은 구현·테스트 중 직접 확보했습니다. 제품·패키지 동결 후에는 실제 최종 한·영 UI의 `CASE-005~009`, 최종 Release 해시에 맞춘 산출물 기반 비실행 패널 `GUIDE-001~004`, 실제 Linux 실행 화면 `GUIDE-005`·`GUIDE-007~008`을 추가했습니다. STEP-090에서는 최종 canonical Linux 복원 직후 화면 `CASE-017`, 최종 플랫폼 제공 패널 `CASE-018`, 관측 검증 점수표 `CASE-019`, 실제 공개 GitHub Actions run `CASE-020`을 PF07 commit·패키지와 분리된 showcase-only 후행 산출물로 완성했습니다. 모두 공개 경계·메타데이터·정확한 주장 범위를 검토한 공개본입니다. 상위 `final-public-asset-ledger.json`은 71개 ID 전체와 이 루트의 정확한 파일 세트를 결속합니다. `PUBLIC-ASSET-MANIFEST.txt`도 같은 세트와 정확히 일치합니다.
+`HOME-004`·`HOME-005`와 `CASE-010~016`·`GUIDE-006`은 구현·테스트 중 직접 확보했습니다. 제품·패키지 동결 후에는 실제 최종 한·영 UI의 `CASE-005~009`, 최종 Release 해시에 맞춘 산출물 기반 비실행 패널 `GUIDE-001~004`, 실제 Linux 실행 화면 `GUIDE-005`·`GUIDE-007~008`을 추가했습니다. 현재 공개 페이지의 `CASE-017~020`은 공개 1.0.3 Linux 실행, 플랫폼별 배포 파일 5종, 관측 검증 점수표, final CI와 공개 자산 10/10 readback을 PF07 commit·패키지와 분리해 보여주는 showcase-only 후행 산출물입니다. `CASE-020`은 사실 요약 패널이며 GitHub UI를 모사하지 않습니다. 모두 공개 경계·메타데이터·정확한 주장 범위를 검토한 공개본입니다. 상위 `final-public-asset-ledger.json`은 71개 ID 전체와 이 루트의 정확한 파일 세트를 결속합니다. `PUBLIC-ASSET-MANIFEST.txt`도 같은 세트와 정확히 일치합니다.
 
 외부 상품 사진·외부 홈페이지 사진·외부 UI 레퍼런스·컨택트시트는 이 폴더에 없습니다. 생성 원본과 전체 프롬프트 기록은 상위 폴더의 `00-수집-인덱스/`에 보관합니다.

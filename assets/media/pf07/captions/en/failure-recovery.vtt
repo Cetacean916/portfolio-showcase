@@ -1,0 +1,16 @@
+WEBVTT
+
+00:00.000 --> 00:08.200
+The operator reviews the order awaiting processing.
+
+00:08.200 --> 00:12.500
+The same order reaches a failed state with a recovery action available.
+
+00:12.500 --> 00:16.200
+The normal scenario is restored and retry processing is requested.
+
+00:16.200 --> 00:23.100
+The same order is processed again and reaches recovered status.
+
+00:23.100 --> 00:23.467
+Recovery is complete.

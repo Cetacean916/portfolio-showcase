@@ -126,41 +126,36 @@ const registrationCases = new Map((registrationManifest?.portfolioCases || []).m
 let pf07MediaManifest;
 try {
   pf07MediaManifest = JSON.parse(await fs.readFile(path.join(root, "assets/media/pf07/media-manifest.json"), "utf8"));
-  if (pf07MediaManifest.schema_version !== 1 || pf07MediaManifest.case_id !== "pf07" || pf07MediaManifest.classification !== "PUBLIC_SANITIZED_MEDIA" || pf07MediaManifest.registration_manifest_case_count !== 6) errors.push("pf07: media manifest identity or six-case boundary failed");
+  if (pf07MediaManifest.schema !== "pf07.localized-showcase-media-manifest.v2"
+    || pf07MediaManifest.state !== "CURRENT_RELEASE_BOUND"
+    || pf07MediaManifest.case_id !== "pf07"
+    || pf07MediaManifest.classification !== "PUBLIC_SANITIZED_LOCALIZED_RUNTIME_MEDIA"
+    || pf07MediaManifest.metadata_stripped !== true
+    || pf07MediaManifest.registration_manifest_case_count !== 6
+    || pf07MediaManifest.release?.release_tag !== "pf07-v1.0.3") {
+    errors.push("pf07: localized media manifest identity or six-case boundary failed");
+  }
 } catch (error) {
   errors.push(`pf07: media manifest unavailable: ${error.message}`);
 }
 try {
   await validatePf07ExecutionMedia({
     mediaRoot: path.join(root, "assets/media/pf07"),
-    recordingScriptPath: path.join(root, "assets/media/pf07/provenance/record-public-media.mjs"),
   });
 } catch (error) {
   errors.push(`pf07: execution media semantics failed: ${error.message}`);
 }
 try {
-  const proof = JSON.parse(await fs.readFile(path.join(root, "assets/media/pf07/execution-proof.json"), "utf8"));
-  const stillBuilder = await fs.readFile(path.join(root, "assets/media/pf07/provenance/build-public-stills.mjs"));
-  const demo = proof.videos?.["demo-video.mp4"];
-  const expectedFrames = Object.fromEntries(
-    (demo?.timeline || [])
-      .filter((event) => ["LIVE_STOREFRONT", "PRODUCT_SELECTED", "CHECKOUT_INPUT"].includes(event.event))
-      .map((event) => [event.event, event.frame_sha256]),
-  );
-  const expectedMainFrames = { LIVE_STOREFRONT: expectedFrames.LIVE_STOREFRONT };
-  const main = pf07MediaManifest?.assets?.["main-image.png"];
-  const detail = pf07MediaManifest?.assets?.["detail-01-overview.png"];
-  if (pf07MediaManifest?.source_commitments?.still_composition_script_sha256 !== sha256(stillBuilder)
-    || main?.source_video !== "demo-video.mp4"
-    || main?.source_video_sha256 !== demo?.sha256
-    || JSON.stringify(main?.source_event_frame_sha256) !== JSON.stringify(expectedMainFrames)
-    || detail?.source_video !== "demo-video.mp4"
-    || detail?.source_video_sha256 !== demo?.sha256
-    || JSON.stringify(detail?.source_event_frame_sha256) !== JSON.stringify(expectedFrames)) {
-    errors.push("pf07: real-execution still source commitment failed");
+  const proofBytes = await fs.readFile(path.join(root, "assets/media/pf07/execution-proof.json"));
+  const manifestBuilder = await fs.readFile(path.join(root, "assets/media/pf07/provenance/build-v1.0.3-showcase-manifests.mjs"));
+  const manifestBuilderSource = manifestBuilder.toString("utf8");
+  if (pf07MediaManifest?.execution_proof?.sha256 !== sha256(proofBytes)
+    || !manifestBuilderSource.includes('release_tag: "pf07-v1.0.3"')
+    || !manifestBuilderSource.includes('package_build_id: "pf07-build-c14f8fe0b8e95bea97bf"')) {
+    errors.push("pf07: localized execution proof or deterministic manifest builder commitment failed");
   }
 } catch (error) {
-  errors.push(`pf07: real-execution still provenance unavailable: ${error.message}`);
+  errors.push(`pf07: localized execution provenance unavailable: ${error.message}`);
 }
 
 let pf07RefinementAllowlist;
@@ -212,27 +207,31 @@ try {
   const declared = pf07CurrentUiManifest.assets || [];
   const actual = (await walk(pf07CurrentUiRoot)).map((absolute) => path.relative(pf07CurrentUiRoot, absolute).split(path.sep).join("/")).sort();
   const declaredNames = declared.map((asset) => asset.filename).sort();
-  const expectedCoreSurfaces = ["storefront-home-desktop", "storefront-home-mobile", "storefront-shop-desktop", "product-detail-desktop", "operator-console-desktop", "runtime-hub-desktop"];
+  const expectedCoreSurfaces = [
+    "storefront-home-desktop", "storefront-home-mobile", "storefront-shop-desktop",
+    "product-detail-desktop", "cart-desktop", "checkout-desktop", "order-complete-desktop",
+    "operator-console-desktop", "runtime-hub-desktop", "operator-failed-desktop",
+    "operator-retrying-desktop", "operator-recovered-desktop",
+  ];
   const surfaceSet = (locale) => declared.filter((asset) => asset.locale === locale).map((asset) => asset.surface).sort();
-  const captureBuilder = await fs.readFile(path.join(root, "assets/media/pf07/provenance/capture-final-stills.mjs"));
-  const mirroredPublicManifest = await fs.readFile(path.join(pf07RefinementRoot, "PUBLIC-ASSET-MANIFEST.txt"));
-  if (pf07CurrentUiManifest.schema !== "pf07.current-ui-manifest.v2"
-    || pf07CurrentUiManifest.state !== "CURRENT_REFERENCE_APPLIED"
+  if (pf07CurrentUiManifest.schema !== "pf07.current-ui-manifest.v3"
+    || pf07CurrentUiManifest.state !== "CURRENT_RELEASE_BOUND"
+    || pf07CurrentUiManifest.case_id !== "pf07"
     || pf07CurrentUiManifest.classification !== "PUBLIC_SANITIZED_RUNTIME_CAPTURE"
-    || pf07CurrentUiManifest.package_build_id !== "pf07-build-b99af2ac12d22b464865"
-    || pf07CurrentUiManifest.package_version !== "1.0.2"
-    || pf07CurrentUiManifest.artifact_set_sha256 !== "5c2865206308c7a763a57d4690fe5d79e301611bdaeeaee918fc8be1baab6b69"
-    || pf07CurrentUiManifest.linux_package_manifest_sha256 !== "87945c04ddf3c435a323b69a5d1bf9b0d7eb11527f0fb5101afe358a10c6f228"
-    || pf07CurrentUiManifest.capture_builder !== "scripts/capture-final-stills.mjs"
-    || pf07CurrentUiManifest.capture_builder_sha256 !== sha256(captureBuilder)
-    || pf07CurrentUiManifest.source_public_asset_manifest_sha256 !== sha256(mirroredPublicManifest)
-    || pf07CurrentUiManifest.exact_file_count !== 14
-    || declared.length !== 14
-    || pf07CurrentUiManifest.locale_asset_counts?.ko !== 8
-    || pf07CurrentUiManifest.locale_asset_counts?.en !== 6
-    || new Set(declared.map((asset) => asset.asset_id)).size !== 14
+    || pf07CurrentUiManifest.metadata_stripped !== true
+    || pf07CurrentUiManifest.release?.package_version !== "1.0.3"
+    || pf07CurrentUiManifest.release?.release_tag !== "pf07-v1.0.3"
+    || pf07CurrentUiManifest.release?.package_build_id !== "pf07-build-c14f8fe0b8e95bea97bf"
+    || pf07CurrentUiManifest.release?.artifact_set_sha256 !== "74b458a861d51da2e681b1201f138527731a2b87cde38f2f5f47438b3d20833e"
+    || pf07CurrentUiManifest.release?.linux_package_sha256 !== "cd60c8b6b280f1347123262d4895b0fdf53e8d6de07eb59020d57fb8c4c67f2e"
+    || pf07CurrentUiManifest.release?.linux_package_manifest_sha256 !== "4507f33a5c79d8fdf019023fecbcffc8664c2e8078a1edbfd88b83d6d37e43aa"
+    || pf07CurrentUiManifest.exact_file_count !== 24
+    || declared.length !== 24
+    || pf07CurrentUiManifest.locale_asset_counts?.ko !== 12
+    || pf07CurrentUiManifest.locale_asset_counts?.en !== 12
+    || new Set(declared.map((asset) => asset.asset_id)).size !== 24
     || JSON.stringify(surfaceSet("en")) !== JSON.stringify(expectedCoreSurfaces.slice().sort())
-    || JSON.stringify(surfaceSet("ko")) !== JSON.stringify([...expectedCoreSurfaces, "cart-desktop", "checkout-desktop"].sort())
+    || JSON.stringify(surfaceSet("ko")) !== JSON.stringify(expectedCoreSurfaces.slice().sort())
     || JSON.stringify(actual) !== JSON.stringify(declaredNames)) {
     errors.push("pf07: current UI manifest identity or exact file set failed");
   }
@@ -245,15 +244,17 @@ try {
       chunks.push(bytes.subarray(offset + 4, offset + 8).toString("ascii"));
       offset += 12 + length;
     }
-    const governedSource = pf07RefinementAllowlist?.exact_file_set?.find((file) => file.relative_path === asset.source_ledger_relative_path);
     if (!/^(?:ko|en)\//.test(asset.filename)
       || !asset.filename.startsWith(`${asset.locale}/`)
-      || !/^[A-Z]{2}-.+/.test(asset.asset_id)
-      || !asset.source_asset_id
-      || asset.transformation !== "byte-for-byte-copy"
+      || !/^PF07-CURRENT-(?:KO|EN)-/.test(asset.asset_id)
+      || !["ko_KR", "en_US"].includes(asset.runtime_locale)
+      || !asset.source_route
+      || !["still_capture", "localized_recording", "retry_state_capture"].includes(asset.source_kind)
+      || !asset.capture_authority?.startsWith("assets/media/pf07/provenance/")
+      || !/^[0-9a-f]{64}$/.test(asset.capture_authority_sha256 || "")
+      || asset.transformation !== "capture-promoted-without-pixel-mutation"
       || !/^ACCEPTED_/.test(asset.direct_review_result || "")
-      || !governedSource
-      || governedSource.sha256 !== asset.sha256
+      || asset.metadata_stripped !== true
       || !/^[0-9a-f]{64}$/.test(asset.sha256)
       || sha256(bytes) !== asset.sha256
       || bytes.length !== asset.bytes
@@ -423,13 +424,13 @@ for (const project of projects) {
   for (const field of ["facts", "proof", "included", "excluded", "tech"]) if (!Array.isArray(project[field]) || project[field].length < 3) errors.push(`${project.id}: incomplete ${field}`);
   if (project.id === "pf07") {
     const refinement = project.refinement;
-    const stableReleasePrefix = "https://github.com/Cetacean916/oddroom-woo-orderops/releases/download/pf07-v1.0.2/";
+    const stableReleasePrefix = "https://github.com/Cetacean916/oddroom-woo-orderops/releases/download/pf07-v1.0.3/";
     const expectedReleaseAssets = [
-      ["pf07-windows-x64-1.0.2.zip", "9d6fa0bcd723538207faeac4aeccc7d9bc5ebe6f57fdd3e0f1cba22ea5a6e264"],
-      ["pf07-windows-kvm-test-kit-1.0.2.zip", "9c73d488809890e5ed162f921ff0865fdf06f3285dcc5a88c7c6dac1472f8dbf"],
-      ["pf07-macos-universal-1.0.2.zip", "e7d33ec9af839f88930263320be3a34023037261d70cf6fb0b1d99a6d311591e"],
-      ["pf07-linux-x86_64-1.0.2.tar.gz", "9a3899571305d696d4399381004382d74af9a4145792f8cdaa945dd190dd9aca"],
-      ["pf07-linux-server-1.0.2.tar.gz", "c5192598b4d4b531aa91b3c1d47e7cd48ddd04d6655baac413673535e16ad2ce"],
+      ["pf07-windows-x64-1.0.3.zip", "969dfb6d5dab0c9dbe82554f9329abce5f8917804754b5ad2806a1168930ad80"],
+      ["pf07-windows-kvm-test-kit-1.0.3.zip", "6a8df9b9385ce0b7f85ccd192a0d716db7098641703c3d9e5d30e4474d065703"],
+      ["pf07-macos-universal-1.0.3.zip", "68062ddf03ec688b37e8f17422655e889165c325d91173dd341fdf405ff7aa22"],
+      ["pf07-linux-x86_64-1.0.3.tar.gz", "cd60c8b6b280f1347123262d4895b0fdf53e8d6de07eb59020d57fb8c4c67f2e"],
+      ["pf07-linux-server-1.0.3.tar.gz", "33fb64edd845273ccc322fe358c0143e359c05c80ca0542fa62da2f363a1a2e4"],
     ];
     const expectedPostCandidateIds = ["CASE-017", "CASE-018", "CASE-019", "CASE-020"];
     const expectedConnectedIds = ["CASE-014", "CASE-015", "CASE-016"];
@@ -438,14 +439,14 @@ for (const project of projects) {
       || ![project.image, ...project.gallery].every((relative) => relative.startsWith("assets/media/pf07/current-ui/ko/"))) {
       errors.push("pf07: canonical static case or Korean card media binding failed");
     }
-    if (refinement?.currentDelivery?.buildId !== "pf07-build-b99af2ac12d22b464865"
-      || refinement?.currentDelivery?.artifactSetSha256 !== "5c2865206308c7a763a57d4690fe5d79e301611bdaeeaee918fc8be1baab6b69"
+    if (refinement?.currentDelivery?.buildId !== "pf07-build-c14f8fe0b8e95bea97bf"
+      || refinement?.currentDelivery?.artifactSetSha256 !== "74b458a861d51da2e681b1201f138527731a2b87cde38f2f5f47438b3d20833e"
       || refinement?.currentDelivery?.publicationState !== "PUBLIC_PACKAGE_RELEASE_PASS"
-      || refinement?.currentDelivery?.releaseTag !== "pf07-v1.0.2"
-      || refinement?.currentDelivery?.immutablePredecessorTag !== "pf07-v1.0.1") {
+      || refinement?.currentDelivery?.releaseTag !== "pf07-v1.0.3"
+      || refinement?.currentDelivery?.immutablePredecessorTag !== "pf07-v1.0.2") {
       errors.push("pf07: current public delivery identity or immutable predecessor boundary failed");
     }
-    if (refinement?.releaseUrl !== "https://github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.2") errors.push("pf07: stable release page URL is missing or incorrect");
+    if (refinement?.releaseUrl !== "https://github.com/Cetacean916/oddroom-woo-orderops/releases/tag/pf07-v1.0.3") errors.push("pf07: stable release page URL is missing or incorrect");
     if (!Array.isArray(refinement?.releaseAssets)
       || refinement.releaseAssets.length !== 5
       || JSON.stringify(refinement.releaseAssets.map((asset) => [asset.filename, asset.sha256])) !== JSON.stringify(expectedReleaseAssets)
@@ -472,6 +473,33 @@ for (const project of projects) {
       }
       for (const field of ["downloadAction", "finalProofTitle", "finalProofIntro"]) if (!locale?.[field]) errors.push(`pf07: incomplete localized field ${field}`);
       if (locale?.downloadLabels?.length !== 5 || locale?.finalProofLabels?.length !== 4) errors.push("pf07: localized download or final-proof cardinality failed");
+      if (!locale?.orientation?.title
+        || !locale?.orientation?.body
+        || !locale?.overview?.title
+        || !locale?.overview?.description
+        || !locale?.overview?.handoff
+        || locale?.overview?.shopperSteps?.length !== 3
+        || locale?.overview?.operatorSteps?.length !== 3
+        || locale?.media?.items?.length !== 3) {
+        errors.push("pf07: buyer-first orientation, two-lane overview, or guided media contract is incomplete");
+      }
+      const language = locale?.htmlLang;
+      const expectedMediaIds = ["guided", "purchase", "recovery"];
+      if (JSON.stringify(locale?.media?.items?.map((item) => item.id)) !== JSON.stringify(expectedMediaIds)
+        || locale?.media?.items?.some((item) => !item.src?.includes(`/videos/${language}/`)
+          || !item.poster?.includes(`/posters/${language}/`)
+          || !item.captions?.includes(`/captions/${language}/`)
+          || !Array.isArray(item.chapters)
+          || item.chapters.length < 5)) {
+        errors.push(`pf07: ${language} localized media binding or chapter inventory failed`);
+      }
+    }
+    const ko = refinement?.locales?.ko;
+    if (ko?.orientation?.title !== "각자의 자리에서, 필요한 경험에 집중하도록."
+      || ko?.orientation?.body !== "고객은 상품을 살펴보고 주문을 마치는 데 집중합니다. 운영 과정은 구매 경험과 섞이지 않으며, 운영자는 접수된 주문의 상태 확인부터 필요한 조치까지 하나의 흐름 안에서 관리합니다."
+      || ko?.overview?.title !== "구매 경험과 주문 운영을 한눈에."
+      || ko?.overview?.handoff !== "고객은 구매를 온전히 마치고, 운영자는 그 주문을 자연스럽게 이어받습니다.") {
+      errors.push("pf07: approved buyer-oriented Korean orientation copy drifted");
     }
     for (const phrase of ["formal exactly-once", "실결제", "DEMO_MODE", "CONNECTED_MODE", "0 KRW"]) if (!JSON.stringify(project).toLowerCase().includes(phrase.toLowerCase())) errors.push(`pf07: claims boundary missing ${phrase}`);
   }
@@ -479,7 +507,7 @@ for (const project of projects) {
 
 const rootPublicFiles = [
   "index.html", "inquiry-automation.html", "case.html", "case-pf07-ko.html", "case-pf07-en.html", "404.html", "assets/css/styles.css", "assets/css/demo-integration.css", "assets/css/pf07-case.css",
-  "assets/js/projects.js", "assets/js/main.js", "assets/js/case.js", "assets/js/contact.js", "assets/media/pf07/media-manifest.json", "assets/media/pf07/media-allowlist.json", "assets/media/pf07/current-ui-manifest.json", "site.webmanifest", "robots.txt", "sitemap.xml",
+  "assets/js/projects.js", "assets/js/main.js", "assets/js/case.js", "assets/js/contact.js", "assets/media/pf07/media-manifest.json", "assets/media/pf07/media-allowlist.json", "assets/media/pf07/current-ui-manifest.json", "assets/media/pf07/execution-proof.json", "site.webmanifest", "robots.txt", "sitemap.xml",
 ];
 const demoRoot = path.join(root, "demos");
 let demoPublicFiles = [];
