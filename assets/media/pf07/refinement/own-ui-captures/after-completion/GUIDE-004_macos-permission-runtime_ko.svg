@@ -6,7 +6,7 @@
   <rect width="1440" height="900" fill="#f5f2e9"/><path d="M0 0h1440v16H0z" fill="#36513d"/>
   <image href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCA2NCA2NCIgcm9sZT0iaW1nIiBhcmlhLWxhYmVsbGVkYnk9InRpdGxlIj4KICA8dGl0bGUgaWQ9InRpdGxlIj5PRkZTRVQgbWFyazwvdGl0bGU+CiAgPHJlY3Qgd2lkdGg9IjY0IiBoZWlnaHQ9IjY0IiBmaWxsPSIjZjNmMGU3Ii8+CiAgPHJlY3QgeD0iNyIgeT0iOSIgd2lkdGg9IjM1IiBoZWlnaHQ9IjIwIiBmaWxsPSIjYTQzZjIyIi8+CiAgPHJlY3QgeD0iMjIiIHk9IjM1IiB3aWR0aD0iMzUiIGhlaWdodD0iMjAiIGZpbGw9IiMxNzE3MTQiLz4KICA8cGF0aCBkPSJNNDIgMTloOXYxNmgtOSIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjY3MDQ1IiBzdHJva2Utd2lkdGg9IjQiLz4KPC9zdmc+Cg==" x="74" y="64" width="62" height="62"/>
   <text x="158" y="84" class="eyebrow">macOS RUNTIME PATH / 0 KRW</text>
-  <text x="158" y="126" class="meta">pf07-macos-universal-1.0.2.zip · SHA-256 e7d33ec9af839f88930263320be3a34023037261d70cf6fb0b1d99a6d311591e</text>
+  <text x="158" y="126" class="meta">pf07-macos-universal-1.0.3.zip · SHA-256 68062ddf03ec688b37e8f17422655e889165c325d91173dd341fdf405ff7aa22</text>
   <text x="74" y="196" class="title">권한과 컨테이너 런타임 연결</text>
   <text x="74" y="232" class="subtitle">앱 진입점은 동일한 패키지 허브와 한 개의 비즈니스 런타임을 사용합니다.</text>
   <g transform="translate(74 276)">

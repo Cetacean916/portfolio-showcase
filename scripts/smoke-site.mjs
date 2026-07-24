@@ -27,7 +27,39 @@ const server = createServer(async (request, response) => {
     if (!target.startsWith(root)) throw new Error("forbidden");
     if ((await fs.stat(target)).isDirectory()) target = path.join(target, "index.html");
     const body = await fs.readFile(target);
-    response.writeHead(200, { "content-type": mime[path.extname(target)] || "application/octet-stream", "cache-control": "no-store" });
+    const contentType = mime[path.extname(target)] || "application/octet-stream";
+    const range = request.headers.range;
+    if (path.extname(target) === ".mp4" && range) {
+      const match = range.match(/^bytes=(\d*)-(\d*)$/);
+      if (!match) {
+        response.writeHead(416, { "content-range": `bytes */${body.length}` });
+        response.end();
+        return;
+      }
+      const start = match[1] ? Number(match[1]) : 0;
+      const end = match[2] ? Math.min(Number(match[2]), body.length - 1) : body.length - 1;
+      if (!Number.isInteger(start) || !Number.isInteger(end) || start < 0 || start > end || start >= body.length) {
+        response.writeHead(416, { "content-range": `bytes */${body.length}` });
+        response.end();
+        return;
+      }
+      const partial = body.subarray(start, end + 1);
+      response.writeHead(206, {
+        "content-type": contentType,
+        "cache-control": "no-store",
+        "accept-ranges": "bytes",
+        "content-range": `bytes ${start}-${end}/${body.length}`,
+        "content-length": partial.length,
+      });
+      response.end(partial);
+      return;
+    }
+    response.writeHead(200, {
+      "content-type": contentType,
+      "cache-control": "no-store",
+      "content-length": body.length,
+      ...(path.extname(target) === ".mp4" ? { "accept-ranges": "bytes" } : {}),
+    });
     response.end(body);
   } catch { response.writeHead(404); response.end("Not found"); }
 });
@@ -70,7 +102,13 @@ try {
     ["index-desktop", "index.html", 1440, 1000], ["index-tablet", "index.html", 900, 900], ["index-mobile", "index.html", 390, 844], ["index-small", "index.html", 360, 740],
     ["service-desktop", "inquiry-automation.html", 1440, 1000], ["service-tablet", "inquiry-automation.html", 900, 900], ["service-mobile", "inquiry-automation.html", 390, 844], ["service-small", "inquiry-automation.html", 360, 740],
     ...["oddroom", "pf01", "pf02", "pf03", "pf04", "pf06"].flatMap((id) => [[`case-${id}-desktop`, `case.html?id=${id}`, 1440, 1000], [`case-${id}-mobile`, `case.html?id=${id}`, 390, 844]]),
-    ...["ko", "en"].flatMap((language) => [[`case-pf07-${language}-desktop`, `case-pf07-${language}.html`, 1440, 1000], [`case-pf07-${language}-tablet`, `case-pf07-${language}.html`, 768, 900], [`case-pf07-${language}-mobile`, `case-pf07-${language}.html`, 390, 844]]),
+    ...["ko", "en"].flatMap((language) => [
+      [`case-pf07-${language}-desktop`, `case-pf07-${language}.html`, 1440, 1000],
+      [`case-pf07-${language}-laptop`, `case-pf07-${language}.html`, 1024, 900],
+      [`case-pf07-${language}-tablet`, `case-pf07-${language}.html`, 768, 900],
+      [`case-pf07-${language}-compact`, `case-pf07-${language}.html`, 540, 844],
+      [`case-pf07-${language}-mobile`, `case-pf07-${language}.html`, 390, 844],
+    ]),
     ["demo-pf01-narrow", "demos/pf01/", 320, 740],
     ...["pf01", "pf02", "pf03", "pf04"].flatMap((id) => [
       [`demo-${id}-desktop`, `demos/${id}/`, 1440, 1000],
@@ -88,6 +126,14 @@ try {
     await send("Page.navigate", { url: `${base}${page}` });
     for (let index = 0; index < 80; index += 1) { if (await evaluate("document.readyState === 'complete'")) break; await sleep(100); }
     await sleep(220);
+    if (page.startsWith("case-pf07-") || page.includes("id=pf07")) {
+      for (let index = 0; index < 60; index += 1) {
+        const mediaReady = await evaluate(`[...document.querySelectorAll('.pf07-case video')].length === 3
+          && [...document.querySelectorAll('.pf07-case video')].every((video) => video.readyState >= 1 && Number.isFinite(video.duration) && video.duration > 0)`);
+        if (mediaReady) break;
+        await sleep(100);
+      }
+    }
     const audit = await evaluate(`(() => {
       const broken = [...document.images].filter((image) => image.complete && image.naturalWidth === 0).map((image) => image.src);
       const visibleControls = [...document.querySelectorAll('button,a')].filter((node) => { const style=getComputedStyle(node); const rect=node.getBoundingClientRect(); return style.display!=='none' && style.visibility!=='hidden' && rect.width>0 && rect.height>0; });
@@ -142,10 +188,24 @@ try {
         cards: document.querySelectorAll('[data-project-card]').length,
         caseRoot: Boolean(document.querySelector('.case-page,.pf07-case')),
         pf07Root: Boolean(document.querySelector('.pf07-case')),
-        pf07CurrentUiSources: [...document.querySelectorAll('.pf07-hero-media img,.pf07-current-surface img')].map((node) => node.getAttribute('src') || node.currentSrc),
+        pf07CurrentUiSources: [...document.querySelectorAll('.pf07-hero-media img,.pf07-lane-figure img')].map((node) => node.getAttribute('src') || node.currentSrc),
         pf07ConnectedEvidenceSources: [...document.querySelectorAll('[data-connected-evidence] img')].map((node) => node.getAttribute('src') || node.currentSrc),
         pf07ReleaseEvidenceSources: [...document.querySelectorAll('[data-release-evidence]')].map((node) => node.getAttribute('href')),
         pf07VideoCount: document.querySelectorAll('.pf07-case video').length,
+        pf07VideoAudit: [...document.querySelectorAll('.pf07-case video')].map((video) => ({
+          poster: video.getAttribute('poster'),
+          source: video.querySelector('source')?.getAttribute('src'),
+          captions: video.querySelector('track[kind="captions"]')?.getAttribute('src'),
+          readyState: video.readyState,
+          duration: video.duration,
+          width: video.videoWidth,
+          height: video.videoHeight,
+        })),
+        pf07MediaCardCount: document.querySelectorAll('.pf07-media-card').length,
+        pf07ChapterCount: document.querySelectorAll('.pf07-chapters button[data-video-target][data-video-start]').length,
+        pf07RoleLaneCount: document.querySelectorAll('.pf07-role-lane').length,
+        pf07OrientationTitle: document.querySelector('#pf07-orientation-title')?.textContent.trim() || '',
+        pf07OverviewTitle: document.querySelector('#pf07-overview-title')?.textContent.trim() || '',
         pf07VideoLanguageBoundary: Boolean(document.querySelector('[data-video-language-boundary]')),
         pf07DeliveryReleaseBoundary: Boolean(document.querySelector('[data-delivery-release-boundary]')),
         htmlLanguage: document.documentElement.lang,
@@ -180,18 +240,49 @@ try {
       assert(audit.pf07ConnectedEvidenceSources.length === 3
         && ["CASE-014", "CASE-015", "CASE-016"].every((id) => audit.pf07ConnectedEvidenceSources.some((source) => source.includes(id))), `${name}: connected evidence is not buyer-reachable ${JSON.stringify(audit.pf07ConnectedEvidenceSources)}`);
       assert(audit.pf07ReleaseEvidenceSources.length === 4
-        && ["CASE-017", "CASE-018", "CASE-019", "CASE-020"].every((id) => audit.pf07ReleaseEvidenceSources.some((source) => source.includes(id))), `${name}: public 1.0.2 release evidence is not buyer-reachable ${JSON.stringify(audit.pf07ReleaseEvidenceSources)}`);
+        && ["CASE-017", "CASE-018", "CASE-019", "CASE-020"].every((id) => audit.pf07ReleaseEvidenceSources.some((source) => source.includes(id))), `${name}: public 1.0.3 release evidence is not buyer-reachable ${JSON.stringify(audit.pf07ReleaseEvidenceSources)}`);
       assert(audit.pf07DeliveryReleaseBoundary, `${name}: current public delivery identity is not visibly established`);
       const english = page.includes("lang=en") || page.includes("-en.html");
       const localeSegment = english ? "/current-ui/en/" : "/current-ui/ko/";
-      assert(audit.pf07CurrentUiSources.length === 6 && audit.pf07CurrentUiSources.every((source) => source.includes(localeSegment)), `${name}: localized current UI source binding failed ${JSON.stringify(audit.pf07CurrentUiSources)}`);
+      const mediaLocaleSegment = english ? "/en/" : "/ko/";
+      assert(audit.pf07CurrentUiSources.length === 7 && audit.pf07CurrentUiSources.every((source) => source.includes(localeSegment)), `${name}: localized current UI source binding failed ${JSON.stringify(audit.pf07CurrentUiSources)}`);
+      assert(audit.pf07RoleLaneCount === 2
+        && audit.pf07MediaCardCount === 3
+        && audit.pf07ChapterCount >= 15
+        && audit.pf07VideoCount === 3
+        && audit.pf07VideoAudit.every((video) => video.source?.includes(`/videos${mediaLocaleSegment}`)
+          && video.poster?.includes(`/posters${mediaLocaleSegment}`)
+          && video.captions?.includes(`/captions${mediaLocaleSegment}`)
+          && video.readyState >= 1
+          && video.width === 1280
+          && video.height === 720
+          && Number.isFinite(video.duration)
+          && video.duration > 0), `${name}: localized media, overview, or chapter binding failed ${JSON.stringify(audit.pf07VideoAudit)}`);
       if (english) {
         assert(audit.htmlLanguage === "en" && audit.hangulCount === 0, `${name}: English-only presentation failed lang=${audit.htmlLanguage} hangul=${audit.hangulCount}`);
-        assert(audit.pf07VideoCount === 0 && audit.pf07VideoLanguageBoundary, `${name}: Korean runtime video leaked into the English presentation`);
+        assert(!audit.pf07VideoLanguageBoundary
+          && audit.pf07OrientationTitle === "Designed so each role can focus on the experience it needs."
+          && audit.pf07OverviewTitle === "Buying and order operations, at a glance.", `${name}: English buyer-first orientation failed`);
       } else {
         assert(audit.htmlLanguage === "ko", `${name}: Korean presentation lang mismatch ${audit.htmlLanguage}`);
-        assert(audit.pf07VideoCount === 2 && !audit.pf07VideoLanguageBoundary, `${name}: Korean execution media presentation failed`);
+        assert(!audit.pf07VideoLanguageBoundary
+          && audit.pf07OrientationTitle === "각자의 자리에서, 필요한 경험에 집중하도록."
+          && audit.pf07OverviewTitle === "구매 경험과 주문 운영을 한눈에.", `${name}: Korean buyer-first orientation failed`);
       }
+      const chapterTarget = await evaluate(`(() => {
+        const button = document.querySelector('.pf07-chapters button[data-video-start]:nth-child(2)');
+        if (!button) return null;
+        button.click();
+        return { expected: button.dataset.videoStart, videoId: button.dataset.videoTarget };
+      })()`);
+      await sleep(160);
+      const chapterAudit = chapterTarget ? await evaluate(`(() => {
+        const video = document.getElementById(${JSON.stringify(chapterTarget.videoId)});
+        return { expected: ${JSON.stringify(chapterTarget.expected)}, actual: video?.currentTime, focused: document.activeElement === video };
+      })()`) : null;
+      assert(chapterAudit
+        && chapterAudit.actual > 0
+        && chapterAudit.focused, `${name}: chapter seek control failed ${JSON.stringify(chapterAudit)}`);
     }
     if (page.startsWith("demos/")) {
       assert(audit.isDemo, `${name}: demo did not render`);
@@ -522,7 +613,7 @@ try {
   const rootFocus = await evaluate(`(() => { const node=document.querySelector('[data-filter="all"]'); node.focus(); const style=getComputedStyle(node); return { outline: style.outlineStyle, color: style.outlineColor }; })()`);
   assert(rootFocus.outline === "solid" && rootFocus.color === "rgb(111, 74, 0)", `root focus contrast token mismatch ${JSON.stringify(rootFocus)}`);
   const filterAudit = await evaluate(`(() => { document.querySelector('[data-filter="backend"]').click(); return [...document.querySelectorAll('[data-project-card]')].filter((card) => !card.hidden).map((card) => card.querySelector('h3').textContent.trim()); })()`);
-  assert(filterAudit.length === 2 && filterAudit.some((title) => title.includes("Spring Boot")) && filterAudit.some((title) => title.includes("OFFSET / PF07")), "filter interaction failed");
+  assert(filterAudit.length === 2 && filterAudit.some((title) => title.includes("Spring Boot")) && filterAudit.some((title) => title === "OFFSET — 구매와 주문 운영"), "filter interaction failed");
 
   await evaluate(`(() => {
     window.__copiedBrief = '';

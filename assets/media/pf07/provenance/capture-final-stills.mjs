@@ -43,8 +43,8 @@ for (const required of ["PF07_WORDPRESS_PORT", "PF07_ADMIN_USER", "PF07_ADMIN_PA
 const artifactSetBytes = await fsp.readFile(artifactSetPath);
 const artifactSet = JSON.parse(artifactSetBytes.toString("utf8"));
 if (artifactSet.schema !== "pf07.artifact-set-manifest.v1"
-  || artifactSet.package_version !== "1.0.2"
-  || artifactSet.build_id !== "pf07-build-b99af2ac12d22b464865"
+  || artifactSet.package_version !== "1.0.3"
+  || artifactSet.build_id !== "pf07-build-c14f8fe0b8e95bea97bf"
   || artifactSet.artifact_count !== 5) {
   throw new Error("final artifact-set identity failed");
 }
@@ -69,6 +69,10 @@ const expectedOutputs = [
   "CASE-010_operator-console_en.png",
   "CASE-009_cart_ko.png",
   "CASE-009_checkout_ko.png",
+  "CASE-009_order-complete_ko.png",
+  "CASE-009_cart_en.png",
+  "CASE-009_checkout_en.png",
+  "CASE-009_order-complete_en.png",
   "GUIDE-001_windows-download-start_ko.svg",
   "GUIDE-001_windows-download-start_en.svg",
   "GUIDE-002_windows-preflight-evidence_ko.svg",
@@ -145,7 +149,7 @@ const windows = artifactById.get("pf07-windows-x64");
 const kvm = artifactById.get("pf07-windows-kvm-test-kit");
 const macos = artifactById.get("pf07-macos-universal");
 await writeGuide({
-  id: "GUIDE-001", slug: "windows-download-start", language: "ko", eyebrow: "WINDOWS BUYER PACKAGE / 1.0.2",
+  id: "GUIDE-001", slug: "windows-download-start", language: "ko", eyebrow: "WINDOWS BUYER PACKAGE / 1.0.3",
   title: "다운로드에서 실행 허브까지", subtitle: "최종 Windows x64 아카이브의 실제 파일명과 진입점을 따릅니다.", artifact: windows,
   steps: [
     { title: "아카이브 받기", copy: `${windows.filename}의 SHA-256을 확인합니다.` },
@@ -155,7 +159,7 @@ await writeGuide({
   ],
 });
 await writeGuide({
-  id: "GUIDE-001", slug: "windows-download-start", language: "en", eyebrow: "WINDOWS BUYER PACKAGE / 1.0.2",
+  id: "GUIDE-001", slug: "windows-download-start", language: "en", eyebrow: "WINDOWS BUYER PACKAGE / 1.0.3",
   title: "From download to launch hub", subtitle: "Follow the exact file names and entrypoints in the final Windows x64 artifact.", artifact: windows,
   steps: [
     { title: "Download the archive", copy: `Verify the SHA-256 of ${windows.filename}.` },
@@ -165,7 +169,7 @@ await writeGuide({
   ],
 });
 await writeGuide({
-  id: "GUIDE-002", slug: "windows-preflight-evidence", language: "ko", eyebrow: "WINDOWS KVM TEST KIT / 1.0.2",
+  id: "GUIDE-002", slug: "windows-preflight-evidence", language: "ko", eyebrow: "WINDOWS KVM TEST KIT / 1.0.3",
   title: "사전 점검에서 증거 내보내기까지", subtitle: "독립 KVM 테스트 키트와 구매자 패키지의 실제 제어를 순서대로 사용합니다.", artifact: kvm,
   steps: [
     { title: "테스트 키트 분리", copy: `${kvm.filename}을 구매자 패키지와 별도 폴더에 풉니다.` },
@@ -175,7 +179,7 @@ await writeGuide({
   ],
 });
 await writeGuide({
-  id: "GUIDE-002", slug: "windows-preflight-evidence", language: "en", eyebrow: "WINDOWS KVM TEST KIT / 1.0.2",
+  id: "GUIDE-002", slug: "windows-preflight-evidence", language: "en", eyebrow: "WINDOWS KVM TEST KIT / 1.0.3",
   title: "Preflight, result, evidence", subtitle: "Use the real controls in the independent KVM kit and buyer package in order.", artifact: kvm,
   steps: [
     { title: "Keep the test kit separate", copy: `Extract ${kvm.filename} beside, not inside, the buyer package.` },
@@ -185,7 +189,7 @@ await writeGuide({
   ],
 });
 await writeGuide({
-  id: "GUIDE-003", slug: "macos-download-first-launch", language: "ko", eyebrow: "macOS UNIVERSAL PACKAGE / 1.0.2",
+  id: "GUIDE-003", slug: "macos-download-first-launch", language: "ko", eyebrow: "macOS UNIVERSAL PACKAGE / 1.0.3",
   title: "Applications 배치와 최초 실행", subtitle: "최종 앱 번들의 실제 구조와 unsigned 첫 실행 경계를 정확히 안내합니다.", artifact: macos,
   steps: [
     { title: "아카이브 검증", copy: `${macos.filename}과 SHA-256을 확인합니다.` },
@@ -195,7 +199,7 @@ await writeGuide({
   ],
 });
 await writeGuide({
-  id: "GUIDE-003", slug: "macos-download-first-launch", language: "en", eyebrow: "macOS UNIVERSAL PACKAGE / 1.0.2",
+  id: "GUIDE-003", slug: "macos-download-first-launch", language: "en", eyebrow: "macOS UNIVERSAL PACKAGE / 1.0.3",
   title: "Applications and first launch", subtitle: "Follow the exact app-bundle layout and unsigned first-launch boundary.", artifact: macos,
   steps: [
     { title: "Verify the archive", copy: `Check ${macos.filename} and its SHA-256.` },
@@ -300,25 +304,55 @@ try {
   await captureAdmin({ locale: "ko_KR", output: "CASE-010_operator-console_ko.png" });
   await captureAdmin({ locale: "en_US", output: "CASE-010_operator-console_en.png" });
 
-  checked(launcherPath, ["language", "ko_KR"]);
-  if (!["CASE-009_cart_ko.png", "CASE-009_checkout_ko.png"].every((name) => resume && fs.existsSync(path.join(outputRoot, name)))) {
-    const commerce = await browser.newPage({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+  for (const [locale, suffix] of [["ko_KR", "ko"], ["en_US", "en"]]) {
+    checked(launcherPath, ["language", locale]);
+    const commerceNames = [
+      `CASE-009_cart_${suffix}.png`,
+      `CASE-009_checkout_${suffix}.png`,
+      `CASE-009_order-complete_${suffix}.png`,
+    ];
+    if (commerceNames.every((name) => resume && fs.existsSync(path.join(outputRoot, name)))) continue;
+    const context = await browser.newContext({ viewport: { width: 1440, height: 1000 }, deviceScaleFactor: 1 });
+    const commerce = await context.newPage();
     try {
       await commerce.goto(`${baseUrl}/product/offset-dock/`, { waitUntil: "networkidle" });
       await commerce.locator("button.single_add_to_cart_button").click();
       await commerce.waitForTimeout(900);
       await commerce.goto(`${baseUrl}/cart/`, { waitUntil: "networkidle" });
       await commerce.locator("table.shop_table").first().waitFor({ state: "visible" });
-      if (!(resume && fs.existsSync(path.join(outputRoot, "CASE-009_cart_ko.png")))) {
-        await commerce.screenshot({ path: path.join(outputRoot, "CASE-009_cart_ko.png"), type: "png" });
+      if (!(resume && fs.existsSync(path.join(outputRoot, commerceNames[0])))) {
+        await commerce.screenshot({ path: path.join(outputRoot, commerceNames[0]), type: "png" });
       }
       await commerce.goto(`${baseUrl}/checkout/`, { waitUntil: "networkidle" });
       await commerce.locator("#billing_email").waitFor({ state: "visible" });
-      if (!(resume && fs.existsSync(path.join(outputRoot, "CASE-009_checkout_ko.png")))) {
-        await commerce.screenshot({ path: path.join(outputRoot, "CASE-009_checkout_ko.png"), type: "png" });
+      if (!(resume && fs.existsSync(path.join(outputRoot, commerceNames[1])))) {
+        await commerce.screenshot({ path: path.join(outputRoot, commerceNames[1]), type: "png" });
+      }
+      await commerce.locator("#billing_first_name").fill("Synthetic");
+      await commerce.locator("#billing_last_name").fill("Buyer");
+      await commerce.locator("#billing_country").selectOption("KR");
+      await commerce.locator("#billing_address_1").fill("123 Test Street");
+      await commerce.locator("#billing_city").fill("Seoul");
+      await commerce.locator("#billing_postcode").fill("04524");
+      await commerce.locator("#billing_email").fill(`pf07-capture-${suffix}-${Date.now()}@example.com`);
+      await Promise.all([
+        commerce.waitForURL(/order-received/, { timeout: 45000 }),
+        commerce.locator("#place_order").click(),
+      ]);
+      await commerce.waitForLoadState("networkidle").catch(() => {});
+      await commerce.addStyleTag({ content: `
+        .woocommerce-order-overview__order.order,
+        .woocommerce-order-overview__email.email,
+        .woocommerce-order-overview__customer.customer,
+        .woocommerce-order-overview li strong,
+        .woocommerce-customer-details,
+        .woocommerce-customer-details address { filter: blur(10px) !important; user-select: none !important; }
+      ` });
+      if (!(resume && fs.existsSync(path.join(outputRoot, commerceNames[2])))) {
+        await commerce.screenshot({ path: path.join(outputRoot, commerceNames[2]), type: "png" });
       }
     } finally {
-      await commerce.close();
+      await context.close();
     }
   }
 

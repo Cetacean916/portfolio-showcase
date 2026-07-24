@@ -1,166 +1,79 @@
 {
-  "schema_version": 1,
+  "schema": "pf07.localized-showcase-execution-proof.v2",
   "case_id": "pf07",
   "classification": "PUBLIC_SANITIZED_EXECUTION_PROOF",
-  "recording_script": "scripts/record-public-media.mjs",
-  "recording_script_sha256": "0dad9dc966b3e11d069e1e4ec73d237d18d6cd9e6861ddfcec7de4927b14aa2d",
   "metadata_stripped": true,
-  "package_build_id": "pf07-build-b99af2ac12d22b464865",
-  "package_artifact_manifest_sha256": "87945c04ddf3c435a323b69a5d1bf9b0d7eb11527f0fb5101afe358a10c6f228",
+  "release": {
+    "package_version": "1.0.3",
+    "release_tag": "pf07-v1.0.3",
+    "immutable_predecessor_tag": "pf07-v1.0.2",
+    "source_commit": "4085e87f5d221d36ba5a58e859f12806e4b10d36",
+    "source_tree": "214ee2e8773a1f6109641869f06a8d13d4cd5310",
+    "package_build_id": "pf07-build-c14f8fe0b8e95bea97bf",
+    "artifact_set_sha256": "74b458a861d51da2e681b1201f138527731a2b87cde38f2f5f47438b3d20833e",
+    "release_manifest_sha256": "2880647f7d40e98f6af0c53eefa392941d9af01cc2efb50bcf46fc54c0b41b89",
+    "linux_package_filename": "pf07-linux-x86_64-1.0.3.tar.gz",
+    "linux_package_sha256": "cd60c8b6b280f1347123262d4895b0fdf53e8d6de07eb59020d57fb8c4c67f2e",
+    "linux_package_manifest_sha256": "4507f33a5c79d8fdf019023fecbcffc8664c2e8078a1edbfd88b83d6d37e43aa"
+  },
   "final_linux_package_preflight": "PASS",
   "synthetic_checkout_window_prepared_via_wp_cli": true,
-  "videos": {
-    "demo-video.mp4": {
-      "sha256": "0c089334d1d9138074fc96136698efbcd9a5ba4885aa260250b4a16f44af7323",
-      "codec": "h264",
-      "pixel_format": "yuv420p",
-      "width": 1280,
-      "height": 720,
-      "frame_count": 1856,
-      "duration_seconds": 61.867,
-      "sampled_frame_count": 62,
-      "unique_sampled_frames": 41,
-      "continuous_capture": true,
-      "actual_launcher_hub_observed": true,
-      "actual_checkout_observed": true,
-      "foreground_worker_observed": true,
-      "visible_worker_terminal_observed": true,
-      "final_status": "completed",
-      "timeline": [
-        {
-          "event": "LAUNCH_HUB",
-          "at_seconds": 1.312,
-          "observation": "final_package_hub_ready",
-          "frame_sha256": "b28d22d02fd92a38f6754e52f8015dfdcb359048ac7b2a783e1a59403880ec1e"
-        },
-        {
-          "event": "LIVE_STOREFRONT",
-          "at_seconds": 9.096,
-          "observation": "home_visible",
-          "frame_sha256": "4625e288c16451b181d7cce316ba26780f4b9c1e9f1e0f1a7c939da9bd019286"
-        },
-        {
-          "event": "SHOP_OPENED",
-          "at_seconds": 15.263,
-          "observation": "shop_visible",
-          "frame_sha256": "df2fa50f58e66bf0f6eacfb37c459c4c67d2f9e95bb2b686ba6ba426eff003e5"
-        },
-        {
-          "event": "PRODUCT_SELECTED",
-          "at_seconds": 19.514,
-          "observation": "product_page_visible",
-          "frame_sha256": "63108cb4d469f21df32afc6016e11992759f1a93403466537659e7d9140e5b85"
-        },
-        {
-          "event": "CART_READY",
-          "at_seconds": 25.313,
-          "observation": "cart_contains_product",
-          "frame_sha256": "1264c110b159738fd93df5f6c9677d570cbb5b86ee49f26de40c201c5c4e28c6"
-        },
-        {
-          "event": "CHECKOUT_INPUT",
-          "at_seconds": 32.766,
-          "observation": "synthetic_checkout_input_visible",
-          "frame_sha256": "98327ab4ccff16fefd93e158259113fc87b155e44522edfa92dabbdb966c87fe"
-        },
-        {
-          "event": "ORDER_RECEIVED",
-          "at_seconds": 37.243,
-          "observation": "woocommerce_confirmation_visible",
-          "frame_sha256": "fa11422fdfedd59161426c32737944722ca56d101a44cc87514b1f269371df33"
-        },
-        {
-          "event": "OUTBOX_PENDING",
-          "at_seconds": 41.402,
-          "observation": "status_pending",
-          "frame_sha256": "03592a56f72440bf435e1b1284eccdd02cc2a41f466a96bc2218f5a58193203c"
-        },
-        {
-          "event": "WORKER_RUN",
-          "at_seconds": 44.713,
-          "observation": "visible_terminal_foreground_worker_exit_zero",
-          "frame_sha256": "7cfce2b347c05ef16a69452513887fd79a4da6252d999f9e18054346235abd67"
-        },
-        {
-          "event": "ADMIN_COMPLETED",
-          "at_seconds": 50.801,
-          "observation": "status_completed",
-          "frame_sha256": "4111347c062565b682deadd261388a625c1f63b276b54f57877f065fb5ba1f55"
-        },
-        {
-          "event": "INTEGRATION_RESULT",
-          "at_seconds": 53.961,
-          "observation": "masked_integration_correlation_visible",
-          "frame_sha256": "e3b18c09b3a9b09551f0a36a2e4b687439d370f4b2601ad5b08c0eeb34195af0"
-        }
-      ]
+  "exact_runtime_locale_count": 2,
+  "recording_proofs": {
+    "ko": {
+      "file": "assets/media/pf07/proof/ko-recording-proof.json",
+      "sha256": "6052a261e03c32243622598d49169f99a13ca1dc20024422156a16a0f54b317c",
+      "runtime_locale": "ko_KR",
+      "recording_script_sha256": "4932eae4bb4ff52070f89911b23d5285e893a7ae39996fce21a2d1ea05197f9d",
+      "purchase_video_sha256": "42af10a5d0e64f38fd0734e9805fc779664809d8a3afe6d7f0ce70df2d1c900d",
+      "recovery_video_sha256": "bd4e78e807edf6001cf1b1cfde4040d47e2ceea3054c768a4ec71795ac750b8f"
     },
-    "recovery-clip.mp4": {
-      "sha256": "000003155e8f9a8d6419315f4c4aa19625b20482dfc50cf88341be90ef92852d",
-      "codec": "h264",
-      "pixel_format": "yuv420p",
-      "width": 1280,
-      "height": 720,
-      "frame_count": 836,
-      "duration_seconds": 27.867,
-      "sampled_frame_count": 28,
-      "unique_sampled_frames": 17,
-      "continuous_capture": true,
-      "actual_terminal_failure_observed": true,
-      "actual_hub_scenario_transition_observed": true,
-      "manual_retry_observed": true,
-      "visible_worker_terminal_observed": true,
-      "final_status": "recovered",
-      "timeline": [
-        {
-          "event": "OUTBOX_PENDING",
-          "at_seconds": 1.313,
-          "observation": "status_pending",
-          "frame_sha256": "4291b0c84a18a483af63c08f23c4e94123df2ba213082835b3b036a937b50007"
-        },
-        {
-          "event": "FAILURE_WORKER_RUN",
-          "at_seconds": 2.931,
-          "observation": "visible_terminal_failure_worker_exit_zero",
-          "frame_sha256": "3be6cf855c519d513e4ee88dd7e872aff6cda9b50942d6529da2df86b3d871e9"
-        },
-        {
-          "event": "FAILED",
-          "at_seconds": 9.085,
-          "observation": "status_failed_manual_retry_visible",
-          "frame_sha256": "efc310f6102c71857e4a481a2afd3280efadd1c1a2fc13a9c897bf5ec0264e4d"
-        },
-        {
-          "event": "NORMAL_SCENARIO",
-          "at_seconds": 17.426,
-          "observation": "actual_hub_normal_scenario_applied",
-          "frame_sha256": "5252a45263c495cd9a3fe4c959d7a4c0d9cb9600bda6200dc5c093bed9322404"
-        },
-        {
-          "event": "MANUAL_RETRY",
-          "at_seconds": 21.034,
-          "observation": "manual_retry_scheduled_pending",
-          "frame_sha256": "a53e64f0af3c8fd2654d09e5e7a801fbb7e8b1a65ecd4a4ed6f778e602b7233c"
-        },
-        {
-          "event": "RECOVERY_WORKER_RUN",
-          "at_seconds": 22.593,
-          "observation": "visible_terminal_recovery_worker_exit_zero",
-          "frame_sha256": "a6c4e3d4743894360b4babedb64540b0d2e5bd7ff2f09169ece945dec7a67471"
-        },
-        {
-          "event": "RECOVERED",
-          "at_seconds": 27.484,
-          "observation": "status_recovered",
-          "frame_sha256": "f05db2a3f1e86133896f1939e2372925923675091578f0974cfeaf06c3a1a0f7"
-        }
-      ]
+    "en": {
+      "file": "assets/media/pf07/proof/en-recording-proof.json",
+      "sha256": "eaf1de410a3073d0aa200b2cfd00a29812ee6df53ebb246262a2b2591ed20d3f",
+      "runtime_locale": "en_US",
+      "recording_script_sha256": "389dbda276870c0cdc2f15a6d3951120f92bf466ad3cf07c101a1d4787fe96b5",
+      "purchase_video_sha256": "018b93e8e0fbc3a94113d7324488a581f8f2540cd74ceb6a9a02c5e512497b86",
+      "recovery_video_sha256": "5be4a28cc6e33ab6194f9ae265ce28a88a9de88ce952fef193c1bde109632bf2"
     }
   },
-  "poster": {
-    "file": "video-poster.png",
-    "sha256": "41f5bf613f2e9cd3698bb98db4afd66357f9ee5d01a9e029deea1821971e22a6",
-    "source_video": "demo-video.mp4",
-    "source_at_seconds": 51.301
+  "capture_authorities": {
+    "still_capture": {
+      "file": "assets/media/pf07/provenance/capture-final-stills.mjs",
+      "sha256": "3086baaaa3fad78db754734959feaa319fc9414a9321e9aa27ab8754e750e8ef"
+    },
+    "retry_state_capture": {
+      "file": "assets/media/pf07/provenance/capture-v1.0.3-retry-state.mjs",
+      "sha256": "4ba4cbb61bc525862bbeaddd09912c4807658729cb96eaf1ee2390d7ec93bdde"
+    },
+    "ko_recording_capture": {
+      "file": "assets/media/pf07/provenance/record-public-media-ko-capture.mjs",
+      "sha256": "4932eae4bb4ff52070f89911b23d5285e893a7ae39996fce21a2d1ea05197f9d"
+    },
+    "current_recording_capture": {
+      "file": "assets/media/pf07/provenance/record-public-media.mjs",
+      "sha256": "389dbda276870c0cdc2f15a6d3951120f92bf466ad3cf07c101a1d4787fe96b5"
+    },
+    "release_evidence_builder": {
+      "file": "assets/media/pf07/provenance/build-v1.0.3-release-evidence.mjs",
+      "sha256": "e28aa22b3554f8e4925e9a9cdaded6af12b8ea1aa6eeff47d0789cf5ba684b56"
+    }
+  },
+  "retry_wait_observation": {
+    "state": "retry_wait",
+    "http_status": 503,
+    "attempt": 1,
+    "capture_authority": "assets/media/pf07/provenance/capture-v1.0.3-retry-state.mjs",
+    "capture_authority_sha256": "4ba4cbb61bc525862bbeaddd09912c4807658729cb96eaf1ee2390d7ec93bdde",
+    "assets": {
+      "ko": {
+        "file": "assets/media/pf07/current-ui/ko/operator-retrying-desktop.png",
+        "sha256": "30fe8696a445982530e87ab10ed4be6b50f6fb96bd852a654c6126de6edd249f"
+      },
+      "en": {
+        "file": "assets/media/pf07/current-ui/en/operator-retrying-desktop.png",
+        "sha256": "bc569deea6265990ff7a96f9bd7576d5fec6c0a24f35d59822ecc340aa119f2d"
+      }
+    }
   }
 }

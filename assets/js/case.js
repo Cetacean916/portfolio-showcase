@@ -30,6 +30,21 @@
     };
     const cards = (items, className) => items.map((item, index) => `<article class="${className}"><span>${String(index + 1).padStart(2, "0")}</span><h3>${escape(item[0])}</h3><p>${escape(item[1])}</p>${item[2] ? `<small>${escape(item[2])}</small>` : ""}</article>`).join("");
     const figures = (items, className) => items.map(([source, caption]) => `<figure class="${className}"><img src="${escape(source)}" alt="${escape(caption)}" loading="eager"><figcaption>${escape(caption)}</figcaption></figure>`).join("");
+    const mediaCard = (item, featured = false) => {
+      const videoId = `pf07-video-${language}-${item.id}`;
+      const chapterLabel = language === "en" ? `${item.title} chapters` : `${item.title} 구간`;
+      const captionsLabel = language === "en" ? "English captions" : "한국어 자막";
+      return `<article class="pf07-media-card${featured ? " is-featured" : ""}">
+        <header><div><p class="eyebrow">${escape(item.label)}</p><h3>${escape(item.title)}</h3></div><span>${escape(item.duration)}</span></header>
+        <p>${escape(item.summary)}</p>
+        <video id="${escape(videoId)}" controls playsinline preload="metadata" poster="${escape(item.poster)}">
+          <source src="${escape(item.src)}" type="video/mp4">
+          <track kind="captions" srclang="${escape(language)}" label="${escape(captionsLabel)}" src="${escape(item.captions)}" default>
+          ${escape(copy.videoFallback)}
+        </video>
+        <div class="pf07-chapters" aria-label="${escape(chapterLabel)}">${item.chapters.map(([time, label]) => `<button type="button" data-video-target="${escape(videoId)}" data-video-start="${escape(time)}"><span>${escape(time)}</span>${escape(label)}</button>`).join("")}</div>
+      </article>`;
+    };
 
     document.documentElement.lang = copy.htmlLang;
     document.body.dataset.pf07Language = language;
@@ -59,15 +74,18 @@
 
     const heroImage = `${currentUi}/storefront-home-desktop.png`;
     const heroMobileImage = `${currentUi}/storefront-home-mobile.png`;
-    const currentSurfaceLabels = language === "en"
-      ? ["Image-led storefront", "Editorial catalog", "Product detail and purchase", "Operator console", "Package runtime hub"]
-      : ["이미지 중심 상점", "에디토리얼 카탈로그", "상품 상세와 구매", "운영자 콘솔", "패키지 런타임 허브"];
-    const currentSurfaceFigures = [
-      [`${currentUi}/storefront-home-desktop.png`, currentSurfaceLabels[0]],
-      [`${currentUi}/storefront-shop-desktop.png`, currentSurfaceLabels[1]],
-      [`${currentUi}/product-detail-desktop.png`, currentSurfaceLabels[2]],
-      [`${currentUi}/operator-console-desktop.png`, currentSurfaceLabels[3]],
-      [`${currentUi}/runtime-hub-desktop.png`, currentSurfaceLabels[4]],
+    const laneLabels = language === "en"
+      ? ["Storefront and catalog", "Product selection", "Completed order", "Received-order review", "Waiting to retry", "Recovered order"]
+      : ["상점과 상품 탐색", "상품 선택", "주문 완료", "접수된 주문 확인", "재시도 대기", "복구된 주문"];
+    const shopperFigures = [
+      [`${currentUi}/storefront-shop-desktop.png`, laneLabels[0]],
+      [`${currentUi}/product-detail-desktop.png`, laneLabels[1]],
+      [`${currentUi}/order-complete-desktop.png`, laneLabels[2]],
+    ];
+    const operatorFigures = [
+      [`${currentUi}/operator-console-desktop.png`, laneLabels[3]],
+      [`${currentUi}/operator-retrying-desktop.png`, laneLabels[4]],
+      [`${currentUi}/operator-recovered-desktop.png`, laneLabels[5]],
     ];
     const connectedFigures = project.refinement.connectedAssets.map((relative, index) => [
       `${project.refinement.mediaBase}/${relative}`,
@@ -80,42 +98,60 @@
       ? ["Signed workflow execution", "Masked Contact and Deal checkpoints", "One PAYMENT_CONFIRMED message effect"]
       : ["서명된 workflow 실행", "마스킹된 Contact·Deal checkpoint", "PAYMENT_CONFIRMED 메시지 효과 1회"];
     const finalStateDetails = language === "en"
-      ? ["Clean restore and 5/5 ready", "Five bounded platform entry points", "Public browser and recovery scorecard", "Public CI and canonical artifact"]
-      : ["Clean restore와 5/5 ready", "경계가 명시된 플랫폼 진입점 5개", "공개 브라우저·복구 점수표", "공개 CI와 canonical artifact"];
-    const releaseEvidenceAction = language === "en" ? "Open public 1.0.2 evidence ↗" : "공개 1.0.2 근거 열기 ↗";
-    const finalProofCards = copy.finalProofLabels.map((label, index) => `<article class="pf07-proof"><span>${String(index + 1).padStart(2, "0")}</span><h3>${escape(label)}</h3><p>${escape(finalStateDetails[index])}</p><a href="${escape(`${project.refinement.mediaBase}/${project.refinement.postCandidateAssets[index]}`)}" target="_blank" rel="noopener" data-release-evidence>${escape(releaseEvidenceAction)}</a></article>`).join("");
+      ? ["The exact public Linux package passed clean start and recovery.", "Five buyer packages cover the bounded delivery environments.", "Every public asset matched its reviewed size and SHA-256.", "The public tag resolves to the reviewed source and build."]
+      : ["공개된 정확한 Linux 패키지로 clean start와 복구를 확인했습니다.", "사용 환경별 배포 파일 5종과 실행 경계를 함께 제공합니다.", "공개 자산 모두가 검토된 크기와 SHA-256에 일치했습니다.", "공개 태그가 검토된 소스와 빌드를 정확히 가리킵니다."];
+    const finalProofCards = copy.finalProofLabels.map((label, index) => `<article class="pf07-proof"><span>${String(index + 1).padStart(2, "0")}</span><h3>${escape(label)}</h3><p>${escape(finalStateDetails[index])}</p></article>`).join("");
+    const finalFigures = project.refinement.postCandidateAssets.map((relative, index) => {
+      const source = `${project.refinement.mediaBase}/${relative}`;
+      return `<figure class="pf07-final-figure"><a href="${escape(source)}" target="_blank" rel="noopener" data-release-evidence><img src="${escape(source)}" alt="${escape(copy.finalProofLabels[index])}" loading="lazy"></a><figcaption>${escape(copy.finalProofLabels[index])}</figcaption></figure>`;
+    }).join("");
     const releaseDownloads = project.refinement.releaseAssets.map((asset, index) => `<a class="pf07-download" href="${escape(asset.url)}" target="_blank" rel="noopener" aria-label="${escape(copy.downloadLabels[index])}: ${escape(asset.filename)}"><span>${String(index + 1).padStart(2, "0")}</span><strong>${escape(copy.downloadLabels[index])}</strong><code>${escape(asset.filename)}</code><small>SHA-256 ${escape(asset.sha256.slice(0, 16))}…</small><b>${escape(copy.downloadAction)} ↗</b></a>`).join("");
     const scorecardRows = copy.scorecard.map(([label, value, gate]) => `<tr><th scope="row">${escape(label)}</th><td>${escape(value)}</td><td><code>${escape(gate)}</code></td></tr>`).join("");
     const evidenceLinks = project.refinement.evidenceUrls.map((url, index) => `<a href="${escape(url)}" target="_blank" rel="noopener"><span>${escape(copy.evidenceLabels[index])}</span><b>${escape(copy.evidenceAction)}</b></a>`).join("");
-    const videoSections = language === "ko"
-      ? `<section class="pf07-section case-video recovery-video" id="pf07-execution-media" aria-labelledby="pf07-recovery-video-title"><div class="pf07-section-heading"><div><p class="eyebrow">FAILURE → RETRY → RECOVERY</p><h2 id="pf07-recovery-video-title">${escape(copy.recoveryVideoTitle)}</h2></div><p>${escape(copy.recoveryVideoSummary)}</p></div><video controls preload="metadata" poster="${publicMedia}/video-poster.png"><source src="${publicMedia}/recovery-clip.mp4" type="video/mp4">${escape(copy.videoFallback)}</video></section><section class="pf07-section case-video" aria-labelledby="pf07-normal-video-title"><div class="pf07-section-heading"><div><p class="eyebrow">CONTINUOUS EXECUTION</p><h2 id="pf07-normal-video-title">${escape(copy.normalVideoTitle)}</h2></div><p>${escape(copy.normalVideoSummary)}</p></div><video controls preload="metadata" poster="${publicMedia}/video-poster.png"><source src="${publicMedia}/demo-video.mp4" type="video/mp4">${escape(copy.videoFallback)}</video></section>`
-      : `<section class="pf07-section pf07-video-boundary" aria-labelledby="pf07-video-boundary-title" data-video-language-boundary><div class="pf07-section-heading"><div><p class="eyebrow">EXECUTION MEDIA LANGUAGE</p><h2 id="pf07-video-boundary-title">${escape(copy.videoLanguageBoundaryTitle)}</h2></div><p>${escape(copy.videoLanguageBoundary)}</p></div><a class="text-link" href="case-pf07-ko.html#pf07-execution-media">${escape(copy.videoLanguageAction)} →</a></section>`;
+    const guidedMedia = mediaCard(copy.media.items[0], true);
+    const detailedMedia = copy.media.items.slice(1).map((item) => mediaCard(item)).join("");
     const scorecardSection = `<section class="pf07-section case-scorecard" aria-labelledby="pf07-scorecard-title" data-proof-scorecard><div class="pf07-section-heading"><div><p class="eyebrow">OBSERVED SCORECARD</p><h2 id="pf07-scorecard-title">${escape(copy.scorecardTitle)}</h2></div><p>${escape(copy.scorecardIntro)}</p></div><div class="scorecard-wrap" tabindex="0" aria-labelledby="pf07-scorecard-title"><table><thead><tr>${copy.scorecardHeaders.map((heading) => `<th scope="col">${escape(heading)}</th>`).join("")}</tr></thead><tbody>${scorecardRows}</tbody></table></div></section>`;
     const evidenceSection = `<section class="pf07-section case-evidence-links" aria-labelledby="pf07-evidence-title" data-evidence-links><div class="pf07-section-heading"><div><p class="eyebrow">BUYER-VERIFIABLE LINKS</p><h2 id="pf07-evidence-title">${escape(copy.evidenceTitle)}</h2></div><p>${escape(copy.evidenceIntro)}</p></div><div class="evidence-link-grid">${evidenceLinks}</div></section>`;
     const claimsSection = `<section class="pf07-section case-claims" aria-labelledby="pf07-claims-title" data-claims-boundary><div class="pf07-section-heading"><div><p class="eyebrow">CLAIMS BOUNDARY</p><h2 id="pf07-claims-title">${escape(copy.claimsTitle)}</h2></div><p data-hosting-availability><b>Hosting:</b> ${escape(copy.hostingAvailability)}</p></div><p class="pf07-claims-intro">${escape(copy.claimsIntro)}</p><div class="claims-grid"><article><h3>${escape(copy.provesTitle)}</h3><ul>${list(copy.whatProves)}</ul></article><article><h3>${escape(copy.notProvesTitle)}</h3><ul>${list(copy.doesNotProve)}</ul></article></div></section>`;
     const releaseAction = project.refinement.releaseUrl
-      ? `<a class="primary-button link-button" href="${escape(project.refinement.releaseUrl)}" target="_blank" rel="noopener">${escape(copy.releaseAction)}</a>`
+      ? `<a class="text-link" href="${escape(project.refinement.releaseUrl)}" target="_blank" rel="noopener">${escape(copy.releaseAction)} ↗</a>`
       : "";
+    const implementationTitle = language === "en" ? "What keeps each order moving behind the service" : "서비스 뒤에서 주문을 끝까지 이어가는 방식";
+    const implementationIntro = language === "en"
+      ? "The technical path begins only after the customer journey is complete. From there, the service records progress, prevents duplicate effects, and makes recovery visible to the operator."
+      : "기술 처리는 고객의 구매가 끝난 뒤에 시작됩니다. 이후 주문의 진행 상태를 남기고, 완료된 처리를 중복하지 않으며, 필요한 복구를 운영자가 확인할 수 있게 합니다.";
+    const releaseIdentityLabel = language === "en" ? "CURRENT PUBLIC RELEASE" : "현재 공개 배포판";
+    const laneStep = (items) => `<ol class="pf07-lane-steps">${items.map(([title, text], index) => `<li><span>${String(index + 1).padStart(2, "0")}</span><div><h4>${escape(title)}</h4><p>${escape(text)}</p></div></li>`).join("")}</ol>`;
 
     root.innerHTML = `<article class="pf07-case case-page" data-pf07-case>
       <header class="pf07-hero">
-        <div class="pf07-hero-copy"><a class="breadcrumb" href="index.html#work">${escape(copy.breadcrumb)}</a><p class="eyebrow">${escape(copy.eyebrow)}</p><h1><span class="pf07-product-name">OFFSET / ORDER SYSTEM</span>${escape(copy.title)}</h1><p class="pf07-lead">${escape(copy.lead)}</p><p class="pf07-summary">${escape(copy.summary)}</p><div class="pf07-actions"><a class="primary-button link-button" href="${escape(project.refinement.repositoryUrl)}" target="_blank" rel="noopener">${escape(copy.sourceAction)}</a>${releaseAction}<a class="text-link" href="#delivery-path">${escape(copy.pathTitle)}</a></div></div>
+        <div class="pf07-hero-copy"><a class="breadcrumb" href="index.html#work">${escape(copy.breadcrumb)}</a><p class="eyebrow">${escape(copy.eyebrow)}</p><h1><span class="pf07-product-name">OFFSET / COMMERCE + OPERATIONS</span>${escape(copy.title)}</h1><p class="pf07-lead">${escape(copy.lead)}</p><p class="pf07-summary">${escape(copy.summary)}</p><div class="pf07-actions"><a class="primary-button link-button" href="#service-overview">${escape(copy.overviewAction)}</a>${releaseAction}<a class="text-link" href="${escape(project.refinement.repositoryUrl)}" target="_blank" rel="noopener">${escape(copy.sourceAction)} ↗</a></div></div>
         <div class="pf07-hero-media"><nav class="pf07-language" aria-label="${escape(copy.languageLabel)}"><a href="case-pf07-ko.html"${language === "ko" ? ' aria-current="page"' : ""}>KO</a><a href="case-pf07-en.html"${language === "en" ? ' aria-current="page"' : ""}>EN</a></nav><figure><picture><source media="(max-width: 760px)" srcset="${escape(heroMobileImage)}"><img src="${escape(heroImage)}" alt="${escape(copy.pageTitle)}"></picture></figure></div>
       </header>
-      <dl class="pf07-facts">${copy.facts.map(([value, label]) => `<div><dt>${escape(value)}</dt><dd>${escape(label)}</dd></div>`).join("")}</dl>
-      <section class="pf07-problem-solution"><article><p class="eyebrow">PROBLEM</p><h2>${escape(copy.problemTitle)}</h2><p>${escape(copy.problem)}</p></article><article><p class="eyebrow">SOLUTION</p><h2>${escape(copy.solutionTitle)}</h2><p>${escape(copy.solution)}</p></article></section>
+      <section class="pf07-orientation" aria-labelledby="pf07-orientation-title"><div><p class="eyebrow">${escape(copy.orientation.eyebrow)}</p><h2 id="pf07-orientation-title">${escape(copy.orientation.title)}</h2></div><p>${escape(copy.orientation.body)}</p><dl class="pf07-facts">${copy.facts.map(([value, label]) => `<div><dt>${escape(value)}</dt><dd>${escape(label)}</dd></div>`).join("")}</dl></section>
+      <section class="pf07-section pf07-service-overview" id="service-overview" aria-labelledby="pf07-overview-title"><div class="pf07-section-heading"><div><p class="eyebrow">${escape(copy.overview.eyebrow)}</p><h2 id="pf07-overview-title">${escape(copy.overview.title)}</h2></div><p>${escape(copy.overview.description)}</p></div><div class="pf07-service-lanes"><article class="pf07-role-lane is-shopper"><header><p class="eyebrow">SHOPPER</p><h3>${escape(copy.overview.shopperTitle)}</h3><p>${escape(copy.overview.shopperIntro)}</p></header><div class="pf07-lane-visuals">${figures(shopperFigures, "pf07-lane-figure")}</div>${laneStep(copy.overview.shopperSteps)}</article><div class="pf07-role-handoff"><span>ORDER COMPLETE</span><p>${escape(copy.overview.handoff)}</p></div><article class="pf07-role-lane is-operator"><header><p class="eyebrow">OPERATOR</p><h3>${escape(copy.overview.operatorTitle)}</h3><p>${escape(copy.overview.operatorIntro)}</p></header><div class="pf07-lane-visuals">${figures(operatorFigures, "pf07-lane-figure")}</div>${laneStep(copy.overview.operatorSteps)}</article></div></section>
+      <section class="pf07-section pf07-guided-media" id="pf07-execution-media" aria-labelledby="pf07-guided-title"><div class="pf07-section-heading"><div><p class="eyebrow">${escape(copy.media.guidedEyebrow)}</p><h2 id="pf07-guided-title">${escape(copy.media.guidedTitle)}</h2></div><p>${escape(copy.media.guidedSummary)}</p></div>${guidedMedia}</section>
+      <section class="pf07-section pf07-detailed-media" aria-labelledby="pf07-detail-title"><div class="pf07-section-heading"><div><p class="eyebrow">${escape(copy.media.detailEyebrow)}</p><h2 id="pf07-detail-title">${escape(copy.media.detailTitle)}</h2></div><p>${escape(copy.media.detailSummary)}</p></div><div class="pf07-media-grid">${detailedMedia}</div></section>
+      <section class="pf07-section pf07-implementation" aria-labelledby="pf07-implementation-title"><div class="pf07-section-heading"><div><p class="eyebrow">IMPLEMENTATION + PROOF</p><h2 id="pf07-implementation-title">${escape(implementationTitle)}</h2></div><p>${escape(implementationIntro)}</p></div><div class="pf07-problem-solution"><article><p class="eyebrow">PROBLEM</p><h3>${escape(copy.problemTitle)}</h3><p>${escape(copy.problem)}</p></article><article><p class="eyebrow">SOLUTION</p><h3>${escape(copy.solutionTitle)}</h3><p>${escape(copy.solution)}</p></article></div></section>
       <section class="pf07-section pf07-path" id="delivery-path"><div class="pf07-section-heading"><div><p class="eyebrow">DELIVERY PATH</p><h2>${escape(copy.pathTitle)}</h2></div><p>${escape(copy.pathIntro)}</p></div><div class="pf07-path-steps">${cards(copy.pathSteps.map(([, title, text]) => [title, text]), "pf07-step")}</div></section>
-      <section class="pf07-section"><div class="pf07-section-heading"><div><p class="eyebrow">BUYER + OPERATOR SURFACES</p><h2>${escape(copy.surfacesTitle)}</h2></div><p>${escape(copy.surfacesIntro)}</p></div><div class="pf07-current-surface-grid">${figures(currentSurfaceFigures, "pf07-current-surface")}</div><div class="pf07-surface-grid">${cards(copy.surfaces, "pf07-surface")}</div></section>
       <section class="pf07-section pf07-observation"><div class="pf07-section-heading"><div><p class="eyebrow">OBSERVED RECOVERY</p><h2>${escape(copy.recoveryTitle)}</h2></div><p>${escape(copy.recoveryIntro)}</p></div><div class="pf07-state-grid">${cards(copy.recoveryLabels.map((label, index) => [label, recoveryStateDetails[index]]), "pf07-state")}</div></section>
       <section class="pf07-section pf07-connected"><div class="pf07-section-heading"><div><p class="eyebrow">CONNECTED_MODE</p><h2>${escape(copy.connectedTitle)}</h2></div><p>${escape(copy.connectedIntro)}</p></div><div class="pf07-connected-grid">${cards(copy.connectedLabels.map((label, index) => [label, connectedStateDetails[index]]), "pf07-connected-state")}</div><div class="pf07-section-heading pf07-evidence-heading"><div><p class="eyebrow">CONNECTED EVIDENCE</p><h3>${escape(copy.connectedEvidenceTitle)}</h3></div><p>${escape(copy.connectedEvidenceIntro)}</p></div><div class="pf07-evidence-figure-grid" data-connected-evidence>${figures(connectedFigures, "pf07-evidence-figure")}</div></section>
-      ${videoSections}
-      <section class="pf07-section"><div class="pf07-section-heading"><div><p class="eyebrow">DELIVERY OPTIONS</p><h2>${escape(copy.packageTitle)}</h2></div><p>${escape(copy.packageIntro)}</p></div><aside class="pf07-candidate-state" data-delivery-release-boundary><b>${language === "en" ? "CURRENT PF07 DELIVERY" : "현재 PF07 공개 배포"}</b><code>${escape(project.refinement.currentDelivery.buildId)}</code><span>${escape(project.refinement.currentDelivery.publicationState)}</span></aside><div class="pf07-package-grid">${cards(copy.packages, "pf07-package")}</div><div class="pf07-download-grid" aria-label="${escape(copy.downloadAction)}">${releaseDownloads}</div></section>
-      <section class="pf07-section pf07-final"><div class="pf07-section-heading"><div><p class="eyebrow">PUBLIC RELEASE EVIDENCE</p><h2>${escape(copy.finalProofTitle)}</h2></div><p>${escape(copy.finalProofIntro)}</p></div><div class="pf07-proof-grid">${finalProofCards}</div></section>
       ${scorecardSection}${evidenceSection}${claimsSection}
+      <section class="pf07-section pf07-final"><div class="pf07-section-heading"><div><p class="eyebrow">PUBLIC RELEASE EVIDENCE</p><h2>${escape(copy.finalProofTitle)}</h2></div><p>${escape(copy.finalProofIntro)}</p></div><div class="pf07-proof-grid">${finalProofCards}</div><div class="pf07-final-grid">${finalFigures}</div></section>
+      <section class="pf07-section pf07-delivery"><div class="pf07-section-heading"><div><p class="eyebrow">PUBLIC DELIVERY</p><h2>${escape(copy.packageTitle)}</h2></div><p>${escape(copy.packageIntro)}</p></div><aside class="pf07-candidate-state" data-delivery-release-boundary><b>${escape(releaseIdentityLabel)}</b><code>${escape(project.refinement.currentDelivery.releaseTag)}</code><span>${escape(project.refinement.currentDelivery.publicationState)}</span></aside><div class="pf07-package-grid">${cards(copy.packages, "pf07-package")}</div><div class="pf07-download-grid" aria-label="${escape(copy.downloadAction)}">${releaseDownloads}</div></section>
       <section class="pf07-section pf07-scope"><div class="pf07-section-heading"><div><p class="eyebrow">BUYER FIT</p><h2>${escape(copy.scopeTitle)}</h2></div></div><div class="pf07-scope-grid"><article><h3>${escape(copy.fitTitle)}</h3><ul>${list(copy.fit)}</ul></article><article><h3>${escape(copy.nonFitTitle)}</h3><ul>${list(copy.nonFit)}</ul></article></div></section>
       <aside class="pf07-boundary"><b>${escape(copy.boundaryTitle)}</b><p>${escape(copy.boundary)}</p></aside>
       <nav class="case-bottom-nav" aria-label="${escape(copy.nav.menu)}"><a class="primary-button link-button" href="index.html#work">${escape(copy.nav.work)}</a><a class="text-link" href="inquiry-automation.html">${escape(copy.nav.service)}</a></nav>
     </article>`;
+    root.querySelectorAll("[data-video-target][data-video-start]").forEach((button) => {
+      button.addEventListener("click", () => {
+        const video = document.getElementById(button.dataset.videoTarget);
+        const parts = button.dataset.videoStart.split(":").map(Number);
+        if (!video || parts.some(Number.isNaN)) return;
+        video.currentTime = parts.reduce((total, part) => (total * 60) + part, 0);
+        video.focus();
+      });
+    });
     return;
   }
 

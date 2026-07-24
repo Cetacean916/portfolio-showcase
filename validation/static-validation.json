@@ -1,6 +1,6 @@
 {
   "status": "PASS",
-  "checkedAt": "2026-07-23T15:52:11.957Z",
+  "checkedAt": "2026-07-24T08:41:58.520Z",
   "products": [
     "oddroom",
     "pf01",
@@ -41,6 +41,7 @@
     "assets/media/pf07/media-manifest.json",
     "assets/media/pf07/media-allowlist.json",
     "assets/media/pf07/current-ui-manifest.json",
+    "assets/media/pf07/execution-proof.json",
     "site.webmanifest",
     "robots.txt",
     "sitemap.xml",
@@ -92,9 +93,9 @@
     "assets/media/pf06/detail-02-flow.png": "10b5aed20af5f1fac03ba9f98915b67ec49726e00f578078c0adfd1e695da03d",
     "assets/media/pf06/detail-03-result.png": "cb936894d0de5741e8938462e9067e48d313e0ecf16a6a5167a652daa4f89adb",
     "assets/media/pf06/demo-video.mp4": "300cc6c4c27b5a121c6056ecc9fbb47b3e6b049a37f7a9068ac2c4449befbb73",
-    "assets/media/pf07/current-ui/ko/storefront-home-desktop.png": "7c2b7ad6e7a9af657af363aaa3300c2dcf8820b473ef9ebcee8b315003976b3a",
-    "assets/media/pf07/current-ui/ko/storefront-shop-desktop.png": "8230b603a0a9b43f5bcf915eca618604a52513fd7411ad8cff6e7c2154f42d67",
-    "assets/media/pf07/current-ui/ko/operator-console-desktop.png": "11c3b341c3857110f09c057462e39658b211eda8c768811f81b5936ab184f08f",
-    "assets/media/pf07/current-ui/ko/runtime-hub-desktop.png": "9f9bb7507f749d6b689a63798a892cf6fb6cc4905ace315b25f7686a19cdf9ff"
+    "assets/media/pf07/current-ui/ko/storefront-home-desktop.png": "216a086568ba5894ac3c4a12f7a8f2e87f4c2083e389e46f6fa4d0724e0a8949",
+    "assets/media/pf07/current-ui/ko/storefront-shop-desktop.png": "a9a7f5fd46a42f5c0bbf09317fad5d5b58d70dc78d954378858b55925efea0af",
+    "assets/media/pf07/current-ui/ko/operator-console-desktop.png": "6849293096fa1cf025341ea476d258e8969f6584091bc5fb8b1198c691831f2b",
+    "assets/media/pf07/current-ui/ko/runtime-hub-desktop.png": "7d5f4a24230434e1783d4038193feb8a7e2b2b181a4a6c95332dd3b83af7adde"
   }
 }

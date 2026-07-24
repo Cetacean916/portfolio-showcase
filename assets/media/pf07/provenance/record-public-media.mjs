@@ -26,6 +26,9 @@ const targets = {
   demo: path.join(outputDir, "demo-video.mp4"),
   recovery: path.join(outputDir, "recovery-clip.mp4"),
   poster: path.join(outputDir, "video-poster.png"),
+  failed: path.join(outputDir, "operator-failed.png"),
+  retrying: path.join(outputDir, "operator-retrying.png"),
+  recovered: path.join(outputDir, "operator-recovered.png"),
   proof: path.join(outputDir, "execution-proof.json"),
 };
 await fsp.mkdir(outputDir, { recursive: true });
@@ -59,12 +62,36 @@ const runtime = Object.fromEntries(
 for (const key of ["PF07_WORDPRESS_PORT", "PF07_ADMIN_USER", "PF07_ADMIN_PASSWORD", "PF07_COMPOSE_PROJECT"]) {
   if (!runtime[key]) throw new Error(`missing final package runtime value: ${key}`);
 }
+const recordLocale = process.env.PF07_RECORD_LOCALE || "ko_KR";
+if (!["ko_KR", "en_US"].includes(recordLocale)) {
+  throw new Error("PF07_RECORD_LOCALE must be ko_KR or en_US");
+}
+const readyLabel = recordLocale === "en_US" ? "Ready" : "준비 완료";
+const configuredContactPool = process.env.PF07_SYNTHETIC_CONTACT_EMAIL_POOL
+  ? process.env.PF07_SYNTHETIC_CONTACT_EMAIL_POOL.split(",")
+  : [];
+const syntheticContactPool = configuredContactPool.length > 0
+  ? configuredContactPool
+  : [process.env.PF07_SYNTHETIC_CONTACT_EMAIL || `pf07-video-${Date.now()}@example.com`];
+if (syntheticContactPool.length > 64
+  || new Set(syntheticContactPool).size !== syntheticContactPool.length
+  || syntheticContactPool.some((value) => value.length > 254
+    || value !== value.trim()
+    || value !== value.toLowerCase()
+    || !/^[a-z0-9][a-z0-9._+\-]{0,180}@example\.com$/.test(value))) {
+  throw new Error("PF07 synthetic contact pool must contain 1 to 64 distinct lowercase @example.com addresses");
+}
+let syntheticContactIndex = 0;
+const nextSyntheticContactEmail = () => syntheticContactPool[
+  syntheticContactIndex++ % syntheticContactPool.length
+];
+const checkoutContactEmail = nextSyntheticContactEmail();
 const artifactManifestBytes = await fsp.readFile(artifactManifestPath);
 const artifactManifest = JSON.parse(artifactManifestBytes.toString("utf8"));
 if (artifactManifest.schema !== "pf07.artifact-manifest.v1"
   || artifactManifest.artifact_id !== "pf07-linux-x86_64"
-  || artifactManifest.package_version !== "1.0.2"
-  || artifactManifest.build_id !== "pf07-build-b99af2ac12d22b464865"
+  || artifactManifest.package_version !== "1.0.3"
+  || artifactManifest.build_id !== "pf07-build-c14f8fe0b8e95bea97bf"
   || artifactManifest.actual_os_runtime_execution !== false
   || artifactManifest.tested_boundary !== "ACTUAL_LINUX_LOCAL_EXECUTION_REQUIRED_ON_CANONICAL_CI_BYTES_IN_STEP_090") {
   throw new Error("final Linux package identity or execution boundary failed");
@@ -413,7 +440,7 @@ async function createOrderThroughCheckout(page, timelineState = null) {
   await slowFill(page, "#billing_address_1", "123 Test Street");
   await slowFill(page, "#billing_city", "Seoul");
   await slowFill(page, "#billing_postcode", "04524");
-  await slowFill(page, "#billing_email", `pf07-video-${Date.now()}@example.com`, { protect: true });
+  await slowFill(page, "#billing_email", checkoutContactEmail, { protect: true });
   if (timelineState) {
     await caption(page, "SYNTHETIC CHECKOUT", "Test Street · Seoul · protected dummy contact fields");
     mark(timelineState.capture, timelineState.timeline, "CHECKOUT_INPUT", "synthetic_checkout_input_visible");
@@ -568,7 +595,7 @@ async function applyHubScenario(hubPage, scenario, capture, timeline, event, obs
   await hubPage.locator("#scenario-select").selectOption(scenario);
   await focusAction(hubPage.locator("#scenario-button"));
   await hubPage.locator("#scenario-button").click();
-  await hubPage.locator("#recovery-result").filter({ hasText: /적용|applied/i }).waitFor();
+  await hubPage.locator("#recovery-result").filter({ hasText: /적용|apply|selected result/i }).waitFor();
   if (capture) {
     await caption(hubPage, scenario === "terminal" ? "TERMINAL SCENARIO" : "NORMAL SCENARIO", "Actual package hub control changed the next worker result");
     mark(capture, timeline, event, observation);
@@ -640,6 +667,7 @@ async function createRecoveryOrderViaWpCli() {
   const result = await compose(
     "--profile", "tools", "run", "--rm", "-T", "wpcli",
     "oddroom-orderops", "create-order", "--shape=variable", `--alias=${alias}`,
+    `--email=${nextSyntheticContactEmail()}`,
   );
   const record = JSON.parse(result.stdout.toString("utf8"));
   if (!Number.isInteger(record.order_id) || record.order_id < 1
@@ -692,7 +720,7 @@ async function bindTimelineFrames(file, timeline) {
 }
 
 await packageCommand("mode", "DEMO_MODE");
-await packageCommand("language", "ko_KR");
+await packageCommand("language", recordLocale);
 await packageCommand("scenario", "normal");
 const hub = await startHub();
 const browser = await chromium.launch({
@@ -714,7 +742,7 @@ try {
   await resetCheckoutAllowance();
   const demoSession = await openContext(browser);
   await demoSession.page.goto(hub.url, { waitUntil: "networkidle" });
-  await demoSession.page.locator("#status-badge").filter({ hasText: "준비 완료" }).waitFor();
+  await demoSession.page.locator("#status-badge").filter({ hasText: readyLabel }).waitFor();
   const demoAdminSession = await openContext(browser);
   await loginAdmin(demoAdminSession.page, { requireCard: false });
   await demoSession.page.bringToFront();
@@ -768,7 +796,7 @@ try {
   await resetCheckoutAllowance();
   const recoverySession = await openContext(browser);
   await recoverySession.page.goto(hub.url, { waitUntil: "networkidle" });
-  await recoverySession.page.locator("#status-badge").filter({ hasText: "준비 완료" }).waitFor();
+  await recoverySession.page.locator("#status-badge").filter({ hasText: readyLabel }).waitFor();
   await applyHubScenario(recoverySession.page, "terminal", null, null, null, null);
   await compose("stop", "-t", "1", "worker");
   await createRecoveryOrderViaWpCli();
@@ -796,6 +824,7 @@ try {
   if (!(await newestClass(recoveryAdmin)).includes("status-failed")) throw new Error("recovery row did not enter failed");
   await caption(recoveryAdmin, "FAILED", "Same outbox row · HTTP 422 · manual retry now available");
   mark(recoveryCapture, recoveryTimeline, "FAILED", "status_failed_manual_retry_visible");
+  await recoveryAdmin.screenshot({ path: targets.failed, type: "png" });
   await wait(250);
   await compose("start", "worker");
   await recoverySession.page.bringToFront();
@@ -815,7 +844,7 @@ try {
   await compose("stop", "-t", "1", "worker");
   await recoveryAdmin.bringToFront();
   await recoveryAdmin.locator(".oddroom-event-card").first().locator("details summary").click();
-  const retryButton = recoveryAdmin.getByRole("button", { name: /수동 재시도|Manual retry/i }).first();
+  const retryButton = recoveryAdmin.getByRole("button", { name: /다시 처리|Retry processing|수동 재시도|Manual retry/i }).first();
   await focusAction(retryButton);
   await submitAdminButtonInPlace(recoveryAdmin, retryButton);
   await sanitizeVisibleIdentityText(recoveryAdmin);
@@ -823,6 +852,7 @@ try {
   if (!(await newestClass(recoveryAdmin)).includes("status-queued")) throw new Error("manual retry did not return row to pending");
   await caption(recoveryAdmin, "MANUAL RETRY", "Actual administrator action scheduled one follow-up");
   mark(recoveryCapture, recoveryTimeline, "MANUAL_RETRY", "manual_retry_scheduled_pending");
+  await recoveryAdmin.screenshot({ path: targets.retrying, type: "png" });
   await wait(250);
   await caption(recoveryAdmin, "RECOVERY WORKER", "Actual final-package worker resumes the same row");
   await runVisibleWorker({
@@ -837,6 +867,7 @@ try {
   if (!(await newestClass(recoveryAdmin)).includes("status-recovered")) throw new Error("recovery row did not reach recovered");
   await caption(recoveryAdmin, "RECOVERED", "Same outbox row · recovered · HTTP 200");
   mark(recoveryCapture, recoveryTimeline, "RECOVERED", "status_recovered");
+  await recoveryAdmin.screenshot({ path: targets.recovered, type: "png" });
   await wait(300);
   await stopCapture(recoveryCapture);
   activeCapture = null;
@@ -873,6 +904,7 @@ const proof = {
   recording_script_sha256: await sha256File(scriptPath),
   metadata_stripped: true,
   package_build_id: artifactManifest.build_id,
+  runtime_locale: recordLocale,
   package_artifact_manifest_sha256: sha256(artifactManifestBytes),
   final_linux_package_preflight: "PASS",
   synthetic_checkout_window_prepared_via_wp_cli: true,
@@ -907,6 +939,11 @@ const proof = {
     sha256: await sha256File(targets.poster),
     source_video: "demo-video.mp4",
     source_at_seconds: posterTime,
+  },
+  state_stills: {
+    "operator-failed.png": { sha256: await sha256File(targets.failed), state: "failed" },
+    "operator-retrying.png": { sha256: await sha256File(targets.retrying), state: "manual_retry_queued" },
+    "operator-recovered.png": { sha256: await sha256File(targets.recovered), state: "recovered" },
   },
 };
 await fsp.writeFile(targets.proof, `${JSON.stringify(proof, null, 2)}\n`, { mode: 0o644 });
